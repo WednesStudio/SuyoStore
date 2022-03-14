@@ -646,3 +646,7 @@ crashlytics-build.properties
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,unity,csharp
+SuyoStore/Library/PackageCache/com.unity.collab-proxy@1.15.12/Editor/Collaborate/Assets/Layouts/BaseChangeListElement.uxml
+*.uxml
+*.uxml
+*.uss
