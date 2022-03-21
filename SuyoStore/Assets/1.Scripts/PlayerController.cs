@@ -1,89 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    PlayerStatus playerStatus = new PlayerStatus();
+    private CharacterController characterController;
 
+    [SerializeField]
+    private float moveSpeed = 10.0f; // 기본 이동 속도
+    [SerializeField]
+    private float gravity = -9.81f; // 중력 계수
+    [SerializeField]
+    private float rotationSpeed = 360f; // 회전(방향전환) 속도
+    private Vector3 moveDirection; // 이동 방향
     float hAxis;
     float vAxis;
-    Vector3 moveVec;
-    float speed = 10;
-    float runSpeed = 3;
-    float sitSpeed = 3;
-    int motion; // 플레이어의 모션 상태
 
+    private void Awake()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
     private void Update()
     {
-        playerStatus.SetSpeed(speed);
-
+        //if (characterController.isGrounded == false)
+        //{
+        //    moveDirection.y += gravity * Time.deltaTime;
+        //}
         GetInput();
-
         Move();
-        Run();
-        Sit();
-
+        Rotate();
     }
+
     void GetInput()
     {
-        hAxis = Input.GetAxisRaw("Horizontal");
-        vAxis = Input.GetAxisRaw("Vertical");
+        hAxis = Input.GetAxisRaw("Horizontal"); // 방향키 좌우
+        vAxis = Input.GetAxisRaw("Vertical"); // 방향키 위아래
     }
 
     void Move()
     {
-        moveVec = new Vector3(hAxis, 0, vAxis).normalized;
-        transform.position += moveVec * speed * Time.deltaTime;
+        //moveDirection = new Vector3(hAxis, moveDirection.y, vAxis);
+        //moveDirection.Normalize();
+        //characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
 
-        // turn
-        transform.LookAt(transform.position + moveVec);
+        moveDirection = new Vector3(hAxis, 0, vAxis);
+        float magnitud = Mathf.Clamp01(moveDirection.magnitude) * moveSpeed;
+        moveDirection.Normalize();
+        characterController.SimpleMove(moveDirection * moveSpeed);
     }
 
-    void Run()
+    void Rotate()
     {
-        if (Input.GetButton("Run"))
+        if (moveDirection != Vector3.zero)
         {
-            // 달리기 애니메이션
-
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            characterController.transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
-
-    }
-
-    void Sit()
-    {
-        if (Input.GetButton("Sit"))
-        {
-
-        }
-
-        // 앉기 자세 지속
-
-        // 앉기 애니메이션
-
-    }
-
-    void GetItem()
-    {
-
-    }
-
-    void Attack()
-    {
-        // 기본 공겨
-        // 무기 공격
-    }
-
-    void Sleep(int changeHp, int changeFatigue)
-    {
-        // 취침
-        
-
-
-        // 하루 스킵
-        // 체력 회복
-        // 포만감 감소
     }
 }
-
-//pos를 주는 방식.. !
