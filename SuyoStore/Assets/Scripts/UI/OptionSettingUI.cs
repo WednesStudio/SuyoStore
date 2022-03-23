@@ -11,16 +11,11 @@ public class OptionSettingUI : MonoBehaviour
     [SerializeField] GameObject[] _inventoryPanels;
     [SerializeField] GameObject[] _manipulationPanels;
     [SerializeField] GameObject[] _optionPanels;
+    [SerializeField] GameObject _exitGameWindow;
     private GameObject[] _panels;
-    
-    //Sound Panel 
-    [SerializeField] AudioSource[] _soundSources;
-    [SerializeField] AudioSource _musicSource, _environmentSource, _sfxSource;
-    [SerializeField] Sprite _soundOnImage, _soundOffImage;
-    [SerializeField] Sprite _sfxOnImage, _sfxOffImage;
-    [SerializeField] Button _masterButton, _musicButton, _environmentButton, _sfxButton;
-    private bool _isMasterOn = true, _isMusicOn = true, _isEnvironmentOn = true, _isSfxOn = true;
-    [SerializeField] Slider _masterVolSlider, _musicVolSlider, _environmentVolSlider, _sfxVolSlider;
+
+    //Screen Panel
+    [SerializeField] GameObject _resolutionScrollview;
 
     //Service Panel
     [SerializeField] GameObject _contactPanel, _creditPanel;
@@ -70,6 +65,26 @@ public class OptionSettingUI : MonoBehaviour
         OnScreenPanel();
     }
 
+    //Exit game
+    public void ExitGame()
+    {
+        _exitGameWindow.SetActive(true);
+    }
+
+    public void GoExitGame()
+    {
+        _exitGameWindow.SetActive(false);
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+        Application.Quit();
+    } 
+
+    public void CancleExitGame()
+    {
+        _exitGameWindow.SetActive(false);
+    }
+
     /// <summary>
     /// Open exact panels for the window
     /// </summary>
@@ -98,23 +113,21 @@ public class OptionSettingUI : MonoBehaviour
     
     //Option Window
     #region 
+    //Screen panel
     public void OnScreenPanel()
     {
         OnPanels(3, 3, 0);
     }
-    public void OnSoundPanel()
+
+
+    public void OnResolutionSetting()
     {
-        OnPanels(3, 3, 1);
-    }
-    public void OnServicePanel()
-    {
-        OnPanels(3, 3, 2);
+        _resolutionScrollview.SetActive(true);
     }
 
-    //Screen panel
-    public void ResolutionSetting()
+    public void OffResolutionSetting()
     {
-
+        _resolutionScrollview.SetActive(false);
     }
 
     public void WindowModeSetting()
@@ -124,110 +137,24 @@ public class OptionSettingUI : MonoBehaviour
 
     public void MouseSetting()
     {
-
+        Vector2 sensitivity = new Vector2(0.5f, 0.5f);
+        Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X") * sensitivity.x,
+                                            Input.GetAxisRaw("Mouse Y") * sensitivity.y);
+        print(mouseMovement);
     }
 
     //Sound Panel
-    public void SetMasterVolume(float volume)
+    public void OnSoundPanel()
     {
-        _musicSource.enabled = true;
-        _environmentSource.enabled = true;
-        _sfxSource.enabled = true;
-
-        _musicSource.volume = volume;
-        _environmentSource.volume = volume;
-        _sfxSource.volume = volume;
-
-        _masterButton.GetComponent<Image>().sprite = _soundOffImage;
-    }
-    public void SetMusicVolume(float volume)
-    {
-        _musicSource.enabled = true;
-        _musicSource.volume = volume;
-        _musicButton.GetComponent<Image>().sprite = _soundOffImage;
-    }
-    public void SetEnvironmentVolume(float volume)
-    {
-        _environmentSource.enabled = true;
-        _environmentSource.volume = volume;
-        _environmentButton.GetComponent<Image>().sprite = _sfxOffImage;
-    }
-    public void SetSFxVolume(float volume)
-    {
-        _sfxSource.enabled = true;
-        _sfxSource.volume = volume;
-        _sfxButton.GetComponent<Image>().sprite = _sfxOffImage;
-    }
-
-    public void MasterOnOff()
-    {
-        if(_isMasterOn)
-        {
-            _musicSource.enabled = false;
-            _environmentSource.enabled = false;
-            _sfxSource.enabled = false;
-            _masterButton.GetComponent<Image>().sprite = _soundOnImage;
-            _isMasterOn = false;
-        }
-        else
-        {
-            _musicSource.enabled = true;
-            _environmentSource.enabled = true;
-            _sfxSource.enabled = true;
-            _musicButton.GetComponent<Image>().sprite = _soundOffImage;
-            _isMasterOn = true;
-        }
-    }
-
-    public void MusicOnOff()
-    {
-        if(_isMusicOn)
-        {
-            _musicSource.enabled = false;
-            _musicButton.GetComponent<Image>().sprite = _soundOnImage;
-            _isMusicOn = false;
-        }
-        else
-        {
-            _musicSource.enabled = true;
-            _musicButton.GetComponent<Image>().sprite = _soundOffImage;
-            _isMusicOn = true;
-        }
-    }
-
-    public void EnvironmentOnOff()
-    {
-        if(_isEnvironmentOn)
-        {
-            _environmentSource.enabled = false;
-            _environmentButton.GetComponent<Image>().sprite = _sfxOnImage;
-            _isEnvironmentOn = false;
-        }
-        else
-        {
-            _environmentSource.enabled = true;
-            _environmentButton.GetComponent<Image>().sprite = _sfxOffImage;
-            _isEnvironmentOn = true;
-        }
-    }
-
-    public void SFxOnOff()
-    {
-        if(_isSfxOn)
-        {
-            _sfxSource.enabled = false;
-            _sfxButton.GetComponent<Image>().sprite = _sfxOnImage;
-            _isSfxOn = false;
-        }
-        else
-        {
-            _sfxSource.enabled = true;
-            _sfxButton.GetComponent<Image>().sprite = _sfxOffImage;
-            _isSfxOn = true;
-        }        
+        OnPanels(3, 3, 1);
     }
 
     //Service Panel
+    public void OnServicePanel()
+    {
+        OnPanels(3, 3, 2);
+    }
+
     public void OnContactUs()
     {
         _contactPanel.SetActive(true);
