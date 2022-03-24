@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef650b0cad53497cad25ad9e49590a3, type: 3}
+  m_Name: Bat01
+  m_EditorClassIdentifier: 
+  itemName: Bat01
+  itemId: Bat01_20220323164528
+  description: SM_Prop_Sport_Bat_01
+  itemType: 1
+  itemImage: {fileID: 0}
+  itemPrefab: {fileID: 1693188977817816, guid: 8fc96b4ecec430146a776806a18bbce3, type: 3}
+  durability: 30
+  itemWeight: 10
+  attackBonus: 7

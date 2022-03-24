@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66dfa1bcc1e9e4bceb9d7bc4e0b3db39, type: 3}
+  m_Name: Bed01
+  m_EditorClassIdentifier: 
+  itemName: 
+  Id: 0
+  description: 
+  itemType: 1
+  itemImage: {fileID: 0}
+  itemPrefab: {fileID: 0}
+  durability: 0
+  itemWeight: 0
+  survivalRate: 0
+  restoreHealth: 0
+  decreaseSatiety: 0
