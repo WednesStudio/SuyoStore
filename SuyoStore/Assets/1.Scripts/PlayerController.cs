@@ -22,10 +22,10 @@ public class PlayerController : MonoBehaviour
     // 액션
     enum PlayerState{ Idle, Walk, Run, Sit, Attack, Lay, Dead };
     PlayerState state = PlayerState.Idle;
-
     bool isIdle = true;
     bool isAlt; // alt 키를 눌렀는지 여부
     bool isAttack; 
+    bool isRun;
     Animator animator;
 
     private void Awake()
@@ -41,12 +41,8 @@ public class PlayerController : MonoBehaviour
         //}
         GetInput();
 
-        Idle();
-        if (isAlt == true) SitAction();
-        if (Input.GetButton("Run")) Run();
-
         Move();
-
+        if (isAlt == true) SitAction();
         if (Input.GetKey(KeyCode.G)) GetItem();
     }
 
@@ -58,6 +54,7 @@ public class PlayerController : MonoBehaviour
         // 액션 관련
         isAlt = Input.GetButtonDown("Sit"); // alt 키 입력 여부
         isAttack = Input.GetButtonDown("Attack");
+        isRun = Input.GetButton("Run");
     }
 
     void Move()
@@ -75,15 +72,21 @@ public class PlayerController : MonoBehaviour
         // 움직임 여부 체크
         if (moveDirection != Vector3.zero)
         {
-            /* 애니메이션 : Walk */
+            speed = moveSpeed;
 
             // 바라보는 방향으로 회전
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             characterController.transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+
+            if (isRun == true) Run();
+            else {
+                state = PlayerState.Walk;
+                /* 애니메이션 : Walk */
+            }
         }
         else
         {
-            /* 애니메이션 : Idle */
+            Idle();
         }
     }
 
@@ -93,23 +96,18 @@ public class PlayerController : MonoBehaviour
         {
             isIdle = true;
             state = PlayerState.Idle;
-
-            /* 애니메이션 : Idle */
-
             speed = moveSpeed;
+            
+            /* 애니메이션 : Idle */
         }
     }
 
     void Run()
     {
-        if (state == PlayerState.Idle)
-        {
-            state = PlayerState.Run;
+        state = PlayerState.Run;
+        speed += runSpeed;
 
-            /* 애니메이션 : Run */
-
-            speed += runSpeed;
-        }
+        /* 애니메이션 : Run */
     }
 
     void SitAction()
@@ -117,14 +115,16 @@ public class PlayerController : MonoBehaviour
         if (state == PlayerState.Sit)
         {
             state = PlayerState.Idle;
+
+            /* 애니메이션 : Idle */
+
         }
         else
         {
             state = PlayerState.Sit;
+            speed = sitSpeed;
 
             /* 애니메이션 : Sit */
-
-            speed += sitSpeed;
         }
     }
 

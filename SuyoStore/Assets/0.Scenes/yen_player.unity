@@ -709,7 +709,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  gravity: -1
+  runSpeed: 5
+  sitSpeed: 1
   rotationSpeed: 720
 --- !u!143 &1257567662
 CharacterController:
@@ -836,7 +837,7 @@ Transform:
   m_GameObject: {fileID: 1500946635}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 50, y: 2, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
