@@ -36,7 +36,7 @@ public class PlayerStatus : MonoBehaviour
 
     public virtual void Die()
     {
-
+        Debug.Log(transform.name + " died.");
     }
     //private float speed; // ½ºÇÇµå
 
