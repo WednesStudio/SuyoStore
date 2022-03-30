@@ -6,7 +6,7 @@ using TMPro;
 
 public class OptionSettingUI : MonoBehaviour
 {
-    [SerializeField] GameObject _statusWindow, _inventoryWindow, _manipulationWindow, _optionWindow;
+    [SerializeField] GameObject _statusInventoryWindow, _manipulationWindow, _optionWindow;
     [SerializeField] GameObject[] _statusPanels;
     [SerializeField] GameObject[] _inventoryPanels;
     [SerializeField] GameObject[] _manipulationPanels;
@@ -16,6 +16,8 @@ public class OptionSettingUI : MonoBehaviour
 
     //Screen Panel
     [SerializeField] GameObject _resolutionScrollview;
+    [SerializeField] Slider _mouseSensitivitySlider;
+    private bool _mouseInitialized = false;
 
     //Service Panel
     [SerializeField] GameObject _contactPanel, _creditPanel;
@@ -27,15 +29,20 @@ public class OptionSettingUI : MonoBehaviour
         // _sfxSource.volume = _sfxVolSlider.value;
     }
 
+    private void Start() 
+    {
+        if(PlayerPrefs.HasKey("Sensitivity"))
+        {
+            _mouseSensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
+        }
+        _mouseInitialized = true;
+    }
+
     //On window
     
-    public void OnStatusWindow()
+    public void OnStatusAndInventoryWindow()
     {
-        _statusWindow.SetActive(true);
-    }
-    public void OnInventoryWindow()
-    {
-        _inventoryWindow.SetActive(true);
+        _statusInventoryWindow.SetActive(true);
     }
     public void OnManipulationWindow()
     {
@@ -47,13 +54,10 @@ public class OptionSettingUI : MonoBehaviour
     }
     
     //Off window
-    public void OffStatusWindow()
+    public void OffStatusAndInventoryWindow()
     {
-        _statusWindow.SetActive(false);
-    }
-    public void OffInventoryWindow()
-    {
-        _inventoryWindow.SetActive(false);
+        gameObject.GetComponent<InventoryUI>().ChangeScrollView(0);
+        _statusInventoryWindow.SetActive(false);
     }
     public void OffManipulationWindow()
     {
@@ -135,12 +139,16 @@ public class OptionSettingUI : MonoBehaviour
 
     }
 
-    public void MouseSetting()
+    public void MouseSetting(float val)
     {
-        Vector2 sensitivity = new Vector2(0.5f, 0.5f);
-        Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X") * sensitivity.x,
-                                            Input.GetAxisRaw("Mouse Y") * sensitivity.y);
-        print(mouseMovement);
+        // Vector2 sensitivity = new Vector2(0.5f, 0.5f);
+        // Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X") * sensitivity.x,
+        //                                     Input.GetAxisRaw("Mouse Y") * sensitivity.y);
+        // print(mouseMovement);
+        if(!_mouseInitialized) return;
+        if(!Application.isPlaying) return;
+        PlayerPrefs.SetFloat("Sensitivity", val);
+        Debug.Log(val);
     }
 
     //Sound Panel

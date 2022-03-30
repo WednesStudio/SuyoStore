@@ -737,7 +737,7 @@ ScriptsOnlyBuild:
     className: WarpTextExample
   - hash:
       serializedVersion: 2
-      Hash: 7efeabd507ac26783d5da699bc44e345
+      Hash: 40f369d2d9e826e740b4ae31e84811d7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterStatusUI
@@ -779,7 +779,7 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
-      Hash: 8c0547f43e4daa711a47b72d5b5d5bed
+      Hash: de26c17d3397da6c5d80383dd16ca0b0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OptionSettingUI

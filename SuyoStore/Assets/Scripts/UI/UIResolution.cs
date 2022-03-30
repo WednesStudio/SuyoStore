@@ -44,7 +44,7 @@ public class UIResolution : MonoBehaviour
 
     public void ResolutionSetting(int num)
     {
-        for(int i = 0; i < 4; i ++)
+        for(int i = 0; i < 3; i ++)
         {
             GetResolution(_resolutionArray[num, 0], _resolutionArray[num, 1]);
             _panels[i].GetComponent<RectTransform>().localScale = _panelScales[num];
