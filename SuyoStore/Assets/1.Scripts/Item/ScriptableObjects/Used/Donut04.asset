@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d606d1ebd64e448984e4509f0ab87e4, type: 3}
+  m_Name: Donut04
+  m_EditorClassIdentifier: 
+  itemName: Donut04
+  itemId: Donut04_20220324094312
+  description: SM_Prop_Food_Donut_04
+  itemType: 2
+  itemImage: {fileID: 0}
+  itemPrefab: {fileID: 1429539437250574, guid: 5a04857f88a628c49b9e297074fa6eb7, type: 3}
+  durability: 1
+  itemWeight: 3
+  satiety: 6

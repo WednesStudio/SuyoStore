@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff5390c0461746eca5b3086f2b9cc80, type: 3}
+  m_Name: SmartPhone01
+  m_EditorClassIdentifier: 
+  itemName: SmartPhone01
+  itemId: SmartPhone01_20220323164528
+  description: SM_Item_SmartPhone_01
+  itemType: 1
+  itemImage: {fileID: 0}
+  itemPrefab: {fileID: 1523162694156800, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
+  durability: 0
+  itemWeight: 0
+  batteryCharge: 100

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d606d1ebd64e448984e4509f0ab87e4, type: 3}
+  m_Name: Can08
+  m_EditorClassIdentifier: 
+  itemName: Can08
+  itemId: Can08_20220324094312
+  description: SM_Item_Can_08
+  itemType: 2
+  itemImage: {fileID: 0}
+  itemPrefab: {fileID: 1739849997288908, guid: eb0cbb6bcee01ad40848859f2fc6535c, type: 3}
+  durability: 1
+  itemWeight: 5
+  satiety: 8
