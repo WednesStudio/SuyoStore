@@ -293,13 +293,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: -1.23}
+  m_LocalPosition: {x: 0, y: 0, z: -2.596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2023987795
+--- !u!1 &1888826311
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,37 +307,640 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2023987797}
-  - component: {fileID: 2023987796}
+  - component: {fileID: 1888826313}
+  - component: {fileID: 1888826312}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Databases
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2023987796
+--- !u!114 &1888826312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023987795}
+  m_GameObject: {fileID: 1888826311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b9ba6eab5b814d90a36ccfe3eda026b, type: 3}
+  m_Script: {fileID: 11500000, guid: cd6d1479ba6b64570860111a38ac57a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 75b7e35084464453286fda8a47aa25c3, type: 2}
---- !u!4 &2023987797
+  blankItem:
+    itemName: 
+    category: 
+    subCategory: 
+    fileName: 
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 0
+    weight: 0
+    prefab: {fileID: 0}
+  itemDatabase:
+  - itemName: "\uBC30\uD130\uB9AC1"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uBCF4\uC870\uBC30\uD130\uB9AC"
+    fileName: SM_Item_Battery_01
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 20
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 10
+    prefab: {fileID: 1040866198591268, guid: e4cf0824496bede4bb19ba9967e020f6, type: 3}
+  - itemName: "\uBC30\uD130\uB9AC2"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uBCF4\uC870\uBC30\uD130\uB9AC"
+    fileName: SM_Item_Battery_02
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 10
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1894815675584704, guid: 3227180798afcde40a94b36943725c6d, type: 3}
+  - itemName: "\uCE941"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Item_Can_01
+    attack: 0
+    heal: 0
+    satiety: 5
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1475631568837504, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
+  - itemName: "\uCE942"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Item_Can_02
+    attack: 0
+    heal: 0
+    satiety: 6
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1435732578635654, guid: 5f3d8b2c4e94c7647b280ab37c8452a4, type: 3}
+  - itemName: "\uCE943"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Item_Can_03
+    attack: 0
+    heal: 0
+    satiety: 7
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1302950925058072, guid: ba8f09511f4e7a448867acaedb592a0b, type: 3}
+  - itemName: "\uCE947"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Item_Can_07
+    attack: 0
+    heal: 0
+    satiety: 8
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1333788564670996, guid: 7e25cc1253205ab45bf2f21ac7f68181, type: 3}
+  - itemName: "\uCE948"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Item_Can_08
+    attack: 0
+    heal: 0
+    satiety: 8
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1739849997288908, guid: eb0cbb6bcee01ad40848859f2fc6535c, type: 3}
+  - itemName: "\uCE949"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Item_Can_09
+    attack: 0
+    heal: 0
+    satiety: 10
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1497011872503418, guid: c1374f32ef087084aa867d7db3d2e313, type: 3}
+  - itemName: "\uCE7C1"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Item_Craft_Knife_01
+    attack: 3
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 10
+    weight: 3
+    prefab: {fileID: 1312856516239564, guid: 18a14a835f7f4ff4eba07155d04123fb, type: 3}
+  - itemName: "\uC74C\uB8CC1"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Item_Drink_01
+    attack: 0
+    heal: 0
+    satiety: 7
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1847027969511464, guid: 907f8303af992f44289b29cb614b45c5, type: 3}
+  - itemName: "\uD6C4\uB77C\uC774\uD32C1"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Item_Frypan_01
+    attack: 5
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 30
+    weight: 7
+    prefab: {fileID: 1054167787498168, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
+  - itemName: "\uC57D1"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uCE58\uB8CC\uC81C"
+    fileName: SM_Item_Pills_01
+    attack: 0
+    heal: 30
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 3
+    prefab: {fileID: 1337799580505134, guid: 07973e2f008580343949b7f8c06cf72c, type: 3}
+  - itemName: "\uC2A4\uB9C8\uD2B8\uD3F0"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uC2A4\uB9C8\uD2B8\uD3F0"
+    fileName: SM_Item_SmartPhone_01
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 0
+    weight: 0
+    prefab: {fileID: 1523162694156800, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
+  - itemName: "\uB77C\uC774\uD2B82"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uB77C\uC774\uD2B8"
+    fileName: SM_Prop_Flashlight_02
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 10
+    capacity: 0
+    deathRate: 0
+    durability: 30
+    weight: 3
+    prefab: {fileID: 1988753259493714, guid: 7e5cb9f31c8ced3438a012d4cff966bb, type: 3}
+  - itemName: "\uB77C\uC774\uD2B83"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uB77C\uC774\uD2B8"
+    fileName: SM_Prop_Flashlight_03
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 20
+    capacity: 0
+    deathRate: 0
+    durability: 30
+    weight: 5
+    prefab: {fileID: 1589291923689666, guid: 290100e372c925c4d8a33d12424f9c28, type: 3}
+  - itemName: "\uB77C\uC774\uD2B85"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uB77C\uC774\uD2B8"
+    fileName: SM_Prop_Flashlight_05
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 40
+    capacity: 0
+    deathRate: 0
+    durability: 40
+    weight: 7
+    prefab: {fileID: 1452664468745888, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
+  - itemName: "\uBE60\uB8E8"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Wep_Crowbar_01
+    attack: 7
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 30
+    weight: 20
+    prefab: {fileID: 1750927141268108, guid: 8775c006a5395ff488d9315934a2a901, type: 3}
+  - itemName: "\uB9DD\uCE58"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Wep_Hammer_01
+    attack: 7
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 25
+    weight: 20
+    prefab: {fileID: 1238499803652380, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
+  - itemName: "\uCE7C2"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Wep_Melee_HuntingKnife_01
+    attack: 5
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 20
+    weight: 3
+    prefab: {fileID: 1458518773578602, guid: 0382438fca188874582f78853c471286, type: 3}
+  - itemName: "\uC0AC\uACFC"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Prop_Food_Apple_01
+    attack: 0
+    heal: 0
+    satiety: 5
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 3
+    prefab: {fileID: 1005277357169550, guid: b163d20bba821aa4b81d40ed68997567, type: 3}
+  - itemName: "\uCE58\uC988"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Prop_Food_Cheese_Stack_02
+    attack: 0
+    heal: 0
+    satiety: 10
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 7
+    prefab: {fileID: 1166833655198992, guid: f84f10d1ddfeeb441a8df9622b805d3e, type: 3}
+  - itemName: "\uB2ED\uAC00\uC2B4\uC0B4"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Prop_Food_Chicken_Breast_Cooked_02
+    attack: 0
+    heal: 0
+    satiety: 7
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1796542459555194, guid: a8abbb43cbe85eb40a65303548ab3b52, type: 3}
+  - itemName: "\uB3C4\uB11B"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Prop_Food_Donut_04
+    attack: 0
+    heal: 0
+    satiety: 6
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 3
+    prefab: {fileID: 1429539437250574, guid: 5a04857f88a628c49b9e297074fa6eb7, type: 3}
+  - itemName: "\uD3EC\uD14C\uC774\uD1A0"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Prop_Food_Fries_01
+    attack: 0
+    heal: 0
+    satiety: 10
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 3
+    prefab: {fileID: 1465817476167670, guid: 34325414543cb1c4f8b518e01768d70c, type: 3}
+  - itemName: "\uC18C\uC138\uC9C01"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Prop_Food_Sausage_Cooked_01
+    attack: 0
+    heal: 0
+    satiety: 10
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 5
+    prefab: {fileID: 1361989794947370, guid: e5c49d3eba0992746925b4eb38876a43, type: 3}
+  - itemName: "\uC18C\uC138\uC9C02"
+    category: "\uC18C\uBAA8"
+    subCategory: "\uC74C\uC2DD"
+    fileName: SM_Prop_Food_Sausage_String_01
+    attack: 0
+    heal: 0
+    satiety: 30
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 1
+    weight: 15
+    prefab: {fileID: 1570347279704908, guid: 1d78cb24b471d3b42835e1c8865e3bf1, type: 3}
+  - itemName: "\uBC14\uBCA8"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Gym_Bar_Bell_02
+    attack: 10
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 40
+    weight: 30
+    prefab: {fileID: 1031860391748574, guid: 3d205d410da663745a65f2bbb069bfd2, type: 3}
+  - itemName: "\uB364\uBCA8"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Gym_Dumbbell_05
+    attack: 10
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 40
+    weight: 30
+    prefab: {fileID: 1452059561765510, guid: b4aa0a7520504974484dd308356a76d2, type: 3}
+  - itemName: "\uB178"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Hunting_Kayak_Paddle_01
+    attack: 4
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 15
+    weight: 15
+    prefab: {fileID: 1137171577756772, guid: b002bf96fc32bd341b44d5c918480095, type: 3}
+  - itemName: "\uB4A4\uC9D1\uAC1C"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Kitchen_Spatula_01
+    attack: 2
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 5
+    weight: 3
+    prefab: {fileID: 1424832807081228, guid: 1b5543ac8b44d314eac369454c707a6e, type: 3}
+  - itemName: "\uAE30\uD0C0"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Music_Acoustic_Guitar_02
+    attack: 5
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 15
+    weight: 10
+    prefab: {fileID: 1690120943321838, guid: a09ef4030545b654baf6cb51be368032, type: 3}
+  - itemName: "\uC77C\uB809\uAE30\uD0C0"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Music_Electric_Guitar_01
+    attack: 7
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 20
+    weight: 15
+    prefab: {fileID: 1973175269348534, guid: 7febb619367642c4e8678f1b2dde9443, type: 3}
+  - itemName: "\uD14C\uB2C8\uC2A4\uB77C\uCF13"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Sport_Tennis_Racket_01
+    attack: 6
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 20
+    weight: 10
+    prefab: {fileID: 1446314617240712, guid: 4179423338ee594488cd7427e614595b, type: 3}
+  - itemName: "\uB098\uBB34\uBC29\uB9DD\uC774"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Sport_Bat_01
+    attack: 7
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 30
+    weight: 10
+    prefab: {fileID: 1693188977817816, guid: 8fc96b4ecec430146a776806a18bbce3, type: 3}
+  - itemName: "\uC1E0\uBC29\uB9DD\uC774"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Sport_Bat_02
+    attack: 10
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 50
+    weight: 15
+    prefab: {fileID: 1804539500564780, guid: e1c80cfcc6cb4a043ae4693c0cc226b7, type: 3}
+  - itemName: "\uACE8\uD504\uCC44"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uBB34\uAE30"
+    fileName: SM_Prop_Sport_Golf_Club_02
+    attack: 9
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 35
+    weight: 20
+    prefab: {fileID: 1692453123131592, guid: 8b003930b9846c44bbb6805423912c64, type: 3}
+  - itemName: "\uAC00\uBC291"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uAC00\uBC29"
+    fileName: SM_Prop_Hunting_Backpack_01
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 50
+    deathRate: 0
+    durability: 0
+    weight: 0
+    prefab: {fileID: 1092060676733230, guid: ca5095fa3cf3de84ca69d24753fb2592, type: 3}
+  - itemName: "\uAC00\uBC292"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uAC00\uBC29"
+    fileName: SM_Prop_Hunting_Backpack_02
+    attack: 0
+    heal: 0
+    satiety: 0
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 75
+    deathRate: 0
+    durability: 0
+    weight: 0
+    prefab: {fileID: 1302295699681424, guid: 72cc3eeb77717f0469bf390a3ba79915, type: 3}
+  - itemName: "\uCE68\uB0AD1"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uCE68\uB0AD"
+    fileName: SM_Prop_SleepingBag_01
+    attack: 0
+    heal: 10
+    satiety: -30
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 20
+    durability: 1
+    weight: 15
+    prefab: {fileID: 8648392928624287732, guid: b6edda2242341c44f81f13fc182290f6, type: 3}
+  - itemName: "\uCE68\uB0AD2"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uCE68\uB0AD"
+    fileName: SM_Prop_SleepingBag_02
+    attack: 0
+    heal: 15
+    satiety: -25
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 15
+    durability: 1
+    weight: 15
+    prefab: {fileID: 3920671429393492503, guid: 4d12eeddc1270584e9dd31d51bc43a6b, type: 3}
+  - itemName: "\uCE68\uB0AD3"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uCE68\uB0AD"
+    fileName: SM_Prop_SleepingBag_03
+    attack: 0
+    heal: 20
+    satiety: -20
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 10
+    durability: 1
+    weight: 15
+    prefab: {fileID: 5597906963217639764, guid: cd14b00156df04d40afd0850658a5572, type: 3}
+  - itemName: "\uD150\uD2B8"
+    category: "\uC7A5\uBE44"
+    subCategory: "\uCE68\uB0AD"
+    fileName: SM_Prop_Hunting_Tent_Dome_01
+    attack: 0
+    heal: 30
+    satiety: -10
+    batteryCharge: 0
+    sightRange: 0
+    capacity: 0
+    deathRate: 0
+    durability: 3
+    weight: 30
+    prefab: {fileID: 4202203341716429684, guid: 5419964760c0e194db7f99a1250b4e81, type: 3}
+--- !u!4 &1888826313
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023987795}
+  m_GameObject: {fileID: 1888826311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.067, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
