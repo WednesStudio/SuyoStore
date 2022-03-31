@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637834510440000000
-    m_Hash: 1716474340
+      ticks: 637842201980000000
+    m_Hash: 1366545931
   m_LockFileStatus:
     m_FilePath: D:/Unity Project/SuyoStore/SuyoStore/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637834510440000000
-    m_Hash: 4166240668
+      ticks: 637842201980000000
+    m_Hash: 2272338651
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

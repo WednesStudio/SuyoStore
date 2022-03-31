@@ -8,18 +8,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _inGameUI;
     [SerializeField] GameObject _mainCamera;
 
-    public void GameStart()
+    public void GameStartUI()
     {
         _gameStartUI.SetActive(false);
         _inGameUI.SetActive(true);
         _mainCamera.SetActive(true);
+        GameManager.GM.GameStart();
     }
 
-    public void ExitGame()
+    public void ExitGameUI()
     {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
-        Application.Quit();
+        //Fade out
+        GameManager.GM.ExitGame();
     }
 }
