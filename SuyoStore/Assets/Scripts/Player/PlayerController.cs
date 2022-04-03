@@ -52,9 +52,9 @@ public class PlayerController : MonoBehaviour
         vAxis = Input.GetAxisRaw("Vertical"); // 방향키 위아래
 
         // 액션 관련
-        isAlt = Input.GetButtonDown("Sit"); // alt 키 입력 여부
-        isAttack = Input.GetButtonDown("Attack");
-        isRun = Input.GetButton("Run");
+        //isAlt = Input.GetButtonDown("Sit"); // alt 키 입력 여부
+        //isAttack = Input.GetButtonDown("Attack");
+        //isRun = Input.GetButton("Run");
     }
 
     void Move()
