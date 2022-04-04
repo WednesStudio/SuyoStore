@@ -15,7 +15,12 @@ public class CustomEditorWindow : EditorWindow
         GUILayout.Label("Reload Item Database", EditorStyles.boldLabel);
         if (GUILayout.Button("Reload Items"))
         {
-            GameObject.Find("Databases").GetComponent<LoadExcel>().LoadItemData();
+            GameObject.Find("ItemDatabase").GetComponent<LoadExcel>().LoadItemData();
+        }
+        GUILayout.Label("Reload CellPhone Info Database", EditorStyles.boldLabel);
+        if (GUILayout.Button("Reload Info"))
+        {
+            GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData();
         }
     }
 }
