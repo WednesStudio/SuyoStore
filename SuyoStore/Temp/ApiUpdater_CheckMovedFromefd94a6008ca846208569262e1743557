@@ -1,0 +1,640 @@
+4818627728
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/SoundManager.cs
+4
+19
+UnityEngine.UI
+0
+0
+4818627944
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/CharacterStatusUI.cs
+4
+19
+UnityEngine.UI
+0
+0
+4818628160
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/CurrentStateUI.cs
+4
+19
+UnityEngine.UI
+0
+0
+4818628376
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/InventoryUI.cs
+4
+19
+UnityEngine.UI
+0
+0
+4818628592
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/OptionSettingUI.cs
+4
+19
+UnityEngine.UI
+0
+0
+4818628808
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/UIResolution.cs
+4
+19
+UnityEngine.UI
+0
+0
+4818629024
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/Zombie/ZombieAI.cs
+4
+19
+UnityEngine.UI
+0
+0
+4818629240
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs
+3
+19
+UnityEngine.UI
+0
+0
+4818629456
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/ChatController.cs
+2
+19
+UnityEngine.UI
+0
+0
+4818629672
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_ExampleScript_01.cs
+2
+19
+UnityEngine.UI
+0
+0
+4818629888
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventHandler.cs
+3
+19
+UnityEngine.EventSystems
+0
+0
+4818630104
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_A.cs
+2
+19
+UnityEngine.EventSystems
+0
+0
+4818630320
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+3
+19
+UnityEngine.EventSystems
+0
+0
+4818630536
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/CharacterStatusUI.cs
+12
+22
+Slider
+0
+0
+4818630752
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/ChatController.cs
+8
+12
+TMP_InputField
+0
+0
+4818630968
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/ChatController.cs
+10
+12
+TMP_Text
+0
+0
+4818631184
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/ChatController.cs
+12
+12
+Scrollbar
+0
+0
+4818631400
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/CharacterStatusUI.cs
+13
+22
+TextMeshProUGUI
+0
+0
+4818631616
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/CharacterStatusUI.cs
+17
+22
+Text
+0
+0
+4818631832
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/DropdownSample.cs
+7
+10
+TextMeshProUGUI
+0
+0
+4818632048
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/DropdownSample.cs
+10
+10
+TMP_Dropdown
+0
+0
+4818632264
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/DropdownSample.cs
+13
+10
+TMP_Dropdown
+0
+0
+4818632480
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/Zombie/ZombieAI.cs
+9
+12
+Image
+0
+0
+4818632696
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs
+13
+16
+TMP_FontAsset
+0
+0
+4818632912
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs
+16
+17
+TextMeshPro
+0
+0
+4818633128
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs
+17
+17
+TextContainer
+0
+0
+4818633344
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs
+15
+16
+TMP_FontAsset
+0
+0
+4818633560
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs
+18
+17
+TextMeshProUGUI
+0
+0
+4818633776
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs
+20
+17
+Text
+0
+0
+4818633992
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/SoundManager.cs
+12
+22
+Button
+0
+0
+4818634208
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/SoundManager.cs
+13
+22
+Slider
+0
+0
+4818634424
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/CurrentStateUI.cs
+9
+22
+TextMeshProUGUI
+0
+0
+4818634640
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/CurrentStateUI.cs
+10
+22
+TextMeshProUGUI
+0
+0
+4818634856
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/InventoryUI.cs
+9
+22
+Button
+0
+0
+4818635072
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/EnvMapAnimator.cs
+9
+13
+TMP_Text
+0
+0
+4818635288
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/Scripts/UI/OptionSettingUI.cs
+19
+22
+Slider
+0
+0
+4818635504
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/SimpleScript.cs
+11
+17
+TextMeshPro
+0
+0
+4818635720
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/SkewTextExample.cs
+11
+17
+TMP_Text
+0
+0
+4818635936
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_ExampleScript_01.cs
+17
+17
+TMP_Text
+0
+0
+4818636152
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_A.cs
+9
+54
+IPointerEnterHandler
+0
+0
+4818636368
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_A.cs
+9
+76
+IPointerExitHandler
+0
+0
+4818636584
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_DigitValidator.cs
+12
+39
+TMP_InputValidator
+0
+0
+4818636800
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_A.cs
+143
+36
+PointerEventData
+0
+0
+4818637016
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_A.cs
+150
+35
+PointerEventData
+0
+0
+4818637232
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_FrameRateCounter.cs
+21
+17
+TextMeshPro
+0
+0
+4818637448
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/VertexColorCycler.cs
+11
+17
+TMP_Text
+0
+0
+4818637664
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventCheck.cs
+11
+17
+TMP_Text
+0
+0
+4818637880
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/VertexJitter.cs
+15
+17
+TMP_Text
+0
+0
+4818638096
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_A.cs
+11
+17
+TextMeshPro
+0
+0
+4818638312
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextInfoDebugTool.cs
+26
+17
+TMP_Text
+0
+0
+4818638528
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextInfoDebugTool.cs
+29
+17
+TMP_TextInfo
+0
+0
+4818638744
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMPro_InstructionOverlay.cs
+17
+17
+TextMeshPro
+0
+0
+4818638960
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMPro_InstructionOverlay.cs
+18
+17
+TextContainer
+0
+0
+4818639176
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeA.cs
+16
+17
+TMP_Text
+0
+0
+4818639392
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TeleType.cs
+19
+17
+TMP_Text
+0
+0
+4818639608
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs
+15
+17
+TMP_Text
+0
+0
+4818639824
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TextConsoleSimulator.cs
+48
+38
+TMP_Text
+0
+0
+4818640040
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs
+16
+17
+TMP_Text
+0
+0
+4818640256
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TextConsoleSimulator.cs
+84
+33
+TMP_Text
+0
+0
+4818640472
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TextConsoleSimulator.cs
+9
+17
+TMP_Text
+0
+0
+4818640688
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs
+11
+17
+TMP_Text
+0
+0
+4818641120
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_PhoneNumberValidator.cs
+12
+45
+TMP_InputValidator
+0
+0
+4818641336
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TextMeshProFloatingText.cs
+13
+17
+TextMeshPro
+0
+0
+4818641768
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventHandler.cs
+10
+56
+IPointerEnterHandler
+0
+0
+4818641984
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventHandler.cs
+10
+78
+IPointerExitHandler
+0
+0
+4818642200
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+13
+54
+IPointerEnterHandler
+0
+0
+4818642416
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+13
+76
+IPointerExitHandler
+0
+0
+4818642632
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+13
+97
+IPointerClickHandler
+0
+0
+4818642848
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+13
+119
+IPointerUpHandler
+0
+0
+4818643064
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+293
+36
+PointerEventData
+0
+0
+4818643280
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+300
+35
+PointerEventData
+0
+0
+4818643496
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+307
+36
+PointerEventData
+0
+0
+4818643712
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+450
+33
+PointerEventData
+0
+0
+4818643928
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+18
+17
+TextMeshProUGUI
+0
+0
+4818644144
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+23
+17
+TextMeshProUGUI
+0
+0
+4818644360
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextSelector_B.cs
+35
+17
+TMP_MeshInfo
+0
+0
+4818644576
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_UiFrameRateCounter.cs
+21
+17
+TextMeshProUGUI
+0
+0
+4818644792
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventHandler.cs
+211
+36
+PointerEventData
+0
+0
+4818645008
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventHandler.cs
+217
+35
+PointerEventData
+0
+0
+4818645224
+7136607203321344161
+/Users/munjihyeon/Documents/GitHub/SuyoStore/SuyoStore/Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextEventHandler.cs
+89
+17
+TMP_Text
+0
+0
