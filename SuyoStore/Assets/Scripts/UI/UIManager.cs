@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Other Scripts")]
+    [SerializeField] CharacterStatusUI _characterStatusUI;
+    [SerializeField] CurrentStateUI _currentStateUI;
+    [SerializeField] OptionSettingUI _optionSettingUI;
+    [SerializeField] InventoryUI _inventoryUI;
+
+    [Header("UI Objects")]
     [SerializeField] GameObject _gameStartUI;
     [SerializeField] GameObject _inGameUI;
     [SerializeField] GameObject _mainCamera;
@@ -20,5 +27,19 @@ public class UIManager : MonoBehaviour
     {
         //Fade out
         GameManager.GM.ExitGame();
+    }
+
+    public void SetTopBarUI(float hp, float satiety, float fatigue, int speed, int attackPower)
+    {
+        _characterStatusUI.SetStaminaBar(hp, 100);
+        _characterStatusUI.SetSatietyBar(satiety, 100);
+        _characterStatusUI.SetFatigueBar(fatigue, 100);
+        _characterStatusUI.SetSpeed(speed);
+        _characterStatusUI.SetAttackPower(attackPower);
+    }
+
+    public void SetCurrentStateUI(string date, string location)
+    {
+        _currentStateUI.SetCurrentState(date, location);
     }
 }
