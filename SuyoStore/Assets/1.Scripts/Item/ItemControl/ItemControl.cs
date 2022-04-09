@@ -1,12 +1,15 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Types;
+using TMPro;
 
 public class ItemControl : MonoBehaviour
 {
     private PlayerTest player;
     private LoadExcel database;
+
     [System.NonSerialized]
     public Item item;
     private string itemName;
@@ -40,7 +43,7 @@ public class ItemControl : MonoBehaviour
     }
     public void UseItem(Item item)
     {
-        Debug.Log(item.itemName);
+        UnityEngine.Debug.Log(item.itemName);
         switch (item.itemName)
         {
             case battery:
@@ -62,12 +65,20 @@ public class ItemControl : MonoBehaviour
                 UseSleepingBag(item.attributes[(int)Attributes.HEAL], attributes[(int)Attributes.SATIETY]);
                 break;
             default:
-                Debug.Log("itemName doesn't exist in UseItem");
+                UnityEngine.Debug.Log("itemName doesn't exist in UseItem");
                 break;
         }
         item.attributes[(int)Attributes.DURABILITY] -= 1;
         if (item.attributes[(int)Attributes.DURABILITY] == 0)
             Destroy(this.gameObject);
+    }
+    private void ChangeDate()
+    {
+
+        DateControl dateControl = FindObjectOfType<DateControl>();
+        System.DateTime result = System.DateTime.Parse(dateControl.GetDate());
+        result = result.AddDays(1);
+        dateControl.SetDate(result.ToString("yyyy/MM/dd"));
     }
     private CellPhoneControl GetCellPhoneComponent()
     {
@@ -86,7 +97,7 @@ public class ItemControl : MonoBehaviour
     {
         int rnd = Random.Range(0, 100);
         int rate = (attributes[(int)Attributes.DEATHRATE]);
-        Debug.Log("random " + rnd + " " + rate);
+        UnityEngine.Debug.Log("random " + rnd + " " + rate);
         if (rnd < rate)
         {
             GameOver();
@@ -96,33 +107,33 @@ public class ItemControl : MonoBehaviour
         UseFood(satiety);
         CellPhoneControl cellphone = GetCellPhoneComponent();
         cellphone.PhoneUse();
-        // change date
+        ChangeDate();
     }
     private void UseFood(int amount)
     {
         int satietyMax = 100;
         player.satiety = player.satiety + amount > satietyMax ? satietyMax : player.satiety + amount;
-        Debug.Log("satiety " + player.satiety);
+        UnityEngine.Debug.Log("satiety " + player.satiety);
     }
     private void UseWeapon(int amount)
     {
         int attackMax = 100;
         player.attack = player.attack + amount > attackMax ? attackMax : player.attack + amount;
-        Debug.Log("attack " + player.attack);
+        UnityEngine.Debug.Log("attack " + player.attack);
     }
     private void UseHeal(int amount)
     {
         int hpMax = 100;
         player.HP = player.HP + amount > hpMax ? hpMax : player.HP + amount;
-        Debug.Log("HP " + player.HP);
+        UnityEngine.Debug.Log("HP " + player.HP);
     }
     private void UseLight(int amount)
     {
         player.sightRange = amount;
-        Debug.Log("sightRange " + player.sightRange);
+        UnityEngine.Debug.Log("sightRange " + player.sightRange);
     }
     private void GameOver()
     {
-        Debug.Log("GameOver");
+        UnityEngine.Debug.Log("GameOver");
     }
 }
