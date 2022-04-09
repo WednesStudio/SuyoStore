@@ -9,19 +9,19 @@ public class LoadJson : MonoBehaviour
     public void LoadMsgData()
     {
         messageDatabase.Clear();
-        List<Dictionary<string, object>> data = JsonReader.Read("SampleText");
+        List<Dictionary<string, object>> data = JsonReader.Read("Data/SampleText");
         for (int i = 0; i < data.Count; i++)
         {
-            string date = data[i]["date"].ToString();
+            string days = data[i]["days"].ToString();
             string message = data[i]["message"].ToString();
-            AddData(date, message);
+            AddData(days, message);
         }
     }
-    void AddData(string date, string message)
+    void AddData(string days, string message)
     {
         JsonData tempData = new JsonData(blankData);
 
-        tempData.date = date;
+        tempData.days = int.Parse(days);
         tempData.message = message;
 
         messageDatabase.Add(tempData);
