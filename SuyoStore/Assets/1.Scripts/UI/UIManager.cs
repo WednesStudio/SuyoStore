@@ -42,4 +42,22 @@ public class UIManager : MonoBehaviour
     {
         _currentStateUI.SetCurrentState(date, location);
     }
+
+    public void SetInitialInventory()
+    {
+        _inventoryUI.SetTotalBagContents();
+        _inventoryUI.SetBatteryBagContents();
+        _inventoryUI.SetBagOfBagContents();
+        _inventoryUI.SetFoodBagContents();
+        _inventoryUI.SetLightBagContents();
+        _inventoryUI.SetWeaponBagContents();
+        _inventoryUI.SetMedicineBagContents();
+        _inventoryUI.SetSleepingBagContents();
+        _inventoryUI.SetImportantBagContents();
+    }
+
+    public void CheckUseItem(string name)
+    {
+        _inventoryUI.OnCheckItemUseWindow(name);
+    }
 }

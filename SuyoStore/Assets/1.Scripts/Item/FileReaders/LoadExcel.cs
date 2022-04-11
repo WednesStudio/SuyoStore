@@ -6,7 +6,7 @@ public class LoadExcel : MonoBehaviour
 {
     private ItemData blankItem;
     public List<ItemData> itemDatabase = new List<ItemData>();
-
+    
     public void LoadItemData()
     {
         // Clear database
@@ -16,6 +16,7 @@ public class LoadExcel : MonoBehaviour
         List<Dictionary<string, object>> data = CSVReader.Read("itemDatabase");
         for (int i = 0; i < data.Count; i++)
         {
+            int id = i;
             string itemName = data[i]["itemName"].ToString();
             string category = data[i]["category"].ToString();
             string subCategory = data[i]["subCategory"].ToString();
@@ -30,28 +31,14 @@ public class LoadExcel : MonoBehaviour
             int durability = int.Parse(data[i]["durability"].ToString(), System.Globalization.NumberStyles.Integer);
             int weight = int.Parse(data[i]["weight"].ToString(), System.Globalization.NumberStyles.Integer);
             GameObject prefab = (GameObject)Resources.Load("Models/" + fileName, typeof(GameObject));
-            AddItem(itemName, category, subCategory, fileName, attack, heal, satiety, batteryCharge, sightRange, capacity, deathRate, durability, weight, prefab);
+            AddItem(id, itemName, category, subCategory, fileName, attack, heal, satiety, batteryCharge, sightRange, capacity, deathRate, durability, weight, prefab);
         }
     }
 
-    void AddItem(string itemName, string category, string subCategory, string fileName, int attack, int heal, int satiety, int batteryCharge, int sightRange, int capacity, int deathRate, int durability, int weight, GameObject prefab)
+    void AddItem(int ID, string itemName, string category, string subCategory, string fileName, int attack, int heal, int satiety, int batteryCharge, int sightRange, int capacity, int deathRate, int durability, int weight, GameObject prefab)
     {
-        ItemData tempItem = new ItemData(blankItem);
-
-        tempItem.itemName = itemName;
-        tempItem.category = category;
-        tempItem.subCategory = subCategory;
-        tempItem.fileName = fileName;
-        tempItem.attack = attack;
-        tempItem.heal = heal;
-        tempItem.satiety = satiety;
-        tempItem.batteryCharge = batteryCharge;
-        tempItem.sightRange = sightRange;
-        tempItem.capacity = capacity;
-        tempItem.deathRate = deathRate;
-        tempItem.durability = durability;
-        tempItem.weight = weight;
-        tempItem.prefab = prefab;
+        ItemData tempItem = new ItemData(ID, itemName, category, subCategory, fileName, attack, heal, satiety, batteryCharge, sightRange, capacity, deathRate, durability, weight);
+        tempItem.SetPrefab(prefab);
 
         itemDatabase.Add(tempItem);
     }
