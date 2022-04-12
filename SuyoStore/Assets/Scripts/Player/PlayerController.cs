@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController characterController;
 
+    public bool isMove = false;
     private float speed = 1f; // 이동 속도
     [SerializeField]
     private float moveSpeed = 10.0f; // 기본 상태일 때 이동 속도
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         // 움직임 여부 체크
         if (moveDirection != Vector3.zero)
         {
+            isMove = true;
             speed = moveSpeed;
 
             // 바라보는 방향으로 회전
