@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController characterController;
 
+    public bool isMove = false;
     private float speed = 1f; // 이동 속도
     [SerializeField]
     private float moveSpeed = 10.0f; // 기본 상태일 때 이동 속도
@@ -52,9 +53,9 @@ public class PlayerController : MonoBehaviour
         vAxis = Input.GetAxisRaw("Vertical"); // 방향키 위아래
 
         // 액션 관련
-        isAlt = Input.GetButtonDown("Sit"); // alt 키 입력 여부
-        isAttack = Input.GetButtonDown("Attack");
-        isRun = Input.GetButton("Run");
+        //isAlt = Input.GetButtonDown("Sit"); // alt 키 입력 여부
+        //isAttack = Input.GetButtonDown("Attack");
+        //isRun = Input.GetButton("Run");
     }
 
     void Move()
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         // 움직임 여부 체크
         if (moveDirection != Vector3.zero)
         {
+            isMove = true;
             speed = moveSpeed;
 
             // 바라보는 방향으로 회전
