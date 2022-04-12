@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
+    [SerializeField] DataManager _dataManager;
     [SerializeField] GameObject _statusInventoryWindow;
     [SerializeField] Button[] _categoryButtons;
     [SerializeField] GameObject[] _itemScrollViews;
+    [SerializeField] private GameObject _bagContentsParent = null;
+    private BagItems[] _bagContents = null;
 
     private void Start() 
     {
@@ -34,6 +37,30 @@ public class InventoryUI : MonoBehaviour
                 }
                 
             } 
+        }
+    }
+
+    /// <summary> 인벤토리 속 아이템 관리 </summary>
+
+    public void SetBagContents()
+    {
+        if (_bagContents == null) _bagContents = _bagContentsParent.GetComponentsInChildren<BagItems>();
+
+        int i = 0;
+
+        foreach (BagItems b in _bagContents)
+        {
+            if (GameManager.GM.GetItemCount(i) > 0)
+            {
+                // if (_dataManager.GetItem(i).MyType.Equals(ItemType.Catch))
+                // {
+                //     b.SetBagContent(i, _dataManager.GetItemImage(i), _dataManager.GetItem(i).Name, _dataManager.GetItemCount(i));
+                //     i++;
+                //     continue;
+                // }
+            }
+            b.gameObject.SetActive(false);
+            i++;
         }
     }
 }

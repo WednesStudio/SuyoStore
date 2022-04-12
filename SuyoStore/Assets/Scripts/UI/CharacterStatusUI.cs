@@ -14,9 +14,7 @@ public class CharacterStatusUI : MonoBehaviour
     [SerializeField] GameObject _debuffPrefab;
     [SerializeField] GameObject _debuffObject;
     [SerializeField] Sprite[] _debuffImages;
-    [SerializeField] Text _staminaText, _satietyText, _fatigueText, _attackText, _spText;
-    private int _speed, _attackPower;
-    private float _hp, _satiety, _fatigue;
+    [SerializeField] TextMeshProUGUI _staminaText, _satietyText, _fatigueText, _attackText, _spText;
     private float _staminaValue = 1.0f, _satietyValue = 1.0f, _fatigueValue = 1.0f;
     private List<int> _debuffTypeList = new List<int>();
     private List<GameObject> _debuffList = new List<GameObject>();
@@ -29,71 +27,44 @@ public class CharacterStatusUI : MonoBehaviour
     //Main Bar Setting
     #region 
     //Status_Stamina
-    public void GetStamina(float hp, float hpMax)
+    public void SetStaminaBar(float hp, float hpMax)
     {
-        _hp = hp;
-        _staminaValue = hp / hpMax;
-    }
-
-    private void SetStaminaBar()
-    {
-        if(_staminaValue < 1.0f) _staminaBar.value = _staminaValue;
-        _staminaText.text = _hp.ToString();
+        _staminaBar.value = hp / hpMax;
+        _staminaText.text = "Stamina : " + hp.ToString() + " / " + hpMax.ToString();
     }
 
     //Status_Satiety
-    public void GetSatiety(float satiety, float satietyMax)
+    public void SetSatietyBar(float satiety, float satietyMax)
     {
-        _satiety = satiety;
-        _satietyValue = satiety / satietyMax;
-    }
-
-    private void SetSatietyBar()
-    {
-        if(_satietyValue < 1.0f) _staietyBar.value = _satietyValue;
-        _staminaText.text = _satiety.ToString();
+        _staietyBar.value = satiety / satietyMax;
+        _satietyText.text = "Satiety : " + satiety.ToString() + " / " + satietyMax.ToString();
     }
 
     //Status_Fatigue
-    public void GetFatigue(float fatigue, float fatigueMax)
-    {
-        _fatigue = fatigue;
-        _fatigueValue = fatigue / fatigueMax;
-    }
 
-    private void SetFatigueBar()
+    public void SetFatigueBar(float fatigue, float fatigueMax)
     {
-        if(_fatigueValue < 1.0f) _fatigueBar.value = _fatigueValue;
-        _fatigueText.text = _fatigue.ToString();
+        _fatigueBar.value = fatigue / fatigueMax;
+        _fatigueText.text = "Fatigue : " + fatigue.ToString() + " / " + fatigueMax.ToString();
     }
 
     //Status_Speed
-    public void GetSpeed(int speed)
+    public void SetSpeed(int speed)
     {
-        _speed = speed;
-    }
-
-    private void SetSpeed()
-    {
-        if(_speed < 100) _speedText.text = _speed.ToString();
-        _spText.text = _speed.ToString();
+        _speedText.text = speed.ToString();
+        if(speed == 10) _spText.text = "Speed : 10 + (0)";
+        else _spText.text = "Speed : 10 + (" + speed.ToString() +")";
     }
 
     //Status_Attack Power
-    public void GetAttackPower(int attackPower)
+    public void SetAttackPower(int attackPower)
     {
-        _attackPower = attackPower;
+        _attackPowerText.text = attackPower.ToString();
+        if(attackPower == 10) _attackText.text = "Attack Power : 10 + (0)";
+        else _attackText.text = "Attack Power : 10 + (" + attackPower.ToString() + ")";
     }
 
-    private void SetAttackPower()
-    {
-        if(_attackPower != 50) _attackPowerText.text = _attackPower.ToString();
-        _attackText.text = _attackPower.ToString();
-    }
-
-    /// <summary>
-    /// Get information of the debuff type and set prefab to 'Player Status'
-    /// </summary>
+    /// <summary> Get information of the debuff type and set prefab to 'Player Status' /// </summary>
     /// <param = "debuffType"> Get debuffType and set type of debuff object </param>
     /// <param = "isActive"> if 'True' : instantiate new debuff, else : remove the debuff of that type from the list </param>
     public void GetAndSetDebuff(int debuffType, bool isActive)
