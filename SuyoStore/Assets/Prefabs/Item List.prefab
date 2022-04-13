@@ -1,6 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< HEAD
 --- !u!1 &1230966926710342108
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,8 +132,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-=======
->>>>>>> ba1e7674 ([BUG] merge error)
 --- !u!1 &3154693422495586440
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +475,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
-<<<<<<< HEAD
 --- !u!1 &7578743332202605404
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,8 +609,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
-=======
->>>>>>> ba1e7674 ([BUG] merge error)
 --- !u!1 &7776006091765098143
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,11 +642,8 @@ RectTransform:
   - {fileID: 1336805896913347373}
   - {fileID: 525230667322761794}
   - {fileID: 4124322097495382617}
-<<<<<<< HEAD
   - {fileID: 3927277774276486934}
   - {fileID: 8838112138439146572}
-=======
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -711,14 +702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d80fc390ead05d44a6a7a757afaa86f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   _profileImage: {fileID: 9029049884774372871}
   _itemName: {fileID: 9017540346197534974}
   _description: {fileID: 2302065345146750665}
   _itemCount: {fileID: 784997004171294976}
   _button: {fileID: 7955974694166822424}
-=======
-  _profileImage: {fileID: 0}
-  _itemName: {fileID: 0}
-  _itemCount: {fileID: 0}
->>>>>>> ba1e7674 ([BUG] merge error)
