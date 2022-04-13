@@ -2,28 +2,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private CharacterController characterController;
+    CharacterController characterController;
+    PlayerStatus playerStatus;
 
-    private float speed = 1f; // ÀÌµ¿ ¼Óµµ
-    [SerializeField]
-    private float moveSpeed = 10.0f; // ±âº» »óÅÂÀÏ ¶§ ÀÌµ¿ ¼Óµµ
-    [SerializeField]
-    private float runSpeed = 5.0f; // ´Ş¸®±â »óÅÂÀÏ ¶§ ÀÌµ¿ ¼Óµµ
-    [SerializeField]
-    private float sitSpeed = 3.0f; // ¾É±â »óÅÂÀÏ ‹š ÀÌµ¿ ¼Óµµ
+    public bool isMove = false;
+    private float speed = 1f; // ì´ë™ ì†ë„
 
-    //private float gravity = -9.81f; // Áß·Â °è¼ö
+    private Rigidbody charRigidbody;
     [SerializeField]
-    private float rotationSpeed = 360f; // È¸Àü(¹æÇâÀüÈ¯) ¼Óµµ
-    private Vector3 moveDirection; // ÀÌµ¿ ¹æÇâ
+    private float rotationSpeed = 360f; // íšŒì „(ë°©í–¥ì „í™˜) ì†ë„
+    private Vector3 moveDirection; // ì´ë™ ë°©í–¥
     float hAxis;
     float vAxis;
 
-    // ¾×¼Ç
+    // ì•¡ì…˜
     enum PlayerState{ Idle, Walk, Run, Sit, Attack, Lay, Dead };
     PlayerState state = PlayerState.Idle;
     bool isIdle = true;
-    bool isAlt; // alt Å°¸¦ ´­·¶´ÂÁö ¿©ºÎ
+    bool isAlt; // alt í‚¤ë¥¼ ëˆŒë €ëŠ”ì§€ ì—¬ë¶€
     bool isAttack; 
     bool isRun;
     Animator animator;
@@ -31,57 +27,50 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        playerStatus = GetComponent<PlayerStatus>();
         animator = GetComponent<Animator>();
+        charRigidbody = GetComponent<Rigidbody>();
     }
+
     private void Update()
     {
-        //if (characterController.isGrounded == false)
-        //{
-        //    moveDirection.y += gravity * Time.deltaTime;
-        //}
         GetInput();
-
         Move();
+
         if (isAlt == true) SitAction();
         if (Input.GetKey(KeyCode.G)) GetItem();
     }
 
     void GetInput()
     {
-        hAxis = Input.GetAxisRaw("Horizontal"); // ¹æÇâÅ° ÁÂ¿ì
-        vAxis = Input.GetAxisRaw("Vertical"); // ¹æÇâÅ° À§¾Æ·¡
-
-        // ¾×¼Ç °ü·Ã
-        isAlt = Input.GetButtonDown("Sit"); // alt Å° ÀÔ·Â ¿©ºÎ
-        isAttack = Input.GetButtonDown("Attack");
-        isRun = Input.GetButton("Run");
+        hAxis = Input.GetAxisRaw("Horizontal"); // ë°©í–¥í‚¤ ì¢Œìš°
+        vAxis = Input.GetAxisRaw("Vertical"); // ë°©í–¥í‚¤ ìœ„ì•„ë˜
     }
 
     void Move()
     {
-        //moveDirection = new Vector3(hAxis, moveDirection.y, vAxis);
-        //moveDirection.Normalize();
-        //characterController.Move(moveDirection * speed * Time.deltaTime);
-
         moveDirection = new Vector3(hAxis, 0, vAxis);
         float magnitud = Mathf.Clamp01(moveDirection.magnitude) * speed;
         moveDirection.Normalize();
         characterController.SimpleMove(moveDirection * speed);
 
 
-        // ¿òÁ÷ÀÓ ¿©ºÎ Ã¼Å©
+        // ì›€ì§ì„ ì—¬ë¶€ ì²´í¬
         if (moveDirection != Vector3.zero)
         {
-            speed = moveSpeed;
+            isMove = true;
+            speed = playerStatus.moveSpeed;
+            
+            charRigidbody.velocity = moveDirection * playerStatus.moveSpeed;
 
-            // ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î È¸Àü
+            // ë°”ë¼ë³´ëŠ” ë°©í–¥ìœ¼ë¡œ íšŒì „
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             characterController.transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
 
             if (isRun == true) Run();
             else {
                 state = PlayerState.Walk;
-                /* ¾Ö´Ï¸ŞÀÌ¼Ç : Walk */
+                /* ì• ë‹ˆë©”ì´ì…˜ : Walk */
             }
         }
         else
@@ -96,18 +85,18 @@ public class PlayerController : MonoBehaviour
         {
             isIdle = true;
             state = PlayerState.Idle;
-            speed = moveSpeed;
+            speed = playerStatus.moveSpeed;
             
-            /* ¾Ö´Ï¸ŞÀÌ¼Ç : Idle */
+            /* ì• ë‹ˆë©”ì´ì…˜ : Idle */
         }
     }
 
     void Run()
     {
         state = PlayerState.Run;
-        speed += runSpeed;
+        speed += playerStatus.runSpeed;
 
-        /* ¾Ö´Ï¸ŞÀÌ¼Ç : Run */
+        /* ì• ë‹ˆë©”ì´ì…˜ : Run */
     }
 
     void SitAction()
@@ -116,40 +105,40 @@ public class PlayerController : MonoBehaviour
         {
             state = PlayerState.Idle;
 
-            /* ¾Ö´Ï¸ŞÀÌ¼Ç : Idle */
+            /* ì• ë‹ˆë©”ì´ì…˜ : Idle */
 
         }
         else
         {
             state = PlayerState.Sit;
-            speed = sitSpeed;
+            speed = playerStatus.sitSpeed;
 
-            /* ¾Ö´Ï¸ŞÀÌ¼Ç : Sit */
+            /* ì• ë‹ˆë©”ì´ì…˜ : Sit */
         }
     }
 
 
     void GetItem()
     {
-        if (state == PlayerState.Run) return; // ÆÄ¹Ö ºÒ°¡´É
+        if (state == PlayerState.Run) return; // íŒŒë° ë¶ˆê°€ëŠ¥
         else if(state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            // ÆÄ¹Ö °¡´É
+            // íŒŒë° ê°€ëŠ¥
 
-            // Å¸°Ù ¾ÆÀÌÅÛ À§Ä¡°¡ ¹Ù´ÚÀÏ ¶§:
-            /* ¾Ö´Ï¸ŞÀÌ¼Ç : PickUpItem */
+            // íƒ€ê²Ÿ ì•„ì´í…œ ìœ„ì¹˜ê°€ ë°”ë‹¥ì¼ ë•Œ:
+            /* ì• ë‹ˆë©”ì´ì…˜ : PickUpItem */
 
-            // Å¸°Ù ¾ÆÀÌÅÛ À§Ä¡°¡ ¹Ù´ÚÀÌ ¾Æ´Ò ¶§:
-            /* ¾Ö´Ï¸ŞÀÌ¼Ç : CatchingItem */
+            // íƒ€ê²Ÿ ì•„ì´í…œ ìœ„ì¹˜ê°€ ë°”ë‹¥ì´ ì•„ë‹ ë•Œ:
+            /* ì• ë‹ˆë©”ì´ì…˜ : CatchingItem */
 
 
             /*
-             * Å¸°Ù ¾ÆÀÌÅÛ »ç¶óÁü
-             * ÀÎº¥Åä¸®¿¡ Å¸°Ù ¾ÆÀÌÅÛ Ãß°¡
+             * íƒ€ê²Ÿ ì•„ì´í…œ ì‚¬ë¼ì§
+             * ì¸ë²¤í† ë¦¬ì— íƒ€ê²Ÿ ì•„ì´í…œ ì¶”ê°€
              */
 
 
-            // ¾ÆÀÌÅÛ ·çÆÃ ¿Ï·á ½Ã ±âº» ÀÚ¼¼·Î ÀüÈ¯
+            // ì•„ì´í…œ ë£¨íŒ… ì™„ë£Œ ì‹œ ê¸°ë³¸ ìì„¸ë¡œ ì „í™˜
             state = PlayerState.Idle;
         }
         else
@@ -160,14 +149,14 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        if (state == PlayerState.Run) return; // °ø°İ ºÒ°¡´É
+        if (state == PlayerState.Run) return; // ê³µê²© ë¶ˆê°€ëŠ¥
         else if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            // ¹«±â Âø¿ë »óÅÂ
-                /* ¾Ö´Ï¸ŞÀÌ¼Ç : WeaponAttack */
+            // ë¬´ê¸° ì°©ìš© ìƒíƒœ
+                /* ì• ë‹ˆë©”ì´ì…˜ : WeaponAttack */
 
-            // ¹«±â ¹ÌÂø¿ë »óÅÂ
-                /* ¾Ö´Ï¸ŞÀÌ¼Ç : FistAttack */
+            // ë¬´ê¸° ë¯¸ì°©ìš© ìƒíƒœ
+                /* ì• ë‹ˆë©”ì´ì…˜ : FistAttack */
         }
         else
         {
@@ -176,9 +165,9 @@ public class PlayerController : MonoBehaviour
 
     void LayDown()
     {
-        //if(»ç¿ë ¾ÆÀÌÅÛ == °¡±¸ÅÛ || Ä§³¶ÅÛ)
+        //if(ì‚¬ìš© ì•„ì´í…œ == ê°€êµ¬í…œ || ì¹¨ë‚­í…œ)
 
-        if (state == PlayerState.Run) return; // ´¯±â ºÒ°¡´É
+        if (state == PlayerState.Run) return; // ëˆ•ê¸° ë¶ˆê°€ëŠ¥
         else if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
             if (state == PlayerState.Sit)
@@ -186,10 +175,10 @@ public class PlayerController : MonoBehaviour
                 Idle();
             }
 
-            // ´¯±â °¡´É
+            // ëˆ•ê¸° ê°€ëŠ¥
             state = PlayerState.Lay;
 
-            /* ¾Ö´Ï¸ŞÀÌ¼Ç : LayDown */
+            /* ì• ë‹ˆë©”ì´ì…˜ : LayDown */
 
         }
         else { }
@@ -198,9 +187,9 @@ public class PlayerController : MonoBehaviour
     void Sleep()
     {
         /* 
-         * ÇÏ·ç ½ºÅµ(day++;)
-         * Ã¼·Â, Æ÷¸¸°¨ ½ºÅ×ÀÌÅÍ½º º¯È­(¾ÆÀÌÅÛ¿¡ µû¶ó °ªÀÌ ´Ş¶óÁü)
-         * ÇÏ·ç°¡ ½ºÅµµÈ ÀÌÈÄ ´¯±â ÀÚ¼¼¿¡¼­ ±âº» ÀÚ¼¼·Î ÀüÈ¯
+         * í•˜ë£¨ ìŠ¤í‚µ(day++;)
+         * ì²´ë ¥, í¬ë§Œê° ìŠ¤í…Œì´í„°ìŠ¤ ë³€í™”(ì•„ì´í…œì— ë”°ë¼ ê°’ì´ ë‹¬ë¼ì§)
+         * í•˜ë£¨ê°€ ìŠ¤í‚µëœ ì´í›„ ëˆ•ê¸° ìì„¸ì—ì„œ ê¸°ë³¸ ìì„¸ë¡œ ì „í™˜
          */
     }
 }
