@@ -13,7 +13,7 @@ public class LoadExcel : MonoBehaviour
         itemDatabase.Clear();
 
         // Read CSV files
-        List<Dictionary<string, object>> data = CSVReader.Read("itemDatabase");
+        List<Dictionary<string, object>> data = CSVReader.Read("Data/itemDatabase");
         for (int i = 0; i < data.Count; i++)
         {
             int id = i;
