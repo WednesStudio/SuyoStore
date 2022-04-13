@@ -7,7 +7,6 @@ using CellphoneUI;
 
 public class Demo : MonoBehaviour
 {
-    public string date;
     public Button demoButton;
     // Start is called before the first frame update
     void Awake()
@@ -15,7 +14,7 @@ public class Demo : MonoBehaviour
         demoButton.onClick.RemoveAllListeners();
         demoButton.onClick.AddListener(() =>
         {
-            CellPhoneMsgs.Instance.Show(date);
+            CellPhoneMsgs.Instance.Show();
         });
     }
 }
