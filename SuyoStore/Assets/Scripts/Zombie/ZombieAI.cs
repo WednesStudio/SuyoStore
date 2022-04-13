@@ -38,7 +38,10 @@ public class ZombieAI : MonoBehaviour
         Move();
     }
 
+<<<<<<< HEAD
     //Player Tag를 가진 객체에 닿았을 떄
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player" && timer < 0)
@@ -50,6 +53,7 @@ public class ZombieAI : MonoBehaviour
 
     void Move()
     {
+<<<<<<< HEAD
         //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 공격 당해서 hp가 깍였을 때 추격
         if ((!target.GetComponent<ZPlayerController>().isSafe) 
             && ((Vector3.Distance(target.transform.position, transform.position) < detection) 
@@ -60,17 +64,30 @@ public class ZombieAI : MonoBehaviour
 
         }
         //스폰 된 지역과 가까워지면 탐색을 계속할지 판단
+=======
+        if (Vector3.Distance(target.transform.position, transform.position) < detection)
+        {
+            isDetect = true;
+            transform.LookAt(target.gameObject.transform);
+        }
+>>>>>>> ba1e7674 ([BUG] merge error)
         else if (Vector3.Distance(spawn, transform.position) < 0.3)
         {
             isDetect = false;
         }
+<<<<<<< HEAD
         //랜덤 이동
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
         else if (!isDetect)
         {
             if (!isRandom)
                 StartCoroutine("RandomMove");
         }
+<<<<<<< HEAD
         //스폰 된 지역이로 이동
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
         else
         {
             transform.LookAt(spawn);
@@ -80,7 +97,10 @@ public class ZombieAI : MonoBehaviour
 
     IEnumerator RandomMove()
     {
+<<<<<<< HEAD
         //range 범위 안에서 움직임
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
         float randomX = Random.Range(0, 2 * range) - range;
         float randomY = Random.Range(0, 2 * range) - range;
         Vector3 randomPos = new Vector3 (randomX, 0.5f, randomY);
@@ -92,14 +112,22 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
+<<<<<<< HEAD
         //Player 공격과 감염
         target.GetComponent<PlayerController_>().hp -= power;
 
+=======
+        target.GetComponent<PlayerController>().hp -= power;
+>>>>>>> ba1e7674 ([BUG] merge error)
         if(Random.Range(1, 101) <= infection)
         {
             Debug.Log("감염되었습니다");
         }
+<<<<<<< HEAD
         Debug.Log(target.GetComponent<PlayerController_>().hp);
+=======
+        Debug.Log(target.GetComponent<PlayerController>().hp);
+>>>>>>> ba1e7674 ([BUG] merge error)
     }
 
     void Die()
@@ -107,6 +135,7 @@ public class ZombieAI : MonoBehaviour
         Destroy (gameObject);
     }
     
+<<<<<<< HEAD
     //피격
     void Hit()
     {
@@ -118,6 +147,8 @@ public class ZombieAI : MonoBehaviour
     }
 
     //테스트용
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
     void OnMouseDown()
     {
         curHp -= 3;

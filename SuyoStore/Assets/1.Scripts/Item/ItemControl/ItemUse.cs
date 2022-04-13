@@ -9,10 +9,14 @@ public class ItemUse : MonoBehaviour
     private PlayerTest player;
     private int[] attributes = new int[(int)Attributes.TOTAL];
 <<<<<<< HEAD
+<<<<<<< HEAD
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭";
 =======
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag="가방";
 >>>>>>> f4ccbbe9 ([UPDATE] itemUse file)
+=======
+    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag="가방";
+>>>>>>> ba1e7674 ([BUG] merge error)
     public void UseItem(Item item)
     {
         Debug.Log(item.itemName);
@@ -37,11 +41,17 @@ public class ItemUse : MonoBehaviour
                 UseSleepingBag(item.attributes[(int)Attributes.HEAL], attributes[(int)Attributes.SATIETY]);
                 break;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             case bag:
                 UseBag(attributes[(int)Attributes.CAPACITY]);
                 break;
 >>>>>>> f4ccbbe9 ([UPDATE] itemUse file)
+=======
+            case bag:
+                UseBag(attributes[(int)Attributes.CAPACITY]);
+                break;
+>>>>>>> ba1e7674 ([BUG] merge error)
             default:
                 Debug.Log("itemName doesn't exist in UseItem");
                 break;
@@ -53,8 +63,11 @@ public class ItemUse : MonoBehaviour
             _dataManager.AddItem(item.ID, -1);
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
             
 =======
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
 
     }
     private void ChangeDate()
@@ -64,7 +77,10 @@ public class ItemUse : MonoBehaviour
         System.DateTime result = System.DateTime.Parse(dateControl.GetDate());
         result = result.AddDays(1);
         dateControl.SetDate(result.ToString("yyyy/MM/dd"));
+<<<<<<< HEAD
 >>>>>>> f4ccbbe9 ([UPDATE] itemUse file)
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
     }
     private CellPhoneControl GetCellPhoneComponent()
     {
@@ -93,6 +109,7 @@ public class ItemUse : MonoBehaviour
         UseFood(satiety);
         CellPhoneControl cellphone = GetCellPhoneComponent();
         cellphone.PhoneUse();
+<<<<<<< HEAD
 <<<<<<< HEAD
         // change date
     }
@@ -125,6 +142,8 @@ public class ItemUse : MonoBehaviour
     }
 }
 =======
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
         ChangeDate();
     }
     private void UseFood(int satiety)
@@ -160,5 +179,9 @@ public class ItemUse : MonoBehaviour
     {
         UnityEngine.Debug.Log("GameOver");
     }
+<<<<<<< HEAD
 }
 >>>>>>> f4ccbbe9 ([UPDATE] itemUse file)
+=======
+}
+>>>>>>> ba1e7674 ([BUG] merge error)

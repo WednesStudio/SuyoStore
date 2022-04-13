@@ -5,7 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class ItemData
 {
+<<<<<<< HEAD
     public int ID;
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
     public string itemName;
     public string category;
     public string subCategory;
@@ -20,6 +23,7 @@ public class ItemData
     public int durability;
     public int weight;
     public GameObject prefab;
+<<<<<<< HEAD
     public ItemData(int ID, string itemName, string category, string subCategory, string fileName, int attack, int heal, int satiety, int batteryCharge, int sightRange, int capacity, int deathRate, int durability, int weight)
     {
         this.ID = ID;
@@ -41,5 +45,22 @@ public class ItemData
     public void SetPrefab(GameObject prefab)
     {
         this.prefab = prefab;
+=======
+    public ItemData(ItemData d)
+    {
+        itemName = d.itemName;
+        category = d.category;
+        subCategory = d.subCategory;
+        fileName = d.fileName;
+        attack = d.attack;
+        heal = d.heal;
+        satiety = d.satiety;
+        batteryCharge = d.batteryCharge;
+        sightRange = d.sightRange;
+        capacity = d.capacity;
+        deathRate = d.deathRate;
+        durability = d.durability;
+        weight = d.weight;
+>>>>>>> ba1e7674 ([BUG] merge error)
     }
 }

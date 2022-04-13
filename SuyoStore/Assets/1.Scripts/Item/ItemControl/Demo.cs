@@ -7,7 +7,10 @@ using CellphoneUI;
 
 public class Demo : MonoBehaviour
 {
+<<<<<<< HEAD
     public string date;
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
     public Button demoButton;
     // Start is called before the first frame update
     void Awake()
@@ -15,7 +18,11 @@ public class Demo : MonoBehaviour
         demoButton.onClick.RemoveAllListeners();
         demoButton.onClick.AddListener(() =>
         {
+<<<<<<< HEAD
             CellPhoneMsgs.Instance.Show(date);
+=======
+            CellPhoneMsgs.Instance.Show();
+>>>>>>> ba1e7674 ([BUG] merge error)
         });
     }
 }

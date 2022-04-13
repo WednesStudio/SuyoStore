@@ -21,14 +21,22 @@ public class CellPhoneControl : MonoBehaviour
             batteryCharge = 0;
             usable = false;
         }
+<<<<<<< HEAD
         Debug.Log("battery use " + batteryCharge);
+=======
+        print("battery use " + batteryCharge);
+>>>>>>> ba1e7674 ([BUG] merge error)
 
     }
     public void PhoneCharge(int amount)
     {
         batteryCharge = batteryCharge > 100 ? batteryCharge + amount : 100;
         if (amount > 0) usable = true;
+<<<<<<< HEAD
         Debug.Log("battery Charge " + batteryCharge);
+=======
+        print("battery Charge " + batteryCharge);
+>>>>>>> ba1e7674 ([BUG] merge error)
     }
     void DisplayScreen()
     {

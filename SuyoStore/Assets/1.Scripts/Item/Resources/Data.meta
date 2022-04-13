@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: d722c1e2b46e67e40b7cee99e88be766
+=======
+guid: d4a812e265ee041158c71abf65ce5ccc
+>>>>>>> ba1e7674 ([BUG] merge error)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
