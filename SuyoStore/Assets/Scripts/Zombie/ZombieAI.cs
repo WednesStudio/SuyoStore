@@ -38,6 +38,7 @@ public class ZombieAI : MonoBehaviour
         Move();
     }
 
+    //Player Tag를 가진 객체에 닿았을 떄
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player" && timer < 0)
@@ -49,20 +50,27 @@ public class ZombieAI : MonoBehaviour
 
     void Move()
     {
-        if (Vector3.Distance(target.transform.position, transform.position) < detection)
+        //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 공격 당해서 hp가 깍였을 때 추격
+        if ((!target.GetComponent<ZPlayerController>().isSafe) 
+            && ((Vector3.Distance(target.transform.position, transform.position) < detection) 
+            || (curHp < hp)))
         {
             isDetect = true;
             transform.LookAt(target.gameObject.transform);
+
         }
+        //스폰 된 지역과 가까워지면 탐색을 계속할지 판단
         else if (Vector3.Distance(spawn, transform.position) < 0.3)
         {
             isDetect = false;
         }
+        //랜덤 이동
         else if (!isDetect)
         {
             if (!isRandom)
                 StartCoroutine("RandomMove");
         }
+        //스폰 된 지역이로 이동
         else
         {
             transform.LookAt(spawn);
@@ -72,6 +80,7 @@ public class ZombieAI : MonoBehaviour
 
     IEnumerator RandomMove()
     {
+        //range 범위 안에서 움직임
         float randomX = Random.Range(0, 2 * range) - range;
         float randomY = Random.Range(0, 2 * range) - range;
         Vector3 randomPos = new Vector3 (randomX, 0.5f, randomY);
@@ -83,7 +92,9 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
+        //Player 공격과 감염
         target.GetComponent<PlayerController_>().hp -= power;
+
         if(Random.Range(1, 101) <= infection)
         {
             Debug.Log("감염되었습니다");
@@ -96,6 +107,17 @@ public class ZombieAI : MonoBehaviour
         Destroy (gameObject);
     }
     
+    //피격
+    void Hit()
+    {
+        //지금은 3데미지를 받지만 나중에 무기 공격력 가져오기
+        curHp -= 3;
+        healthbar.fillAmount = (float)curHp / (float)hp;
+        if (curHp <= 0)
+            Die();
+    }
+
+    //테스트용
     void OnMouseDown()
     {
         curHp -= 3;
