@@ -5,11 +5,11 @@ public class IsometricPlayerController : MonoBehaviour
     private CharacterController characterController;
 
     [SerializeField]
-    private Vector3 moveDirection; // ÀÌµ¿ ¹æÇâ
+    private Vector3 moveDirection; // ì´ë™ ë°©í–¥
     [SerializeField]
-    private float moveSpeed = 10.0f; // ±âº» ÀÌµ¿ ¼Óµµ
+    private float moveSpeed = 10.0f; // ê¸°ë³¸ ì´ë™ ì†ë„
     [SerializeField]
-    private float rotationSpeed = 10.0f; // È¸Àü(¹æÇâÀüÈ¯) ¼Óµµ
+    private float rotationSpeed = 10.0f; // íšŒì „(ë°©í–¥ì „í™˜) ì†ë„
 
     float hAxis;
     float vAxis;
@@ -29,8 +29,8 @@ public class IsometricPlayerController : MonoBehaviour
 
     void GetInput()
     {
-        hAxis = Input.GetAxisRaw("Horizontal"); // ¹æÇâÅ° ÁÂ¿ì
-        vAxis = Input.GetAxisRaw("Vertical"); // ¹æÇâÅ° À§¾Æ·¡
+        hAxis = Input.GetAxisRaw("Horizontal"); // ë°©í–¥í‚¤ ì¢Œìš°
+        vAxis = Input.GetAxisRaw("Vertical"); // ë°©í–¥í‚¤ ìœ„ì•„ë˜
     }
 
     void Move()

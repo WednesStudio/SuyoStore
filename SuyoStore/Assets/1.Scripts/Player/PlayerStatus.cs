@@ -6,32 +6,32 @@ public class PlayerStatus : MonoBehaviour
 {
     PlayerController playerController;
 
-    // ½ºÇÇµå
-    public float moveSpeed = 10.0f; // ±âº» »óÅÂÀÏ ¶§ ÀÌµ¿ ¼Óµµ
-    public float runSpeed = 5.0f; // ´Ş¸®±â »óÅÂÀÏ ¶§ ÀÌµ¿ ¼Óµµ
-    public float sitSpeed = 3.0f; // ¾É±â »óÅÂÀÏ ‹š ÀÌµ¿ ¼Óµµ
+    // ìŠ¤í”¼ë“œ
+    public float moveSpeed = 10.0f; // ê¸°ë³¸ ìƒíƒœì¼ ë•Œ ì´ë™ ì†ë„
+    public float runSpeed = 5.0f; // ë‹¬ë¦¬ê¸° ìƒíƒœì¼ ë•Œ ì´ë™ ì†ë„
+    public float sitSpeed = 3.0f; // ì•‰ê¸° ìƒíƒœì¼ ë–„ ì´ë™ ì†ë„
 
-    // ½ºÅ×ÀÌÅÍ½º
-    public int maxHp = 100; // ÃÖ´ë Ã¼·Â
-    public int maxSatiety = 100; // ÃÖ´ë Æ÷¸¸°¨
-    public int maxFatique = 100; // ÃÖ´ë ÇÇ·Îµµ
+    // ìŠ¤í…Œì´í„°ìŠ¤
+    public int maxHp = 100; // ìµœëŒ€ ì²´ë ¥
+    public int maxSatiety = 100; // ìµœëŒ€ í¬ë§Œê°
+    public int maxFatique = 100; // ìµœëŒ€ í”¼ë¡œë„
 
-    public int curHp = 10; // ÇöÀç Ã¼·Â
-    public int curSatiety = 50; // ÇöÀç Æ÷¸¸°¨
-    public int curFatigue = 50; // ÇöÀç ÇÇ·Îµµ
+    public int curHp = 10; // í˜„ì¬ ì²´ë ¥
+    public int curSatiety = 50; // í˜„ì¬ í¬ë§Œê°
+    public int curFatigue = 50; // í˜„ì¬ í”¼ë¡œë„
 
-    // ´É·ÂÄ¡
-    public int maxCarryingBag = 30; // ±âº» ÀûÀç·®
-    public int attack = 10; // ±âº» °ø°İ·Â
-    public int stamina = 100; // ±âº» Áö±¸·Â
+    // ëŠ¥ë ¥ì¹˜
+    public int maxCarryingBag = 30; // ê¸°ë³¸ ì ì¬ëŸ‰
+    public int attack = 10; // ê¸°ë³¸ ê³µê²©ë ¥
+    public int stamina = 100; // ê¸°ë³¸ ì§€êµ¬ë ¥
 
-    public int curCarryingBag = 0; // ±âº» ÀûÀç·®
-    public int curAttack = 10; // ÇöÀç °ø°İ·Â
-    public int curStamina = 100; // ÇöÀç Áö±¸·Â
+    public int curCarryingBag = 0; // ê¸°ë³¸ ì ì¬ëŸ‰
+    public int curAttack = 10; // í˜„ì¬ ê³µê²©ë ¥
+    public int curStamina = 100; // í˜„ì¬ ì§€êµ¬ë ¥
 
-    // status¿Í °ü·ÃµÈ ½Ã°£
-    private int time = 100; // ½Ç½Ã°£
-    private int hungerTime = 10; // Æ÷¸¸°¨ÀÌ °¨¼ÒÇÏ´Â ÀÏÁ¤½Ã°£
+    // statusì™€ ê´€ë ¨ëœ ì‹œê°„
+    private int time = 100; // ì‹¤ì‹œê°„
+    private int hungerTime = 10; // í¬ë§Œê°ì´ ê°ì†Œí•˜ëŠ” ì¼ì •ì‹œê°„
 
 
     private void Awake()
@@ -39,7 +39,7 @@ public class PlayerStatus : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
-    // ÇöÀç »óÅÂ°¡ Max¸¦ ³ÑÁö ¾Ê°Ô
+    // í˜„ì¬ ìƒíƒœê°€ Maxë¥¼ ë„˜ì§€ ì•Šê²Œ
     void RemainStatusValue(int curVal, int maxVal)
     {
         if (curVal >= maxVal) curVal = maxVal;
@@ -63,7 +63,7 @@ public class PlayerStatus : MonoBehaviour
             curHp -= zomPower;
         }
 
-        // °ÔÀÓ ¿À¹ö ±âÁØ
+        // ê²Œì„ ì˜¤ë²„ ê¸°ì¤€
         if (curHp <= 0)
         {
             Die();
@@ -72,9 +72,9 @@ public class PlayerStatus : MonoBehaviour
 
     public void HpRecovery()
     {
-        // È¸º¹
-        // Ä¡·áÁ¦ ¾ÆÀÌÅÛ »ç¿ë
-        // °¡±¸, Ä§³¶ ¾ÆÀÌÅÛ »ç¿ë
+        // íšŒë³µ
+        // ì¹˜ë£Œì œ ì•„ì´í…œ ì‚¬ìš©
+        // ê°€êµ¬, ì¹¨ë‚­ ì•„ì´í…œ ì‚¬ìš©
     }
 
   
@@ -87,11 +87,11 @@ public class PlayerStatus : MonoBehaviour
 
         if (curSatiety <= 0)
         {
-            /*ÀÏÁ¤ ½Ã°£ ÈÄ*/
+            /*ì¼ì • ì‹œê°„ í›„*/
             Die();
         }
 
-        // ½Ã°£¿¡ µû¶ó °¨¼Ò -- if¹® Á¶°Ç ¼öÁ¤ ÇÊ¿ä
+        // ì‹œê°„ì— ë”°ë¼ ê°ì†Œ -- ifë¬¸ ì¡°ê±´ ìˆ˜ì • í•„ìš”
         if(time % hungerTime == 0)
         {
             curSatiety-= 2;
@@ -100,8 +100,8 @@ public class PlayerStatus : MonoBehaviour
 
     public void RecoverySatiety()
     {
-        // ¾ÆÀÌÅÛ »ç¿ë
-        // ÇÏ·ç ½ºÅµ
+        // ì•„ì´í…œ ì‚¬ìš©
+        // í•˜ë£¨ ìŠ¤í‚µ
     }
 
     public void FatiqueModifier()
@@ -140,16 +140,16 @@ public class PlayerStatus : MonoBehaviour
         curAttack = attack;
         if (curAttack <= 0) 
         {
-            // °ø°İ ¸øÇÔ
+            // ê³µê²© ëª»í•¨
         }
-        //°ø°İ ¾Ö´Ï¸ŞÀÌ¼Ç
+        //ê³µê²© ì• ë‹ˆë©”ì´ì…˜
 
 
     }
 
     public void SpeedModifier()
     {
-        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% ÃÊ°ú·®
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% ì´ˆê³¼ëŸ‰
 
         if(curCarryingBag > maxCarryingBag)
         {
@@ -162,12 +162,12 @@ public class PlayerStatus : MonoBehaviour
     {
         if(curSatiety <= 0)
         {
-            // °È±â »óÅÂ·Î ÀüÈ¯
+            // ê±·ê¸° ìƒíƒœë¡œ ì „í™˜
         }
 
         if (playerController.isMove == true)
         {
-            //ÀÏÁ¤½Ã°£¸¶´Ù
+            //ì¼ì •ì‹œê°„ë§ˆë‹¤
             curStamina--;
         }
         else curStamina = stamina;
@@ -178,7 +178,7 @@ public class PlayerStatus : MonoBehaviour
 
 
 
-    //private float speed; // ½ºÇÇµå
+    //private float speed; // ìŠ¤í”¼ë“œ
 
     //public void SetSpeed(float speed)
     //{
