@@ -9,12 +9,7 @@ public class JsonReader
 {
     public static List<Dictionary<string, object>> Read(string file)
     {
-<<<<<<< HEAD
-
-        TextAsset textJSON = Resources.Load("SampleText") as TextAsset;
-=======
         TextAsset textJSON = Resources.Load(file) as TextAsset;
->>>>>>> ba1e7674 ([BUG] merge error)
         JsonList infoList = new JsonList();
         infoList = JsonUtility.FromJson<JsonList>(textJSON.text);
 

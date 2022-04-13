@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-<<<<<<< HEAD
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
-=======
   m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -127,68 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
---- !u!1001 &236206167
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1000438285}
-    m_Modifications:
-    - target: {fileID: 1238499803652380, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_Name
-      value: SM_Wep_Hammer_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
---- !u!1 &394108923
-=======
 --- !u!1 &5491029
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,47 +131,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 394108924}
-  - component: {fileID: 394108925}
-  m_Layer: 0
-  m_Name: ==Demo==
-=======
   - component: {fileID: 5491030}
   - component: {fileID: 5491032}
   - component: {fileID: 5491031}
   m_Layer: 5
   m_Name: Handle
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 0
---- !u!4 &394108924
-Transform:
-=======
   m_IsActive: 1
 --- !u!224 &5491030
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 394108923}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 192.23608, y: 244.56354, z: 0.11968994}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 645038594}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &394108925
-=======
   m_GameObject: {fileID: 5491029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -251,23 +161,11 @@ RectTransform:
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5491031
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 394108923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5030c4caf0434fbc9765ced0d3504d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  date: 04.05
-  demoButton: {fileID: 2073569009}
---- !u!1 &645038593
-=======
   m_GameObject: {fileID: 5491029}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -301,7 +199,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 5491029}
   m_CullTransparentMesh: 1
 --- !u!1 &9269800
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -309,50 +206,20 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 645038594}
-  - component: {fileID: 645038597}
-  - component: {fileID: 645038596}
-  - component: {fileID: 645038595}
-  m_Layer: 0
-  m_Name: Canvas
-=======
   - component: {fileID: 9269801}
   m_Layer: 5
   m_Name: Fill Area
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!224 &645038594
-=======
 --- !u!224 &9269801
->>>>>>> ba1e7674 ([BUG] merge error)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 645038593}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 2073569012}
-  m_Father: {fileID: 394108924}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &645038595
-=======
   m_GameObject: {fileID: 9269800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -408,26 +275,11 @@ RectTransform:
   m_SizeDelta: {x: 750, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &14713326
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 645038593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &645038596
-=======
   m_GameObject: {fileID: 14713324}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -453,33 +305,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &14713327
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 645038593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &645038597
-Canvas:
-=======
   m_GameObject: {fileID: 14713324}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -506,33 +336,13 @@ Canvas:
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &14713328
 CanvasRenderer:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 645038593}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!1 &705507993
-=======
   m_GameObject: {fileID: 14713324}
   m_CullTransparentMesh: 1
 --- !u!1 &27336523
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -540,94 +350,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 705507995}
-  - component: {fileID: 705507994}
-  m_Layer: 0
-  m_Name: Directional Light
-=======
   - component: {fileID: 27336524}
   - component: {fileID: 27336526}
   - component: {fileID: 27336525}
   m_Layer: 5
   m_Name: Text (TMP)
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!108 &705507994
-Light:
-=======
 --- !u!224 &27336524
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 1
-  m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.802082
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 1
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &705507995
-Transform:
-=======
   m_GameObject: {fileID: 27336523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -732,57 +470,18 @@ MonoBehaviour:
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &27336526
 CanvasRenderer:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &719828839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1238499803652380, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-  m_PrefabInstance: {fileID: 236206167}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &719828840 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4560509306627632, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-  m_PrefabInstance: {fileID: 236206167}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &719828841
-MonoBehaviour:
-=======
   m_GameObject: {fileID: 27336523}
   m_CullTransparentMesh: 1
 --- !u!1 &27490852
 GameObject:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 719828839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &803347645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1523162694156800, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-  m_PrefabInstance: {fileID: 1778459175}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &803347646
-MonoBehaviour:
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 27490853}
@@ -795,25 +494,10 @@ MonoBehaviour:
   m_IsActive: 1
 --- !u!224 &27490853
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 803347645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efd56e5d9953b482a8e3779d42ef511e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &803347650 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-  m_PrefabInstance: {fileID: 1778459175}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &858845824
-=======
   m_GameObject: {fileID: 27490852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -829,7 +513,6 @@ Transform:
   m_SizeDelta: {x: 0, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &41968395
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -837,46 +520,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 858845825}
-  m_Layer: 0
-  m_Name: '[CellPhone]'
-=======
   - component: {fileID: 41968396}
   - component: {fileID: 41968398}
   - component: {fileID: 41968397}
   m_Layer: 5
   m_Name: Resolution
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &858845825
-Transform:
-=======
 --- !u!224 &41968396
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 858845824}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 803347650}
-  - {fileID: 1187531172}
-  m_Father: {fileID: 950864658}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &886502283
-=======
   m_GameObject: {fileID: 41968395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -988,66 +647,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 41968395}
   m_CullTransparentMesh: 1
 --- !u!1001 &46493293
->>>>>>> ba1e7674 ([BUG] merge error)
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-<<<<<<< HEAD
-    m_TransformParent: {fileID: 2007969606}
-    m_Modifications:
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -76.713005
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.061
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -20.263
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597906963217639764, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-      propertyPath: m_Name
-      value: SM_Prop_SleepingBag_03
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd14b00156df04d40afd0850658a5572, type: 3}
---- !u!1 &919066152
-=======
     m_TransformParent: {fileID: 953839198}
     m_Modifications:
     - target: {fileID: 3360151244870032821, guid: d73e5c729256228449a1aa14ac4043ea, type: 3}
@@ -1146,7 +749,6 @@ RectTransform:
   m_PrefabInstance: {fileID: 46493293}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &48400815
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1154,40 +756,20 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 919066153}
-  - component: {fileID: 919066155}
-  - component: {fileID: 919066154}
-  m_Layer: 0
-  m_Name: Text
-=======
   - component: {fileID: 48400816}
   m_Layer: 5
   m_Name: Sliding Area
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!224 &919066153
-=======
 --- !u!224 &48400816
->>>>>>> ba1e7674 ([BUG] merge error)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 919066152}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2073569012}
-=======
   m_GameObject: {fileID: 48400815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1195,17 +777,11 @@ RectTransform:
   m_Children:
   - {fileID: 1073878622}
   m_Father: {fileID: 1184199054}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-<<<<<<< HEAD
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &919066154
-=======
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &48524018
@@ -1246,22 +822,11 @@ RectTransform:
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48524020
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 919066152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-=======
   m_GameObject: {fileID: 48524018}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1270,30 +835,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 34
-    m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 10
-    m_MaxSize: 54
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: CellPhone Icon
---- !u!222 &919066155
-=======
   m_text: '5F : Sports, Shoes'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1364,133 +911,11 @@ MonoBehaviour:
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &48524021
->>>>>>> ba1e7674 ([BUG] merge error)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 919066152}
-  m_CullTransparentMesh: 1
---- !u!1 &950864657
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 950864658}
-  m_Layer: 0
-  m_Name: ==ITEMS==
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &950864658
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950864657}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.067, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 858845825}
-  - {fileID: 2007969606}
-  - {fileID: 1000438285}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &963194225
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 963194228}
-  - component: {fileID: 963194227}
-  - component: {fileID: 963194226}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &963194226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
---- !u!20 &963194227
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &963194228
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0, z: -1.15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &980661254
-=======
   m_GameObject: {fileID: 48524018}
   m_CullTransparentMesh: 1
 --- !u!1001 &55123089
@@ -1560,88 +985,10 @@ Transform:
   m_PrefabInstance: {fileID: 55123089}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &61359145
->>>>>>> ba1e7674 ([BUG] merge error)
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-<<<<<<< HEAD
-    m_TransformParent: {fileID: 1000438285}
-    m_Modifications:
-    - target: {fileID: 1054167787498168, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_Name
-      value: SM_Item_Frypan_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
---- !u!1 &982211369 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5597906963217639764, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-  m_PrefabInstance: {fileID: 886502283}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &982211370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982211369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &982211373 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5108227762086589422, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-  m_PrefabInstance: {fileID: 886502283}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1000438284
-=======
     m_TransformParent: {fileID: 203459064}
     m_Modifications:
     - target: {fileID: 3360151244870032821, guid: d73e5c729256228449a1aa14ac4043ea, type: 3}
@@ -1740,7 +1087,6 @@ RectTransform:
   m_PrefabInstance: {fileID: 61359145}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &62102800
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1748,45 +1094,20 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1000438285}
-  m_Layer: 0
-  m_Name: '[Equip]'
-=======
   - component: {fileID: 62102801}
   m_Layer: 5
   m_Name: Battle Stats
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &1000438285
-Transform:
-=======
 --- !u!224 &62102801
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1000438284}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 719828840}
-  - {fileID: 1992221085}
-  - {fileID: 1362288950}
-  m_Father: {fileID: 950864658}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1100833378
-=======
   m_GameObject: {fileID: 62102800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1803,7 +1124,6 @@ RectTransform:
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &63708745
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1811,52 +1131,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1100833379}
-  - component: {fileID: 1100833381}
-  - component: {fileID: 1100833380}
-  m_Layer: 0
-  m_Name: ButtonText
-=======
   - component: {fileID: 63708746}
   - component: {fileID: 63708749}
   - component: {fileID: 63708748}
   - component: {fileID: 63708747}
   m_Layer: 5
   m_Name: Scroll View
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 1
---- !u!224 &1100833379
-=======
   m_IsActive: 0
 --- !u!224 &63708746
->>>>>>> ba1e7674 ([BUG] merge error)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1100833378}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1136945323}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1100833380
-=======
   m_GameObject: {fileID: 63708745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1873,22 +1164,11 @@ RectTransform:
   m_SizeDelta: {x: 320, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63708747
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1100833378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-=======
   m_GameObject: {fileID: 63708745}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1927,30 +1207,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uD655\uC778"
---- !u!222 &1100833381
-=======
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -1962,21 +1224,14 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &63708749
->>>>>>> ba1e7674 ([BUG] merge error)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1100833378}
-  m_CullTransparentMesh: 1
---- !u!1 &1136945322
-=======
   m_GameObject: {fileID: 63708745}
   m_CullTransparentMesh: 1
 --- !u!1 &72394607
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1984,53 +1239,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1136945323}
-  - component: {fileID: 1136945326}
-  - component: {fileID: 1136945325}
-  - component: {fileID: 1136945324}
-  m_Layer: 0
-  m_Name: Close_Button
-=======
   - component: {fileID: 72394608}
   - component: {fileID: 72394611}
   - component: {fileID: 72394610}
   - component: {fileID: 72394609}
   m_Layer: 5
   m_Name: Viewport
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!224 &1136945323
-=======
 --- !u!224 &72394608
->>>>>>> ba1e7674 ([BUG] merge error)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1136945322}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1100833379}
-  m_Father: {fileID: 1221163929}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -0.00010681152, y: 37.3861}
-  m_SizeDelta: {x: -122.3579, y: 41.1238}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1136945324
-=======
   m_GameObject: {fileID: 72394607}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -2046,53 +1271,11 @@ RectTransform:
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &72394609
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1136945322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1136945325}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1136945325
-=======
   m_GameObject: {fileID: 72394607}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2101,39 +1284,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
 --- !u!114 &72394610
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1136945322}
-=======
   m_GameObject: {fileID: 72394607}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-<<<<<<< HEAD
-  m_Color: {r: 0.28535068, g: 0.2804379, b: 0.4339623, a: 1}
-=======
   m_Color: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-=======
   m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2143,76 +1313,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
-<<<<<<< HEAD
---- !u!222 &1136945326
-=======
 --- !u!222 &72394611
->>>>>>> ba1e7674 ([BUG] merge error)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1136945322}
-  m_CullTransparentMesh: 1
---- !u!1 &1187531171
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1187531172}
-  - component: {fileID: 1187531173}
-  m_Layer: 0
-  m_Name: Reader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1187531172
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187531171}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 858845825}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1187531173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187531171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e41278d2c4d4469a99a90136bf33c81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messageDatabase:
-  - date: 04.06
-    message: "\uC625\uB545\uC73C\uB85C \uB530\uB77C\uC640"
-  - date: 04.10
-    message: "\uB0B4\uAC00 \uC2EB\uC5B4\uD558\uB294 \uB450 \uAC00\uC9C0 \uC911 \uD558\uB098\uAC00
-      \uB9D0\uC744 \uD558\uB2E4\uB9C8\uB294 \uAC70\uACE0 \uB450 \uBC88\uC9F8\uB294"
-  - date: 04.25
-    message: "\uB057"
---- !u!1 &1221163928
-=======
   m_GameObject: {fileID: 72394607}
   m_CullTransparentMesh: 1
 --- !u!1 &72648716
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2220,57 +1329,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1221163929}
-  - component: {fileID: 1221163931}
-  - component: {fileID: 1221163930}
-  m_Layer: 0
-  m_Name: Dialog_Panel
-=======
   - component: {fileID: 72648717}
   - component: {fileID: 72648719}
   - component: {fileID: 72648718}
   - component: {fileID: 72648720}
   m_Layer: 5
   m_Name: Inventory Info
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!224 &1221163929
-=======
 --- !u!224 &72648717
->>>>>>> ba1e7674 ([BUG] merge error)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1221163928}
-=======
   m_GameObject: {fileID: 72648716}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-<<<<<<< HEAD
-  - {fileID: 1735308964}
-  - {fileID: 1136945323}
-  m_Father: {fileID: 1309157247}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.44714206, y: 0}
-  m_AnchorMax: {x: 0.55442995, y: 1}
-  m_AnchoredPosition: {x: -3.5590057, y: 41.08661}
-  m_SizeDelta: {x: 305.6438, y: -388.9045}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1221163930
-=======
   - {fileID: 711187204}
   m_Father: {fileID: 162044093}
   m_RootOrder: 3
@@ -2281,41 +1361,27 @@ RectTransform:
   m_SizeDelta: {x: 850, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72648718
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1221163928}
-=======
   m_GameObject: {fileID: 72648716}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-<<<<<<< HEAD
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-=======
   m_Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-=======
   m_Sprite: {fileID: 0}
   m_Type: 0
->>>>>>> ba1e7674 ([BUG] merge error)
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2324,21 +1390,12 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
-<<<<<<< HEAD
---- !u!222 &1221163931
-=======
 --- !u!222 &72648719
->>>>>>> ba1e7674 ([BUG] merge error)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1221163928}
-  m_CullTransparentMesh: 1
---- !u!1 &1309157246
-=======
   m_GameObject: {fileID: 72648716}
   m_CullTransparentMesh: 1
 --- !u!114 &72648720
@@ -2355,7 +1412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryWeight: {fileID: 711187203}
 --- !u!1 &73521511
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2363,50 +1419,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1309157247}
-  - component: {fileID: 1309157249}
-  - component: {fileID: 1309157248}
-  m_Layer: 0
-  m_Name: Background_Panel
-=======
   - component: {fileID: 73521512}
   - component: {fileID: 73521514}
   - component: {fileID: 73521513}
   m_Layer: 5
   m_Name: Text (TMP)
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!224 &1309157247
-=======
 --- !u!224 &73521512
->>>>>>> ba1e7674 ([BUG] merge error)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1309157246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1221163929}
-  m_Father: {fileID: 2012796272}
-=======
   m_GameObject: {fileID: 73521511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490335024}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2414,26 +1448,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
---- !u!114 &1309157248
-=======
 --- !u!114 &73521513
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1309157246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
-=======
   m_GameObject: {fileID: 73521511}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2442,26 +1462,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1309157249
-=======
   m_text: 'Sleeping
 
     Bag'
@@ -2534,43 +1540,14 @@ MonoBehaviour:
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &73521514
->>>>>>> ba1e7674 ([BUG] merge error)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1309157246}
-  m_CullTransparentMesh: 1
---- !u!1 &1362288945 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1054167787498168, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-  m_PrefabInstance: {fileID: 980661254}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1362288946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362288945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1362288950 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4536402927294124, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-  m_PrefabInstance: {fileID: 980661254}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1446871225
-=======
   m_GameObject: {fileID: 73521511}
   m_CullTransparentMesh: 1
 --- !u!1 &74451561
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2578,78 +1555,20 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1446871226}
-  m_Layer: 0
-  m_Name: ==POPUP==
-=======
   - component: {fileID: 74451562}
   m_Layer: 5
   m_Name: Handle Slide Area
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 1
---- !u!4 &1446871226
-Transform:
-=======
   m_IsActive: 0
 --- !u!224 &74451562
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1446871225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1579212478}
-  - {fileID: 1815229713}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1579212477
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1579212478}
-  - component: {fileID: 1579212480}
-  - component: {fileID: 1579212479}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1579212478
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579212477}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1446871226}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1579212479
-MonoBehaviour:
-=======
   m_GameObject: {fileID: 74451561}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -2772,27 +1691,10 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &81633678
 GameObject:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1579212477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1579212480
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 81633679}
@@ -2959,24 +1861,11 @@ RectTransform:
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &90406479
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1579212477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!1 &1735308963
-=======
   m_GameObject: {fileID: 90406477}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3010,7 +1899,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 90406477}
   m_CullTransparentMesh: 1
 --- !u!1 &95982330
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3018,52 +1906,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1735308964}
-  - component: {fileID: 1735308966}
-  - component: {fileID: 1735308965}
-  m_Layer: 0
-  m_Name: Message
-=======
   - component: {fileID: 95982331}
   - component: {fileID: 95982334}
   - component: {fileID: 95982333}
   - component: {fileID: 95982332}
   m_Layer: 5
   m_Name: Weapon Item Scroll View
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 1
---- !u!224 &1735308964
-=======
   m_IsActive: 0
 --- !u!224 &95982331
->>>>>>> ba1e7674 ([BUG] merge error)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1735308963}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1221163929}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.73309326, y: -73.86917}
-  m_SizeDelta: {x: -31.6332, y: 111.999}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1735308965
-=======
   m_GameObject: {fileID: 95982330}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -3080,22 +1939,11 @@ RectTransform:
   m_SizeDelta: {x: 750, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &95982332
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1735308963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-=======
   m_GameObject: {fileID: 95982330}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3134,30 +1982,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 36
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1.18
-  m_Text: "\uBA54\uC2DC\uC9C0\uC785\uB2C8\uB2E4"
---- !u!222 &1735308966
-=======
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -3169,194 +1999,18 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &95982334
->>>>>>> ba1e7674 ([BUG] merge error)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1735308963}
-  m_CullTransparentMesh: 1
---- !u!1001 &1778459175
-=======
   m_GameObject: {fileID: 95982330}
   m_CullTransparentMesh: 1
 --- !u!1001 &96208127
->>>>>>> ba1e7674 ([BUG] merge error)
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-<<<<<<< HEAD
-    m_TransformParent: {fileID: 858845825}
-    m_Modifications:
-    - target: {fileID: 1523162694156800, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_Name
-      value: SM_Item_SmartPhone_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4721596445248216, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
---- !u!1001 &1794766239
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1000438285}
-    m_Modifications:
-    - target: {fileID: 1452664468745888, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_Name
-      value: SM_Prop_Flashlight_05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
---- !u!1001 &1796605168
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2007969606}
-    m_Modifications:
-    - target: {fileID: 1475631568837504, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_Name
-      value: SM_Item_Can_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
---- !u!1 &1815229712
-=======
     m_TransformParent: {fileID: 203459064}
     m_Modifications:
     - target: {fileID: 3360151244870032821, guid: d73e5c729256228449a1aa14ac4043ea, type: 3}
@@ -3455,7 +2109,6 @@ RectTransform:
   m_PrefabInstance: {fileID: 96208127}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &109194761
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3463,47 +2116,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1815229713}
-  - component: {fileID: 1815229714}
-  m_Layer: 0
-  m_Name: '[PhoneScreen]'
-=======
   - component: {fileID: 109194762}
   - component: {fileID: 109194764}
   - component: {fileID: 109194763}
   m_Layer: 5
   m_Name: Service Option
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 1
---- !u!4 &1815229713
-Transform:
-=======
   m_IsActive: 0
 --- !u!224 &109194762
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1815229712}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2012796272}
-  m_Father: {fileID: 1446871226}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1815229714
-=======
   m_GameObject: {fileID: 109194761}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -3523,34 +2151,11 @@ RectTransform:
   m_SizeDelta: {x: 950, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109194763
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1815229712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1bef8a99588e4fae9a6e2979394d938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 2012796271}
-  infoText: {fileID: 1735308965}
-  closeUIButton: {fileID: 1136945324}
---- !u!1 &1878574908 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1475631568837504, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-  m_PrefabInstance: {fileID: 1796605168}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1878574912 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4622273377836476, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-  m_PrefabInstance: {fileID: 1796605168}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1878574913
-=======
   m_GameObject: {fileID: 109194761}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -3632,27 +2237,18 @@ Transform:
   m_PrefabInstance: {fileID: 1043433943}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &122224407
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1878574908}
-=======
   m_GameObject: {fileID: 122224405}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
---- !u!1 &1888826311
-=======
 --- !u!1 &126739456
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3660,26 +2256,16 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1888826313}
-  - component: {fileID: 1888826312}
-  m_Layer: 0
-  m_Name: ItemDatabase
-=======
   - component: {fileID: 126739457}
   - component: {fileID: 126739459}
   - component: {fileID: 126739458}
   m_Layer: 5
   m_Name: Handle
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!114 &1888826312
-=======
 --- !u!224 &126739457
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3700,59 +2286,11 @@ RectTransform:
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &126739458
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1888826311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd6d1479ba6b64570860111a38ac57a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemDatabase:
-  - ID: 0
-    itemName: "\uBC30\uD130\uB9AC1"
-    category: "\uC18C\uBAA8"
-    subCategory: "\uBCF4\uC870\uBC30\uD130\uB9AC"
-    fileName: SM_Item_Battery_01
-    attack: 0
-    heal: 0
-    satiety: 0
-    batteryCharge: 20
-    sightRange: 0
-    capacity: 0
-    deathRate: 0
-    durability: 1
-    weight: 10
-    prefab: {fileID: 1040866198591268, guid: e4cf0824496bede4bb19ba9967e020f6, type: 3}
-  - ID: 0
-    itemName: "\uBC30\uD130\uB9AC2"
-    category: "\uC18C\uBAA8"
-    subCategory: "\uBCF4\uC870\uBC30\uD130\uB9AC"
-    fileName: SM_Item_Battery_02
-    attack: 0
-    heal: 0
-    satiety: 0
-    batteryCharge: 10
-    sightRange: 0
-    capacity: 0
-    deathRate: 0
-    durability: 1
-    weight: 5
-    prefab: {fileID: 1894815675584704, guid: 3227180798afcde40a94b36943725c6d, type: 3}
-  - ID: 0
-    itemName: "\uCE941"
-    category: "\uC18C\uBAA8"
-    subCategory: "\uC74C\uC2DD"
-    fileName: SM_Item_Can_01
-    attack: 0
-    heal: 0
-    satiety: 5
-=======
   m_GameObject: {fileID: 126739456}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -33508,7 +32046,6 @@ MonoBehaviour:
     attack: 0
     heal: 0
     satiety: 5
->>>>>>> ba1e7674 ([BUG] merge error)
     batteryCharge: 0
     sightRange: 0
     capacity: 0
@@ -33516,12 +32053,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1475631568837504, guid: 43c02ad0264295844bda05a0e56a7b21, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE942"
-=======
   - itemName: "\uCE942"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Item_Can_02
@@ -33535,12 +32067,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1435732578635654, guid: 5f3d8b2c4e94c7647b280ab37c8452a4, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE943"
-=======
   - itemName: "\uCE943"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Item_Can_03
@@ -33554,12 +32081,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1302950925058072, guid: ba8f09511f4e7a448867acaedb592a0b, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE947"
-=======
   - itemName: "\uCE947"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Item_Can_07
@@ -33573,12 +32095,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1333788564670996, guid: 7e25cc1253205ab45bf2f21ac7f68181, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE948"
-=======
   - itemName: "\uCE948"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Item_Can_08
@@ -33592,12 +32109,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1739849997288908, guid: eb0cbb6bcee01ad40848859f2fc6535c, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE949"
-=======
   - itemName: "\uCE949"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Item_Can_09
@@ -33611,12 +32123,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1497011872503418, guid: c1374f32ef087084aa867d7db3d2e313, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE7C1"
-=======
   - itemName: "\uCE7C1"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Item_Craft_Knife_01
@@ -33630,12 +32137,7 @@ MonoBehaviour:
     durability: 10
     weight: 3
     prefab: {fileID: 1312856516239564, guid: 18a14a835f7f4ff4eba07155d04123fb, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uC74C\uB8CC1"
-=======
   - itemName: "\uC74C\uB8CC1"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Item_Drink_01
@@ -33649,12 +32151,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1847027969511464, guid: 907f8303af992f44289b29cb614b45c5, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uD6C4\uB77C\uC774\uD32C1"
-=======
   - itemName: "\uD6C4\uB77C\uC774\uD32C1"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Item_Frypan_01
@@ -33668,12 +32165,7 @@ MonoBehaviour:
     durability: 30
     weight: 7
     prefab: {fileID: 1054167787498168, guid: 9a32dc62b4ff6fb4f928a74f8b462ffd, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uC57D1"
-=======
   - itemName: "\uC57D1"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uCE58\uB8CC\uC81C"
     fileName: SM_Item_Pills_01
@@ -33687,12 +32179,7 @@ MonoBehaviour:
     durability: 1
     weight: 3
     prefab: {fileID: 1337799580505134, guid: 07973e2f008580343949b7f8c06cf72c, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uC2A4\uB9C8\uD2B8\uD3F0"
-=======
   - itemName: "\uC2A4\uB9C8\uD2B8\uD3F0"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uC2A4\uB9C8\uD2B8\uD3F0"
     fileName: SM_Item_SmartPhone_01
@@ -33706,12 +32193,7 @@ MonoBehaviour:
     durability: 0
     weight: 0
     prefab: {fileID: 1523162694156800, guid: a5b5e01895a2f294188114a6032d1692, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB77C\uC774\uD2B82"
-=======
   - itemName: "\uB77C\uC774\uD2B82"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uB77C\uC774\uD2B8"
     fileName: SM_Prop_Flashlight_02
@@ -33725,12 +32207,7 @@ MonoBehaviour:
     durability: 30
     weight: 3
     prefab: {fileID: 1988753259493714, guid: 7e5cb9f31c8ced3438a012d4cff966bb, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB77C\uC774\uD2B83"
-=======
   - itemName: "\uB77C\uC774\uD2B83"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uB77C\uC774\uD2B8"
     fileName: SM_Prop_Flashlight_03
@@ -33744,12 +32221,7 @@ MonoBehaviour:
     durability: 30
     weight: 5
     prefab: {fileID: 1589291923689666, guid: 290100e372c925c4d8a33d12424f9c28, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB77C\uC774\uD2B85"
-=======
   - itemName: "\uB77C\uC774\uD2B85"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uB77C\uC774\uD2B8"
     fileName: SM_Prop_Flashlight_05
@@ -33763,12 +32235,7 @@ MonoBehaviour:
     durability: 40
     weight: 7
     prefab: {fileID: 1452664468745888, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uBE60\uB8E8"
-=======
   - itemName: "\uBE60\uB8E8"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Wep_Crowbar_01
@@ -33782,12 +32249,7 @@ MonoBehaviour:
     durability: 30
     weight: 20
     prefab: {fileID: 1750927141268108, guid: 8775c006a5395ff488d9315934a2a901, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB9DD\uCE58"
-=======
   - itemName: "\uB9DD\uCE58"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Wep_Hammer_01
@@ -33801,12 +32263,7 @@ MonoBehaviour:
     durability: 25
     weight: 20
     prefab: {fileID: 1238499803652380, guid: 3cc39ba111da66a40812e82215b69d7f, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE7C2"
-=======
   - itemName: "\uCE7C2"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Wep_Melee_HuntingKnife_01
@@ -33820,12 +32277,7 @@ MonoBehaviour:
     durability: 20
     weight: 3
     prefab: {fileID: 1458518773578602, guid: 0382438fca188874582f78853c471286, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uC0AC\uACFC"
-=======
   - itemName: "\uC0AC\uACFC"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Prop_Food_Apple_01
@@ -33839,12 +32291,7 @@ MonoBehaviour:
     durability: 1
     weight: 3
     prefab: {fileID: 1005277357169550, guid: b163d20bba821aa4b81d40ed68997567, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE58\uC988"
-=======
   - itemName: "\uCE58\uC988"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Prop_Food_Cheese_Stack_02
@@ -33858,12 +32305,7 @@ MonoBehaviour:
     durability: 1
     weight: 7
     prefab: {fileID: 1166833655198992, guid: f84f10d1ddfeeb441a8df9622b805d3e, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB2ED\uAC00\uC2B4\uC0B4"
-=======
   - itemName: "\uB2ED\uAC00\uC2B4\uC0B4"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Prop_Food_Chicken_Breast_Cooked_02
@@ -33877,12 +32319,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1796542459555194, guid: a8abbb43cbe85eb40a65303548ab3b52, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB3C4\uB11B"
-=======
   - itemName: "\uB3C4\uB11B"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Prop_Food_Donut_04
@@ -33896,12 +32333,7 @@ MonoBehaviour:
     durability: 1
     weight: 3
     prefab: {fileID: 1429539437250574, guid: 5a04857f88a628c49b9e297074fa6eb7, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uD3EC\uD14C\uC774\uD1A0"
-=======
   - itemName: "\uD3EC\uD14C\uC774\uD1A0"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Prop_Food_Fries_01
@@ -33915,12 +32347,7 @@ MonoBehaviour:
     durability: 1
     weight: 3
     prefab: {fileID: 1465817476167670, guid: 34325414543cb1c4f8b518e01768d70c, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uC18C\uC138\uC9C01"
-=======
   - itemName: "\uC18C\uC138\uC9C01"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Prop_Food_Sausage_Cooked_01
@@ -33934,12 +32361,7 @@ MonoBehaviour:
     durability: 1
     weight: 5
     prefab: {fileID: 1361989794947370, guid: e5c49d3eba0992746925b4eb38876a43, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uC18C\uC138\uC9C02"
-=======
   - itemName: "\uC18C\uC138\uC9C02"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC18C\uBAA8"
     subCategory: "\uC74C\uC2DD"
     fileName: SM_Prop_Food_Sausage_String_01
@@ -33953,12 +32375,7 @@ MonoBehaviour:
     durability: 1
     weight: 15
     prefab: {fileID: 1570347279704908, guid: 1d78cb24b471d3b42835e1c8865e3bf1, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uBC14\uBCA8"
-=======
   - itemName: "\uBC14\uBCA8"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Gym_Bar_Bell_02
@@ -33972,12 +32389,7 @@ MonoBehaviour:
     durability: 40
     weight: 30
     prefab: {fileID: 1031860391748574, guid: 3d205d410da663745a65f2bbb069bfd2, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB364\uBCA8"
-=======
   - itemName: "\uB364\uBCA8"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Gym_Dumbbell_05
@@ -33991,12 +32403,7 @@ MonoBehaviour:
     durability: 40
     weight: 30
     prefab: {fileID: 1452059561765510, guid: b4aa0a7520504974484dd308356a76d2, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB178"
-=======
   - itemName: "\uB178"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Hunting_Kayak_Paddle_01
@@ -34010,12 +32417,7 @@ MonoBehaviour:
     durability: 15
     weight: 15
     prefab: {fileID: 1137171577756772, guid: b002bf96fc32bd341b44d5c918480095, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB4A4\uC9D1\uAC1C"
-=======
   - itemName: "\uB4A4\uC9D1\uAC1C"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Kitchen_Spatula_01
@@ -34029,12 +32431,7 @@ MonoBehaviour:
     durability: 5
     weight: 3
     prefab: {fileID: 1424832807081228, guid: 1b5543ac8b44d314eac369454c707a6e, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uAE30\uD0C0"
-=======
   - itemName: "\uAE30\uD0C0"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Music_Acoustic_Guitar_02
@@ -34048,12 +32445,7 @@ MonoBehaviour:
     durability: 15
     weight: 10
     prefab: {fileID: 1690120943321838, guid: a09ef4030545b654baf6cb51be368032, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uC77C\uB809\uAE30\uD0C0"
-=======
   - itemName: "\uC77C\uB809\uAE30\uD0C0"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Music_Electric_Guitar_01
@@ -34067,12 +32459,7 @@ MonoBehaviour:
     durability: 20
     weight: 15
     prefab: {fileID: 1973175269348534, guid: 7febb619367642c4e8678f1b2dde9443, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uD14C\uB2C8\uC2A4\uB77C\uCF13"
-=======
   - itemName: "\uD14C\uB2C8\uC2A4\uB77C\uCF13"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Sport_Tennis_Racket_01
@@ -34086,12 +32473,7 @@ MonoBehaviour:
     durability: 20
     weight: 10
     prefab: {fileID: 1446314617240712, guid: 4179423338ee594488cd7427e614595b, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uB098\uBB34\uBC29\uB9DD\uC774"
-=======
   - itemName: "\uB098\uBB34\uBC29\uB9DD\uC774"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Sport_Bat_01
@@ -34105,12 +32487,7 @@ MonoBehaviour:
     durability: 30
     weight: 10
     prefab: {fileID: 1693188977817816, guid: 8fc96b4ecec430146a776806a18bbce3, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uC1E0\uBC29\uB9DD\uC774"
-=======
   - itemName: "\uC1E0\uBC29\uB9DD\uC774"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Sport_Bat_02
@@ -34124,12 +32501,7 @@ MonoBehaviour:
     durability: 50
     weight: 15
     prefab: {fileID: 1804539500564780, guid: e1c80cfcc6cb4a043ae4693c0cc226b7, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uACE8\uD504\uCC44"
-=======
   - itemName: "\uACE8\uD504\uCC44"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uBB34\uAE30"
     fileName: SM_Prop_Sport_Golf_Club_02
@@ -34143,12 +32515,7 @@ MonoBehaviour:
     durability: 35
     weight: 20
     prefab: {fileID: 1692453123131592, guid: 8b003930b9846c44bbb6805423912c64, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uAC00\uBC291"
-=======
   - itemName: "\uAC00\uBC291"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uAC00\uBC29"
     fileName: SM_Prop_Hunting_Backpack_01
@@ -34162,12 +32529,7 @@ MonoBehaviour:
     durability: 0
     weight: 0
     prefab: {fileID: 1092060676733230, guid: ca5095fa3cf3de84ca69d24753fb2592, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uAC00\uBC292"
-=======
   - itemName: "\uAC00\uBC292"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uAC00\uBC29"
     fileName: SM_Prop_Hunting_Backpack_02
@@ -34181,12 +32543,7 @@ MonoBehaviour:
     durability: 0
     weight: 0
     prefab: {fileID: 1302295699681424, guid: 72cc3eeb77717f0469bf390a3ba79915, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE68\uB0AD1"
-=======
   - itemName: "\uCE68\uB0AD1"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uCE68\uB0AD"
     fileName: SM_Prop_SleepingBag_01
@@ -34200,12 +32557,7 @@ MonoBehaviour:
     durability: 1
     weight: 15
     prefab: {fileID: 8648392928624287732, guid: b6edda2242341c44f81f13fc182290f6, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE68\uB0AD2"
-=======
   - itemName: "\uCE68\uB0AD2"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uCE68\uB0AD"
     fileName: SM_Prop_SleepingBag_02
@@ -34219,12 +32571,7 @@ MonoBehaviour:
     durability: 1
     weight: 15
     prefab: {fileID: 3920671429393492503, guid: 4d12eeddc1270584e9dd31d51bc43a6b, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uCE68\uB0AD3"
-=======
   - itemName: "\uCE68\uB0AD3"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uCE68\uB0AD"
     fileName: SM_Prop_SleepingBag_03
@@ -34238,12 +32585,7 @@ MonoBehaviour:
     durability: 1
     weight: 15
     prefab: {fileID: 5597906963217639764, guid: cd14b00156df04d40afd0850658a5572, type: 3}
-<<<<<<< HEAD
-  - ID: 0
-    itemName: "\uD150\uD2B8"
-=======
   - itemName: "\uD150\uD2B8"
->>>>>>> ba1e7674 ([BUG] merge error)
     category: "\uC7A5\uBE44"
     subCategory: "\uCE68\uB0AD"
     fileName: SM_Prop_Hunting_Tent_Dome_01
@@ -34257,34 +32599,12 @@ MonoBehaviour:
     durability: 3
     weight: 30
     prefab: {fileID: 4202203341716429684, guid: 5419964760c0e194db7f99a1250b4e81, type: 3}
-<<<<<<< HEAD
-  weaponDatabase: []
-  lightDatabase: []
-  bagDatabase: []
-  sleepingBagDatabase: []
-  foodDatabase: []
-  medicineDatabase: []
-  batteryDatabase: []
-  importantItemDatabase: []
-=======
->>>>>>> ba1e7674 ([BUG] merge error)
 --- !u!4 &1888826313
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1888826311}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.067, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1974751175
-=======
   m_GameObject: {fileID: 1888826311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.067, y: 0, z: 0}
@@ -37287,7 +35607,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 2082979948}
   m_CullTransparentMesh: 1
 --- !u!1 &2088650802
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37295,26 +35614,16 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1974751177}
-  - component: {fileID: 1974751176}
-  m_Layer: 0
-  m_Name: player
-=======
   - component: {fileID: 2088650803}
   - component: {fileID: 2088650805}
   - component: {fileID: 2088650804}
   m_Layer: 5
   m_Name: Attack Power
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!114 &1974751176
-=======
 --- !u!224 &2088650803
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37335,26 +35644,11 @@ RectTransform:
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2088650804
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1974751175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67190aae154174ab29f849178a42249a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 0
-  satiety: 0
-  attack: 0
-  sightRange: 0
---- !u!4 &1974751177
-Transform:
-=======
   m_GameObject: {fileID: 2088650802}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -37440,27 +35734,10 @@ Transform:
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2088650805
 CanvasRenderer:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1974751175}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.067, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1992221080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1452664468745888, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-  m_PrefabInstance: {fileID: 1794766239}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1992221081
-=======
   m_GameObject: {fileID: 2088650802}
   m_CullTransparentMesh: 1
 --- !u!1 &2098009649
@@ -37503,26 +35780,11 @@ RectTransform:
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2098009651
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1992221080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1992221085 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4475943684591326, guid: 1465cf2163834af468bdb11b81693e24, type: 3}
-  m_PrefabInstance: {fileID: 1794766239}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2007969605
-=======
   m_GameObject: {fileID: 2098009649}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -37750,7 +36012,6 @@ RectTransform:
   m_PrefabInstance: {fileID: 2110996961}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2112382365
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37758,46 +36019,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 2007969606}
-  m_Layer: 0
-  m_Name: '[Used]'
-=======
   - component: {fileID: 2112382366}
   - component: {fileID: 2112382368}
   - component: {fileID: 2112382367}
   m_Layer: 5
   m_Name: Text (TMP)
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &2007969606
-Transform:
-=======
 --- !u!224 &2112382366
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2007969605}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1878574912}
-  - {fileID: 982211373}
-  m_Father: {fileID: 950864658}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2012796271
-=======
   m_GameObject: {fileID: 2112382365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -37909,7 +36146,6 @@ CanvasRenderer:
   m_GameObject: {fileID: 2112382365}
   m_CullTransparentMesh: 1
 --- !u!1 &2115998930
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37917,70 +36153,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 2012796272}
-  - component: {fileID: 2012796275}
-  - component: {fileID: 2012796274}
-  - component: {fileID: 2012796273}
-  m_Layer: 0
-  m_Name: Canvas
-=======
   - component: {fileID: 2115998931}
   - component: {fileID: 2115998933}
   - component: {fileID: 2115998932}
   m_Layer: 5
   m_Name: Screen Option
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 0
---- !u!224 &2012796272
-=======
   m_IsActive: 1
 --- !u!224 &2115998931
->>>>>>> ba1e7674 ([BUG] merge error)
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2012796271}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1309157247}
-  m_Father: {fileID: 1815229713}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
---- !u!114 &2012796273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012796271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!114 &2012796274
-=======
   m_GameObject: {fileID: 2115998930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -37998,33 +36186,11 @@ MonoBehaviour:
   m_SizeDelta: {x: 950, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2115998932
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2012796271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
---- !u!223 &2012796275
-Canvas:
-=======
   m_GameObject: {fileID: 2115998930}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -38051,33 +36217,13 @@ Canvas:
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &2115998933
 CanvasRenderer:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2012796271}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!1 &2073569008
-=======
   m_GameObject: {fileID: 2115998930}
   m_CullTransparentMesh: 1
 --- !u!1 &2135976343
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38085,78 +36231,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 2073569012}
-  - component: {fileID: 2073569011}
-  - component: {fileID: 2073569010}
-  - component: {fileID: 2073569009}
-  m_Layer: 0
-  m_Name: Button
-=======
   - component: {fileID: 2135976344}
   - component: {fileID: 2135976346}
   - component: {fileID: 2135976345}
   m_Layer: 5
   m_Name: Sound Option
->>>>>>> ba1e7674 ([BUG] merge error)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 1
---- !u!114 &2073569009
-MonoBehaviour:
-=======
   m_IsActive: 0
 --- !u!224 &2135976344
 RectTransform:
->>>>>>> ba1e7674 ([BUG] merge error)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2073569008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2073569010}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2073569010
-=======
   m_GameObject: {fileID: 2135976343}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -38175,28 +36265,19 @@ RectTransform:
   m_SizeDelta: {x: 950, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2135976345
->>>>>>> ba1e7674 ([BUG] merge error)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2073569008}
-=======
   m_GameObject: {fileID: 2135976343}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-<<<<<<< HEAD
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-=======
   m_Color: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38204,11 +36285,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-<<<<<<< HEAD
-  m_Type: 1
-=======
   m_Type: 0
->>>>>>> ba1e7674 ([BUG] merge error)
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -38217,40 +36294,11 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
-<<<<<<< HEAD
---- !u!222 &2073569011
-=======
 --- !u!222 &2135976346
->>>>>>> ba1e7674 ([BUG] merge error)
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2073569008}
-  m_CullTransparentMesh: 1
---- !u!224 &2073569012
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073569008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 919066153}
-  m_Father: {fileID: 645038594}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21, y: 26}
-  m_SizeDelta: {x: 266.253, y: 238.551}
-  m_Pivot: {x: 0.5, y: 0.5}
-=======
   m_GameObject: {fileID: 2135976343}
   m_CullTransparentMesh: 1
->>>>>>> ba1e7674 ([BUG] merge error)

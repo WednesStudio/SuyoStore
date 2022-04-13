@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 fileFormatVersion: 2
 guid: b002bf96fc32bd341b44d5c918480095
 timeCreated: 1622413219
@@ -8,14 +7,3 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-=======
-fileFormatVersion: 2
-guid: b002bf96fc32bd341b44d5c918480095
-timeCreated: 1622413219
-licenseType: Store
-NativeFormatImporter:
-  mainObjectFileID: 100100000
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
->>>>>>> ba1e7674 ([BUG] merge error)
