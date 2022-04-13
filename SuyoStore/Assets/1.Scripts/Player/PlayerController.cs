@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     PlayerStatus playerStatus;
 
     public bool isMove = false;
-    private float speed = 1f; // 이동 속도
+    public float speed = 1f; // 이동 속도
 
     private Rigidbody charRigidbody;
     [SerializeField]

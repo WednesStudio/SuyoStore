@@ -158,6 +158,12 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
+    public int DisSpeed(float changeSpeed, float basicSpeed)
+    {
+        return (int)(changeSpeed - basicSpeed);
+    }
+
+
     public void StaminaModifier()
     {
         if(curSatiety <= 0)
