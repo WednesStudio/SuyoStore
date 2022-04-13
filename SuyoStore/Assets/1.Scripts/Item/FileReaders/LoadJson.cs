@@ -6,10 +6,15 @@ public class LoadJson : MonoBehaviour
 {
     private JsonData blankData;
     public List<JsonData> messageDatabase = new List<JsonData>();
+    private string[] routes = { "route1.json", "route2.json", "route3.json" };
+    private string directory = "Data/";
     public void LoadMsgData()
     {
+        // int rnd = Random.Range(0, 3);
+        // string file = directory + routes[rnd];
+        // print(file);
         messageDatabase.Clear();
-        List<Dictionary<string, object>> data = JsonReader.Read("Data/SampleText");
+        List<Dictionary<string, object>> data = JsonReader.Read("Data/route1");
         for (int i = 0; i < data.Count; i++)
         {
             string days = data[i]["days"].ToString();
