@@ -89,12 +89,10 @@ public class OptionSettingUI : MonoBehaviour
         _exitGameWindow.SetActive(false);
     }
 
-    /// <summary>
-    /// Open exact panels for the window
-    /// </summary>
+    /// <summary> Open exact panels for the window </summary>
     /// <param = "windowIndex"> The current window (Status / Inventory / Manipulation / Option) </param>
-    /// <param = "windowIndex"> The number of the panels of the window </param>
-    /// <param = "windowIndex"> The index of the panel of the window </param>
+    /// <param = "panelIndex"> The number of the panels of the window </param>
+    /// <param = "index"> The index of the panel of the window </param>
     public void OnPanels(int windowIndex, int panelIndex, int index)
     {
         if(windowIndex == 0) _panels = _statusPanels;
