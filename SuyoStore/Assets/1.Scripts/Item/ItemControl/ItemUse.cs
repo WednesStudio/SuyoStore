@@ -8,7 +8,11 @@ public class ItemUse : MonoBehaviour
     [SerializeField] DataManager _dataManager;
     private PlayerTest player;
     private int[] attributes = new int[(int)Attributes.TOTAL];
+<<<<<<< HEAD
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭";
+=======
+    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag="가방";
+>>>>>>> f4ccbbe9 ([UPDATE] itemUse file)
     public void UseItem(Item item)
     {
         Debug.Log(item.itemName);
@@ -32,6 +36,12 @@ public class ItemUse : MonoBehaviour
             case sleepingBag:
                 UseSleepingBag(item.attributes[(int)Attributes.HEAL], attributes[(int)Attributes.SATIETY]);
                 break;
+<<<<<<< HEAD
+=======
+            case bag:
+                UseBag(attributes[(int)Attributes.CAPACITY]);
+                break;
+>>>>>>> f4ccbbe9 ([UPDATE] itemUse file)
             default:
                 Debug.Log("itemName doesn't exist in UseItem");
                 break;
@@ -42,7 +52,19 @@ public class ItemUse : MonoBehaviour
             Destroy(this.gameObject);
             _dataManager.AddItem(item.ID, -1);
         }
+<<<<<<< HEAD
             
+=======
+
+    }
+    private void ChangeDate()
+    {
+
+        DateControl dateControl = FindObjectOfType<DateControl>();
+        System.DateTime result = System.DateTime.Parse(dateControl.GetDate());
+        result = result.AddDays(1);
+        dateControl.SetDate(result.ToString("yyyy/MM/dd"));
+>>>>>>> f4ccbbe9 ([UPDATE] itemUse file)
     }
     private CellPhoneControl GetCellPhoneComponent()
     {
@@ -71,6 +93,7 @@ public class ItemUse : MonoBehaviour
         UseFood(satiety);
         CellPhoneControl cellphone = GetCellPhoneComponent();
         cellphone.PhoneUse();
+<<<<<<< HEAD
         // change date
     }
     private void UseFood(int amount)
@@ -101,3 +124,41 @@ public class ItemUse : MonoBehaviour
         Debug.Log("GameOver");
     }
 }
+=======
+        ChangeDate();
+    }
+    private void UseFood(int satiety)
+    {
+        int satietyMax = 100;
+        player.satiety = player.satiety + satiety > satietyMax ? satietyMax : player.satiety + satiety;
+        UnityEngine.Debug.Log("satiety " + player.satiety);
+    }
+    private void UseWeapon(int attack)
+    {
+        int attackMax = 100;
+        player.attack = player.attack + attack > attackMax ? attackMax : player.attack + attack;
+        UnityEngine.Debug.Log("attack " + player.attack);
+    }
+    private void UseHeal(int heal)
+    {
+        int hpMax = 100;
+        player.HP = player.HP + heal > hpMax ? hpMax : player.HP + heal;
+        UnityEngine.Debug.Log("HP " + player.HP);
+    }
+    private void UseLight(int light)
+    {
+        player.sightRange = light;
+        UnityEngine.Debug.Log("sightRange " + player.sightRange);
+        // 켜져 있는 상태라면 지속적으로 내구도가 감소해야 함.....
+    }
+    private void UseBag(int capacity)
+    {
+        BagControl bagControl = FindObjectOfType<BagControl>();
+        bagControl.SetCapacity(capacity);
+    }
+    private void GameOver()
+    {
+        UnityEngine.Debug.Log("GameOver");
+    }
+}
+>>>>>>> f4ccbbe9 ([UPDATE] itemUse file)

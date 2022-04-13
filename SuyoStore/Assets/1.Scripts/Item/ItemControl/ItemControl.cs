@@ -38,6 +38,7 @@ public class ItemControl : MonoBehaviour
         }
         item = new Item(itemName, attributes);
     }
+<<<<<<< HEAD
 
     public void GetThisItem()
     {
@@ -50,3 +51,6 @@ public class ItemControl : MonoBehaviour
         return itemID;
     }
 }
+=======
+}
+>>>>>>> f4ccbbe9 ([UPDATE] itemUse file)
