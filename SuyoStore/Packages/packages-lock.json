@@ -1,5 +1,6 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "com.unity.cinemachine": {
       "version": "2.6.11",
       "depth": 0,
@@ -7,6 +8,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> ba1e7674 ([BUG] merge error)
     "com.unity.collab-proxy": {
       "version": "1.15.12",
       "depth": 0,

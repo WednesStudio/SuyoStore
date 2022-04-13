@@ -3,8 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags:
   - Safe
+=======
+  tags: []
+>>>>>>> ba1e7674 ([BUG] merge error)
   layers:
   - Default
   - TransparentFX
