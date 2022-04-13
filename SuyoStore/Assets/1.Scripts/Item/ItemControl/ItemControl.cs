@@ -4,8 +4,7 @@ using UnityEngine;
 using Types;
 
 public class ItemControl : MonoBehaviour
-{
-    [SerializeField] DataManager _dataManager;
+{   [SerializeField] DataManager _dataManager;
     private LoadExcel _database;
     private PlayerTest player;
     [System.NonSerialized]
@@ -13,7 +12,7 @@ public class ItemControl : MonoBehaviour
     private string itemName;
     private int itemID;
     private int[] attributes = new int[(int)Attributes.TOTAL];
-
+    
     private void Start()
     {
         //player = GetPlayerComponent();
