@@ -5,11 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class JsonData
 {
-    public int days;
+    public string date;
     public string message;
     public JsonData(JsonData d)
     {
-        days = d.days;
+        date = d.date;
         message = d.message;
     }
 }

@@ -37,11 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-<<<<<<< HEAD
   m_Sun: {fileID: 705507994}
-=======
-  m_Sun: {fileID: 0}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -79,7 +75,6 @@ LightmapSettings:
     m_BakeBackend: 1
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
-<<<<<<< HEAD
     m_PVRSampleCount: 500
     m_PVRBounces: 2
     m_PVREnvironmentSampleCount: 500
@@ -92,20 +87,6 @@ LightmapSettings:
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
     m_PVREnvironmentMIS: 0
-=======
-    m_PVRSampleCount: 512
-    m_PVRBounces: 2
-    m_PVREnvironmentSampleCount: 256
-    m_PVREnvironmentReferencePointCount: 2048
-    m_PVRFilteringMode: 1
-    m_PVRDenoiserTypeDirect: 1
-    m_PVRDenoiserTypeIndirect: 1
-    m_PVRDenoiserTypeAO: 1
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
-    m_PVREnvironmentMIS: 1
->>>>>>> ba1e7674 ([BUG] merge error)
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -142,11 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1 &38518502
-=======
---- !u!1 &458302398
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +131,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 38518506}
   - component: {fileID: 38518505}
   - component: {fileID: 38518504}
@@ -483,10 +459,6 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
-=======
-  - component: {fileID: 458302400}
-  - component: {fileID: 458302399}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -494,21 +466,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!108 &705507994
-=======
---- !u!108 &458302399
->>>>>>> ba1e7674 ([BUG] merge error)
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 705507993}
-=======
-  m_GameObject: {fileID: 458302398}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
@@ -517,11 +481,7 @@ Light:
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
-<<<<<<< HEAD
   m_InnerSpotAngle: 21.802082
-=======
-  m_InnerSpotAngle: 21.80208
->>>>>>> ba1e7674 ([BUG] merge error)
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -557,11 +517,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-<<<<<<< HEAD
   m_Lightmapping: 1
-=======
-  m_Lightmapping: 4
->>>>>>> ba1e7674 ([BUG] merge error)
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -572,21 +528,13 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-<<<<<<< HEAD
 --- !u!4 &705507995
-=======
---- !u!4 &458302400
->>>>>>> ba1e7674 ([BUG] merge error)
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 705507993}
-=======
-  m_GameObject: {fileID: 458302398}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -594,11 +542,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
-<<<<<<< HEAD
 --- !u!1 &963194225
-=======
---- !u!1 &1928249477
->>>>>>> ba1e7674 ([BUG] merge error)
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -606,16 +550,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
-=======
-  - component: {fileID: 1928249480}
-  - component: {fileID: 1928249479}
-  - component: {fileID: 1928249478}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -623,53 +561,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!81 &963194226
-=======
---- !u!81 &1928249478
->>>>>>> ba1e7674 ([BUG] merge error)
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
 --- !u!20 &963194227
-=======
-  m_GameObject: {fileID: 1928249477}
-  m_Enabled: 1
---- !u!20 &1928249479
->>>>>>> ba1e7674 ([BUG] merge error)
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.36169454, g: 0.4558364, b: 0.6037736, a: 0}
-=======
-  m_GameObject: {fileID: 1928249477}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
->>>>>>> ba1e7674 ([BUG] merge error)
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-<<<<<<< HEAD
   m_FocalLength: 27.59811
-=======
-  m_FocalLength: 50
->>>>>>> ba1e7674 ([BUG] merge error)
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -678,11 +594,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-<<<<<<< HEAD
   field of view: 95
-=======
-  field of view: 60
->>>>>>> ba1e7674 ([BUG] merge error)
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -700,17 +612,12 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-<<<<<<< HEAD
 --- !u!4 &963194228
-=======
---- !u!4 &1928249480
->>>>>>> ba1e7674 ([BUG] merge error)
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 6, z: -8}
@@ -1128,13 +1035,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f967cda7fcf73448c98fd419376505ee, type: 3}
-=======
-  m_GameObject: {fileID: 1928249477}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
->>>>>>> ba1e7674 ([BUG] merge error)
