@@ -21,14 +21,14 @@ public class CellPhoneControl : MonoBehaviour
             batteryCharge = 0;
             usable = false;
         }
-        print("battery use " + batteryCharge);
+        Debug.Log("battery use " + batteryCharge);
 
     }
     public void PhoneCharge(int amount)
     {
         batteryCharge = batteryCharge > 100 ? batteryCharge + amount : 100;
         if (amount > 0) usable = true;
-        print("battery Charge " + batteryCharge);
+        Debug.Log("battery Charge " + batteryCharge);
     }
     void DisplayScreen()
     {

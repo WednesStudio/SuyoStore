@@ -8,7 +8,7 @@ public class ItemUse : MonoBehaviour
     [SerializeField] DataManager _dataManager;
     private PlayerTest player;
     private int[] attributes = new int[(int)Attributes.TOTAL];
-    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag="가방";
+    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭";
     public void UseItem(Item item)
     {
         Debug.Log(item.itemName);
@@ -32,9 +32,6 @@ public class ItemUse : MonoBehaviour
             case sleepingBag:
                 UseSleepingBag(item.attributes[(int)Attributes.HEAL], attributes[(int)Attributes.SATIETY]);
                 break;
-            case bag:
-                UseBag(attributes[(int)Attributes.CAPACITY]);
-                break;
             default:
                 Debug.Log("itemName doesn't exist in UseItem");
                 break;
@@ -45,15 +42,7 @@ public class ItemUse : MonoBehaviour
             Destroy(this.gameObject);
             _dataManager.AddItem(item.ID, -1);
         }
-
-    }
-    private void ChangeDate()
-    {
-
-        DateControl dateControl = FindObjectOfType<DateControl>();
-        System.DateTime result = System.DateTime.Parse(dateControl.GetDate());
-        result = result.AddDays(1);
-        dateControl.SetDate(result.ToString("yyyy/MM/dd"));
+            
     }
     private CellPhoneControl GetCellPhoneComponent()
     {
@@ -82,39 +71,33 @@ public class ItemUse : MonoBehaviour
         UseFood(satiety);
         CellPhoneControl cellphone = GetCellPhoneComponent();
         cellphone.PhoneUse();
-        ChangeDate();
+        // change date
     }
-    private void UseFood(int satiety)
+    private void UseFood(int amount)
     {
         int satietyMax = 100;
-        player.satiety = player.satiety + satiety > satietyMax ? satietyMax : player.satiety + satiety;
-        UnityEngine.Debug.Log("satiety " + player.satiety);
+        player.satiety = player.satiety + amount > satietyMax ? satietyMax : player.satiety + amount;
+        Debug.Log("satiety " + player.satiety);
     }
-    private void UseWeapon(int attack)
+    private void UseWeapon(int amount)
     {
         int attackMax = 100;
-        player.attack = player.attack + attack > attackMax ? attackMax : player.attack + attack;
-        UnityEngine.Debug.Log("attack " + player.attack);
+        player.attack = player.attack + amount > attackMax ? attackMax : player.attack + amount;
+        Debug.Log("attack " + player.attack);
     }
-    private void UseHeal(int heal)
+    private void UseHeal(int amount)
     {
         int hpMax = 100;
-        player.HP = player.HP + heal > hpMax ? hpMax : player.HP + heal;
-        UnityEngine.Debug.Log("HP " + player.HP);
+        player.HP = player.HP + amount > hpMax ? hpMax : player.HP + amount;
+        Debug.Log("HP " + player.HP);
     }
-    private void UseLight(int light)
+    private void UseLight(int amount)
     {
-        player.sightRange = light;
-        UnityEngine.Debug.Log("sightRange " + player.sightRange);
-        // 켜져 있는 상태라면 지속적으로 내구도가 감소해야 함.....
-    }
-    private void UseBag(int capacity)
-    {
-        BagControl bagControl = FindObjectOfType<BagControl>();
-        bagControl.SetCapacity(capacity);
+        player.sightRange = amount;
+        Debug.Log("sightRange " + player.sightRange);
     }
     private void GameOver()
     {
-        UnityEngine.Debug.Log("GameOver");
+        Debug.Log("GameOver");
     }
 }
