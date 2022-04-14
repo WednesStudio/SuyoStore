@@ -100,7 +100,6 @@ public class DataManager : MonoBehaviour
                     _inventoryUI.SetLightBagContents();
                     break;
                 case bag:
-                    _inventoryUI.SetBagOfBagContents();
                     maxCapacity = _totalItemList[itemID].capacity;
                     break;
                 case sleepingBag:
@@ -139,7 +138,6 @@ public class DataManager : MonoBehaviour
                 _inventoryUI.SetLightBagContents();
                 break;
             case bag:
-                _inventoryUI.SetBagOfBagContents();
                 maxCapacity = _totalItemList[itemID].capacity;
                 break;
             case sleepingBag:
@@ -181,7 +179,6 @@ public class DataManager : MonoBehaviour
                     _inventoryUI.SetLightBagContents();
                     break;
                 case bag:
-                    _inventoryUI.SetBagOfBagContents();
                     break;
                 case sleepingBag:
                     _inventoryUI.SetSleepingBagContents();
