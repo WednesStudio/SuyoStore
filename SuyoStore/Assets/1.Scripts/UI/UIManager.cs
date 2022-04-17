@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
         _characterStatusUI.SetStaminaBar(_characterInfo.CurHp, _characterInfo.MaxHp);
         _characterStatusUI.SetSatietyBar(_characterInfo.CurSatiety, _characterInfo.MaxSatiety);
         _characterStatusUI.SetFatigueBar(_characterInfo.CurFatigue, _characterInfo.MaxFatigue);
-        _characterStatusUI.SetSpeed(_characterInfo.WalkSpeed, (_characterInfo.CurSpeed - _characterInfo.WalkSpeed));
+        _characterStatusUI.SetSpeed(_characterInfo.WalkSpeed, _characterInfo.CurSpeed);
         _characterStatusUI.SetAttackPower(_characterInfo.CurAttack);
     }
     public void GameStartUI()
