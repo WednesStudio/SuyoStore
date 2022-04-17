@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Safe
+  - ZombieSpawner
+  - Zombie
   layers:
   - Default
   - TransparentFX
