@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Safe
   - Item
+  - UsedItem
   layers:
   - Default
   - TransparentFX
