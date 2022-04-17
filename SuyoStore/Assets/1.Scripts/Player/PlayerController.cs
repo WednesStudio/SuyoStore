@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public PlayerStatus pStatus;
     GameObject playerObj;
 
+    public bool isSafe = false;
+
     [SerializeField]
     private float speed = 1f; // 이동 속도
 
