@@ -8,7 +8,8 @@ public class PlayerStatus : Status
 
     public bool isGet = false;
 
-    //// �������� ���� 10, 20, 30������ �� ���ݷ��� �����ߴ��� ���� �Ǵ�
+    //// ����� ���� 10, 20, 30������ �� ��ݷ�� �����ߴ��� ���� �Ǵ�
+
     //private bool[] isReduceAttack = { false, false, false }; 
 
     private void Awake()

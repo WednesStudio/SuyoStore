@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         hAxis = Input.GetAxisRaw("Horizontal"); // 방향키 좌우
         vAxis = Input.GetAxisRaw("Vertical"); // 방향키 위아래
 
-        if (Input.GetButtonUp("Sit"))
+        if (Input.GetKeyUp(KeyCode.LeftAlt) || Input.GetKeyUp(KeyCode.RightAlt))
         {
             SitInput();
         }
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         state = PlayerState.Walk;
         isMove = true;
 
-        if (Input.GetButton("Run"))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
         {
             state = PlayerState.Run;
             /* 애니메이션 : Run */
