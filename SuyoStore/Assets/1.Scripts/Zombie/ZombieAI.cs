@@ -35,7 +35,7 @@ public class ZombieAI : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        Move();
+        //Move();
     }
 
     //Player Tag를 가진 객체에 닿았을 떄
@@ -93,13 +93,13 @@ public class ZombieAI : MonoBehaviour
     void Attack()
     {
         //Player 공격과 감염
-        target.GetComponent<PlayerController_>().hp -= power;
+        target.GetComponent<PlayerController>().pStatus.CurHp -= power;
 
         if (Random.Range(1, 101) <= infection)
         {
             Debug.Log("감염되었습니다");
         }
-        Debug.Log(target.GetComponent<PlayerController_>().hp);
+        Debug.Log(target.GetComponent<PlayerController>().pStatus.CurHp);
     }
 
     void Die()
