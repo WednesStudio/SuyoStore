@@ -63,7 +63,7 @@ public class InventoryUI : MonoBehaviour
     public void OnCheckItemUseWindow(string itemName)
     {
         _checkUseItemWindow.SetActive(true);
-        _checkUseItemWindow.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Do you want to use " + itemName;
+        _checkUseItemWindow.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = itemName + " 을 / (를) 사용하시겠습니까?";
         _checkUseItemWindow.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => UseItem(itemName));
     }
 

@@ -111,6 +111,7 @@ public class DataManager : MonoBehaviour
                     Debug.Log("item Category doesn't exist!");
                     break;
             }
+            _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(capacity, maxCapacity);
         }
 
