@@ -133,8 +133,12 @@ public class ItemUse : MonoBehaviour
     }
     private void Update()
     {
-        if (lightControl.LightDurability())
-            DestroyObject(lightControl.GetID());
+        if(lightControl != null)
+        {
+            if (lightControl.LightDurability())
+                DestroyObject(lightControl.GetID());
+        }
+        
     }
     private void GameOver()
     {
