@@ -8,7 +8,8 @@ public class PlayerStatus : Status
 
     public bool isGet = false;
 
-    //// Æ÷¸¸°¨ÀÌ °¢°¢ 10, 20, 30ÀÌÇÏÀÏ ¶§ °ø°İ·ÂÀ» °¨¼ÒÇß´ÂÁö ¿©ºÎ ÆÇ´Ü
+    //// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 10, 20, 30ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½İ·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½
+
     //private bool[] isReduceAttack = { false, false, false }; 
 
     private void Awake()
@@ -44,11 +45,11 @@ public class PlayerStatus : Status
 
         // Time related status
         time = 100;
-        hungerTime = 60; // 60ÃÊ
-        hungerDieTime = 120; // 120ÃÊ
+        hungerTime = 60; // 60ï¿½ï¿½
+        hungerDieTime = 120; // 120ï¿½ï¿½
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 1; // 1ÃÊ
+        staminaTime = 1; // 1ï¿½ï¿½
         useStaminaTime = staminaTime;
     }
 
@@ -77,12 +78,12 @@ public class PlayerStatus : Status
         }
     }
 
-    // --³»¿ë Ãß°¡ ÇÊ¿ä
+    // --ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Ê¿ï¿½
     public void HpRecovery()
     {
-        // È¸º¹
-        // Ä¡·áÁ¦ ¾ÆÀÌÅÛ »ç¿ë
-        // °¡±¸, Ä§³¶ ¾ÆÀÌÅÛ »ç¿ë
+        // íšŒë³µ
+        // ì¹˜ë£Œì œ ì•„ì´í…œ ì‚¬ìš©
+        // ê°€êµ¬, ì¹¨ë‚­ ì•„ì´í…œ ì‚¬ìš©
     }
 
 
@@ -97,13 +98,13 @@ public class PlayerStatus : Status
             UseHungerDieTime -= Time.deltaTime;
             if(useHungerDieTime <= 0)
             {
-                Debug.Log("[GAME OVER] Player is Hungry¤Ğ¤Ğ¤Ğ¤Ğ");
+                Debug.Log("[GAME OVER] Player is Hungryï¿½Ğ¤Ğ¤Ğ¤ï¿½");
                 Die();
             }
         }
         GetBackTime(UseHungerDieTime, hungerDieTime);
 
-        // ºĞ´ç 2°¨¼Ò
+        // ï¿½Ğ´ï¿½ 2ï¿½ï¿½ï¿½ï¿½
         UseHungerTime -= Time.deltaTime;
         if (useHungerTime <= 0)
         {
@@ -115,11 +116,11 @@ public class PlayerStatus : Status
 
     }
 
-    // --³»¿ë Ãß°¡ ÇÊ¿ä
+    // --ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Ê¿ï¿½
     public void RecoverySatiety()
     {
-        // ¾ÆÀÌÅÛ »ç¿ë
-        // ÇÏ·ç ½ºÅµ
+        // ì•„ì´í…œ ì‚¬ìš©
+        // í•˜ë£¨ ìŠ¤í‚µ
     }
 
 
@@ -131,8 +132,8 @@ public class PlayerStatus : Status
         CurFatigue -= _decreaseValue;
         CurFatigue += _increaseValue;
 
-        // ÆÄ¹Ö : Fatigue--;
-        // °æ°İ : Fatigue -= 2;
+        // ï¿½Ä¹ï¿½ : Fatigue--;
+        // ï¿½ï¿½ï¿½ : Fatigue -= 2;
     }
 
     /// <summary> Attack Status </summary>
@@ -143,7 +144,7 @@ public class PlayerStatus : Status
 
         if (curAttack <= 0)
         {
-            // °ø°İ ¸øÇÔ
+            // ê³µê²© ëª»í•¨
         }
 
         if (curSatiety <= 10)
@@ -169,7 +170,7 @@ public class PlayerStatus : Status
     /// <summary> Speed Status </summary>
     public void SpeedModifier(int _carryingBack, int _decreaseValue)
     {
-        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% ÃÊ°ú·®
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% ï¿½Ê°ï¿½ï¿½ï¿½
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
 
         if (curCarryingBag >= maxCarryingBag)
@@ -188,12 +189,12 @@ public class PlayerStatus : Status
     {
         if(curSatiety <= 0)
         {
-            // °È±â »óÅÂ·Î ÀüÈ¯
+            // ê±·ê¸° ìƒíƒœë¡œ ì „í™˜
         }
 
         if (playerController.isMove == true)
         {
-            //ÀÏÁ¤½Ã°£¸¶´Ù
+            //ì¼ì •ì‹œê°„ë§ˆë‹¤
             curStamina--;
         }
         else curStamina = stamina;

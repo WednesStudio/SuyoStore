@@ -67,7 +67,6 @@ public class DataManager : MonoBehaviour
 
     public void AddItem(int itemID, int count = 1)
     {
-        print("Add item");
         int capacity = _totalItemList[itemID].weight;
         //가방 설정
         if(_inventoryUI.GetCurrentCapacity() + capacity > maxCapacity)
@@ -100,7 +99,6 @@ public class DataManager : MonoBehaviour
                     _inventoryUI.SetLightBagContents();
                     break;
                 case bag:
-                    _inventoryUI.SetBagOfBagContents();
                     maxCapacity = _totalItemList[itemID].capacity;
                     break;
                 case sleepingBag:
@@ -119,14 +117,12 @@ public class DataManager : MonoBehaviour
         else
         {
             MyItems.Add(itemID, count);
-            print("testsets " + MyItems[itemID]);
             switch (category)
             {
             case battery:
                 _inventoryUI.SetBatteryBagContents();
                 break;
             case food:
-                print("food");
                 _inventoryUI.SetFoodBagContents();
                 break;
             case weapon:
@@ -139,7 +135,6 @@ public class DataManager : MonoBehaviour
                 _inventoryUI.SetLightBagContents();
                 break;
             case bag:
-                _inventoryUI.SetBagOfBagContents();
                 maxCapacity = _totalItemList[itemID].capacity;
                 break;
             case sleepingBag:
@@ -181,7 +176,6 @@ public class DataManager : MonoBehaviour
                     _inventoryUI.SetLightBagContents();
                     break;
                 case bag:
-                    _inventoryUI.SetBagOfBagContents();
                     break;
                 case sleepingBag:
                     _inventoryUI.SetSleepingBagContents();
