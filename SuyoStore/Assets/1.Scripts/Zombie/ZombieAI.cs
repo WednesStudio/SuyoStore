@@ -51,8 +51,8 @@ public class ZombieAI : MonoBehaviour
     void Move()
     {
         //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 공격 당해서 hp가 깍였을 때 추격
-        if ((!target.GetComponent<ZPlayerController>().isSafe) 
-            && ((Vector3.Distance(target.transform.position, transform.position) < detection) 
+        if ((!target.GetComponent<PlayerController>().isSafe)
+            && ((Vector3.Distance(target.transform.position, transform.position) < detection)
             || (curHp < hp)))
         {
             isDetect = true;
@@ -83,7 +83,7 @@ public class ZombieAI : MonoBehaviour
         //range 범위 안에서 움직임
         float randomX = Random.Range(0, 2 * range) - range;
         float randomY = Random.Range(0, 2 * range) - range;
-        Vector3 randomPos = new Vector3 (randomX, 0.5f, randomY);
+        Vector3 randomPos = new Vector3(randomX, 0.5f, randomY);
         transform.LookAt(randomPos);
         isRandom = true;
         yield return new WaitForSeconds(Random.Range(0.5f, 1f));
@@ -93,20 +93,20 @@ public class ZombieAI : MonoBehaviour
     void Attack()
     {
         //Player 공격과 감염
-        target.GetComponent<PlayerController_>().hp -= power;
+        target.GetComponent<PlayerController>().pStatus.CurHp -= power;
 
-        if(Random.Range(1, 101) <= infection)
+        if (Random.Range(1, 101) <= infection)
         {
             Debug.Log("감염되었습니다");
         }
-        Debug.Log(target.GetComponent<PlayerController_>().hp);
+        Debug.Log(target.GetComponent<PlayerController>().pStatus.CurHp);
     }
 
     void Die()
     {
-        Destroy (gameObject);
+        Destroy(gameObject);
     }
-    
+
     //피격
     void Hit()
     {

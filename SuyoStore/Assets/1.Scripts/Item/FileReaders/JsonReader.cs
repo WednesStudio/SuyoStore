@@ -9,8 +9,7 @@ public class JsonReader
 {
     public static List<Dictionary<string, object>> Read(string file)
     {
-
-        TextAsset textJSON = Resources.Load("SampleText") as TextAsset;
+        TextAsset textJSON = Resources.Load(file) as TextAsset;
         JsonList infoList = new JsonList();
         infoList = JsonUtility.FromJson<JsonList>(textJSON.text);
 

@@ -14,10 +14,12 @@ namespace CellphoneUI
     }
     public class CellPhoneMsgs : MonoBehaviour
     {
+        public GameObject gameUI;
         public GameObject canvas;
         public Text infoText;
         public Button closeUIButton;
         private LoadJson list;
+        private DateControl dateControl;
 
         Messages msg = new Messages();
 
@@ -33,6 +35,7 @@ namespace CellphoneUI
         void Start()
         {
             list = FindObjectOfType<LoadJson>();
+            dateControl = FindObjectOfType<DateControl>();
         }
         public CellPhoneMsgs SetMsg(string message)
         {
@@ -40,24 +43,26 @@ namespace CellphoneUI
             return Instance;
         }
 
-        public void Show(string date)
+        public void Show()
         {
             for (int i = 0; i < list.messageDatabase.Count; i++)
             {
-                if (date == list.messageDatabase[i].date)
+                if (dateControl.GetDays() == list.messageDatabase[i].days)
                 {
                     SetMsg(list.messageDatabase[i].message);
                     infoText.text = msg.message;
                     break;
                 }
             }
+            gameUI.SetActive(false);
             canvas.SetActive(true);
         }
         public void Hide()
         {
+            gameUI.SetActive(true);
             canvas.SetActive(false);
             // reset msg
-            msg = new Messages();
+            // msg = new Messages();
         }
     }
 }
