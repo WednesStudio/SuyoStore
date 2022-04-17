@@ -8,6 +8,10 @@ public class PlayerStatus : Status
 
     public bool isGet = false;
 
+    //// ����� ���� 10, 20, 30������ �� ��ݷ�� �����ߴ��� ���� �Ǵ�
+
+    //private bool[] isReduceAttack = { false, false, false }; 
+
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -41,20 +45,14 @@ public class PlayerStatus : Status
 
         // Time related status
         time = 100;
-        hungerTime = 60; // 60 second
-        hungerDieTime = 120; // 120 second
+        hungerTime = 60; // 60��
+        hungerDieTime = 120; // 120��
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 1; // 1 second
+        staminaTime = 1; // 1��
         useStaminaTime = staminaTime;
     }
 
-    private void Update()
-    {
-        HpModifier();
-        SatietyModifier();
-        StaminaModifier();
-    }
     public virtual void Die()
     {
         Debug.Log(transform.name + " died.");
@@ -62,7 +60,7 @@ public class PlayerStatus : Status
     }
 
     /// <summary> Hp Status </summary>
-    public void HpModifier()
+    public void HpModifier(bool isAttack, int zomPower)
     {
         RemainStatusValue(curHp, maxHp);
 
@@ -72,9 +70,15 @@ public class PlayerStatus : Status
             Debug.Log("[GAME OVER] HP is ZERO");
             Die();
         }
+
+        if (isAttack)
+        {
+            curHp -= zomPower;
+            Debug.Log("[Status System] HP : " + curHp);
+        }
     }
 
-    // -- Require more with Item Script
+    // --���� �߰� �ʿ�
     public void HpRecovery()
     {
         // 회복
@@ -100,7 +104,7 @@ public class PlayerStatus : Status
         }
         GetBackTime(UseHungerDieTime, hungerDieTime);
 
-        // Change Statiety(hunger) by Time
+        // �д� 2����
         UseHungerTime -= Time.deltaTime;
         if (useHungerTime <= 0)
         {
@@ -112,7 +116,7 @@ public class PlayerStatus : Status
 
     }
 
-    // -- Require more with Item Script
+    // --���� �߰� �ʿ�
     public void RecoverySatiety()
     {
         // 아이템 사용
@@ -183,15 +187,16 @@ public class PlayerStatus : Status
     /// <summary> Stamina Status </summary>
     public void StaminaModifier()
     {
+        if(curSatiety <= 0)
+        {
+            // 걷기 상태로 전환
+        }
+
         if (playerController.isMove == true)
         {
-            UseStaminaTime -= Time.deltaTime;
-            if( UseStaminaTime <= 0)
-            {
-                CurStamina--;
-                GetBackTime(UseStaminaTime, staminaTime);
-            }
+            //일정시간마다
+            curStamina--;
         }
-        else CurStamina = stamina;
+        else curStamina = stamina;
     }
 }
