@@ -8,10 +8,6 @@ public class PlayerStatus : Status
 
     public bool isGet = false;
 
-    //// ����� ���� 10, 20, 30������ �� ��ݷ�� �����ߴ��� ���� �Ǵ�
-
-    //private bool[] isReduceAttack = { false, false, false }; 
-
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -53,10 +49,13 @@ public class PlayerStatus : Status
         useStaminaTime = staminaTime;
     }
 
+    private void Update()
+    {
+        SatietyModifier();
+    }
     public virtual void Die()
     {
         Debug.Log(transform.name + " died.");
-        
     }
 
     /// <summary> Hp Status </summary>
@@ -67,8 +66,8 @@ public class PlayerStatus : Status
         // GameOver
         if (curHp <= 0)
         {
-            Debug.Log("[GAME OVER] HP is ZERO");
             Die();
+            Debug.Log("[GAME OVER] HP is ZERO");
         }
 
         if (isAttack)
@@ -78,7 +77,6 @@ public class PlayerStatus : Status
         }
     }
 
-    // --���� �߰� �ʿ�
     public void HpRecovery()
     {
         // 회복
@@ -90,7 +88,7 @@ public class PlayerStatus : Status
     /// <summary> Satiety Status </summary>
     public void SatietyModifier()
     {
-        RemainStatusValue(curSatiety, maxSatiety);
+        CurSatiety = RemainStatusValue(CurSatiety, MaxSatiety);
 
         // GameOver
         if (curSatiety <= 0)
@@ -98,25 +96,24 @@ public class PlayerStatus : Status
             UseHungerDieTime -= Time.deltaTime;
             if(useHungerDieTime <= 0)
             {
-                Debug.Log("[GAME OVER] Player is Hungry�ФФФ�");
                 Die();
+                Debug.Log("[GAME OVER] Player is Hungry T^T");
+
+                UseHungerDieTime = GetBackTime(UseHungerDieTime, hungerDieTime);
             }
         }
-        GetBackTime(UseHungerDieTime, hungerDieTime);
 
-        // �д� 2����
+
         UseHungerTime -= Time.deltaTime;
         if (useHungerTime <= 0)
         {
             CurSatiety -= 2;
             Debug.Log("[Status System] Satiety : " + curSatiety);
+
+            UseHungerTime = GetBackTime(UseHungerTime, hungerDieTime);
         }
-        GetBackTime(UseHungerTime, hungerTime);
-
-
     }
-
-    // --���� �߰� �ʿ�
+    
     public void RecoverySatiety()
     {
         // 아이템 사용
@@ -127,13 +124,13 @@ public class PlayerStatus : Status
     /// <summary> Fatigue Status </summary>
     public void FatigueModifier(int _decreaseValue, int _increaseValue)
     {
-        RemainStatusValue(CurFatigue, MaxFatigue);
+        CurFatigue = RemainStatusValue(CurFatigue, MaxFatigue);
 
         CurFatigue -= _decreaseValue;
         CurFatigue += _increaseValue;
 
-        // �Ĺ� : Fatigue--;
-        // ��� : Fatigue -= 2;
+        // Item Farming : Fatigue--;
+        // Attack Zombie : Fatigue -= 2;
     }
 
     /// <summary> Attack Status </summary>
@@ -170,7 +167,7 @@ public class PlayerStatus : Status
     /// <summary> Speed Status </summary>
     public void SpeedModifier(int _carryingBack, int _decreaseValue)
     {
-        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% �ʰ���
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% over weight
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
 
         if (curCarryingBag >= maxCarryingBag)
@@ -199,4 +196,5 @@ public class PlayerStatus : Status
         }
         else curStamina = stamina;
     }
+
 }
