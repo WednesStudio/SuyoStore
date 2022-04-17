@@ -8,7 +8,7 @@ public class PlayerStatus : Status
 
     public bool isGet = false;
 
-    //// 포만감이 각가 10, 20, 30이하일 때 공격력을 감소했는지 여부 판단
+    //// 포만감이 각각 10, 20, 30이하일 때 공격력을 감소했는지 여부 판단
     //private bool[] isReduceAttack = { false, false, false }; 
 
     private void Awake()
