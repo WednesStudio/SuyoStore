@@ -7,14 +7,13 @@ public class ItemUse : MonoBehaviour
 {
     [SerializeField] DataManager _dataManager;
     private PlayerTest player;
-    private int[] attributes = new int[(int)Attributes.TOTAL];
-    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag="가방";
+    private LightControl lightControl;
+    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag = "가방";
     private Dictionary<int, Item> MyUsedItem = new Dictionary<int, Item>();
-
     public void UseItem(int itemID)
     {
         Item item;
-        if(MyUsedItem.ContainsKey(itemID))
+        if (MyUsedItem.ContainsKey(itemID))
         {
             item = MyUsedItem[itemID];
         }
@@ -23,50 +22,48 @@ public class ItemUse : MonoBehaviour
             item = _dataManager.SetNewItem(itemID);
             MyUsedItem.Add(itemID, item);
         }
-        
-        switch (item.itemName)
+        switch (item.GetItemName())
         {
             case battery:
-                UseBattery(item.attributes[(int)Attributes.BATTERYCHARGE]);
+                UseBattery(item.GetBATTERYCHARGE());
                 break;
             case food:
-                UseFood(item.attributes[(int)Attributes.SATIETY]);
+                UseFood(item.GetSATIETY());
                 break;
             case weapon:
-                UseWeapon(item.attributes[(int)Attributes.ATTACK]);
+                UseWeapon(item.GetATTACK());
                 break;
             case pill:
-                UseHeal(item.attributes[(int)Attributes.HEAL]);
+                UseHeal(item.GetHEAL());
                 break;
             case flashLight:
-                UseLight(item.attributes[(int)Attributes.SIGHTRANGE]);
+                UseLight(item, itemID);
                 break;
             case sleepingBag:
-                UseSleepingBag(item.attributes[(int)Attributes.HEAL], attributes[(int)Attributes.SATIETY]);
+                UseSleepingBag(item);
                 break;
             case bag:
-                UseBag(attributes[(int)Attributes.CAPACITY]);
                 break;
             default:
                 Debug.Log("itemName doesn't exist in UseItem");
                 break;
         }
-        item.attributes[(int)Attributes.DURABILITY] -= 1;
-        if (item.attributes[(int)Attributes.DURABILITY] == 0)
+        item.SetDURABILITY(-1);
+        if (item.GetDURABILITY() == 0)
+            DestroyObject(itemID);
+    }
+    private void DestroyObject(int itemID)
+    {
+        GameObject[] myItems = GameObject.FindGameObjectsWithTag("UsedItem");
+        foreach (GameObject i in myItems)
         {
-            //Destroy(this.gameObject);
-            GameObject[] myItems = GameObject.FindGameObjectsWithTag("UsedItem");
-            foreach(GameObject i in myItems)
+            if (i.name == _dataManager.GetItemName(itemID))
             {
-                if(i.name == _dataManager.GetItemName(itemID))
-                {
-                    Destroy(i);
-                    _dataManager.AddItem(item.ID, -1);
-                    MyUsedItem.Remove(itemID);
-                }
+                Destroy(i);
+                _dataManager.AddItem(itemID, -1);
+                MyUsedItem.Remove(itemID);
             }
         }
-
     }
     private void ChangeDate()
     {
@@ -84,23 +81,23 @@ public class ItemUse : MonoBehaviour
     {
         return GameObject.Find("player").GetComponent<PlayerTest>();
     }
-    private void UseBattery(int amount)
+    private void UseBattery(int charge)
     {
         CellPhoneControl cellphone = GetCellPhoneComponent();
-        cellphone.PhoneCharge(amount);
+        cellphone.PhoneCharge(charge);
     }
-    private void UseSleepingBag(int heal, int satiety)
+    private void UseSleepingBag(Item item)
     {
         int rnd = Random.Range(0, 100);
-        int rate = (attributes[(int)Attributes.DEATHRATE]);
+        int rate = item.GetDEATHRATE();
         Debug.Log("random " + rnd + " " + rate);
         if (rnd < rate)
         {
             GameOver();
             return;
         }
-        UseHeal(heal);
-        UseFood(satiety);
+        UseHeal(item.GetHEAL());
+        UseFood(item.GetSATIETY());
         CellPhoneControl cellphone = GetCellPhoneComponent();
         cellphone.PhoneUse();
         ChangeDate();
@@ -116,6 +113,7 @@ public class ItemUse : MonoBehaviour
         int attackMax = 100;
         player.attack = player.attack + attack > attackMax ? attackMax : player.attack + attack;
         UnityEngine.Debug.Log("attack " + player.attack);
+        // 휘두를 때마다 내구도 마이나스
     }
     private void UseHeal(int heal)
     {
@@ -123,16 +121,20 @@ public class ItemUse : MonoBehaviour
         player.HP = player.HP + heal > hpMax ? hpMax : player.HP + heal;
         UnityEngine.Debug.Log("HP " + player.HP);
     }
-    private void UseLight(int light)
+    private void UseLight(Item item, int itemID)
     {
-        player.sightRange = light;
-        UnityEngine.Debug.Log("sightRange " + player.sightRange);
+        print("uselight");
+        // player.sightRange = item.GetSIGHTRANGE();
+        // UnityEngine.Debug.Log("sightRange " + player.sightRange);
         // 켜져 있는 상태라면 지속적으로 내구도가 감소해야 함.....
+        // lightControl = new LightControl(item.GetDURABILITY(), itemID);
+        lightControl = new LightControl(2, itemID);
+
     }
-    private void UseBag(int capacity)
+    private void Update()
     {
-        BagControl bagControl = FindObjectOfType<BagControl>();
-        bagControl.SetCapacity(capacity);
+        if (lightControl.LightDurability())
+            DestroyObject(lightControl.GetID());
     }
     private void GameOver()
     {
