@@ -164,7 +164,6 @@ public class InventoryUI : MonoBehaviour
 
     public void SetFoodBagContents()
     {
-        print("SetFood inventory");
         if (_foodContents == null) _foodContents = _foodContentsParent.GetComponentsInChildren<BagItems>();
 
         int i = 0;

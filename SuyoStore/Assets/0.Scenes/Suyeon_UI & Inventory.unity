@@ -64544,6 +64544,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Debuff
       objectReference: {fileID: 0}
+    - target: {fileID: 8323219385421324175, guid: ba59a302e83586a42bd370709805986c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba59a302e83586a42bd370709805986c, type: 3}
 --- !u!224 &4153004948093294117 stripped
