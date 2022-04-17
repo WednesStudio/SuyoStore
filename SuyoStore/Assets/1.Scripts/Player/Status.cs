@@ -5,6 +5,7 @@ using UnityEngine;
 public class Status : MonoBehaviour
 {
     // Speed
+    [SerializeField]
     protected float curSpeed;
     protected float walkSpeed; // 기본 이동 속도
     protected float runAddSpeed; // 달리기 상태일 때 추가될 이동 속도
@@ -16,8 +17,11 @@ public class Status : MonoBehaviour
     protected int maxFatigue; // 최대 피로도
 
     // Current Status
+    [SerializeField]
     protected int curHp; // 현재 체력
+    [SerializeField]
     protected int curSatiety; // 현재 포만감
+    [SerializeField]
     protected int curFatigue; // 현재 피로도
 
     // Ability
@@ -26,17 +30,23 @@ public class Status : MonoBehaviour
     protected int stamina; // 기본 지구력
 
     // Current Ability
+    [SerializeField]
     protected int curCarryingBag; // 기본 적재량
+    [SerializeField]
     protected int curAttack; // 현재 공격력
+    [SerializeField]
     protected int curStamina; // 현재 지구력
 
     // status와 관련된 시간
     protected float time; // 실시간
     protected float hungerTime; // 포만감이 감소하는 일정시간
     protected float hungerDieTime; // 포만감이 0이 지속되면 사망하는 시간
+    [SerializeField]
     protected float useHungerTime;
+    [SerializeField]
     protected float useHungerDieTime;
     protected float staminaTime; // 스테미나가 감소하는 일정시간
+    [SerializeField]
     protected float useStaminaTime;
 
 
@@ -104,7 +114,7 @@ public class Status : MonoBehaviour
         hungerDieTime = 120; // 120초
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 1; // 1초
+        staminaTime = 2; // 2초
         useStaminaTime = staminaTime;
     }
 
@@ -120,7 +130,7 @@ public class Status : MonoBehaviour
         if(_useTime <= 0)
         {
             _useTime = _time;
-            Debug.Log("[Time System] useTime is getting back");
+            Debug.Log("[Time System] useTime is getting back : " + _useTime);
         }
     }
 }

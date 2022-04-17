@@ -9,17 +9,14 @@ public class PlayerController : MonoBehaviour
     public bool isSafe = false;
 
     [SerializeField]
-    private float speed = 1f; // 이동 속도
-
-    [SerializeField]
     private float rotationSpeed = 360f; // 회전(방향전환) 속도
     private Vector3 moveDirection; // 이동 방향
     float hAxis;
     float vAxis;
 
     // 액션
-    enum PlayerState{ Idle, Walk, Run, Sit, Attack, Lay, Dead };
-    PlayerState state = PlayerState.Idle;
+    public enum PlayerState{ Idle, Walk, Run, Sit, Attack, Lay, Dead };
+    public PlayerState state = PlayerState.Idle;
     Animator animator;
 
     public bool isMove = false;
@@ -37,14 +34,25 @@ public class PlayerController : MonoBehaviour
     {
         GetInput();
         Move();
+        Idle();
     }
 
     void ChangeSpeed()
     {
-        if (state == PlayerState.Idle || state == PlayerState.Walk) speed = 0;
-        if (state == PlayerState.Walk) speed = pStatus.WalkSpeed;
-        if (state == PlayerState.Run) speed = pStatus.WalkSpeed + pStatus.RunAddSpeed;
-        if (state == PlayerState.Sit) speed = pStatus.SitSpeed;
+        if (state == PlayerState.Idle || state == PlayerState.Walk) pStatus.CurSpeed = 0;
+        if (state == PlayerState.Walk) pStatus.CurSpeed = pStatus.WalkSpeed;
+        if (state == PlayerState.Run) pStatus.CurSpeed = pStatus.WalkSpeed + pStatus.RunAddSpeed;
+        if (state == PlayerState.Sit) pStatus.CurSpeed = pStatus.SitSpeed;
+    }
+
+    void Idle()
+    {
+        if (pStatus.CurSatiety <= 0)
+        {
+            // 걷기 상태로 전환
+            state = PlayerState.Idle;
+        }
+
     }
 
     void GetInput()
@@ -70,11 +78,11 @@ public class PlayerController : MonoBehaviour
         state = PlayerState.Walk;
         isMove = true;
 
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             state = PlayerState.Run;
             /* 애니메이션 : Run */
-            Debug.Log("[Anim] Run");
+             Debug.Log("[Player State] Player is Running");
         }
     }
 
@@ -87,21 +95,21 @@ public class PlayerController : MonoBehaviour
                 isSit = true;
                 state = PlayerState.Sit;
                 /* 애니메이션 : Sit */
-                Debug.Log("Player is Sitting");
-                Debug.Log("[Anim] Sit");
+                Debug.Log("[Player State] Player is Sitting");
             }
             else
             {
                 // Release a sit state
-                Debug.Log("Player is Standing Up");
+                Debug.Log("[Player State] Player is Standing Up");
                 isSit = false;
             }
         }
         else
         {
-            Debug.Log("Player can't Sit");
+            Debug.Log("[Player State] Player can't Sit");
             isSit = false;
         }
+        ChangeSpeed();
     }
 
     void Move()
@@ -109,8 +117,8 @@ public class PlayerController : MonoBehaviour
         moveDirection = new Vector3(hAxis, 0, vAxis).normalized;
         moveDirection.Normalize();
 
-        float magnitud = Mathf.Clamp01(moveDirection.magnitude) * speed;
-        characterController.SimpleMove(moveDirection * speed);
+        float magnitud = Mathf.Clamp01(moveDirection.magnitude) * pStatus.CurSpeed;
+        characterController.SimpleMove(moveDirection * pStatus.CurSpeed);
 
 
         // 움직임 여부 체크
