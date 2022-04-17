@@ -7,18 +7,17 @@ public class ItemControl : MonoBehaviour
 {
     [SerializeField] DataManager _dataManager;
     private LoadExcel _database;
-    private PlayerTest player;
     [System.NonSerialized]
     public Item item;
     private string itemName;
     private int itemID;
     private int[] attributes = new int[(int)Attributes.TOTAL];
+    private char[] separatorChar = { '(', ' ' };
 
     private void Start()
     {
-        //player = GetPlayerComponent();
         _database = _dataManager.GetComponent<LoadExcel>();
-        string name = this.name.Split()[0];
+        string name = this.name.Split(separatorChar)[0];
         for (int i = 0; i < _database.itemDatabase.Count; i++)
         {
             if (name == _database.itemDatabase[i].fileName)
@@ -39,7 +38,6 @@ public class ItemControl : MonoBehaviour
         }
         item = new Item(itemName, attributes);
     }
-
     public void GetThisItem()
     {
         GameManager.GM.AddItem(itemID, 1);

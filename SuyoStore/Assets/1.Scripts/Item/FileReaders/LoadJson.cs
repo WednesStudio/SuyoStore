@@ -7,7 +7,11 @@ public class LoadJson : MonoBehaviour
     private JsonData blankData;
     public List<JsonData> messageDatabase = new List<JsonData>();
     private string[] routes = { "route1.json", "route2.json", "route3.json" };
-    private string directory = "Data/";
+    // private string directory = "Data/";
+    private void Awake()
+    {
+        LoadMsgData();
+    }
     public void LoadMsgData()
     {
         // int rnd = Random.Range(0, 3);
