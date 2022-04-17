@@ -66,7 +66,7 @@ public class Status : MonoBehaviour
     public int CurSatiety { get { return curSatiety; } set { curSatiety = value; } }
     public int CurFatigue { get { return curFatigue; } set { curFatigue = value; } }
 
-    /// [Property]  Ability
+    /// [Property] Ability
     public int MaxCarryingBag { get { return maxCarryingBag; } set { maxCarryingBag = value; } }
     public int Attack { get { return Attack; } set { Attack = value; } }
     public int Stamina { get { return Stamina; } set { Stamina = value; } }
@@ -119,18 +119,21 @@ public class Status : MonoBehaviour
     }
 
     // 현재 상태가 Max나 0을 넘지 않게 --test 필요
-    protected void RemainStatusValue(int curVal, int maxVal)
+    protected int RemainStatusValue(int curVal, int maxVal)
     {
         if (curVal >= maxVal) curVal = maxVal;
         if (curVal <= 0) curVal = 0;
+        return curVal;
     }
 
-    protected void GetBackTime(float _useTime, float _time)
+    protected float GetBackTime(float _useTime, float _time)
     {
-        if(_useTime <= 0)
+        if (_useTime <= 0)
         {
             _useTime = _time;
             Debug.Log("[Time System] useTime is getting back");
         }
+
+        return _useTime;
     }
 }
