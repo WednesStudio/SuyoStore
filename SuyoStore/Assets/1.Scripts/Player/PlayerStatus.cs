@@ -6,38 +6,9 @@ public class PlayerStatus : Status
 {
     PlayerController playerController;
 
-<<<<<<< HEAD
-    // 스피드
-    public float moveSpeed = 10.0f; // 기본 상태일 때 이동 속도
-    public float runSpeed = 5.0f; // 달리기 상태일 때 이동 속도
-    public float sitSpeed = 3.0f; // 앉기 상태일 떄 이동 속도
-
-    // 스테이터스
-    public int maxHp = 100; // 최대 체력
-    public int maxSatiety = 100; // 최대 포만감
-    public int maxFatique = 100; // 최대 피로도
-
-    public int curHp = 10; // 현재 체력
-    public int curSatiety = 50; // 현재 포만감
-    public int curFatigue = 50; // 현재 피로도
-
-    // 능력치
-    public int maxCarryingBag = 30; // 기본 적재량
-    public int attack = 10; // 기본 공격력
-    public int stamina = 100; // 기본 지구력
-
-    public int curCarryingBag = 0; // 기본 적재량
-    public int curAttack = 10; // 현재 공격력
-    public int curStamina = 100; // 현재 지구력
-
-    // status와 관련된 시간
-    private int time = 100; // 실시간
-    private int hungerTime = 10; // 포만감이 감소하는 일정시간
-=======
     public bool isGet = false;
->>>>>>> main
 
-    //// �������� ���� 10, 20, 30������ �� ���ݷ��� �����ߴ��� ���� �Ǵ�
+    //// �������� ���� 10, 20, 30������ �� ���ݷ��� �����ߴ��� ���� �Ǵ�
     //private bool[] isReduceAttack = { false, false, false }; 
 
     private void Awake()
@@ -45,12 +16,7 @@ public class PlayerStatus : Status
         playerController = GetComponent<PlayerController>();
     }
 
-<<<<<<< HEAD
-    // 현재 상태가 Max를 넘지 않게
-    void RemainStatusValue(int curVal, int maxVal)
-=======
     private void Start()
->>>>>>> main
     {
         // Status Initial Value
         // Speed
@@ -78,11 +44,11 @@ public class PlayerStatus : Status
 
         // Time related status
         time = 100;
-        hungerTime = 60; // 60��
-        hungerDieTime = 120; // 120��
+        hungerTime = 60; // 60��
+        hungerDieTime = 120; // 120��
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 1; // 1��
+        staminaTime = 1; // 1��
         useStaminaTime = staminaTime;
     }
 
@@ -104,19 +70,14 @@ public class PlayerStatus : Status
             Die();
         }
 
-<<<<<<< HEAD
-        // 게임 오버 기준
-        if (curHp <= 0)
-=======
         if (isAttack)
->>>>>>> main
         {
             curHp -= zomPower;
             Debug.Log("[Status System] HP : " + curHp);
         }
     }
 
-    // --���� �߰� �ʿ�
+    // --���� �߰� �ʿ�
     public void HpRecovery()
     {
         // 회복
@@ -133,28 +94,18 @@ public class PlayerStatus : Status
         // GameOver
         if (curSatiety <= 0)
         {
-<<<<<<< HEAD
-            /*일정 시간 후*/
-            Die();
-=======
             UseHungerDieTime -= Time.deltaTime;
             if(useHungerDieTime <= 0)
             {
-                Debug.Log("[GAME OVER] Player is Hungry�ФФФ�");
+                Debug.Log("[GAME OVER] Player is Hungry�ФФФ�");
                 Die();
             }
->>>>>>> main
         }
         GetBackTime(UseHungerDieTime, hungerDieTime);
 
-<<<<<<< HEAD
-        // 시간에 따라 감소 -- if문 조건 수정 필요
-        if(time % hungerTime == 0)
-=======
-        // �д� 2����
+        // �д� 2����
         UseHungerTime -= Time.deltaTime;
         if (useHungerTime <= 0)
->>>>>>> main
         {
             CurSatiety -= 2;
             Debug.Log("[Status System] Satiety : " + curSatiety);
@@ -164,7 +115,7 @@ public class PlayerStatus : Status
 
     }
 
-    // --���� �߰� �ʿ�
+    // --���� �߰� �ʿ�
     public void RecoverySatiety()
     {
         // 아이템 사용
@@ -180,8 +131,8 @@ public class PlayerStatus : Status
         CurFatigue -= _decreaseValue;
         CurFatigue += _increaseValue;
 
-        // �Ĺ� : Fatigue--;
-        // ��� : Fatigue -= 2;
+        // �Ĺ� : Fatigue--;
+        // ��� : Fatigue -= 2;
     }
 
     /// <summary> Attack Status </summary>
@@ -194,11 +145,6 @@ public class PlayerStatus : Status
         {
             // 공격 못함
         }
-<<<<<<< HEAD
-        //공격 애니메이션
-
-=======
->>>>>>> main
 
         if (curSatiety <= 10)
         {
@@ -223,12 +169,8 @@ public class PlayerStatus : Status
     /// <summary> Speed Status </summary>
     public void SpeedModifier(int _carryingBack, int _decreaseValue)
     {
-<<<<<<< HEAD
-        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% 초과량
-=======
-        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% �ʰ���
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% �ʰ���
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
->>>>>>> main
 
         if (curCarryingBag >= maxCarryingBag)
         {
@@ -256,22 +198,4 @@ public class PlayerStatus : Status
         }
         else curStamina = stamina;
     }
-<<<<<<< HEAD
-
-
-
-
-
-
-    //private float speed; // 스피드
-
-    //public void SetSpeed(float speed)
-    //{
-    //    if (speed > 0) this.speed = speed;
-    //}
-    //public float GetSpeed() {
-    //    return speed;
-    //}
-=======
->>>>>>> main
 }
