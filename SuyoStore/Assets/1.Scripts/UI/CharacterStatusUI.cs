@@ -7,8 +7,8 @@ using TMPro;
 public class CharacterStatusUI : MonoBehaviour
 {
     //character info script
-    //[SerializeField] private GameObject _character;
-    //private CharacterInfo;
+    [SerializeField] private GameObject _character;
+    private PlayerStatus CharacterInfo;
     [SerializeField] Slider _staminaBar, _staietyBar, _fatigueBar;
     [SerializeField] TextMeshProUGUI _speedText, _attackPowerText;
     [SerializeField] GameObject _debuffPrefab;
@@ -21,6 +21,9 @@ public class CharacterStatusUI : MonoBehaviour
 
     private void Start() 
     {
+        _character = GameObject.FindGameObjectWithTag("Player");
+
+        CharacterInfo = _character.GetComponent<PlayerStatus>();
         //CharacterInfo = _character.GetComponent<CharacterInfo>();
     }
 
