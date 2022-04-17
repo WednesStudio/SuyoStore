@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatus : MonoBehaviour
+public class PlayerStatus : Status
 {
     PlayerController playerController;
 
+<<<<<<< HEAD
     // Ïä§ÌîºÎìú
     public float moveSpeed = 10.0f; // Í∏∞Î≥∏ ÏÉÅÌÉúÏùº Îïå Ïù¥Îèô ÏÜçÎèÑ
     public float runSpeed = 5.0f; // Îã¨Î¶¨Í∏∞ ÏÉÅÌÉúÏùº Îïå Ïù¥Îèô ÏÜçÎèÑ
@@ -32,44 +33,90 @@ public class PlayerStatus : MonoBehaviour
     // statusÏôÄ Í¥ÄÎ†®Îêú ÏãúÍ∞Ñ
     private int time = 100; // Ïã§ÏãúÍ∞Ñ
     private int hungerTime = 10; // Ìè¨ÎßåÍ∞êÏù¥ Í∞êÏÜåÌïòÎäî ÏùºÏ†ïÏãúÍ∞Ñ
+=======
+    public bool isGet = false;
+>>>>>>> main
 
+    //// ∆˜∏∏∞®¿Ã ∞¢∞° 10, 20, 30¿Ã«œ¿œ ∂ß ∞¯∞›∑¬¿ª ∞®º“«ﬂ¥¬¡ˆ ø©∫Œ ∆«¥‹
+    //private bool[] isReduceAttack = { false, false, false }; 
 
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
     }
 
+<<<<<<< HEAD
     // ÌòÑÏû¨ ÏÉÅÌÉúÍ∞Ä MaxÎ•º ÎÑòÏßÄ ÏïäÍ≤å
     void RemainStatusValue(int curVal, int maxVal)
+=======
+    private void Start()
+>>>>>>> main
     {
-        if (curVal >= maxVal) curVal = maxVal;
-    }
+        // Status Initial Value
+        // Speed
+        walkSpeed = 10.0f;
+        runAddSpeed = 5.0f;
+        sitSpeed = 3.0f;
 
+        // Status
+        maxHp = 100;
+        maxSatiety = 100;
+        maxFatigue = 100;
+
+        curHp = 10;
+        curSatiety = 50;
+        curFatigue = 50;
+
+        // Ability
+        maxCarryingBag = 30;
+        attack = 10;
+        stamina = 100;
+
+        curCarryingBag = 30;
+        curAttack = 10;
+        curStamina = 100;
+
+        // Time related status
+        time = 100;
+        hungerTime = 60; // 60√ 
+        hungerDieTime = 120; // 120√ 
+        useHungerTime = hungerTime;
+        useHungerDieTime = hungerDieTime;
+        staminaTime = 1; // 1√ 
+        useStaminaTime = staminaTime;
+    }
 
     public virtual void Die()
     {
         Debug.Log(transform.name + " died.");
+        
     }
 
-    /// <summary>
-    /// Hp Status
-    /// </summary>
+    /// <summary> Hp Status </summary>
     public void HpModifier(bool isAttack, int zomPower)
     {
         RemainStatusValue(curHp, maxHp);
 
-        if (isAttack)
-        {
-            curHp -= zomPower;
-        }
-
-        // Í≤åÏûÑ Ïò§Î≤Ñ Í∏∞Ï§Ä
+        // GameOver
         if (curHp <= 0)
         {
+            Debug.Log("[GAME OVER] HP is ZERO");
             Die();
+        }
+
+<<<<<<< HEAD
+        // Í≤åÏûÑ Ïò§Î≤Ñ Í∏∞Ï§Ä
+        if (curHp <= 0)
+=======
+        if (isAttack)
+>>>>>>> main
+        {
+            curHp -= zomPower;
+            Debug.Log("[Status System] HP : " + curHp);
         }
     }
 
+    // --≥ªøÎ √ﬂ∞° « ø‰
     public void HpRecovery()
     {
         // ÌöåÎ≥µ
@@ -77,87 +124,124 @@ public class PlayerStatus : MonoBehaviour
         // Í∞ÄÍµ¨, Ïπ®ÎÇ≠ ÏïÑÏù¥ÌÖú ÏÇ¨Ïö©
     }
 
-  
-    /// <summary>
-    /// Satiety Status
-    /// </summary>
+
+    /// <summary> Satiety Status </summary>
     public void SatietyModifier()
     {
         RemainStatusValue(curSatiety, maxSatiety);
 
+        // GameOver
         if (curSatiety <= 0)
         {
+<<<<<<< HEAD
             /*ÏùºÏ†ï ÏãúÍ∞Ñ ÌõÑ*/
             Die();
+=======
+            UseHungerDieTime -= Time.deltaTime;
+            if(useHungerDieTime <= 0)
+            {
+                Debug.Log("[GAME OVER] Player is Hungry§–§–§–§–");
+                Die();
+            }
+>>>>>>> main
         }
+        GetBackTime(UseHungerDieTime, hungerDieTime);
 
+<<<<<<< HEAD
         // ÏãúÍ∞ÑÏóê Îî∞Îùº Í∞êÏÜå -- ifÎ¨∏ Ï°∞Í±¥ ÏàòÏ†ï ÌïÑÏöî
         if(time % hungerTime == 0)
+=======
+        // ∫–¥Á 2∞®º“
+        UseHungerTime -= Time.deltaTime;
+        if (useHungerTime <= 0)
+>>>>>>> main
         {
-            curSatiety-= 2;
+            CurSatiety -= 2;
+            Debug.Log("[Status System] Satiety : " + curSatiety);
         }
+        GetBackTime(UseHungerTime, hungerTime);
+
+
     }
 
+    // --≥ªøÎ √ﬂ∞° « ø‰
     public void RecoverySatiety()
     {
         // ÏïÑÏù¥ÌÖú ÏÇ¨Ïö©
         // ÌïòÎ£® Ïä§ÌÇµ
     }
 
-    public void FatiqueModifier()
+
+    /// <summary> Fatigue Status </summary>
+    public void FatigueModifier(int _decreaseValue, int _increaseValue)
     {
-        RemainStatusValue(curFatigue, maxFatique);
+        RemainStatusValue(CurFatigue, MaxFatigue);
 
-        if (curFatigue <= 0)
-        {
-            Die();
-        }
-        if (curFatigue <= 0)
-        {
-            curAttack = 0;
-        }
-        else if (curFatigue <= 10)
-        { 
-            curAttack -= 10;
-            moveSpeed -= 8;
-        }
-        else if (curFatigue <= 20)
-        { 
-            curAttack -= 4;
-            moveSpeed -= 4;
-        }
-        else if (curFatigue <= 30)
-        { 
-            curAttack -= 2;
-            moveSpeed -= 2;
-        }
+        CurFatigue -= _decreaseValue;
+        CurFatigue += _increaseValue;
 
+        // ∆ƒπ÷ : Fatigue--;
+        // ∞Ê∞› : Fatigue -= 2;
     }
 
-    public void AttackModifier(int itemAttack)
+    /// <summary> Attack Status </summary>
+    public void AttackModifier(int _itemAttack, int _decreaseValue)
     {
-        attack += itemAttack;
-        curAttack = attack;
-        if (curAttack <= 0) 
+        //Item item
+        CurAttack = attack + _itemAttack; // (itemAttack==item.itemAttack)
+
+        if (curAttack <= 0)
         {
             // Í≥µÍ≤© Î™ªÌï®
         }
+<<<<<<< HEAD
         //Í≥µÍ≤© Ïï†ÎãàÎ©îÏù¥ÏÖò
 
+=======
+>>>>>>> main
 
-    }
-
-    public void SpeedModifier()
-    {
-        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% Ï¥àÍ≥ºÎüâ
-
-        if(curCarryingBag > maxCarryingBag)
+        if (curSatiety <= 10)
         {
-            int count = (curCarryingBag - maxCarryingBag) % excessBag;
-            moveSpeed -= 2 * count;
+            CurAttack = Attack + _itemAttack;
+            CurAttack -= 10;
+        }
+        else if (curSatiety <= 20)
+        {
+            CurAttack = Attack + _itemAttack;
+            CurAttack -= 4;
+        }
+        else if (curSatiety <= 30)
+        {
+            CurAttack = Attack + _itemAttack;
+            CurAttack -= 2;
+        }
+        else {
+            CurAttack = attack + _itemAttack;
         }
     }
 
+    /// <summary> Speed Status </summary>
+    public void SpeedModifier(int _carryingBack, int _decreaseValue)
+    {
+<<<<<<< HEAD
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% Ï¥àÍ≥ºÎüâ
+=======
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% √ ∞˙∑Æ
+        int count = (curCarryingBag - maxCarryingBag) / excessBag;
+>>>>>>> main
+
+        if (curCarryingBag >= maxCarryingBag)
+        {
+            CurSpeed = walkSpeed - 2 * count;
+        }
+    }
+
+    //public void BagWeight()
+    //{
+
+    //}
+
+    /// <summary> Stamina Status </summary>
     public void StaminaModifier()
     {
         if(curSatiety <= 0)
@@ -172,6 +256,7 @@ public class PlayerStatus : MonoBehaviour
         }
         else curStamina = stamina;
     }
+<<<<<<< HEAD
 
 
 
@@ -187,4 +272,6 @@ public class PlayerStatus : MonoBehaviour
     //public float GetSpeed() {
     //    return speed;
     //}
+=======
+>>>>>>> main
 }
