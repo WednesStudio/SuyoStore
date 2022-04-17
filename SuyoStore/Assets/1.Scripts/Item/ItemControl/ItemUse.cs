@@ -9,9 +9,21 @@ public class ItemUse : MonoBehaviour
     private PlayerTest player;
     private int[] attributes = new int[(int)Attributes.TOTAL];
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag="가방";
-    public void UseItem(Item item)
+    private Dictionary<int, Item> MyUsedItem = new Dictionary<int, Item>();
+
+    public void UseItem(int itemID)
     {
-        Debug.Log(item.itemName);
+        Item item;
+        if(MyUsedItem.ContainsKey(itemID))
+        {
+            item = MyUsedItem[itemID];
+        }
+        else
+        {
+            item = _dataManager.SetNewItem(itemID);
+            MyUsedItem.Add(itemID, item);
+        }
+        
         switch (item.itemName)
         {
             case battery:
@@ -42,8 +54,17 @@ public class ItemUse : MonoBehaviour
         item.attributes[(int)Attributes.DURABILITY] -= 1;
         if (item.attributes[(int)Attributes.DURABILITY] == 0)
         {
-            Destroy(this.gameObject);
-            _dataManager.AddItem(item.ID, -1);
+            //Destroy(this.gameObject);
+            GameObject[] myItems = GameObject.FindGameObjectsWithTag("UsedItem");
+            foreach(GameObject i in myItems)
+            {
+                if(i.name == _dataManager.GetItemName(itemID))
+                {
+                    Destroy(i);
+                    _dataManager.AddItem(item.ID, -1);
+                    MyUsedItem.Remove(itemID);
+                }
+            }
         }
 
     }

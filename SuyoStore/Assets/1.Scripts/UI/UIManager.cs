@@ -47,7 +47,6 @@ public class UIManager : MonoBehaviour
     {
         _inventoryUI.SetTotalBagContents();
         _inventoryUI.SetBatteryBagContents();
-        _inventoryUI.SetBagOfBagContents();
         _inventoryUI.SetFoodBagContents();
         _inventoryUI.SetLightBagContents();
         _inventoryUI.SetWeaponBagContents();

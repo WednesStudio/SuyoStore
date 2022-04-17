@@ -6,7 +6,36 @@ public class PlayerStatus : Status
 {
     PlayerController playerController;
 
+<<<<<<< HEAD
+    // ìŠ¤í”¼ë“œ
+    public float moveSpeed = 10.0f; // ê¸°ë³¸ ìƒíƒœì¼ ë•Œ ì´ë™ ì†ë„
+    public float runSpeed = 5.0f; // ë‹¬ë¦¬ê¸° ìƒíƒœì¼ ë•Œ ì´ë™ ì†ë„
+    public float sitSpeed = 3.0f; // ì•‰ê¸° ìƒíƒœì¼ ë–„ ì´ë™ ì†ë„
+
+    // ìŠ¤í…Œì´í„°ìŠ¤
+    public int maxHp = 100; // ìµœëŒ€ ì²´ë ¥
+    public int maxSatiety = 100; // ìµœëŒ€ í¬ë§Œê°
+    public int maxFatique = 100; // ìµœëŒ€ í”¼ë¡œë„
+
+    public int curHp = 10; // í˜„ì¬ ì²´ë ¥
+    public int curSatiety = 50; // í˜„ì¬ í¬ë§Œê°
+    public int curFatigue = 50; // í˜„ì¬ í”¼ë¡œë„
+
+    // ëŠ¥ë ¥ì¹˜
+    public int maxCarryingBag = 30; // ê¸°ë³¸ ì ì¬ëŸ‰
+    public int attack = 10; // ê¸°ë³¸ ê³µê²©ë ¥
+    public int stamina = 100; // ê¸°ë³¸ ì§€êµ¬ë ¥
+
+    public int curCarryingBag = 0; // ê¸°ë³¸ ì ì¬ëŸ‰
+    public int curAttack = 10; // í˜„ì¬ ê³µê²©ë ¥
+    public int curStamina = 100; // í˜„ì¬ ì§€êµ¬ë ¥
+
+    // statusì™€ ê´€ë ¨ëœ ì‹œê°„
+    private int time = 100; // ì‹¤ì‹œê°„
+    private int hungerTime = 10; // í¬ë§Œê°ì´ ê°ì†Œí•˜ëŠ” ì¼ì •ì‹œê°„
+=======
     public bool isGet = false;
+>>>>>>> main
 
     //// Æ÷¸¸°¨ÀÌ °¢°¡ 10, 20, 30ÀÌÇÏÀÏ ¶§ °ø°İ·ÂÀ» °¨¼ÒÇß´ÂÁö ¿©ºÎ ÆÇ´Ü
     //private bool[] isReduceAttack = { false, false, false }; 
@@ -16,7 +45,12 @@ public class PlayerStatus : Status
         playerController = GetComponent<PlayerController>();
     }
 
+<<<<<<< HEAD
+    // í˜„ì¬ ìƒíƒœê°€ Maxë¥¼ ë„˜ì§€ ì•Šê²Œ
+    void RemainStatusValue(int curVal, int maxVal)
+=======
     private void Start()
+>>>>>>> main
     {
         // Status Initial Value
         // Speed
@@ -70,7 +104,12 @@ public class PlayerStatus : Status
             Die();
         }
 
+<<<<<<< HEAD
+        // ê²Œì„ ì˜¤ë²„ ê¸°ì¤€
+        if (curHp <= 0)
+=======
         if (isAttack)
+>>>>>>> main
         {
             curHp -= zomPower;
             Debug.Log("[Status System] HP : " + curHp);
@@ -80,9 +119,9 @@ public class PlayerStatus : Status
     // --³»¿ë Ãß°¡ ÇÊ¿ä
     public void HpRecovery()
     {
-        // È¸º¹
-        // Ä¡·áÁ¦ ¾ÆÀÌÅÛ »ç¿ë
-        // °¡±¸, Ä§³¶ ¾ÆÀÌÅÛ »ç¿ë
+        // íšŒë³µ
+        // ì¹˜ë£Œì œ ì•„ì´í…œ ì‚¬ìš©
+        // ê°€êµ¬, ì¹¨ë‚­ ì•„ì´í…œ ì‚¬ìš©
     }
 
 
@@ -94,18 +133,28 @@ public class PlayerStatus : Status
         // GameOver
         if (curSatiety <= 0)
         {
+<<<<<<< HEAD
+            /*ì¼ì • ì‹œê°„ í›„*/
+            Die();
+=======
             UseHungerDieTime -= Time.deltaTime;
             if(useHungerDieTime <= 0)
             {
                 Debug.Log("[GAME OVER] Player is Hungry¤Ğ¤Ğ¤Ğ¤Ğ");
                 Die();
             }
+>>>>>>> main
         }
         GetBackTime(UseHungerDieTime, hungerDieTime);
 
+<<<<<<< HEAD
+        // ì‹œê°„ì— ë”°ë¼ ê°ì†Œ -- ifë¬¸ ì¡°ê±´ ìˆ˜ì • í•„ìš”
+        if(time % hungerTime == 0)
+=======
         // ºĞ´ç 2°¨¼Ò
         UseHungerTime -= Time.deltaTime;
         if (useHungerTime <= 0)
+>>>>>>> main
         {
             CurSatiety -= 2;
             Debug.Log("[Status System] Satiety : " + curSatiety);
@@ -118,8 +167,8 @@ public class PlayerStatus : Status
     // --³»¿ë Ãß°¡ ÇÊ¿ä
     public void RecoverySatiety()
     {
-        // ¾ÆÀÌÅÛ »ç¿ë
-        // ÇÏ·ç ½ºÅµ
+        // ì•„ì´í…œ ì‚¬ìš©
+        // í•˜ë£¨ ìŠ¤í‚µ
     }
 
 
@@ -143,8 +192,13 @@ public class PlayerStatus : Status
 
         if (curAttack <= 0)
         {
-            // °ø°İ ¸øÇÔ
+            // ê³µê²© ëª»í•¨
         }
+<<<<<<< HEAD
+        //ê³µê²© ì• ë‹ˆë©”ì´ì…˜
+
+=======
+>>>>>>> main
 
         if (curSatiety <= 10)
         {
@@ -169,8 +223,12 @@ public class PlayerStatus : Status
     /// <summary> Speed Status </summary>
     public void SpeedModifier(int _carryingBack, int _decreaseValue)
     {
+<<<<<<< HEAD
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% ì´ˆê³¼ëŸ‰
+=======
         int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% ÃÊ°ú·®
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
+>>>>>>> main
 
         if (curCarryingBag >= maxCarryingBag)
         {
@@ -188,14 +246,32 @@ public class PlayerStatus : Status
     {
         if(curSatiety <= 0)
         {
-            // °È±â »óÅÂ·Î ÀüÈ¯
+            // ê±·ê¸° ìƒíƒœë¡œ ì „í™˜
         }
 
         if (playerController.isMove == true)
         {
-            //ÀÏÁ¤½Ã°£¸¶´Ù
+            //ì¼ì •ì‹œê°„ë§ˆë‹¤
             curStamina--;
         }
         else curStamina = stamina;
     }
+<<<<<<< HEAD
+
+
+
+
+
+
+    //private float speed; // ìŠ¤í”¼ë“œ
+
+    //public void SetSpeed(float speed)
+    //{
+    //    if (speed > 0) this.speed = speed;
+    //}
+    //public float GetSpeed() {
+    //    return speed;
+    //}
+=======
+>>>>>>> main
 }
