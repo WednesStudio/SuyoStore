@@ -8,10 +8,6 @@ public class PlayerStatus : Status
 
     public bool isGet = false;
 
-    //// ����� ���� 10, 20, 30������ �� ��ݷ�� �����ߴ��� ���� �Ǵ�
-
-    //private bool[] isReduceAttack = { false, false, false }; 
-
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -78,7 +74,7 @@ public class PlayerStatus : Status
         }
     }
 
-    // --���� �߰� �ʿ�
+    // -- Require more with Item Script
     public void HpRecovery()
     {
         // 회복
