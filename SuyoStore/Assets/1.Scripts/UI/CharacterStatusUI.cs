@@ -44,8 +44,8 @@ public class CharacterStatusUI : MonoBehaviour
     //Status_Speed
     public void SetSpeed(float speed, float varSpeed)
     {
-        _speedText.text = speed.ToString();
-        if(speed == 10) _spText.text = "Speed : " + speed + " + (" + varSpeed + ")";
+        _speedText.text = ((int)varSpeed).ToString();
+        if(speed == 10) _spText.text = "Speed : " + speed + " + (" + ((int)(varSpeed - speed)).ToString() + ")";
         else _spText.text = "Speed : 10 + (" + speed.ToString() +")";
     }
 
