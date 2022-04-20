@@ -53,6 +53,7 @@ public class Status : MonoBehaviour
     [SerializeField]
     protected float useStaminaTime;
     protected float recoveryStaminaTime;
+    protected float useRecoveryStaminaTime;
 
     /// [Property] Speed
     public float CurSpeed { get { return curSpeed; } set { curSpeed = value; } }
@@ -84,8 +85,9 @@ public class Status : MonoBehaviour
     public float UseHungerTime { get { return useHungerTime; } set { useHungerTime = value; } }
     public float UseHungerDieTime { get { return useHungerDieTime; } set { useHungerDieTime = value; } }
     public float UseStaminaTime { get { return useStaminaTime; } set { useStaminaTime = value; } }
-    public float StaminaTime { get { return StaminaTime; } }
-    public float RecoveryStaminaTime { get { return recoveryStaminaTime; } }
+    public float StaminaTime { get { return staminaTime; } set { staminaTime = value; } }
+    public float RecoveryStaminaTime { get { return recoveryStaminaTime; } set { recoveryStaminaTime = value; } }
+    public float UseRecoveryStaminaTime { get { return useRecoveryStaminaTime; } set { useRecoveryStaminaTime = value; } }
 
     private void Start()
     {
@@ -122,6 +124,7 @@ public class Status : MonoBehaviour
         staminaTime = 1;
         useStaminaTime = staminaTime;
         recoveryStaminaTime = 1;
+        useRecoveryStaminaTime = recoveryStaminaTime;
     }
 
     // 현재 상태가 Max나 0을 넘지 않게 --test 필요
@@ -143,17 +146,18 @@ public class Status : MonoBehaviour
         return _useTime;
     }
 
-    private List<int> itemModifiers = new List<int>();
 
-    public void AddModifier(int modifier)
-    {
-        if (modifier != 0) itemModifiers.Add(modifier);
-    }
-
-    public void RemoveModifier(int modifier)
-    {
-        if (modifier != 0) itemModifiers.Remove(modifier);
-    }
-
-     
 }
+
+/*
+equip : 손전 , 방망,
+ReE (방망)
+equip : 손전
+ * 
+ * 
+ * 캐릭터가 빈손
+ * -근처에 아이템
+ * G : 아이템 -> 인벤토리
+ * 인벤토리 -> 사용 => 장착
+ */
+
