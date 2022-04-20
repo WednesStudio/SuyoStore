@@ -6,8 +6,6 @@ public class PlayerStatus : Status
 {
     PlayerController playerController;
 
-    public bool isGet = false;
-
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -45,23 +43,32 @@ public class PlayerStatus : Status
         hungerDieTime = 120; // 120��
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 1; // 1��
+        staminaTime = 60; // 1��
         useStaminaTime = staminaTime;
     }
 
     private void Update()
     {
+        if (curHp <= 0)
+        {
+            Die();
+            Debug.Log("[GAME OVER] HP is ZERO");
+        }
         SatietyModifier();
+        SpeedModifier();
     }
+
     public virtual void Die()
     {
         Debug.Log(transform.name + " died.");
     }
 
     /// <summary> Hp Status </summary>
-    public void HpModifier(bool isAttack, int zomPower)
+    public void ReduceHp(int zomPower)
     {
-        RemainStatusValue(curHp, maxHp);
+        CurHp -= zomPower;  //CurHp = ReduceStatus(eCurStatusType.cHp, zomPower);
+        CurHp = RemainStatusValue(CurHp, MaxHp);
+        Debug.Log("[Status System] HP : " + curHp);
 
         // GameOver
         if (curHp <= 0)
@@ -69,19 +76,60 @@ public class PlayerStatus : Status
             Die();
             Debug.Log("[GAME OVER] HP is ZERO");
         }
+    }
 
-        if (isAttack)
+    public void RecoverStatus(eCurStatusType _statusType, int _value)
+    {
+        switch (_statusType)
         {
-            curHp -= zomPower;
-            Debug.Log("[Status System] HP : " + curHp);
+            case eCurStatusType.cHp:
+                CurHp += _value;
+                CurHp = RemainStatusValue(CurHp, MaxHp);
+                break;
+            case eCurStatusType.cSatiety:
+                CurSatiety += _value;
+                CurSatiety = RemainStatusValue(CurSatiety, MaxSatiety);
+                break;
+            case eCurStatusType.cFatigue:
+                CurFatigue += _value;
+                CurFatigue = RemainStatusValue(CurFatigue, MaxFatigue);
+                break;
+            //case eCurStatusType.cCarryingBag:
+            //    CurCarryingBag += _value;
+            //    CurCarryingBag = RemainStatusValue(CurCarryingBag, MaxCarryingBag);
+            //    break;
+            //case eCurStatusType.cAttack:
+            //    CurAttack += _value;
+            //    CurAttack = RemainStatusValue(CurAttack, Attack);
+            //    break;
+            //case eCurStatusType.cStamina:
+            //    CurStamina += _value;
+            //    CurStamina = RemainStatusValue(CurStamina, Stamina);
+            //    break;
+            default:
+                break;
         }
     }
 
-    public void HpRecovery()
+    void ReduceStatus(eCurStatusType _statusType, int _value)
     {
-        // 회복
-        // 치료제 아이템 사용
-        // 가구, 침낭 아이템 사용
+        switch (_statusType)
+        {
+            case eCurStatusType.cHp:
+                CurHp -= _value;
+                CurHp = RemainStatusValue(CurHp, MaxHp);
+                break;
+            case eCurStatusType.cSatiety:
+                CurSatiety -= _value;
+                CurSatiety = RemainStatusValue(CurSatiety, MaxSatiety);
+                break;
+            case eCurStatusType.cFatigue:
+                CurFatigue -= _value;
+                CurFatigue = RemainStatusValue(CurFatigue, MaxFatigue);
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -103,7 +151,6 @@ public class PlayerStatus : Status
             }
         }
 
-
         UseHungerTime -= Time.deltaTime;
         if (useHungerTime <= 0)
         {
@@ -112,25 +159,6 @@ public class PlayerStatus : Status
 
             UseHungerTime = GetBackTime(UseHungerTime, hungerDieTime);
         }
-    }
-    
-    public void RecoverySatiety()
-    {
-        // 아이템 사용
-        // 하루 스킵
-    }
-
-
-    /// <summary> Fatigue Status </summary>
-    public void FatigueModifier(int _decreaseValue, int _increaseValue)
-    {
-        CurFatigue = RemainStatusValue(CurFatigue, MaxFatigue);
-
-        CurFatigue -= _decreaseValue;
-        CurFatigue += _increaseValue;
-
-        // Item Farming : Fatigue--;
-        // Attack Zombie : Fatigue -= 2;
     }
 
     /// <summary> Attack Status </summary>
@@ -165,7 +193,7 @@ public class PlayerStatus : Status
     }
 
     /// <summary> Speed Status </summary>
-    public void SpeedModifier(int _carryingBack, int _decreaseValue)
+    public void SpeedModifier()
     {
         int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% over weight
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
@@ -176,25 +204,21 @@ public class PlayerStatus : Status
         }
     }
 
-    //public void BagWeight()
-    //{
-
-    //}
-
     /// <summary> Stamina Status </summary>
-    public void StaminaModifier()
+
+
+    void OnEquipmentChange(Item newItem, Item oldItem)
     {
-        if(curSatiety <= 0)
+        if(newItem != null)
         {
-            // 걷기 상태로 전환
+
         }
 
-        if (playerController.isMove == true)
+        if(oldItem != null)
         {
-            //일정시간마다
-            curStamina--;
+            
         }
-        else curStamina = stamina;
     }
 
+    
 }
