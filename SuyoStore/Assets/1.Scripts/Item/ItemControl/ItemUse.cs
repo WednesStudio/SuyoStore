@@ -88,7 +88,6 @@ public class ItemUse : MonoBehaviour
     }
     private void ChangeDate()
     {
-
         DateControl dateControl = FindObjectOfType<DateControl>();
         System.DateTime result = System.DateTime.Parse(dateControl.GetDate());
         result = result.AddDays(1);
@@ -125,21 +124,25 @@ public class ItemUse : MonoBehaviour
     }
     private void UseFood(int satiety)
     {
-        int satietyMax = 100;
-        playerStatus.CurSatiety = playerStatus.CurSatiety + satiety > satietyMax ? satietyMax : playerStatus.CurSatiety + satiety;
+        playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, satiety);
+        //int satietyMax = playerStatus.MaxSatiety;
+        //playerStatus.CurSatiety = playerStatus.CurSatiety + satiety > satietyMax ? satietyMax : playerStatus.CurSatiety + satiety;
         UnityEngine.Debug.Log("satiety " + playerStatus.CurSatiety);
     }
     private void UseWeapon(int attack)
     {
-        int attackMax = 100;
+        int attackMax = playerStatus.Attack;
         playerStatus.CurAttack = playerStatus.CurAttack + attack > attackMax ? attackMax : playerStatus.CurAttack + attack;
         UnityEngine.Debug.Log("attack " + playerStatus.CurAttack);
         // 휘두를 때마다 내구도 마이나스
     }
     private void UseHeal(int heal)
     {
-        int hpMax = 100;
-        playerStatus.CurHp = playerStatus.CurHp + heal > hpMax ? hpMax : playerStatus.CurHp + heal;
+        playerStatus.RecoverStatus(Status.eCurStatusType.cHp, heal);
+
+
+        //int hpMax = playerStatus.MaxHp;
+        //playerStatus.CurHp = playerStatus.CurHp + heal > hpMax ? hpMax : playerStatus.CurHp + heal;
         UnityEngine.Debug.Log("HP " + playerStatus.CurHp);
     }
     private void UseLight(Item item, int itemID)
