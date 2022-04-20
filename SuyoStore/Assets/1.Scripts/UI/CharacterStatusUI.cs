@@ -7,8 +7,6 @@ using TMPro;
 public class CharacterStatusUI : MonoBehaviour
 {
     //character info script
-    //[SerializeField] private GameObject _character;
-    //private CharacterInfo;
     [SerializeField] Slider _staminaBar, _staietyBar, _fatigueBar;
     [SerializeField] TextMeshProUGUI _speedText, _attackPowerText;
     [SerializeField] GameObject _debuffPrefab;
@@ -18,11 +16,6 @@ public class CharacterStatusUI : MonoBehaviour
     private float _staminaValue = 1.0f, _satietyValue = 1.0f, _fatigueValue = 1.0f;
     private List<int> _debuffTypeList = new List<int>();
     private List<GameObject> _debuffList = new List<GameObject>();
-
-    private void Start() 
-    {
-        //CharacterInfo = _character.GetComponent<CharacterInfo>();
-    }
 
     //Main Bar Setting
     #region 
@@ -49,10 +42,10 @@ public class CharacterStatusUI : MonoBehaviour
     }
 
     //Status_Speed
-    public void SetSpeed(int speed)
+    public void SetSpeed(float speed, float varSpeed)
     {
-        _speedText.text = speed.ToString();
-        if(speed == 10) _spText.text = "Speed : 10 + (0)";
+        _speedText.text = ((int)varSpeed).ToString();
+        if(speed == 10) _spText.text = "Speed : " + speed + " + (" + ((int)(varSpeed - speed)).ToString() + ")";
         else _spText.text = "Speed : 10 + (" + speed.ToString() +")";
     }
 
@@ -61,7 +54,7 @@ public class CharacterStatusUI : MonoBehaviour
     {
         _attackPowerText.text = attackPower.ToString();
         if(attackPower == 10) _attackText.text = "Attack Power : 10 + (0)";
-        else _attackText.text = "Attack Power : 10 + (" + attackPower.ToString() + ")";
+        else _attackText.text = "Attack Power : " + attackPower.ToString() + "()";
     }
 
     /// <summary> Get information of the debuff type and set prefab to 'Player Status' /// </summary>

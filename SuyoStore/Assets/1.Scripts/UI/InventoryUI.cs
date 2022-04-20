@@ -16,7 +16,6 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject _totalContentsParent = null;
     [SerializeField] private GameObject _weaponContentsParent = null;
     [SerializeField] private GameObject _lightContentsParent = null;
-    [SerializeField] private GameObject _bagContentsParent = null;
     [SerializeField] private GameObject _sleepingBagContentsParent = null;
     [SerializeField] private GameObject _foodContentsParent = null;
     [SerializeField] private GameObject _medicineContentsParent = null;
@@ -25,7 +24,6 @@ public class InventoryUI : MonoBehaviour
     private BagItems[] _totalContents = null;
     private BagItems[] _weaponContents = null;
     private BagItems[] _lightContents = null;
-    private BagItems[] _bagContents = null;
     private BagItems[] _sleepingBagContents = null;
     private BagItems[] _foodContents = null;
     private BagItems[] _batteryContents = null;
@@ -65,7 +63,7 @@ public class InventoryUI : MonoBehaviour
     public void OnCheckItemUseWindow(string itemName)
     {
         _checkUseItemWindow.SetActive(true);
-        _checkUseItemWindow.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Do you want to use " + itemName;
+        _checkUseItemWindow.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = itemName + " 을 / (를) 사용하시겠습니까?";
         _checkUseItemWindow.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => UseItem(itemName));
     }
 
@@ -166,16 +164,13 @@ public class InventoryUI : MonoBehaviour
 
     public void SetFoodBagContents()
     {
-        print("SetFood inventory");
         if (_foodContents == null) _foodContents = _foodContentsParent.GetComponentsInChildren<BagItems>();
 
         int i = 0;
         foreach (BagItems b in _foodContents)
         {
-            print("bag : " + i);
             if (GameManager.GM.GetItemCount(i) > 0)
             {
-                print("> 0");
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);
                 i++;
@@ -192,25 +187,6 @@ public class InventoryUI : MonoBehaviour
 
         int i = 0;
         foreach (BagItems b in _medicineContents)
-        {
-            if (GameManager.GM.GetItemCount(i) > 0)
-            {
-                b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
-                b.gameObject.SetActive(true);
-                i++;
-                continue;
-            }
-            b.gameObject.SetActive(false);
-            i++;
-        }
-    }
-
-    public void SetBagOfBagContents()
-    {
-        if (_bagContents == null) _bagContents = _bagContentsParent.GetComponentsInChildren<BagItems>();
-
-        int i = 0;
-        foreach (BagItems b in _bagContents)
         {
             if (GameManager.GM.GetItemCount(i) > 0)
             {

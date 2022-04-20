@@ -4,17 +4,17 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterController;
     [SerializeField]
-    private float moveSpeed = 10.0f; // ±âº» ÀÌµ¿ ¼Óµµ
+    private float moveSpeed = 10.0f; // ê¸°ë³¸ ì´ë™ ì†ë„
     [SerializeField]
-    private float gravity = -9.81f; // Áß·Â °è¼ö
+    private float gravity = -9.81f; // ì¤‘ë ¥ ê³„ìˆ˜
 
-    private float rotationSpeed; // È¸Àü(¹æÇâÀüÈ¯) ¼Óµµ
-    private Vector3 moveDirection; // ÀÌµ¿ ¹æÇâ
+    private float rotationSpeed; // íšŒì „(ë°©í–¥ì „í™˜) ì†ë„
+    private Vector3 moveDirection; // ì´ë™ ë°©í–¥
 
 
     private void Awake()
     {
-        // ¹Ù´Ú¿¡ ´êÁö ¾ÊÀ» ¶§
+        // ë°”ë‹¥ì— ë‹¿ì§€ ì•Šì„ ë•Œ
         if(characterController.isGrounded == false)
         {
             moveDirection.y += gravity * Time.deltaTime;
