@@ -41,6 +41,7 @@ public class ItemControl : MonoBehaviour
     public void GetThisItem()
     {
         GameManager.GM.AddItem(itemID, 1);
+        Destroy(gameObject);
         print("get this item! " + itemID);
     }
 

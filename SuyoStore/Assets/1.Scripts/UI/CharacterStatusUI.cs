@@ -7,12 +7,23 @@ using TMPro;
 public class CharacterStatusUI : MonoBehaviour
 {
     //character info script
+    [Header("Top UI")]
     [SerializeField] Slider _staminaBar, _staietyBar, _fatigueBar;
     [SerializeField] TextMeshProUGUI _speedText, _attackPowerText;
+    [Header("Debuff")]
     [SerializeField] GameObject _debuffPrefab;
     [SerializeField] GameObject _debuffObject;
     [SerializeField] Sprite[] _debuffImages;
     [SerializeField] TextMeshProUGUI _staminaText, _satietyText, _fatigueText, _attackText, _spText;
+    [Header("Weapon Status")]
+    [SerializeField] Image _weaponImage;
+    [SerializeField] TextMeshProUGUI _weaponNameText, _weaponPowerText, _weaponDurabilityText;
+    [Header("Light Status")]
+    [SerializeField] Image  _lightImage;
+    [SerializeField] TextMeshProUGUI _lightNameText, _lightSightText, _lightDurabilityText;
+    [Header("Bag Status")]
+    [SerializeField] Image _bagImage;
+    [SerializeField] TextMeshProUGUI _bagNameText, _bagCapacityText;
     private float _staminaValue = 1.0f, _satietyValue = 1.0f, _fatigueValue = 1.0f;
     private List<int> _debuffTypeList = new List<int>();
     private List<GameObject> _debuffList = new List<GameObject>();
@@ -105,21 +116,48 @@ public class CharacterStatusUI : MonoBehaviour
         //select image code
     }
 
-    public void SetWeapon()
+    public void SetWeapon(Sprite image, string name, Item item)
     {
         //set image - sprite
+        _weaponImage.sprite = image;
+        if(name == "")
+        {
+            _weaponNameText.text = "무기 없음";
+        }
         //set name - text
+        else    _weaponNameText.text = name;
         //set power - text
+        if(item.GetATTACK() != 0)   _weaponPowerText.text = "무기 공격력 : " + item.GetATTACK().ToString();
+        else _weaponPowerText.text = "";
         //set durability - text
+        if(item.GetDURABILITY() != 0)   _weaponDurabilityText.text = "무기 내구도 : " + item.GetDURABILITY().ToString();
+        else _weaponDurabilityText.text = "";
     }
     
-    public void SetLight()
+    public void SetLight(Sprite image, string name, Item item)
     {
+        _lightImage.sprite = image;
+        if(name == "")
+        {
+            _lightNameText.text = "라이트 없음";
+        }
+        else    _lightNameText.text = name;
+        if(item.GetSIGHTRANGE() != 0)    _lightSightText.text = "라이트 시야 : " + item.GetSIGHTRANGE().ToString();
+        else _lightSightText.text = "";
 
+        if(item.GetDURABILITY() != 0)   _lightDurabilityText.text = "라이트 내구도 : " + item.GetDURABILITY().ToString();
+        else _lightDurabilityText.text = "";
     }
 
-    public void SetBag()
+    public void SetBag(Sprite image, string name, Item item)
     {
+        _bagImage.sprite = image;
+        if(name == "")
+        {
+            _bagNameText.text = "가방 없음";
+        }
+        else    _bagNameText.text = name;
+        if(item.GetCAPACITY() != 0)    _bagCapacityText.text = "가방 크기 : " + item.GetCAPACITY().ToString();
 
     }
 

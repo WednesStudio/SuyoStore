@@ -20,7 +20,7 @@ public class OptionSettingUI : MonoBehaviour
     private bool _mouseInitialized = false;
 
     //Service Panel
-    [SerializeField] GameObject _contactPanel, _creditPanel;
+    [SerializeField] GameObject _creditPanel;
 
     private void Awake() 
     {
@@ -159,16 +159,6 @@ public class OptionSettingUI : MonoBehaviour
     public void OnServicePanel()
     {
         OnPanels(3, 3, 2);
-    }
-
-    public void OnContactUs()
-    {
-        _contactPanel.SetActive(true);
-    }
-
-    public void OffContact()
-    {
-        _contactPanel.SetActive(false);
     }
 
     public void OnCredit()

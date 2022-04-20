@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
+public class SceneEffect : MonoBehaviour
 {
     [SerializeField] Image _fadeImage;
     private float _time = 0f;
@@ -16,7 +16,12 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(FadeFlow(sceneNum));
     }
 
-    IEnumerator FadeFlow(int sceneNum)
+    public void FadeEffect(int num)
+    {
+        StartCoroutine(FadeFlow(num));
+    }
+
+    IEnumerator FadeFlow(int num)
     {
         //Fade out
         _time = 0f;
@@ -32,7 +37,7 @@ public class SceneChanger : MonoBehaviour
         }
 
         //Change Scene
-        SceneManager.LoadScene(sceneNum);
+        if(num != -1)  SceneManager.LoadScene(num);
         
         //Fade In
         _time = 0f;
