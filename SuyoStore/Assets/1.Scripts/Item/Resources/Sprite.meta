@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:SuyoStore/Assets/Art.meta
+guid: 9741da8a672043e48b09aad8d8cb8247
+========
 guid: b839df1868a6e4f4e85773179328c31c
+>>>>>>>> bb797150e35adc03eca84a37e2d54367e2ada1c5:SuyoStore/Assets/1.Scripts/Item/Resources/Sprite.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

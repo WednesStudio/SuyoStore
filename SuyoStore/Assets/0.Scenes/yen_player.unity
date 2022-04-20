@@ -410,7 +410,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c95404b751833f46a8180732b4df05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGet: 0
+  curSpeed: 0
+  curHp: 0
+  curSatiety: 0
+  curFatigue: 0
+  curCarryingBag: 0
+  curAttack: 0
+  curStamina: 0
+  useHungerTime: 0
+  useHungerDieTime: 0
+  useStaminaTime: 0
 --- !u!114 &951104148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,8 +434,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pStatus: {fileID: 0}
   isSafe: 0
-  speed: 1
   rotationSpeed: 360
+  state: 0
   isMove: 0
 --- !u!143 &951104149
 CharacterController:
@@ -838,8 +847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pStatus: {fileID: 0}
   isSafe: 0
-  speed: 1
   rotationSpeed: 360
+  state: 0
   isMove: 1
 --- !u!143 &1257567662
 CharacterController:
@@ -887,7 +896,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c95404b751833f46a8180732b4df05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGet: 0
+  curSpeed: 0
+  curHp: 0
+  curSatiety: 0
+  curFatigue: 0
+  curCarryingBag: 0
+  curAttack: 0
+  curStamina: 0
+  useHungerTime: 0
+  useHungerDieTime: 0
+  useStaminaTime: 0
 --- !u!1001 &1331156186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1048,13 +1066,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1215915696620378, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272902947625394, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1349454168831766, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
       propertyPath: m_Name
-      value: SM_Chr_Attendant_Female_01
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1349454168831766, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448425778124158, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608566822090226, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775211321378250, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979450467927966, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995002023196216, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4306224557389562, guid: beebcb1f4ce0d6848b513b36b1748ded, type: 3}
       propertyPath: m_RootOrder

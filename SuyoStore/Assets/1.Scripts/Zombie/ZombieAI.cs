@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ZombieAI : MonoBehaviour
 {
     private GameObject target;
+    private PlayerStatus targetStatus;
     public Image healthbar;
     private float timer;
     public int hp; //체력
@@ -23,6 +24,7 @@ public class ZombieAI : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        targetStatus = target.GetComponent<PlayerStatus>();
         timer = 0;
         isDetect = false;
         isRandom = false;
@@ -93,13 +95,18 @@ public class ZombieAI : MonoBehaviour
     void Attack()
     {
         //Player 공격과 감염
-        target.GetComponent<PlayerController>().pStatus.CurHp -= power;
-
         if (Random.Range(1, 101) <= infection)
         {
             Debug.Log("감염되었습니다");
         }
+
+        targetStatus.ReduceHp(power);
+
+        /*
+        // 원래 코드
+        target.GetComponent<PlayerController>().pStatus.CurHp -= power;
         Debug.Log(target.GetComponent<PlayerController>().pStatus.CurHp);
+        */
     }
 
     void Die()

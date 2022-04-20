@@ -7,11 +7,31 @@ public class ItemUse : MonoBehaviour
 {
     [SerializeField] DataManager _dataManager;
     [SerializeField] UIManager _uiManager;
-    private PlayerTest player;
+    
+    private GameObject player;
+    //private PlayerController player;
+    private PlayerStatus playerStatus;
+
     private LightControl lightControl;
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag = "가방", smartPhone = "스마트폰";
     private Dictionary<int, Item> MyUsedItem = new Dictionary<int, Item>();
     public int GetItemDurability(int id) => MyUsedItem[id].GetDURABILITY();
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerStatus = player.GetComponent<PlayerStatus>();
+    }
+    
+    private void Update()
+    {
+        if (lightControl != null)
+        {
+            if (lightControl.LightDurability())
+                DestroyObject(lightControl.GetID());
+        }
+    }
+
     public void UseItem(int itemID)
     {
         Item item;
@@ -88,7 +108,6 @@ public class ItemUse : MonoBehaviour
     }
     private void ChangeDate()
     {
-
         DateControl dateControl = FindObjectOfType<DateControl>();
         System.DateTime result = System.DateTime.Parse(dateControl.GetDate());
         result = result.AddDays(1);
@@ -131,9 +150,10 @@ public class ItemUse : MonoBehaviour
     }
     private void UseFood(int satiety)
     {
-        int satietyMax = 100;
-        player.satiety = player.satiety + satiety > satietyMax ? satietyMax : player.satiety + satiety;
-        UnityEngine.Debug.Log("satiety " + player.satiety);
+        playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, satiety);
+        //int satietyMax = playerStatus.MaxSatiety;
+        //playerStatus.CurSatiety = playerStatus.CurSatiety + satiety > satietyMax ? satietyMax : playerStatus.CurSatiety + satiety;
+        UnityEngine.Debug.Log("satiety " + playerStatus.CurSatiety);
     }
     private void UseWeapon(int attack, int itemID)
     {
@@ -143,16 +163,21 @@ public class ItemUse : MonoBehaviour
         //else
         ChangeItem(-1,itemID);
         //무기 휘두를 때 효과
-        int attackMax = 100;
-        player.attack = player.attack + attack > attackMax ? attackMax : player.attack + attack;
         UnityEngine.Debug.Log("attack " + player.attack);
         // 휘두를 때마다 내구도 마이나스 - 휘두르는 키에서 바로 useItem으로..
+        int attackMax = playerStatus.Attack;
+        playerStatus.CurAttack = playerStatus.CurAttack + attack > attackMax ? attackMax : playerStatus.CurAttack + attack;
+        UnityEngine.Debug.Log("attack " + playerStatus.CurAttack);
+        // 휘두를 때마다 내구도 마이나스
     }
     private void UseHeal(int heal)
     {
-        int hpMax = 100;
-        player.HP = player.HP + heal > hpMax ? hpMax : player.HP + heal;
-        UnityEngine.Debug.Log("HP " + player.HP);
+        playerStatus.RecoverStatus(Status.eCurStatusType.cHp, heal);
+
+
+        //int hpMax = playerStatus.MaxHp;
+        //playerStatus.CurHp = playerStatus.CurHp + heal > hpMax ? hpMax : playerStatus.CurHp + heal;
+        UnityEngine.Debug.Log("HP " + playerStatus.CurHp);
     }
     private void UseLight(Item item, int itemID)
     {
@@ -169,15 +194,9 @@ public class ItemUse : MonoBehaviour
         lightControl = new LightControl(2, itemID);
 
     }
-    private void Update()
-    {
-        if(lightControl != null)
-        {
-            if (lightControl.LightDurability())
-                DestroyObject(lightControl.GetID());
-        }
-        
-    }
+
+
+  
     private void GameOver()
     {
         UnityEngine.Debug.Log("GameOver");

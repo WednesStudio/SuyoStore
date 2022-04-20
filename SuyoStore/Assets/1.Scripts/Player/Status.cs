@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Status : MonoBehaviour
 {
+    public enum eCurStatusType { cHp, cSatiety, cFatigue }
+    public enum eCurAbilityType { cCarryingBack, cAttack, cStamina };
+    public enum eUseTimeType { UseHungerT, UseHungerDieT, UseStaminaT };
+
     // Speed
     [SerializeField]
     protected float curSpeed;
@@ -39,16 +43,16 @@ public class Status : MonoBehaviour
 
     // status와 관련된 시간
     protected float time; // 실시간
-    protected float hungerTime; // 포만감이 감소하는 일정시간
+    protected float hungerTime; // 포만감이 감소하는 일정시간(기준)
     protected float hungerDieTime; // 포만감이 0이 지속되면 사망하는 시간
     [SerializeField]
     protected float useHungerTime;
     [SerializeField]
     protected float useHungerDieTime;
-    protected float staminaTime; // 스테미나가 감소하는 일정시간
+    protected float staminaTime; // 스테미나가 감소하는 일정시간(기준)
     [SerializeField]
     protected float useStaminaTime;
-
+    protected float recoveryStaminaTime;
 
     /// [Property] Speed
     public float CurSpeed { get { return curSpeed; } set { curSpeed = value; } }
@@ -66,7 +70,7 @@ public class Status : MonoBehaviour
     public int CurSatiety { get { return curSatiety; } set { curSatiety = value; } }
     public int CurFatigue { get { return curFatigue; } set { curFatigue = value; } }
 
-    /// [Property]  Ability
+    /// [Property] Ability
     public int MaxCarryingBag { get { return maxCarryingBag; } set { maxCarryingBag = value; } }
     public int Attack { get { return Attack; } set { Attack = value; } }
     public int Stamina { get { return Stamina; } set { Stamina = value; } }
@@ -80,7 +84,8 @@ public class Status : MonoBehaviour
     public float UseHungerTime { get { return useHungerTime; } set { useHungerTime = value; } }
     public float UseHungerDieTime { get { return useHungerDieTime; } set { useHungerDieTime = value; } }
     public float UseStaminaTime { get { return useStaminaTime; } set { useStaminaTime = value; } }
-
+    public float StaminaTime { get { return StaminaTime; } }
+    public float RecoveryStaminaTime { get { return recoveryStaminaTime; } }
 
     private void Start()
     {
@@ -110,27 +115,45 @@ public class Status : MonoBehaviour
 
         // Time related status
         time = 100;
-        hungerTime = 60; // 60초
-        hungerDieTime = 120; // 120초
+        hungerTime = 60;
+        hungerDieTime = 120;
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 2; // 2초
+        staminaTime = 1;
         useStaminaTime = staminaTime;
+        recoveryStaminaTime = 1;
     }
 
     // 현재 상태가 Max나 0을 넘지 않게 --test 필요
-    protected void RemainStatusValue(int curVal, int maxVal)
+    public int RemainStatusValue(int _curVal, int  _maxVal)
     {
-        if (curVal >= maxVal) curVal = maxVal;
-        if (curVal <= 0) curVal = 0;
+        if (_curVal >= _maxVal) _curVal = _maxVal;
+        if (_curVal <= 0) _curVal = 0;
+        return _curVal;
     }
 
-    protected void GetBackTime(float _useTime, float _time)
+    public float GetBackTime(float _useTime, float _time)
     {
-        if(_useTime <= 0)
+        if (_useTime <= 0)
         {
             _useTime = _time;
-            Debug.Log("[Time System] useTime is getting back : " + _useTime);
+            Debug.Log("[Time System] useTime is getting back");
         }
+
+        return _useTime;
     }
+
+    private List<int> itemModifiers = new List<int>();
+
+    public void AddModifier(int modifier)
+    {
+        if (modifier != 0) itemModifiers.Add(modifier);
+    }
+
+    public void RemoveModifier(int modifier)
+    {
+        if (modifier != 0) itemModifiers.Remove(modifier);
+    }
+
+     
 }
