@@ -6,6 +6,7 @@ using Types;
 public class ItemUse : MonoBehaviour
 {
     [SerializeField] DataManager _dataManager;
+    [SerializeField] UIManager _uiManager;
     private PlayerTest player;
     private LightControl lightControl;
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag = "가방", smartPhone = "스마트폰";
@@ -32,7 +33,7 @@ public class ItemUse : MonoBehaviour
                 UseFood(item.GetSATIETY());
                 break;
             case weapon:
-                UseWeapon(item.GetATTACK());
+                UseWeapon(item.GetATTACK(), itemID);
                 break;
             case pill:
                 UseHeal(item.GetHEAL());
@@ -63,10 +64,27 @@ public class ItemUse : MonoBehaviour
             if (i.name == _dataManager.GetItemName(itemID))
             {
                 Destroy(i);
-                _dataManager.AddItem(itemID, -1);
+                if(_dataManager.IsContainItem(itemID))  _dataManager.AddItem(itemID, -1);
                 MyUsedItem.Remove(itemID);
             }
         }
+    }
+
+    public void ChangeItem(int currentItemID, int newItemID)
+    {
+        //현재거를 삭제
+        if(currentItemID != -1)
+        {
+            int[] arr = {0,0,0,0,0,0,0,0,0,0};
+            Item temp = new Item(MyUsedItem[currentItemID].GetItemName(), arr);
+            print(MyUsedItem[currentItemID].GetItemName());
+            _uiManager.SetCurrentItemStatus(-1, temp);
+            _dataManager.AddItem(currentItemID, 1);
+        }
+
+        //새로운 거 장착
+        if(newItemID != -1)    _uiManager.SetCurrentItemStatus(newItemID, MyUsedItem[newItemID]);
+
     }
     private void ChangeDate()
     {
@@ -117,8 +135,13 @@ public class ItemUse : MonoBehaviour
         player.satiety = player.satiety + satiety > satietyMax ? satietyMax : player.satiety + satiety;
         UnityEngine.Debug.Log("satiety " + player.satiety);
     }
-    private void UseWeapon(int attack)
+    private void UseWeapon(int attack, int itemID)
     {
+        //만약 플레이어에게 이미 장착되어 있는 무기가 있다면..
+        //if(player)
+        //ChangeItem(player.list.item....., itemID);
+        //else
+        ChangeItem(-1,itemID);
         //무기 휘두를 때 효과
         int attackMax = 100;
         player.attack = player.attack + attack > attackMax ? attackMax : player.attack + attack;
@@ -138,6 +161,10 @@ public class ItemUse : MonoBehaviour
         // UnityEngine.Debug.Log("sightRange " + player.sightRange);
         // 켜져 있는 상태라면 지속적으로 내구도가 감소해야 함.....
         // lightControl = new LightControl(item.GetDURABILITY(), itemID);
+        
+        //라이트 기존에서 교체
+        //if(player)
+        //ChangeItem(player.list.item....., itemID);
         lightControl = new LightControl(2, itemID);
 
     }

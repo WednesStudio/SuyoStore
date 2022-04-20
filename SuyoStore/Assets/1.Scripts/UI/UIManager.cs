@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,7 +13,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] CharacterStatusUI _characterStatusUI;
     [SerializeField] CurrentStateUI _currentStateUI;
     [SerializeField] OptionSettingUI _optionSettingUI;
+    [SerializeField] ItemUse _itemUse;
     [SerializeField] InventoryUI _inventoryUI;
+    [SerializeField] DataManager _dataManager;
 
     [Header("UI Objects")]
     [SerializeField] GameObject _gameStartUI;
@@ -79,5 +83,43 @@ public class UIManager : MonoBehaviour
     public void CheckUseItem(string name)
     {
         _inventoryUI.OnCheckItemUseWindow(name);
+    }
+
+    public void ChangeWeaponState(GameObject obj)
+    {
+        GameObject parent = obj.transform.parent.gameObject;
+        string name = parent.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text;
+        _itemUse.ChangeItem(_dataManager.GetItemID(name), -1);
+    }
+
+    public void SetCurrentItemStatus(int id, Item item)
+    {
+        if(item.GetItemName() == "무기")
+        {
+            print("무기");
+            if(id == -1)
+            {
+                print("-1");
+                _characterStatusUI.SetWeapon(null, "", item);
+            }
+            else    _characterStatusUI.SetWeapon(_dataManager.GetItemImage(id), _dataManager.GetItemName(id), item);
+        }   
+        else if(item.GetItemName() == "라이트")
+        {
+            if(id == -1)
+            {
+                _characterStatusUI.SetWeapon(null, "", item);
+            }
+            else    _characterStatusUI.SetLight(_dataManager.GetItemImage(id), _dataManager.GetItemName(id), item);
+        }     
+        else if(item.GetItemName() == "가방")
+        {
+            if(id == -1)
+            {
+                _characterStatusUI.SetWeapon(null, "", item);
+            }
+            else    _characterStatusUI.SetBag(_dataManager.GetItemImage(id), _dataManager.GetItemName(id), item);
+        }       
+        
     }
 }

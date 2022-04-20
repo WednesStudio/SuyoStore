@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,11 +11,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] ItemUse _itemUse;
     public static GameManager GM;
     private int _currentSceneNum;
+    private DateControl _dateControl;
     private void Awake() 
     {
         GM = this;
         
         _dataManager.SetData();
+        _dateControl = FindObjectOfType<DateControl>();
         SetWholeUI();
     }
 
@@ -22,27 +26,35 @@ public class GameManager : MonoBehaviour
         //Detect picking up some item
         //Get Item -> Add Item()  
 
-
-    if(Input.GetMouseButtonDown(0))
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit))
+        if(Input.GetMouseButtonDown(0))
         {
-            if(hit.transform.gameObject.tag == "Item")
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit))
             {
-                hit.transform.gameObject.GetComponent<ItemControl>().GetThisItem();
-            }
-        } 
-    }
-        
+                if(hit.transform.gameObject.tag == "Item")
+                {
+                    hit.transform.gameObject.GetComponent<ItemControl>().GetThisItem();
+                }
+            } 
+        }
     }
 
     public void GameStart()
     {
         //Initial Game Setting
         //_currentSceneNum = 1;
+        //date = ..
     }
+    
+    public void DateSetting()
+    {
+        System.DateTime result = System.DateTime.Parse(_dateControl.GetDate());
+        result = result.AddDays(1);
+        _dateControl.SetDate(result.ToString("yyyy/MM/dd"));
+        gameObject.GetComponent<SceneEffect>().FadeEffect(-1);
+    }
+
 
     private void SetWholeUI()
     {
@@ -70,12 +82,17 @@ public class GameManager : MonoBehaviour
         {
             GameObject item = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             item.tag = "UsedItem";
+            _dataManager.AddItem(itemID, -1);
             _itemUse.UseItem(itemID);
         }
-        else _itemUse.UseItem(itemID);
+        else
+        {
+            _dataManager.AddItem(itemID, -1);
+            _itemUse.UseItem(itemID);
+        }
 
 
-        if(_itemUse.GetItemDurability(itemID) == 1) _dataManager.AddItem(itemID, -1);   //손전등 같은 거는 한 개가 있어도 내구도 닳을 때까지 쓸 수 있으니까.. 수정 필요
+       //손전등 같은 거는 한 개가 있어도 내구도 닳을 때까지 쓸 수 있으니까.. 수정 필요
     }
 
     public int GetItemCount(int itemID)
@@ -94,6 +111,6 @@ public class GameManager : MonoBehaviour
     public void ChangeToOtherScene(int sceneNum)
     {
         //Keep data
-        gameObject.GetComponent<SceneChanger>().SceneChange(sceneNum);
+        gameObject.GetComponent<SceneEffect>().SceneChange(sceneNum);
     }
 }

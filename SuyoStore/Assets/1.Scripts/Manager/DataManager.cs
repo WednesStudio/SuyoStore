@@ -20,7 +20,6 @@ public class DataManager : MonoBehaviour
     public List<ItemData> GetItemList => _totalItemList;
     public ItemData GetItem(int ID) => _totalItemList[ID];
     public GameObject GetItemModel(int ID) => _totalItemList[ID].prefab;
-    public string GetItemCategory(int ID) => _totalItemList[ID].category;
     public string GetItemSubCategory(int ID) => _totalItemList[ID].subCategory;
     public string GetItemName(int ID) => _totalItemList[ID].itemName;
     public Sprite GetItemImage(int ID) => _itemObjects[ID].Profile;
@@ -71,12 +70,10 @@ public class DataManager : MonoBehaviour
         //가방 설정
         if(_inventoryUI.GetCurrentCapacity() + capacity > maxCapacity)
         {
-            //경고창 띄움
-            return;
+            //status랑 연결 _ UI Manager에서 관리
         }
 
         string category = _totalItemList[itemID].subCategory;
-        print(category);
         if (IsContainItem(itemID))
         {
             MyItems[itemID] += count;
