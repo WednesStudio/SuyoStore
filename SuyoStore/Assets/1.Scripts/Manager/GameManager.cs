@@ -64,8 +64,9 @@ public class GameManager : MonoBehaviour
     public void UseItem(int itemID)
     {
         Item temp = _dataManager.SetNewItem(itemID);
+        string category = _dataManager.GetItemSubCategory(itemID);
         //instantiate
-        if(_dataManager.GetItemCategory(itemID) == "장비")
+        if(category == "무기" || category == "라이트")
         {
             GameObject item = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             item.tag = "UsedItem";
@@ -73,7 +74,8 @@ public class GameManager : MonoBehaviour
         }
         else _itemUse.UseItem(itemID);
 
-        _dataManager.AddItem(itemID, -1);   //손전등 같은 거는 한 개가 있어도 내구도 닳을 때까지 쓸 수 있으니까.. 수정 필요
+
+        if(_itemUse.GetItemDurability(itemID) == 1) _dataManager.AddItem(itemID, -1);   //손전등 같은 거는 한 개가 있어도 내구도 닳을 때까지 쓸 수 있으니까.. 수정 필요
     }
 
     public int GetItemCount(int itemID)

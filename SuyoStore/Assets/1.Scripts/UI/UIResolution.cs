@@ -15,6 +15,7 @@ public class UIResolution : MonoBehaviour
     private void Start()
     {
         SetResolution();
+        gameObject.GetComponent<OptionSettingUI>().OffResolutionSetting();
     }
 
     public void GetResolution(int width, int height)

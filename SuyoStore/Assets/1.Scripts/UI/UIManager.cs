@@ -26,11 +26,15 @@ public class UIManager : MonoBehaviour
 
     private void Update() 
     {
-        _characterStatusUI.SetStaminaBar(_characterInfo.CurHp, _characterInfo.MaxHp);
-        _characterStatusUI.SetSatietyBar(_characterInfo.CurSatiety, _characterInfo.MaxSatiety);
-        _characterStatusUI.SetFatigueBar(_characterInfo.CurFatigue, _characterInfo.MaxFatigue);
-        _characterStatusUI.SetSpeed(_characterInfo.WalkSpeed, (_characterInfo.CurSpeed - _characterInfo.WalkSpeed));
-        _characterStatusUI.SetAttackPower(_characterInfo.CurAttack);
+        if(_characterInfo != null)
+        {
+            _characterStatusUI.SetStaminaBar(_characterInfo.CurHp, _characterInfo.MaxHp);
+            _characterStatusUI.SetSatietyBar(_characterInfo.CurSatiety, _characterInfo.MaxSatiety);
+            _characterStatusUI.SetFatigueBar(_characterInfo.CurFatigue, _characterInfo.MaxFatigue);
+            _characterStatusUI.SetSpeed(_characterInfo.WalkSpeed, (_characterInfo.CurSpeed - _characterInfo.WalkSpeed));
+            _characterStatusUI.SetAttackPower(_characterInfo.CurAttack);
+        }
+        
     }
     public void GameStartUI()
     {

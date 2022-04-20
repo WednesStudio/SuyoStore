@@ -8,8 +8,9 @@ public class ItemUse : MonoBehaviour
     [SerializeField] DataManager _dataManager;
     private PlayerTest player;
     private LightControl lightControl;
-    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag = "가방";
+    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag = "가방", smartPhone = "스마트폰";
     private Dictionary<int, Item> MyUsedItem = new Dictionary<int, Item>();
+    public int GetItemDurability(int id) => MyUsedItem[id].GetDURABILITY();
     public void UseItem(int itemID)
     {
         Item item;
@@ -25,7 +26,7 @@ public class ItemUse : MonoBehaviour
         switch (item.GetItemName())
         {
             case battery:
-                UseBattery(item.GetBATTERYCHARGE());
+                UseBattery(item.GetBATTERYCHARGE(), itemID);
                 break;
             case food:
                 UseFood(item.GetSATIETY());
@@ -40,9 +41,11 @@ public class ItemUse : MonoBehaviour
                 UseLight(item, itemID);
                 break;
             case sleepingBag:
-                UseSleepingBag(item);
+                UseSleepingBag(item, itemID);
                 break;
             case bag:
+                break;
+            case smartPhone:
                 break;
             default:
                 Debug.Log("itemName doesn't exist in UseItem");
@@ -81,13 +84,19 @@ public class ItemUse : MonoBehaviour
     {
         return GameObject.Find("player").GetComponent<PlayerTest>();
     }
-    private void UseBattery(int charge)
+    private void UseBattery(int charge, int itemID)
     {
         CellPhoneControl cellphone = GetCellPhoneComponent();
         cellphone.PhoneCharge(charge);
+
+        //다 쓰면 바닥에 instantiate
+        GameObject model = GameObject.Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
     }
-    private void UseSleepingBag(Item item)
+    private void UseSleepingBag(Item item, int itemID)
     {
+        //쓰려면 instantiate
+        GameObject model = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
+        
         int rnd = Random.Range(0, 100);
         int rate = item.GetDEATHRATE();
         Debug.Log("random " + rnd + " " + rate);
@@ -110,10 +119,11 @@ public class ItemUse : MonoBehaviour
     }
     private void UseWeapon(int attack)
     {
+        //무기 휘두를 때 효과
         int attackMax = 100;
         player.attack = player.attack + attack > attackMax ? attackMax : player.attack + attack;
         UnityEngine.Debug.Log("attack " + player.attack);
-        // 휘두를 때마다 내구도 마이나스
+        // 휘두를 때마다 내구도 마이나스 - 휘두르는 키에서 바로 useItem으로..
     }
     private void UseHeal(int heal)
     {
