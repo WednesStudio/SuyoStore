@@ -165,6 +165,7 @@ public class ItemUse : MonoBehaviour
         //라이트 기존에서 교체
         //if(player)
         //ChangeItem(player.list.item....., itemID);
+        ChangeItem(-1,itemID);
         lightControl = new LightControl(2, itemID);
 
     }

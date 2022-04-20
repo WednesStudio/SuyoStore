@@ -96,7 +96,6 @@ public class UIManager : MonoBehaviour
     {
         if(item.GetItemName() == "무기")
         {
-            print("무기");
             if(id == -1)
             {
                 print("-1");
@@ -108,7 +107,7 @@ public class UIManager : MonoBehaviour
         {
             if(id == -1)
             {
-                _characterStatusUI.SetWeapon(null, "", item);
+                _characterStatusUI.SetLight(null, "", item);
             }
             else    _characterStatusUI.SetLight(_dataManager.GetItemImage(id), _dataManager.GetItemName(id), item);
         }     
@@ -116,7 +115,7 @@ public class UIManager : MonoBehaviour
         {
             if(id == -1)
             {
-                _characterStatusUI.SetWeapon(null, "", item);
+                _characterStatusUI.SetBag(null, "", item);
             }
             else    _characterStatusUI.SetBag(_dataManager.GetItemImage(id), _dataManager.GetItemName(id), item);
         }       
