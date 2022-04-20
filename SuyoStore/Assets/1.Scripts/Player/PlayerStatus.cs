@@ -39,11 +39,11 @@ public class PlayerStatus : Status
 
         // Time related status
         time = 100;
-        hungerTime = 60; // 60��
-        hungerDieTime = 120; // 120��
+        hungerTime = 60;
+        hungerDieTime = 120;
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 60; // 1��
+        staminaTime = 1;
         useStaminaTime = staminaTime;
     }
 
@@ -205,20 +205,39 @@ public class PlayerStatus : Status
     }
 
     /// <summary> Stamina Status </summary>
-
-
-    void OnEquipmentChange(Item newItem, Item oldItem)
+    public void StaminaModifier()
     {
-        if(newItem != null)
+        UseStaminaTime -= Time.deltaTime;
+        if (UseStaminaTime <= 0)
         {
-
-        }
-
-        if(oldItem != null)
-        {
-            
+            CurStamina--;
+            UseStaminaTime = GetBackTime(UseStaminaTime, StaminaTime);
         }
     }
 
-    
+    //void OnEquipmentChange(Item newItem, Item oldItem)
+    //{
+    //    if(newItem != null)
+    //    {
+
+    //    }
+
+    //    if(oldItem != null)
+    //    {
+
+    //    }
+    //}
+
+    // 장비
+    public List<Item> EquipItemsList = new List<Item>();
+
+    public void AddEquipItem(Item _item)
+    {
+        if (_item != null) EquipItemsList.Add(_item);
+    }
+
+    public void RemoveEquipItem(Item _item)
+    {
+        if (_item != null) EquipItemsList.Remove(_item);
+    }
 }

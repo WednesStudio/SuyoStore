@@ -17,21 +17,28 @@ public class PlayerController : MonoBehaviour
     // 액션
     public enum PlayerState{ Idle, Walk, Run, Sit, Attack, Lay, Dead };
     public PlayerState state = PlayerState.Idle;
-    Animator animator;
-
+    
     public bool isMove = false;
     bool isSit = false;
+
+    Animator animator;
+
+    GameObject nearObject;
+
 
     public void Awake()
     {
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         playerObj = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
+        animator.SetBool("isWalk", moveDirection != Vector3.zero);
+        animator.SetBool("isRun", pStatus.CurStamina != 0 && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)));
+
         GetInput();
         Move();
     }
@@ -39,9 +46,20 @@ public class PlayerController : MonoBehaviour
     void ChangeSpeed()
     {
         //if (state == PlayerState.Walk) pStatus.CurSpeed = 0;
-        if (state == PlayerState.Idle || state == PlayerState.Walk) pStatus.CurSpeed = pStatus.WalkSpeed;
-        if (state == PlayerState.Run) pStatus.CurSpeed = pStatus.WalkSpeed + pStatus.RunAddSpeed;
-        if (state == PlayerState.Sit) pStatus.CurSpeed = pStatus.SitSpeed;
+        if (state == PlayerState.Idle || state == PlayerState.Walk)
+        {
+            pStatus.CurSpeed = pStatus.WalkSpeed;
+        }
+
+        if (state == PlayerState.Run)
+        {
+            pStatus.CurSpeed = pStatus.WalkSpeed + pStatus.RunAddSpeed;
+        }
+
+        if (state == PlayerState.Sit)
+        {
+            pStatus.CurSpeed = pStatus.SitSpeed;
+        }
     }
 
     void GetInput()
@@ -54,29 +72,24 @@ public class PlayerController : MonoBehaviour
         {
             Sit();
         }
-
         if (Input.GetKeyUp(KeyCode.G))
         {
             GetItem();
         }
-
         if (Input.GetMouseButton(0)) {
             Attack();
         }
     }
     void RunInput()
     {
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        if (state != PlayerState.Sit)
         {
-            if (state != PlayerState.Sit)
-            {
-                state = PlayerState.Run;
-                ChangeSpeed();
-                pStatus.UseStaminaTime -= Time.deltaTime;
-                pStatus.UseStaminaTime = pStatus.GetBackTime(pStatus.UseStaminaTime, pStatus.StaminaTime);
-                Debug.Log("[Anim] Run");
-            }
+            state = PlayerState.Run;
+            ChangeSpeed();
+            pStatus.StaminaModifier();
+            Debug.Log("[Anim] Run");
         }
+
     }
 
     void Move()
@@ -90,10 +103,18 @@ public class PlayerController : MonoBehaviour
         // 움직임 여부 체크
         if (moveDirection != Vector3.zero)
         {
-            state = PlayerState.Walk;
             isMove = true;
-            RunInput();
-            ChangeSpeed();
+
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                RunInput();
+            }
+            else
+            {
+                state = PlayerState.Walk;
+                ChangeSpeed();
+            }
+
             if (pStatus.CurStamina <= 0)
             {
                 state = PlayerState.Walk;
@@ -139,6 +160,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.tag == "Item")
+        {
+            Debug.Log("[Move System] Item : " + hit.gameObject.name);
+
+            hit.gameObject.GetComponent<ItemControl>().GetThisItem();
+            Destroy(hit.gameObject);
+        }
+    }
+
     void GetItem()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
@@ -146,6 +178,8 @@ public class PlayerController : MonoBehaviour
             // 파밍 가능
             pStatus.CurFatigue--;
             Debug.Log("[Move System] Get Item");
+
+
             // 타겟 아이템 위치가 바닥일 때:
             /* 애니메이션 : PickUpItem */
 
@@ -163,8 +197,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("[Move System] Can't Get Item");
-            return; // 파밍 불가능
+            // 파밍 불가능
         }
+
     }
 
     void Attack()

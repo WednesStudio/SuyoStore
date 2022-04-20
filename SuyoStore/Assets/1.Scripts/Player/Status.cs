@@ -84,8 +84,8 @@ public class Status : MonoBehaviour
     public float UseHungerTime { get { return useHungerTime; } set { useHungerTime = value; } }
     public float UseHungerDieTime { get { return useHungerDieTime; } set { useHungerDieTime = value; } }
     public float UseStaminaTime { get { return useStaminaTime; } set { useStaminaTime = value; } }
-    public float StaminaTime { get { return StaminaTime; } set { StaminaTime = value; } }
-    public float RecoveryStaminaTime { get { return recoveryStaminaTime; } }
+    public float StaminaTime { get { return staminaTime; } set { staminaTime = value; } }
+    public float RecoveryStaminaTime { get { return recoveryStaminaTime; } set { recoveryStaminaTime = value; } }
 
     private void Start()
     {
@@ -143,20 +143,15 @@ public class Status : MonoBehaviour
         return _useTime;
     }
 
-    public List<int> EquipItems = new List<int>();
 
-    public void AddModifier(int modifier)
-    {
-        if (modifier != 0) EquipItems.Add(modifier);
-    }
-
-    public void RemoveModifier(int modifier)
-    {
-        if (modifier != 0) EquipItems.Remove(modifier);
-    }
 }
 
 /*
+equip : 손전 , 방망,
+ReE (방망)
+equip : 손전
+ * 
+ * 
  * 캐릭터가 빈손
  * -근처에 아이템
  * G : 아이템 -> 인벤토리
