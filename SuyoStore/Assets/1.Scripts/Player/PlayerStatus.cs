@@ -45,6 +45,8 @@ public class PlayerStatus : Status
         useHungerDieTime = hungerDieTime;
         staminaTime = 1;
         useStaminaTime = staminaTime;
+        recoveryStaminaTime = 1;
+        useRecoveryStaminaTime = recoveryStaminaTime;
     }
 
     private void Update()
@@ -205,14 +207,26 @@ public class PlayerStatus : Status
     }
 
     /// <summary> Stamina Status </summary>
-    public void StaminaModifier()
+    public void UseStamina(int _value)
     {
         UseStaminaTime -= Time.deltaTime;
         if (UseStaminaTime <= 0)
         {
-            CurStamina--;
+            CurStamina -= _value;
             UseStaminaTime = GetBackTime(UseStaminaTime, StaminaTime);
         }
+        CurStamina = RemainStatusValue(curStamina, Stamina);
+    }
+
+    public void RecoveryStamina(int _value)
+    {
+        UseRecoveryStaminaTime -= Time.deltaTime;
+        if(useRecoveryStaminaTime <= 0)
+        {
+            CurStamina += _value;
+            UseRecoveryStaminaTime = GetBackTime(UseRecoveryStaminaTime, RecoveryStaminaTime);
+        }
+        CurStamina = RemainStatusValue(curStamina, Stamina);
     }
 
     //void OnEquipmentChange(Item newItem, Item oldItem)

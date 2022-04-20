@@ -53,6 +53,7 @@ public class Status : MonoBehaviour
     [SerializeField]
     protected float useStaminaTime;
     protected float recoveryStaminaTime;
+    protected float useRecoveryStaminaTime;
 
     /// [Property] Speed
     public float CurSpeed { get { return curSpeed; } set { curSpeed = value; } }
@@ -86,6 +87,7 @@ public class Status : MonoBehaviour
     public float UseStaminaTime { get { return useStaminaTime; } set { useStaminaTime = value; } }
     public float StaminaTime { get { return staminaTime; } set { staminaTime = value; } }
     public float RecoveryStaminaTime { get { return recoveryStaminaTime; } set { recoveryStaminaTime = value; } }
+    public float UseRecoveryStaminaTime { get { return useRecoveryStaminaTime; } set { useRecoveryStaminaTime = value; } }
 
     private void Start()
     {
@@ -122,6 +124,7 @@ public class Status : MonoBehaviour
         staminaTime = 1;
         useStaminaTime = staminaTime;
         recoveryStaminaTime = 1;
+        useRecoveryStaminaTime = recoveryStaminaTime;
     }
 
     // 현재 상태가 Max나 0을 넘지 않게 --test 필요
