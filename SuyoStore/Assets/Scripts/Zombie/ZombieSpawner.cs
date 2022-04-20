@@ -7,9 +7,9 @@ public class ZombieSpawner : MonoBehaviour
     public GameObject[] prefabs;
     public float range;
     public int n1;
-    //public int n2;
-    //public int n3;
-    //public int n4;
+    public int n2;
+    public int n3;
+    public int n4;
     public int g;
     public int y;
     public int r;
@@ -38,8 +38,7 @@ public class ZombieSpawner : MonoBehaviour
 
     void First()
     {
-        int[] zCount = {n1, g, y, r};
-        //int[] zCount = {n1, n2, n3, n4, g, y, r}; 
+        int[] zCount = {n1, n2, n3, n4, g, y, r}; 
         Spawn(zCount);
     }
 
