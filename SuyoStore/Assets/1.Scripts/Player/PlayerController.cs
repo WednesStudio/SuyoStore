@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool isSafe = false;
 
     [SerializeField]
-    private float rotationSpeed = 360f; // 회전(방향전환) 속도
+    private float rotationSpeed = 720f; // 회전(방향전환) 속도
     private Vector3 moveDirection; // 이동 방향
     float hAxis;
     float vAxis;
