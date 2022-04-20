@@ -163,7 +163,7 @@ public class ItemUse : MonoBehaviour
         //else
         ChangeItem(-1,itemID);
         //무기 휘두를 때 효과
-        UnityEngine.Debug.Log("attack " + player.attack);
+        //UnityEngine.Debug.Log("attack " + player.attack);
         // 휘두를 때마다 내구도 마이나스 - 휘두르는 키에서 바로 useItem으로..
         int attackMax = playerStatus.Attack;
         playerStatus.CurAttack = playerStatus.CurAttack + attack > attackMax ? attackMax : playerStatus.CurAttack + attack;
