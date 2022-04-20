@@ -53,6 +53,7 @@ public class Status : MonoBehaviour
     [SerializeField]
     protected float useStaminaTime;
     protected float recoveryStaminaTime;
+    [SerializeField]
     protected float useRecoveryStaminaTime;
 
     /// [Property] Speed
@@ -73,8 +74,8 @@ public class Status : MonoBehaviour
 
     /// [Property] Ability
     public int MaxCarryingBag { get { return maxCarryingBag; } set { maxCarryingBag = value; } }
-    public int Attack { get { return Attack; } set { Attack = value; } }
-    public int Stamina { get { return Stamina; } set { Stamina = value; } }
+    public int Attack { get { return attack; } set { attack = value; } }
+    public int Stamina { get { return stamina; } set { stamina = value; } }
 
     /// [Property] Current Ability
     public int CurCarryingBag { get { return curCarryingBag; } set { curCarryingBag = value; } }

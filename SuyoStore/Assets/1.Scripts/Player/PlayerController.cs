@@ -95,10 +95,7 @@ public class PlayerController : MonoBehaviour
                 state = PlayerState.Walk;
             }
         }
-        else
-        {
-            pStatus.RecoveryStamina(5);
-        }
+
         ChangeSpeed();
     }
 
@@ -106,6 +103,14 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = new Vector3(hAxis, 0, vAxis).normalized;
         moveDirection.Normalize();
+
+        if(state != PlayerState.Run)
+        {
+            if(pStatus.CurStamina < pStatus.Stamina)
+            {
+                pStatus.RecoveryStamina(5);
+            }
+        }
 
         // 움직임 여부 체크
         if (moveDirection != Vector3.zero)
@@ -119,7 +124,10 @@ public class PlayerController : MonoBehaviour
             else
             {
                 state = PlayerState.Walk;
-                RunInput();
+                if(state == PlayerState.Idle || state == PlayerState.Walk)
+                {
+                    RunInput();
+                }
             }
             ChangeSpeed();
 

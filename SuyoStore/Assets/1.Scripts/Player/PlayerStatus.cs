@@ -215,18 +215,24 @@ public class PlayerStatus : Status
             CurStamina -= _value;
             UseStaminaTime = GetBackTime(UseStaminaTime, StaminaTime);
         }
-        CurStamina = RemainStatusValue(curStamina, Stamina);
+        if(CurStamina <= 0)
+        {
+            CurStamina = RemainStatusValue(curStamina, Stamina);
+        }
     }
 
     public void RecoveryStamina(int _value)
     {
-        UseRecoveryStaminaTime -= Time.deltaTime;
-        if(useRecoveryStaminaTime <= 0)
+        if(CurStamina < Stamina)
         {
-            CurStamina += _value;
-            UseRecoveryStaminaTime = GetBackTime(UseRecoveryStaminaTime, RecoveryStaminaTime);
+            UseRecoveryStaminaTime -= Time.deltaTime;
+            if (useRecoveryStaminaTime <= 0)
+            {
+                CurStamina += _value;
+                UseRecoveryStaminaTime = GetBackTime(UseRecoveryStaminaTime, RecoveryStaminaTime);
+            }
+            CurStamina = RemainStatusValue(curStamina, Stamina);
         }
-        CurStamina = RemainStatusValue(curStamina, Stamina);
     }
 
     //void OnEquipmentChange(Item newItem, Item oldItem)
