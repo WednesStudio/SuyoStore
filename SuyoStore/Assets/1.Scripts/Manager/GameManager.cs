@@ -85,6 +85,10 @@ public class GameManager : MonoBehaviour
             _dataManager.AddItem(itemID, -1);
             _itemUse.UseItem(itemID);
         }
+        else if(_dataManager.GetItemName(itemID) == "텐트")
+        {
+            _itemUse.UseItem(itemID);
+        }
         else
         {
             _dataManager.AddItem(itemID, -1);

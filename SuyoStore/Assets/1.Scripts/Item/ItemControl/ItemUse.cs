@@ -81,7 +81,8 @@ public class ItemUse : MonoBehaviour
         GameObject[] myItems = GameObject.FindGameObjectsWithTag("UsedItem");
         foreach (GameObject i in myItems)
         {
-            if (i.name == _dataManager.GetItemName(itemID))
+            string name = i.name + "(Clone)";
+            if (name == _dataManager.GetItemName(itemID))
             {
                 Destroy(i);
                 if(_dataManager.IsContainItem(itemID))  _dataManager.AddItem(itemID, -1);
@@ -97,7 +98,6 @@ public class ItemUse : MonoBehaviour
         {
             int[] arr = {0,0,0,0,0,0,0,0,0,0};
             Item temp = new Item(MyUsedItem[currentItemID].GetItemName(), arr);
-            print(MyUsedItem[currentItemID].GetItemName());
             _uiManager.SetCurrentItemStatus(-1, temp);
             _dataManager.AddItem(currentItemID, 1);
         }
@@ -181,7 +181,6 @@ public class ItemUse : MonoBehaviour
     }
     private void UseLight(Item item, int itemID)
     {
-        print("uselight");
         // player.sightRange = item.GetSIGHTRANGE();
         // UnityEngine.Debug.Log("sightRange " + player.sightRange);
         // 켜져 있는 상태라면 지속적으로 내구도가 감소해야 함.....

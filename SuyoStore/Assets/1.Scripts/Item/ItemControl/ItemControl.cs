@@ -40,8 +40,15 @@ public class ItemControl : MonoBehaviour
     }
     public void GetThisItem()
     {
-        GameManager.GM.AddItem(itemID, 1);
-        Destroy(gameObject);
+        if(_dataManager.GetItemName(itemID) == "텐트")
+        {
+            GameManager.GM.UseItem(itemID);
+        }
+        else
+        {
+            GameManager.GM.AddItem(itemID, 1);
+            Destroy(gameObject);
+        }
         print("get this item! " + itemID);
     }
 
