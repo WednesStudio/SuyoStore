@@ -90,17 +90,25 @@ public class InventoryUI : MonoBehaviour
         _currentCapacity += capacity;
         _bagCapacity.text = _currentCapacity.ToString() + "/" + maxCapacity.ToString();
         Color color;
-        if(capacity/maxCapacity > 0.8)
+
+        if((double)_currentCapacity / (double)maxCapacity > 0.8)
         {
             ColorUtility.TryParseHtmlString("#FF6026", out color);
             if(ColorUtility.TryParseHtmlString("#FF6026", out color))
             {
                 _bagCapacity.color = color;
             }
+            if(_currentCapacity/maxCapacity >= 1.0)
+            {
+                _bagCapacity.color = Color.red;
+            }
         }
-        else if(capacity/maxCapacity >= 1.0)
+        else
         {
-            _bagCapacity.color = Color.red;
+            if(ColorUtility.TryParseHtmlString("#FFFFFF", out color))
+            {
+                _bagCapacity.color = color;
+            }
         }
     }
 
@@ -114,7 +122,7 @@ public class InventoryUI : MonoBehaviour
 
         foreach (BagItems b in _totalContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) != "가방")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);

@@ -77,26 +77,9 @@ public class GameManager : MonoBehaviour
     {
         Item temp = _dataManager.SetNewItem(itemID);
         string category = _dataManager.GetItemSubCategory(itemID);
-        //instantiate
-        if(category == "무기" || category == "라이트")
-        {
-            GameObject item = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            item.tag = "UsedItem";
-            _dataManager.AddItem(itemID, -1);
-            _itemUse.UseItem(itemID);
-        }
-        else if(_dataManager.GetItemName(itemID) == "텐트")
-        {
-            _itemUse.UseItem(itemID);
-        }
-        else
-        {
-            _dataManager.AddItem(itemID, -1);
-            _itemUse.UseItem(itemID);
-        }
-
-
-       //손전등 같은 거는 한 개가 있어도 내구도 닳을 때까지 쓸 수 있으니까.. 수정 필요
+        
+        if(category != "가방") _dataManager.AddItem(itemID, -1);
+        _itemUse.UseItem(itemID);
     }
 
     public int GetItemCount(int itemID)

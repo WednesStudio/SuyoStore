@@ -137,7 +137,8 @@ public class DataManager : MonoBehaviour
                     _inventoryUI.SetLightBagContents();
                     break;
                 case bag:
-                    maxCapacity = _totalItemList[itemID].capacity;
+                    maxCapacity = 30 + _totalItemList[itemID].capacity;
+                    GameManager.GM.UseItem(itemID);
                     break;
                 case sleepingBag:
                     _inventoryUI.SetSleepingBagContents();
@@ -149,7 +150,7 @@ public class DataManager : MonoBehaviour
                     Debug.Log("item Category doesn't exist!");
                     break;
             }
-            _inventoryUI.SetTotalBagContents();
+            if(category != bag) _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(capacity, maxCapacity);
         }
         else
@@ -173,7 +174,8 @@ public class DataManager : MonoBehaviour
                 _inventoryUI.SetLightBagContents();
                 break;
             case bag:
-                maxCapacity = _totalItemList[itemID].capacity;
+                maxCapacity = 30 + _totalItemList[itemID].capacity;
+                GameManager.GM.UseItem(itemID);
                 break;
             case sleepingBag:
                 _inventoryUI.SetSleepingBagContents();
@@ -185,7 +187,7 @@ public class DataManager : MonoBehaviour
                 Debug.Log("item Category doesn't exist!");
                 break;
             }
-            _inventoryUI.SetTotalBagContents();
+            if(category != bag) _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(capacity, maxCapacity);
         }
 
