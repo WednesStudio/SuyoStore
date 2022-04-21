@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e7ab1cabd69404e40b618aafec4d5906
+guid: 296ac961216c3204ea61c7344e371157
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: WalkingCareful
+    second: KnifeSlash
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: WalkingCareful
+      name: KnifeSlash
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 138
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
