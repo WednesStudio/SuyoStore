@@ -6,6 +6,7 @@ public class PlayerStatus : Status
 {
     PlayerController playerController;
 
+
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -47,6 +48,8 @@ public class PlayerStatus : Status
         useStaminaTime = staminaTime;
         recoveryStaminaTime = 1;
         useRecoveryStaminaTime = recoveryStaminaTime;
+        //sturnStaminaTime = 5;
+        //useSturnStaminaTime = sturnStaminaTime;
     }
 
     private void Update()
