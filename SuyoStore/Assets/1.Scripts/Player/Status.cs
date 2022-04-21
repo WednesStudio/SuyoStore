@@ -137,7 +137,6 @@ public class Status : MonoBehaviour
         if (_useTime <= 0)
         {
             _useTime = _time;
-            Debug.Log("[Time System] useTime is getting back");
         }
 
         return _useTime;

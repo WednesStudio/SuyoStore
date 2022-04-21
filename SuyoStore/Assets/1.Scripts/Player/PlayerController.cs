@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Anim()
     {
+        animator.SetBool("isIdle", state == PlayerState.Idle);
         animator.SetBool("isWalk", state == PlayerState.Walk);
         animator.SetBool("isRun", state == PlayerState.Run);
         animator.SetBool("isSit", state==PlayerState.Sit);
@@ -101,15 +102,23 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            state = PlayerState.Run;
-
-            if (pStatus.CurStamina > 0)
+            if (isSit)
             {
-                pStatus.UseStamina(useStamina);
-            }
+                if (isMove) state = PlayerState.SitWalk;
+                else state = PlayerState.Sit;
+            } 
             else
             {
-                state = PlayerState.Walk;
+                state = PlayerState.Run;
+                if (pStatus.CurStamina > 0)
+                {
+                    pStatus.UseStamina(useStamina);
+                }
+                else
+                {
+                    if (isMove) state = PlayerState.SitWalk;
+                    else state = PlayerState.Sit;
+                }
             }
         }
         ChangeSpeed();
@@ -190,8 +199,6 @@ public class PlayerController : MonoBehaviour
                 if (moveDirection != Vector3.zero)
                 {
                     state = PlayerState.SitWalk;
-                    Debug.Log("[Move System] Player is Sitting");
-                    /* 애니메이션 : Sit */
                 }
                 else
                 {
