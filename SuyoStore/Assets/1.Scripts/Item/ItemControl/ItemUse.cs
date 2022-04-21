@@ -52,12 +52,14 @@ public class ItemUse : MonoBehaviour
                 UseFood(item.GetSATIETY());
                 break;
             case weapon:
-                UseWeapon(item.GetATTACK(), itemID);
+                WeaponSetting(itemID);
+                UseWeapon(item.GetATTACK());
                 break;
             case pill:
                 UseHeal(item.GetHEAL());
                 break;
             case flashLight:
+                LightSetting(itemID);
                 UseLight(item, itemID);
                 break;
             case sleepingBag:
@@ -82,17 +84,13 @@ public class ItemUse : MonoBehaviour
         GameObject[] myItems = GameObject.FindGameObjectsWithTag("UsedItem");
         foreach (GameObject i in myItems)
         {
-            if (i.name == _dataManager.GetItemName(itemID) + "(Clone)")
+            if (i.name == _dataManager.GetItemFileName(itemID) + "(Clone)")
             {
                 Destroy(i);
                 if(use == 0)
                 {
                     MyUsedItem.Remove(itemID);
                 }
-                // else
-                // {
-                //     if(_dataManager.IsContainItem(itemID))  _dataManager.AddItem(itemID, -1);
-                // }
             }
         }
     }
@@ -209,7 +207,7 @@ public class ItemUse : MonoBehaviour
         UnityEngine.Debug.Log("satiety " + playerStatus.CurSatiety);
     }
 
-    private void UseWeapon(int attack, int itemID)
+    private void WeaponSetting(int itemID)
     {
         if(playerStatus != null)
         {
@@ -233,13 +231,16 @@ public class ItemUse : MonoBehaviour
                 newWeapon.tag = "UsedItem";
             }
         }
-        else    //just for test
+        else    //UI Scene 테스트 용!! 무시 가능
         {
             ChangeItem(-1, itemID);
             GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             newWeapon.tag = "UsedItem";
         }
+    }
 
+    public void UseWeapon(int attack)
+    {
         int attackMax = playerStatus.Attack;
         playerStatus.CurAttack = playerStatus.CurAttack + attack > attackMax ? attackMax : playerStatus.CurAttack + attack;
         UnityEngine.Debug.Log("attack " + playerStatus.CurAttack);
@@ -256,11 +257,9 @@ public class ItemUse : MonoBehaviour
         //playerStatus.CurHp = playerStatus.CurHp + heal > hpMax ? hpMax : playerStatus.CurHp + heal;
         UnityEngine.Debug.Log("HP " + playerStatus.CurHp);
     }
-    private void UseLight(Item item, int itemID)
-    {
-        // 켜져 있는 상태라면 지속적으로 내구도가 감소해야 함.....
-        // lightControl = new LightControl(item.GetDURABILITY(), itemID);
 
+    private void LightSetting(int itemID)
+    {
         if(playerStatus != null)
         {
             //만약 플레이어에게 이미 장착되어 있는 라이트가 있다면
@@ -289,6 +288,13 @@ public class ItemUse : MonoBehaviour
             GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             newLight.tag = "UsedItem";
         }
+    }
+    
+    private void UseLight(Item item, int itemID)
+    {
+        // 켜져 있는 상태라면 지속적으로 내구도가 감소해야 함.....
+        // lightControl = new LightControl(item.GetDURABILITY(), itemID);
+
         lightControl = new LightControl(2, itemID);
 
     }

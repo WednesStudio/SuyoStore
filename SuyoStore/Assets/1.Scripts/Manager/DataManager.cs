@@ -16,15 +16,15 @@ public class DataManager : MonoBehaviour
     [Header("Current My Data")]
     public Dictionary<int, int> MyItems = new Dictionary<int, int>(); 
 
-
-    public List<ItemData> GetItemList => _totalItemList;
     public ItemData GetItem(int ID) => _totalItemList[ID];
     public GameObject GetItemModel(int ID) => _totalItemList[ID].prefab;
     public string GetItemSubCategory(int ID) => _totalItemList[ID].subCategory;
+    public string GetItemFileName(int ID) => _totalItemList[ID].fileName;
     public string GetItemName(int ID) => _totalItemList[ID].itemName;
     public Sprite GetItemImage(int ID) => _itemObjects[ID].Profile;
     public string GetDescription(int ID) => _itemObjects[ID].description;
     public bool IsContainItem(int ID) => MyItems.ContainsKey(ID);
+
 
     //private List<Item> _itemList = null;
     private string _date, _location;
