@@ -249,15 +249,15 @@ public class PlayerStatus : Status
     //}
 
     // 장비
-    public List<Item> EquipItemsList = new List<Item>();
+    public List<int> EquipItemsList = new List<int>();
 
-    public void AddEquipItem(Item _item)
+    public void AddEquipItem(int _itemID)
     {
-        if (_item != null) EquipItemsList.Add(_item);
+        EquipItemsList.Add(_itemID);
     }
 
-    public void RemoveEquipItem(Item _item)
+    public void RemoveEquipItem(int _itemID)
     {
-        if (_item != null) EquipItemsList.Remove(_item);
+        EquipItemsList.Remove(_itemID);
     }
 }

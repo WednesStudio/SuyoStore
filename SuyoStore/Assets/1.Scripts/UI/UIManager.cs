@@ -97,7 +97,6 @@ public class UIManager : MonoBehaviour
         {
             if(id == -1)
             {
-                print("-1");
                 _characterStatusUI.SetWeapon(null, "", item);
             }
             else    _characterStatusUI.SetWeapon(_dataManager.GetItemImage(id), _dataManager.GetItemName(id), item);

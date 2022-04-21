@@ -31,6 +31,7 @@ public class InventoryUI : MonoBehaviour
     private BagItems[] _importantContents = null;
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", smartPhone = "스마트폰", bag = "가방";
     private int _currentCapacity = 0;
+    private string _itemName;
 
     private void Start() 
     {
@@ -62,15 +63,16 @@ public class InventoryUI : MonoBehaviour
 
     public void OnCheckItemUseWindow(string itemName)
     {
+        _itemName = itemName;
         _checkUseItemWindow.SetActive(true);
-        _checkUseItemWindow.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = itemName + " 을/(를) 사용하시겠습니까?";
-        _checkUseItemWindow.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() => UseItem(itemName));
+        _checkUseItemWindow.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _itemName + " 을/(를) 사용하시겠습니까?";
+        _checkUseItemWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _itemName;
     }
 
-    private void UseItem(string name)
+    public void UseItem()
     {
         _checkUseItemWindow.SetActive(false);
-        GameManager.GM.UseItem(_dataManager.GetItemID(name));
+        GameManager.GM.UseItem(_dataManager.GetItemID(_checkUseItemWindow.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text));
     }
 
     public void OffCheckItemUseWindow()
@@ -88,17 +90,25 @@ public class InventoryUI : MonoBehaviour
         _currentCapacity += capacity;
         _bagCapacity.text = _currentCapacity.ToString() + "/" + maxCapacity.ToString();
         Color color;
-        if(capacity/maxCapacity > 0.8)
+
+        if((double)_currentCapacity / (double)maxCapacity > 0.8)
         {
             ColorUtility.TryParseHtmlString("#FF6026", out color);
             if(ColorUtility.TryParseHtmlString("#FF6026", out color))
             {
                 _bagCapacity.color = color;
             }
+            if(_currentCapacity/maxCapacity >= 1.0)
+            {
+                _bagCapacity.color = Color.red;
+            }
         }
-        else if(capacity/maxCapacity >= 1.0)
+        else
         {
-            _bagCapacity.color = Color.red;
+            if(ColorUtility.TryParseHtmlString("#FFFFFF", out color))
+            {
+                _bagCapacity.color = color;
+            }
         }
     }
 
@@ -112,7 +122,7 @@ public class InventoryUI : MonoBehaviour
 
         foreach (BagItems b in _totalContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) != "가방")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);
@@ -131,7 +141,7 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (BagItems b in _weaponContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "무기")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);
@@ -150,7 +160,7 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (BagItems b in _lightContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "라이트")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);
@@ -169,7 +179,7 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (BagItems b in _foodContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "음식")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);
@@ -188,7 +198,7 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (BagItems b in _medicineContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "치료제")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);
@@ -207,7 +217,7 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (BagItems b in _sleepingBagContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "침낭")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);
@@ -226,7 +236,7 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (BagItems b in _batteryContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "배터리")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);
@@ -245,7 +255,7 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (BagItems b in _importantContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0)
+            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "스마트폰")
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);

@@ -21,7 +21,6 @@ public class BagItems : MonoBehaviour
     }
     public void SelectButton(int id)
     {
-        Debug.Log("ID: " + id + " 를 클릭함");
         GameManager.GM.CheckUseItem(id);
     }
 }
