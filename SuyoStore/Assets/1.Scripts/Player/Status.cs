@@ -49,12 +49,16 @@ public class Status : MonoBehaviour
     protected float useHungerTime;
     [SerializeField]
     protected float useHungerDieTime;
-    protected float staminaTime; // 스테미나가 감소하는 일정시간(기준)
+
     [SerializeField]
     protected float useStaminaTime;
-    protected float recoveryStaminaTime;
+    protected float staminaTime; // 스테미나가 감소하는 일정시간(기준)
     [SerializeField]
     protected float useRecoveryStaminaTime;
+    protected float recoveryStaminaTime;
+    //[SerializeField]
+    //protected float useSturnStaminaTime;
+    //protected float sturnStaminaTime;
 
     /// [Property] Speed
     public float CurSpeed { get { return curSpeed; } set { curSpeed = value; } }
@@ -85,11 +89,14 @@ public class Status : MonoBehaviour
     /// [Property] Time
     public float UseHungerTime { get { return useHungerTime; } set { useHungerTime = value; } }
     public float UseHungerDieTime { get { return useHungerDieTime; } set { useHungerDieTime = value; } }
+   
     public float UseStaminaTime { get { return useStaminaTime; } set { useStaminaTime = value; } }
     public float StaminaTime { get { return staminaTime; } set { staminaTime = value; } }
     public float RecoveryStaminaTime { get { return recoveryStaminaTime; } set { recoveryStaminaTime = value; } }
     public float UseRecoveryStaminaTime { get { return useRecoveryStaminaTime; } set { useRecoveryStaminaTime = value; } }
-
+    //public float SturnStaminaTime { get { return sturnStaminaTime; } set { sturnStaminaTime = value; } }
+    //public float UseSturnStaminaTime { get { return useSturnStaminaTime; } set { useSturnStaminaTime = value; } }
+    
     private void Start()
     {
         // Status Initial Value
@@ -115,17 +122,6 @@ public class Status : MonoBehaviour
         curCarryingBag = 30;
         curAttack = 10;
         curStamina = 100;
-
-        // Time related status
-        time = 100;
-        hungerTime = 60;
-        hungerDieTime = 120;
-        useHungerTime = hungerTime;
-        useHungerDieTime = hungerDieTime;
-        staminaTime = 1;
-        useStaminaTime = staminaTime;
-        recoveryStaminaTime = 1;
-        useRecoveryStaminaTime = recoveryStaminaTime;
     }
 
     // 현재 상태가 Max나 0을 넘지 않게 --test 필요
@@ -141,7 +137,6 @@ public class Status : MonoBehaviour
         if (_useTime <= 0)
         {
             _useTime = _time;
-            Debug.Log("[Time System] useTime is getting back");
         }
 
         return _useTime;

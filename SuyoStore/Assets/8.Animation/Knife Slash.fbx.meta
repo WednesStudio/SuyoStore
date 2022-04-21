@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 36f06f340a50da540a9aca07eebf5c41
+guid: 296ac961216c3204ea61c7344e371157
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: ZombieWalk
+    second: KnifeSlash
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ZombieWalk
+      name: KnifeSlash
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 121
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

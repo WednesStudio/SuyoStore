@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 36f06f340a50da540a9aca07eebf5c41
+guid: 61285a22ff712a243af84560ffda9e5a
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: ZombieWalk
+    second: HeavyWeaponSwing
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ZombieWalk
+      name: HeavyWeaponSwing
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 121
+      lastFrame: 156
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

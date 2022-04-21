@@ -6,15 +6,16 @@ public class PlayerController : MonoBehaviour
     public PlayerStatus pStatus;
     GameObject playerObj;
 
+    // Related Zombie
     public bool isSafe = false;
 
-    [SerializeField]
+    // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
     private Vector3 moveDirection; // 이동 방향
     float hAxis;
     float vAxis;
 
-    // 액션
+    // Action
     public enum PlayerState{ Idle, Walk, Run, Sit, SitWalk, Attack, Lay, Dead };
     public PlayerState state = PlayerState.Idle;
     
@@ -25,21 +26,34 @@ public class PlayerController : MonoBehaviour
 
     GameObject nearObject;
 
+    // Status
+    int useStamina = 10;
+    int recoverStamina = 5;
+
+
     public void Awake()
     {
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
+        //playerObj = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
-        playerObj = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        //animator.SetBool("isWalk", moveDirection != Vector3.zero);
-        //animator.SetBool("isRun", pStatus.CurStamina != 0 && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)));
-
+        Anim();
         GetInput();
         Move();
+    }
+
+    void Anim()
+    {
+        animator.SetBool("isIdle", state == PlayerState.Idle);
+        animator.SetBool("isWalk", state == PlayerState.Walk);
+        animator.SetBool("isRun", state == PlayerState.Run);
+        animator.SetBool("isSit", state==PlayerState.Sit);
+        animator.SetBool("isSitWalk", state==PlayerState.SitWalk);
+        animator.SetBool("isAttack", state==PlayerState.Attack);
     }
 
     void ChangeSpeed()
@@ -82,20 +96,31 @@ public class PlayerController : MonoBehaviour
             Attack();
         }
     }
+
+
     void RunInput()
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            state = PlayerState.Run;
-            pStatus.UseStamina(2);
-            Debug.Log("[Anim] Run");
-
-            if (pStatus.CurStamina <= 0)
+            if (isSit)
             {
-                state = PlayerState.Walk;
+                if (isMove) state = PlayerState.SitWalk;
+                else state = PlayerState.Sit;
+            } 
+            else
+            {
+                state = PlayerState.Run;
+                if (pStatus.CurStamina > 0)
+                {
+                    pStatus.UseStamina(useStamina);
+                }
+                else
+                {
+                    if (isMove) state = PlayerState.SitWalk;
+                    else state = PlayerState.Sit;
+                }
             }
         }
-
         ChangeSpeed();
     }
 
@@ -103,12 +128,11 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = new Vector3(hAxis, 0, vAxis).normalized;
         moveDirection.Normalize();
-
-        if(state != PlayerState.Run)
+        if (state != PlayerState.Run)
         {
-            if(pStatus.CurStamina < pStatus.Stamina)
+            if (pStatus.CurStamina < pStatus.Stamina)
             {
-                pStatus.RecoveryStamina(5);
+                pStatus.RecoveryStamina(recoverStamina);
             }
         }
 
@@ -129,6 +153,7 @@ public class PlayerController : MonoBehaviour
                     RunInput();
                 }
             }
+
             ChangeSpeed();
 
             // 바라보는 방향으로 회전
@@ -150,6 +175,16 @@ public class PlayerController : MonoBehaviour
             ChangeSpeed();
         }
 
+        if (state == PlayerState.Run)
+        {
+            // When stop running, Reset useTime to Time for prevent to stop (ex.)0.54 second
+            pStatus.UseRecoveryStaminaTime = pStatus.RecoveryStaminaTime;
+        }
+        else {
+            // When stop running, Reset useTime to Time for prevent to stop (ex.)0.54 second
+            pStatus.UseStaminaTime = pStatus.StaminaTime;
+        }
+
         float magnitud = Mathf.Clamp01(moveDirection.magnitude) * pStatus.CurSpeed;
         characterController.SimpleMove(moveDirection* pStatus.CurSpeed);
     }
@@ -164,8 +199,6 @@ public class PlayerController : MonoBehaviour
                 if (moveDirection != Vector3.zero)
                 {
                     state = PlayerState.SitWalk;
-                    Debug.Log("[Move System] Player is Sitting");
-                    /* 애니메이션 : Sit */
                 }
                 else
                 {
@@ -235,13 +268,13 @@ public class PlayerController : MonoBehaviour
             // 무기 미착용 상태
             /* 애니메이션 : FistAttack */
 
-            state = PlayerState.Idle;
+            state = PlayerState.Attack;
         }
         else
         {
             Debug.Log("[Move System] player can't attack");
-            return; // 공격 불가능
         }
+        state = PlayerState.Idle;
     }
 
     void LayDown()
