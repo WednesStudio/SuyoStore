@@ -65,7 +65,7 @@ public class PlayerStatus : Status
 
     public virtual void Die()
     {
-        Debug.Log(transform.name + " died.");
+        playerController.state = PlayerController.PlayerState.Dead;
     }
 
     /// <summary> Hp Status </summary>
