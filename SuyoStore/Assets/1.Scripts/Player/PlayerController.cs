@@ -5,7 +5,8 @@ public class PlayerController : MonoBehaviour
     CharacterController characterController;
     public PlayerStatus pStatus;
     GameObject playerObj;
-
+    GameObject zombieObj;
+    ZombieAI zombieAI;
     // Related Zombie
     public bool isSafe = false;
 
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     
     public bool isMove = false;
     bool isSit = false;
+    bool isAttack = false;
 
     Animator animator;
 
@@ -35,8 +37,10 @@ public class PlayerController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
-        //playerObj = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
+
+        zombieObj = GameObject.FindGameObjectWithTag("Zombie");
+        zombieAI = zombieObj.GetComponent<ZombieAI>();
     }
 
     private void Update()
@@ -51,9 +55,10 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isIdle", state == PlayerState.Idle);
         animator.SetBool("isWalk", state == PlayerState.Walk);
         animator.SetBool("isRun", state == PlayerState.Run);
-        animator.SetBool("isSit", state==PlayerState.Sit);
-        animator.SetBool("isSitWalk", state==PlayerState.SitWalk);
-        animator.SetBool("isAttack", state==PlayerState.Attack);
+        animator.SetBool("isSit", state == PlayerState.Sit);
+        animator.SetBool("isSitWalk", state == PlayerState.SitWalk);
+        animator.SetBool("isAttack", isAttack);
+        animator.SetBool("isDie", state == PlayerState.Dead);
     }
 
     void ChangeSpeed()
@@ -260,15 +265,14 @@ public class PlayerController : MonoBehaviour
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
             pStatus.CurFatigue -= 2;
-            Debug.Log("[Move System] player attack zombie");
-
+            state = PlayerState.Attack;
+            zombieAI.Hit();
             // 무기 착용 상태
             /* 애니메이션 : WeaponAttack */
 
             // 무기 미착용 상태
             /* 애니메이션 : FistAttack */
 
-            state = PlayerState.Attack;
         }
         else
         {
