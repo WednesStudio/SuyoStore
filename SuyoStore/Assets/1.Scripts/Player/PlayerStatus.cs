@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStatus : Status
 {
     PlayerController playerController;
+    public bool isEquipWeapon = false;
 
 
     private void Awake()
@@ -25,7 +26,7 @@ public class PlayerStatus : Status
         maxSatiety = 100;
         maxFatigue = 100;
 
-        curHp = 10;
+        curHp = 100;
         curSatiety = 50;
         curFatigue = 50;
 
@@ -65,7 +66,7 @@ public class PlayerStatus : Status
 
     public virtual void Die()
     {
-        Debug.Log(transform.name + " died.");
+        playerController.state = PlayerController.PlayerState.Dead;
     }
 
     /// <summary> Hp Status </summary>
@@ -73,7 +74,6 @@ public class PlayerStatus : Status
     {
         CurHp -= zomPower;  //CurHp = ReduceStatus(eCurStatusType.cHp, zomPower);
         CurHp = RemainStatusValue(CurHp, MaxHp);
-        Debug.Log("[Status System] HP : " + curHp);
 
         // GameOver
         if (curHp <= 0)

@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private float gravity = -9.81f;
+
     CharacterController characterController;
     public PlayerStatus pStatus;
+    GameObject nearObject;
     GameObject playerObj;
-
+    GameObject zombieObj;
+    ZombieAI zombieAI;
     // Related Zombie
     public bool isSafe = false;
 
@@ -16,15 +20,15 @@ public class PlayerController : MonoBehaviour
     float vAxis;
 
     // Action
-    public enum PlayerState{ Idle, Walk, Run, Sit, SitWalk, Attack, Lay, Dead };
+    public enum PlayerState{ Idle, Walk, Run, Sit, SitWalk, Lay, Dead };
     public PlayerState state = PlayerState.Idle;
     
     public bool isMove = false;
     bool isSit = false;
+    bool isAttack = false;
 
     Animator animator;
 
-    GameObject nearObject;
 
     // Status
     int useStamina = 10;
@@ -35,8 +39,10 @@ public class PlayerController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
-        //playerObj = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponentInChildren<Animator>();
+        
+        zombieObj = GameObject.FindGameObjectWithTag("Zombie");
+        zombieAI = zombieObj.GetComponent<ZombieAI>();
     }
 
     private void Update()
@@ -51,9 +57,10 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isIdle", state == PlayerState.Idle);
         animator.SetBool("isWalk", state == PlayerState.Walk);
         animator.SetBool("isRun", state == PlayerState.Run);
-        animator.SetBool("isSit", state==PlayerState.Sit);
-        animator.SetBool("isSitWalk", state==PlayerState.SitWalk);
-        animator.SetBool("isAttack", state==PlayerState.Attack);
+        animator.SetBool("isSit", state == PlayerState.Sit);
+        animator.SetBool("isSitWalk", state == PlayerState.SitWalk);
+        animator.SetBool("isAttack", isAttack);
+        animator.SetBool("isDie", state == PlayerState.Dead);
     }
 
     void ChangeSpeed()
@@ -126,8 +133,16 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        isAttack = false;
+        // 캐릭터에 중력 적용
+        if (characterController.isGrounded == false)
+        {
+            moveDirection.y += gravity * Time.deltaTime;
+        }
+
         moveDirection = new Vector3(hAxis, 0, vAxis).normalized;
         moveDirection.Normalize();
+
         if (state != PlayerState.Run)
         {
             if (pStatus.CurStamina < pStatus.Stamina)
@@ -259,16 +274,15 @@ public class PlayerController : MonoBehaviour
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
+            isAttack = true;
             pStatus.CurFatigue -= 2;
-            Debug.Log("[Move System] player attack zombie");
-
+            zombieAI.Hit();
             // 무기 착용 상태
             /* 애니메이션 : WeaponAttack */
 
             // 무기 미착용 상태
             /* 애니메이션 : FistAttack */
 
-            state = PlayerState.Attack;
         }
         else
         {
