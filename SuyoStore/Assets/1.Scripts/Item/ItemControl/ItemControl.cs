@@ -13,9 +13,9 @@ public class ItemControl : MonoBehaviour
     private int itemID;
     private int[] attributes = new int[(int)Attributes.TOTAL];
     private char[] separatorChar = { '(', ' ' };
-
     private void Start()
     {
+        _dataManager = FindObjectOfType<DataManager>();
         _database = _dataManager.GetComponent<LoadExcel>();
         string name = this.name.Split(separatorChar)[0];
         for (int i = 0; i < _database.itemDatabase.Count; i++)
@@ -40,7 +40,7 @@ public class ItemControl : MonoBehaviour
     }
     public void GetThisItem()
     {
-        if(_dataManager.GetItemName(itemID) == "텐트")
+        if (_dataManager.GetItemName(itemID) == "텐트")
         {
             GameManager.GM.UseItem(itemID);
         }
@@ -51,7 +51,6 @@ public class ItemControl : MonoBehaviour
         }
         print("get this item! " + itemID);
     }
-
     public int GetItemID()
     {
         return itemID;

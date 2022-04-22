@@ -13,6 +13,7 @@ public class Item
         attributes = attr;
     }
     public string GetItemName() => itemName;
+    public int[] GetAttributes() => attributes;
     public int GetATTACK() => attributes[(int)Attributes.ATTACK];
     public int GetHEAL() => attributes[(int)Attributes.HEAL];
     public int GetSATIETY() => attributes[(int)Attributes.SATIETY];

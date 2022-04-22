@@ -6,11 +6,6 @@ public class LoadExcel : MonoBehaviour
 {
     private ItemData blankItem;
     public List<ItemData> itemDatabase = new List<ItemData>();
-    private void Awake()
-    {
-        LoadItemData();
-    }
-
     public void LoadItemData()
     {
         // Clear database

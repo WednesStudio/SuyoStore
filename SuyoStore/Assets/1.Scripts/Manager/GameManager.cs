@@ -1,43 +1,97 @@
+using System.Net.Mime;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+public enum GameState
+{
+    GameStart,
+    GameOver,
+    GameWin
+}
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] DataManager _dataManager;
     [SerializeField] UIManager _uiManager;
     [SerializeField] ItemUse _itemUse;
-    public static GameManager GM;
+    [SerializeField] GameObject gameOverPanel, gameWinPanel;
+    public static GameManager GM = null;
     private int _currentSceneNum;
+    public GameState state;
+    public static event Action<GameState> OnGameStateChanged;
+    private string directory = "Data/";
+    private string[] routes = { "route1", "route2", "route3" };
+    private int selectedRoute;
     private DateControl _dateControl;
-    private void Awake() 
+    private void Awake()
     {
-        GM = this;
-        
-        _dataManager.SetData();
-        _dateControl = FindObjectOfType<DateControl>();
-        SetWholeUI();
+        if (GM != null)
+            Destroy(gameObject);
+        else
+        {
+            GM = this;
+            DontDestroyOnLoad(gameObject);
+            _dataManager.SetData();
+            _dateControl = FindObjectOfType<DateControl>();
+            SetWholeUI();
+            selectedRoute = UnityEngine.Random.Range(0, 3);
+            GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData(directory + routes[selectedRoute]);
+        }
+
+    }
+    private void Start()
+    {
+        UpdateGameState(GameState.GameStart);
+        GameObject.Find("Reader").GetComponent<LoadJson>().LoadConditionData(directory + routes[selectedRoute]);
     }
 
-    private void Update() 
+    private void Update()
     {
         //Detect picking up some item
         //Get Item -> Add Item()  
 
-        if(Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if(Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit))
             {
-                if(hit.transform.gameObject.tag == "Item")
+                if (hit.transform.gameObject.tag == "Item")
                 {
                     hit.transform.gameObject.GetComponent<ItemControl>().GetThisItem();
                 }
-            } 
+            }
         }
+        if (_dataManager.dateControl.GetDays() == 7)
+            CheckCondition();
+    }
+
+    public void UpdateGameState(GameState newState)
+    {
+        state = newState;
+
+        switch (newState)
+        {
+            case GameState.GameStart:
+                GameStart();
+                break;
+            case GameState.GameOver:
+                GameOver();
+                break;
+            case GameState.GameWin:
+                GameWin();
+                break;
+            default:
+                UnityEngine.Debug.Log("Error changing state");
+                break;
+        }
+        OnGameStateChanged?.Invoke(newState);
     }
 
     public void GameStart()
@@ -46,7 +100,16 @@ public class GameManager : MonoBehaviour
         //_currentSceneNum = 1;
         //date = ..
     }
-    
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(state == GameState.GameOver);
+        // ExitGame();
+    }
+    public void GameWin()
+    {
+        gameWinPanel.SetActive(state == GameState.GameWin);
+        // ExitGame();
+    }
     public void DateSetting()
     {
         System.DateTime result = System.DateTime.Parse(_dateControl.GetDate());
@@ -54,8 +117,6 @@ public class GameManager : MonoBehaviour
         _dateControl.SetDate(result.ToString("yyyy/MM/dd"));
         gameObject.GetComponent<SceneEffect>().FadeEffect(-1);
     }
-
-
     private void SetWholeUI()
     {
         _uiManager.SetTopBarUI(10f, 50f, 50f, 10, 10);
@@ -77,8 +138,8 @@ public class GameManager : MonoBehaviour
     {
         Item temp = _dataManager.SetNewItem(itemID);
         string category = _dataManager.GetItemSubCategory(itemID);
-        
-        if(category != "가방") _dataManager.AddItem(itemID, -1);
+
+        if (category != "가방") _dataManager.AddItem(itemID, -1);
         _itemUse.UseItem(itemID);
     }
 
@@ -89,9 +150,9 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#endif
         Application.Quit();
     }
 
@@ -100,4 +161,29 @@ public class GameManager : MonoBehaviour
         //Keep data
         gameObject.GetComponent<SceneEffect>().SceneChange(sceneNum);
     }
+    private bool CheckMustItem()
+    {
+        Dictionary<int, int> itemList = _dataManager.GetMyItems();
+        string must = _dataManager.GetConditionMust();
+        List<int> itemId = _dataManager.GetItemIDMyList(must);
+
+        // UnityEngine.Debug.Log("must-have: " + must + " ,  found: " + itemId.Count);
+        foreach (int i in itemId)
+        {
+            if (_dataManager.IsContainItem(i) && itemList[i] == _dataManager.GetConditionCount())
+                return true;
+        }
+        return false;
+    }
+    public void CheckCondition()
+    {
+        string location = _dataManager.GetLocation();
+        string exit = _dataManager.GetConditionExit();
+        // if (exit == location && CheckMustItem())
+        if (CheckMustItem())
+            UpdateGameState(GameState.GameWin);
+        else UpdateGameState(GameState.GameOver);
+    }
+
+    public int GetSelectedRoute() => selectedRoute;
 }
