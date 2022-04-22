@@ -34,7 +34,7 @@ public class ZombieAI : MonoBehaviour
         spawn = transform.position;
         curHp = hp;
         range = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().range;
-
+        
         zombieAnim = GetComponentInChildren<Animator>();
     }
 
@@ -42,11 +42,9 @@ public class ZombieAI : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (!isAttacking)
-        {
-            Move();
-        }
+        Move();
     }
+
 
     //Player Tag를 가진 객체에 닿았을 떄
     void OnTriggerStay(Collider other)
@@ -101,8 +99,6 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        isAttacking = true; // 움직이지 말고 멈춰서 공격하기
-
         //Player 공격과 감염
         if (Random.Range(1, 101) <= infection)
         {
@@ -118,7 +114,7 @@ public class ZombieAI : MonoBehaviour
         */
     }
 
-    void Die()
+    public void Die()
     {
         Destroy(gameObject);
     }
@@ -126,15 +122,12 @@ public class ZombieAI : MonoBehaviour
     //피격
     public void Hit()
     {
-        zombieAnim.SetBool("isHurt", true);
-
         //지금은 3데미지를 받지만 나중에 무기 공격력 가져오기
         curHp -= 3;
         healthbar.fillAmount = (float)curHp / (float)hp;
         if (curHp <= 0)
         {
             Die();
-            zombieAnim.SetBool("isDie", true);
         }
     }
 

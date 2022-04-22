@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 592120799617495772}
   - component: {fileID: 2719464377428533102}
   - component: {fileID: 7882092502666327064}
+  - component: {fileID: 3726043347354331111}
   m_Layer: 0
   m_Name: NormalZombie
   m_TagString: Untagged
@@ -123,6 +124,7 @@ MonoBehaviour:
   isDetect: 0
   isRandom: 0
   range: 0
+  zState: 0
 --- !u!65 &592120799617495772
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,6 +166,25 @@ CapsuleCollider:
   m_Height: 1.7899005
   m_Direction: 1
   m_Center: {x: 0.00000059604645, y: 0.8924999, z: -0.001295574}
+--- !u!95 &3726043347354331111
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518210881706747564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
+  m_Controller: {fileID: 9100000, guid: 58c45110d9d821540b2505c1d08d30f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8529582036671919197
 PrefabInstance:
   m_ObjectHideFlags: 0

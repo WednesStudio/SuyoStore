@@ -128,7 +128,8 @@ public class Status : MonoBehaviour
     public int RemainStatusValue(int _curVal, int  _maxVal)
     {
         if (_curVal >= _maxVal) _curVal = _maxVal;
-        if (_curVal <= 0) _curVal = 0;
+        else if (_curVal <= 0) _curVal = 0;
+        else { }
         return _curVal;
     }
 

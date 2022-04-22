@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 4622613835303526144}
   - component: {fileID: 2345830851027519633}
   - component: {fileID: 5438156692754406834}
+  - component: {fileID: 6900488543688584051}
   m_Layer: 0
   m_Name: GreenZombie
   m_TagString: Untagged
@@ -206,6 +207,7 @@ MonoBehaviour:
   isDetect: 0
   isRandom: 0
   range: 0
+  zState: 0
 --- !u!65 &5701696205275253617
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -260,6 +262,25 @@ CapsuleCollider:
   m_Height: 2.0429516
   m_Direction: 1
   m_Center: {x: 0, y: 0.89303684, z: 0}
+--- !u!95 &6900488543688584051
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701696205275253616}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
+  m_Controller: {fileID: 9100000, guid: 58c45110d9d821540b2505c1d08d30f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4489624679763499393
 PrefabInstance:
   m_ObjectHideFlags: 0

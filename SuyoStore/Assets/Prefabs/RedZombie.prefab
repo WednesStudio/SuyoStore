@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5881609217462586918}
   - component: {fileID: 4607866753836091012}
   - component: {fileID: 1210505511762136278}
+  - component: {fileID: 5000776405122338726}
   m_Layer: 0
   m_Name: RedZombie
   m_TagString: Untagged
@@ -110,6 +111,7 @@ MonoBehaviour:
   isDetect: 0
   isRandom: 0
   range: 0
+  zState: 0
 --- !u!65 &6816480456247614039
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,6 +166,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300056, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
+--- !u!95 &5000776405122338726
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816480456247614038}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
+  m_Controller: {fileID: 9100000, guid: 58c45110d9d821540b2505c1d08d30f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3456274646212970663
 PrefabInstance:
   m_ObjectHideFlags: 0
