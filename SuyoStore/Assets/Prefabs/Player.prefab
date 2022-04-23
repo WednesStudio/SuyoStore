@@ -484,8 +484,8 @@ GameObject:
   - component: {fileID: 74985973387404097}
   - component: {fileID: 22830576794076325}
   - component: {fileID: 73585713532184942}
-  - component: {fileID: 73585713532184940}
   - component: {fileID: 73585713532184941}
+  - component: {fileID: 73585713532184940}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -559,6 +559,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!114 &73585713532184941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72237940511880385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d875f320af8d4f34b87b1b02c776ef73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pStatus: {fileID: 0}
+  isSafe: 0
+  state: 0
+  isMove: 0
 --- !u!114 &73585713532184940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,22 +600,6 @@ MonoBehaviour:
   useRecoveryStaminaTime: 0
   isEquipWeapon: 0
   EquipItemsList: 
---- !u!114 &73585713532184941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72237940511880385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d875f320af8d4f34b87b1b02c776ef73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pStatus: {fileID: 0}
-  isSafe: 0
-  state: 0
-  isMove: 0
 --- !u!1 &72244812641594901
 GameObject:
   m_ObjectHideFlags: 0
