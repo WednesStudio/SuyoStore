@@ -20,6 +20,7 @@ public class DataManager : MonoBehaviour
     public List<ItemData> GetItemList() => _totalItemList;
     public ItemData GetItem(int ID) => _totalItemList[ID];
     public GameObject GetItemModel(int ID) => _totalItemList[ID].prefab;
+    public string GetItemCategory(int ID) => _totalItemList[ID].category;
     public string GetItemSubCategory(int ID) => _totalItemList[ID].subCategory;
     public string GetItemFileName(int ID) => _totalItemList[ID].fileName;
     public string GetItemName(int ID) => _totalItemList[ID].itemName;
@@ -94,9 +95,13 @@ public class DataManager : MonoBehaviour
 
         if (count < 0)
         {
-            if (MyItems[itemID] == 0)
+            if (MyItems[itemID] > 0)
             {
-                MyItems.Remove(itemID);
+                if (MyItems[itemID] == 1)
+                {
+                    MyItems.Remove(itemID);
+                }
+                else MyItems[itemID] -= 1;
 
                 switch (category)
                 {
@@ -130,6 +135,7 @@ public class DataManager : MonoBehaviour
             }
             _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(-capacity, maxCapacity);
+            return;
         }
 
         if (IsContainItem(itemID))
