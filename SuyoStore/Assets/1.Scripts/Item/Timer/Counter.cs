@@ -24,9 +24,10 @@ public class Counter
         else
             return -1;
     }
-    public void SetTimeSwitch(bool value)
+    public int StopCounter()
     {
-        timeSwitch = value;
+        timeSwitch = false;
+        return (int)GetTimeValue();
     }
     public void SetTimeValue(float _timeValue)
     {
