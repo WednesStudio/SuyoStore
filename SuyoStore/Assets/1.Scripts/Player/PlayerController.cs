@@ -33,12 +33,11 @@ public class PlayerController : MonoBehaviour
     int useStamina = 10;
     int recoverStamina = 5;
 
-    public void Awake()
+    private void Start()
     {
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
         animator = GetComponentInChildren<Animator>();
-        
         zombieObj = GameObject.FindGameObjectWithTag("Zombie");
         zombieAI = zombieObj.GetComponent<ZombieAI>();
     }
