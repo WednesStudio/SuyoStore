@@ -31,9 +31,9 @@ public class LightControl
         }
         return false;
     }
-    public void StopCounter()
+    public int StopCounter()
     {
-        counter.SetTimeSwitch(false);
+        return counter.StopCounter();
     }
     public int GetID() => itemID;
 }
