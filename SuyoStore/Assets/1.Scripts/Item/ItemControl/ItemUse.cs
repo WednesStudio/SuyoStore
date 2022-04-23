@@ -219,7 +219,7 @@ public class ItemUse : MonoBehaviour
                 {
                     if (_dataManager.GetItemSubCategory(id) == "라이트")
                     {
-                        lightControl.StopCounter();
+                        item.SetDURABILITY(lightControl.StopCounter());
                         isLightOn = false;
                         ChangeItem(id, itemID);
                     }
