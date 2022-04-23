@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 3726043347354331111}
   m_Layer: 0
   m_Name: NormalZombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,6 @@ MonoBehaviour:
   isDetect: 0
   isRandom: 0
   range: 0
-  zState: 0
 --- !u!65 &592120799617495772
 BoxCollider:
   m_ObjectHideFlags: 0

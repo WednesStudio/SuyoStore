@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1389046071652286235}
   m_Layer: 0
   m_Name: YellowZombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,6 @@ MonoBehaviour:
   isDetect: 0
   isRandom: 0
   range: 0
-  zState: 0
 --- !u!65 &1263426036935558172
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,7 +159,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263426036935558173}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4209237
   m_Height: 2.0429504

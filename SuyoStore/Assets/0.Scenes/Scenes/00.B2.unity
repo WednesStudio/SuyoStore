@@ -34720,7 +34720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7395459591299890473, guid: 57daf904e11c54d49a2612693d179f0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7395459591299890475, guid: 57daf904e11c54d49a2612693d179f0d, type: 3}
       propertyPath: m_RootOrder
@@ -36883,10 +36883,6 @@ PrefabInstance:
     - target: {fileID: 518210881706747564, guid: 01ab8638a8b734a4faf539664f26839d, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 518210881706747564, guid: 01ab8638a8b734a4faf539664f26839d, type: 3}
-      propertyPath: m_TagString
-      value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 518210881706747728, guid: 01ab8638a8b734a4faf539664f26839d, type: 3}
       propertyPath: m_RootOrder
@@ -53625,10 +53621,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6816480456247614038, guid: f967cda7fcf73448c98fd419376505ee, type: 3}
-      propertyPath: m_TagString
-      value: Zombie
-      objectReference: {fileID: 0}
     - target: {fileID: 6816480456247614378, guid: f967cda7fcf73448c98fd419376505ee, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -55420,10 +55412,6 @@ PrefabInstance:
     - target: {fileID: 5701696205275253616, guid: bd88231db79f541cb96efef04f2e31c0, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5701696205275253616, guid: bd88231db79f541cb96efef04f2e31c0, type: 3}
-      propertyPath: m_TagString
-      value: Zombie
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd88231db79f541cb96efef04f2e31c0, type: 3}
@@ -58289,10 +58277,6 @@ PrefabInstance:
     - target: {fileID: 1263426036935558173, guid: d6d241e66b7da4831b629a076e33499b, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1263426036935558173, guid: d6d241e66b7da4831b629a076e33499b, type: 3}
-      propertyPath: m_TagString
-      value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 1263426036935558625, guid: d6d241e66b7da4831b629a076e33499b, type: 3}
       propertyPath: m_RootOrder
