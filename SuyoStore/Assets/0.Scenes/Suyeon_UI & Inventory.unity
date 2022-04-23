@@ -6973,7 +6973,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB77C\uC774\uD2B8 \uC2DC\uC57C : 0"
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
   m_sharedMaterial: {fileID: 5594828193064377842, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
@@ -14169,7 +14171,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Attack Power : 0'
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
   m_sharedMaterial: {fileID: 5594828193064377842, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
@@ -27935,213 +27939,218 @@ MonoBehaviour:
     Name: "\uBC30\uD130\uB9AC1"
     Profile: {fileID: 0}
     Category: "\uBCF4\uC870\uBC30\uD130\uB9AC"
-    description: 
+    description: "\uC2A4\uB9C8\uD2B8\uD3F0\uC758 \uBC30\uD130\uB9AC\uB97C 20% \uCDA9\uC804\uC2DC\uD0A8\uB2E4."
   - ID: 1
     Name: "\uBC30\uD130\uB9AC2"
     Profile: {fileID: 0}
     Category: "\uBCF4\uC870\uBC30\uD130\uB9AC"
-    description: 
+    description: "\uC2A4\uB9C8\uD2B8\uD3F0\uC758 \uBC30\uD130\uB9AC\uB97C 10% \uCDA9\uC804\uC2DC\uD0A8\uB2E4."
   - ID: 2
     Name: "\uCE941"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 5 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 3
     Name: "\uCE942"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 6 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 4
     Name: "\uCE943"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 7 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 5
     Name: "\uCE947"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 8 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 6
     Name: "\uCE948"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 8 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 7
     Name: "\uCE949"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 10 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 8
     Name: "\uCE7C1"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 3 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 9
     Name: "\uC74C\uB8CC1"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 7 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 10
     Name: "\uD6C4\uB77C\uC774\uD32C"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 5 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 11
     Name: "\uC57D1"
     Profile: {fileID: 0}
     Category: "\uCE58\uB8CC\uC81C"
-    description: 
+    description: "\uCCB4\uB825\uC744 30 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 12
     Name: "\uC2A4\uB9C8\uD2B8\uD3F0"
     Profile: {fileID: 0}
     Category: "\uC2A4\uB9C8\uD2B8\uD3F0"
-    description: 
+    description: "\uC2A4\uB9C8\uD2B8\uD3F0. \uC720\uC77C\uD558\uAC8C \uBC14\uAE65
+      \uC18C\uC2DD\uC744 \uC54C \uC218 \uC788\uB2E4."
   - ID: 13
     Name: "\uB77C\uC774\uD2B82"
     Profile: {fileID: 0}
     Category: "\uB77C\uC774\uD2B8"
-    description: 
+    description: "\uC2DC\uC57C \uBC94\uC704\uB97C 10 \uB113\uD600\uC900\uB2E4."
   - ID: 14
     Name: "\uB77C\uC774\uD2B83"
     Profile: {fileID: 0}
     Category: "\uB77C\uC774\uD2B8"
-    description: 
+    description: "\uC2DC\uC57C \uBC94\uC704\uB97C 20 \uB113\uD600\uC900\uB2E4."
   - ID: 15
     Name: "\uB77C\uC774\uD2B85"
     Profile: {fileID: 0}
     Category: "\uB77C\uC774\uD2B8"
-    description: 
+    description: "\uC2DC\uC57C \uBC94\uC704\uB97C 40 \uB113\uD600\uC900\uB2E4."
   - ID: 16
     Name: "\uBE60\uB8E8"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 17
     Name: "\uB9DD\uCE58"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 18
     Name: "\uCE7C2"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 19
     Name: "\uC0AC\uACFC"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 5 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 20
     Name: "\uCE58\uC988"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 10 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 21
     Name: "\uB2ED\uAC00\uC2B4\uC0B4"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 7 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 22
     Name: "\uB3C4\uB11B"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 6 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 23
     Name: "\uD3EC\uD14C\uC774\uD1A0"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 10 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 24
     Name: "\uC18C\uC138\uC9C01"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 10 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 25
     Name: "\uC18C\uC138\uC9C02"
     Profile: {fileID: 0}
     Category: "\uC74C\uC2DD"
-    description: 
+    description: "\uD3EC\uB9CC\uAC10\uC744 30 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
   - ID: 26
     Name: "\uBC14\uBCA8"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 10 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 27
     Name: "\uB364\uBCA8"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 10 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 28
     Name: "\uB178"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 4 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 29
     Name: "\uB4A4\uC9D1\uAC1C"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 2 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 30
     Name: "\uAE30\uD0C0"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 5 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 31
     Name: "\uC77C\uB809\uAE30\uD0C0"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 32
     Name: "\uD14C\uB2C8\uC2A4\uB77C\uCF13"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 6 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 33
     Name: "\uB098\uBB34\uBC29\uB9DD\uC774"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 34
     Name: "\uC1E0\uBC29\uB9DD\uC774"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 10 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 35
     Name: "\uACE8\uD504\uCC44"
     Profile: {fileID: 0}
     Category: "\uBB34\uAE30"
-    description: 
+    description: "\uACF5\uACA9\uB825\uC744 9 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
   - ID: 36
     Name: "\uAC00\uBC291"
     Profile: {fileID: 0}
     Category: "\uAC00\uBC29"
-    description: 
+    description: "50\uB9CC\uD07C\uC758 \uC218\uB0A9\uB825\uC774 \uB298\uC5B4\uB09C\uB2E4."
   - ID: 37
     Name: "\uAC00\uBC292"
     Profile: {fileID: 0}
-    Category: "\uAC00\uBC14"
-    description: 
+    Category: "\uAC00\uBC29"
+    description: "75\uB9CC\uD07C\uC758 \uC218\uB0A9\uB825\uC774 \uB298\uC5B4\uB09C\uB2E4."
   - ID: 38
     Name: "\uCE68\uB0AD1"
     Profile: {fileID: 0}
     Category: "\uCE68\uB0AD"
-    description: 
+    description: "\uCCB4\uB825\uC744 10 \uD68C\uBCF5\uC2DC\uD0A4\uC9C0\uB9CC, \uD3EC\uB9CC\uAC10\uC774
+      30 \uC904\uC5B4\uB4E0\uB2E4."
   - ID: 39
     Name: "\uCE68\uB0AD2"
     Profile: {fileID: 0}
     Category: "\uCE68\uB0AD"
-    description: 
+    description: "\uCCB4\uB825\uC744 15 \uD68C\uBCF5\uC2DC\uD0A4\uC9C0\uB9CC, \uD3EC\uB9CC\uAC10\uC774
+      -25 \uC904\uC5B4\uB4E0\uB2E4."
   - ID: 40
     Name: "\uCE68\uB0AD3"
     Profile: {fileID: 0}
     Category: "\uCE68\uB0AD"
-    description: 
+    description: "\uCCB4\uB825\uC744 20 \uD68C\uBCF5\uC2DC\uD0A4\uC9C0\uB9CC, \uD3EC\uB9CC\uAC10\uC774
+      -20 \uC904\uC5B4\uB4E0\uB2E4."
   - ID: 41
     Name: "\uD150\uD2B8"
     Profile: {fileID: 0}
     Category: "\uCE68\uB0AD"
-    description: 
-  dateControl: {fileID: 0}
+    description: "\uCCB4\uB825\uC744 30 \uD68C\uBCF5\uC2DC\uD0A4\uC9C0\uB9CC, \uD3EC\uB9CC\uAC10\uC774
+      -10 \uC904\uC5B4\uB4E0\uB2E4."
+  dateControl: {fileID: 1686624769}
 --- !u!4 &893203684
 Transform:
   m_ObjectHideFlags: 0
@@ -38906,7 +38915,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2126932423}
   m_Direction: 2
   m_Value: 0.99999994
-  m_Size: 0.08749999
+  m_Size: 0.087500006
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -44221,7 +44230,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Durability : 0'
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
   m_sharedMaterial: {fileID: 5594828193064377842, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
@@ -49819,7 +49830,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB77C\uC774\uD2B8 \uB0B4\uAD6C\uB3C4 : 0"
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
   m_sharedMaterial: {fileID: 5594828193064377842, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
@@ -52571,7 +52584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAC00\uBC29 \uD06C\uAE30 : 0"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
   m_sharedMaterial: {fileID: 5594828193064377842, guid: ef9bfcf26178ba844b13fd07d33efcd4, type: 2}
