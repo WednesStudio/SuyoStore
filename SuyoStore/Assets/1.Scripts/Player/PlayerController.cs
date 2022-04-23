@@ -29,11 +29,9 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
-
     // Status
     int useStamina = 10;
     int recoverStamina = 5;
-
 
     public void Awake()
     {
@@ -274,6 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
+            isSit = false;
             isAttack = true;
             pStatus.CurFatigue -= 2;
             zombieAI.Hit();
