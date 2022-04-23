@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public PlayerStatus pStatus;
     GameObject nearObject;
     GameObject playerObj;
+    GameObject itemObj;
+    ItemControl itemControl;
     GameObject zombieObj;
     ZombieAI zombieAI;
     // Related Zombie
@@ -23,11 +26,9 @@ public class PlayerController : MonoBehaviour
     public enum PlayerState{ Idle, Walk, Run, Sit, SitWalk, Lay, Dead };
     public PlayerState state = PlayerState.Idle;
     
+    Animator animator;
     public bool isMove = false;
     bool isSit = false;
-    bool isAttack = false;
-
-    Animator animator;
 
     // Status
     int useStamina = 10;
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         zombieObj = GameObject.FindGameObjectWithTag("Zombie");
         zombieAI = zombieObj.GetComponent<ZombieAI>();
+        itemObj = GameObject.FindGameObjectWithTag("Item");
+        itemControl = itemObj.GetComponent<ItemControl>();
     }
 
     private void Update()
@@ -56,7 +59,6 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isRun", state == PlayerState.Run);
         animator.SetBool("isSit", state == PlayerState.Sit);
         animator.SetBool("isSitWalk", state == PlayerState.SitWalk);
-        animator.SetBool("isAttack", isAttack);
         animator.SetBool("isDie", state == PlayerState.Dead);
     }
 
@@ -96,7 +98,8 @@ public class PlayerController : MonoBehaviour
         {
             GetItem();
         }
-        if (Input.GetMouseButton(0)) {
+
+        if (Input.GetMouseButtonUp(0)) {
             Attack();
         }
     }
@@ -130,7 +133,6 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        isAttack = false;
         // 캐릭터에 중력 적용
         if (characterController.isGrounded == false)
         {
@@ -225,62 +227,78 @@ public class PlayerController : MonoBehaviour
         ChangeSpeed();
     }
 
+    // Judge Item ojbect near Player For GetItem()
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if(hit.gameObject.tag == "Item")
         {
             Debug.Log("[Move System] Item : " + hit.gameObject.name);
 
-            hit.gameObject.GetComponent<ItemControl>().GetThisItem();
-            Destroy(hit.gameObject);
+            nearObject = hit.gameObject;
+        }
+        else
+        {
+            nearObject = null;
         }
     }
+
 
     void GetItem()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            // 파밍 가능
-            pStatus.CurFatigue--;
-            Debug.Log("[Move System] Get Item");
+            if(nearObject.tag == "Item")
+            {
+                // 파밍 가능
+                pStatus.CurFatigue--;
 
-
-            // 타겟 아이템 위치가 바닥일 때:
-            /* 애니메이션 : PickUpItem */
-
-            // 타겟 아이템 위치가 바닥이 아닐 때:
-            /* 애니메이션 : CatchingItem */
-
-
-            /*
-             * 타겟 아이템 사라짐
-             * 인벤토리에 타겟 아이템 추가
-             */
-
-            // 아이템 루팅 완료 시 기본 자세로 전환
+                // 타겟 아이템 위치가 바닥일 때:
+                animator.SetTrigger("PickUp");
+                // 타겟 아이템 위치가 바닥이 아닐 때:
+                /* 애니메이션 : CatchingItem */
+                StartCoroutine(WaitGetItemTime(2.0f));
+            }
         }
         else
         {
-            Debug.Log("[Move System] Can't Get Item");
             // 파밍 불가능
+            Debug.Log("[Move System] Can't Get Item");
         }
 
+    }
+    IEnumerator WaitGetItemTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        nearObject.GetComponent<ItemControl>().GetThisItem();
+        //Destroy(hit.gameObject);
     }
 
     void Attack()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            isSit = false;
-            isAttack = true;
-            pStatus.CurFatigue -= 2;
-            zombieAI.Hit();
-            // 무기 착용 상태
-            /* 애니메이션 : WeaponAttack */
+            if (nearObject.tag == "Zombie")
+            {
+                isSit = false;
+                pStatus.CurFatigue -= 2;
 
-            // 무기 미착용 상태
-            /* 애니메이션 : FistAttack */
+                if (pStatus.isEquipWeapon == true)
+                {
+                    // 무기 착용 상태
+                    animator.SetTrigger("SwingNearZombie");
+                    //itemControl.GetThisItem();
+                }
+                else
+                {
+                    // 무기 미착용 상태
+                    animator.SetTrigger("PunchNearZombie");
+                }
 
+                /* 애니메이션 : WeaponAttack */
+                /* 애니메이션 : FistAttack */
+
+                zombieAI.isHurt = true;
+            }
         }
         else
         {
