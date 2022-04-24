@@ -5561,10 +5561,6 @@ MonoBehaviour:
   isSafe: 0
   state: 0
   isMove: 0
-  Weapons: []
-  Lights: []
-  Bags: []
-  hasWeapon: 0
 --- !u!1001 &518210881785744464
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5586,8 +5582,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 518210881706747728, guid: 01ab8638a8b734a4faf539664f26839d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
-      value: 10
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 518210881706747728, guid: 01ab8638a8b734a4faf539664f26839d, type: 3}
@@ -5622,9 +5616,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 518210881706747729, guid: 01ab8638a8b734a4faf539664f26839d, type: 3}
-      propertyPath: speed
-      value: 3
     - target: {fileID: 3726043347354331111, guid: 01ab8638a8b734a4faf539664f26839d, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
