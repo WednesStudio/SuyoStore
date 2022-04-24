@@ -36,6 +36,16 @@ public class PlayerController : MonoBehaviour
     int useStamina = 10;
     int recoverStamina = 5;
 
+
+    //weapon
+    public GameObject[] Weapons;
+
+    //light
+    public GameObject[] Lights;
+
+    //bag
+    public GameObject[] Bags;
+
     // Attack
     public GameObject[] weapons;
     public bool[] hasWeapons;
