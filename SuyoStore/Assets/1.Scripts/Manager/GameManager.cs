@@ -99,7 +99,12 @@ public class GameManager : MonoBehaviour
         }
         OnGameStateChanged?.Invoke(newState);
     }
-
+    IEnumerator WaitForEnding(string text, GameState gameState)
+    {
+        yield return new WaitForSeconds(4);
+        cellphone.infoText.text = text;
+        cellphone.canvas.SetActive(state == gameState);
+    }
     public void GameStart()
     {
         //Initial Game Setting
@@ -108,14 +113,12 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        cellphone.infoText.text = "당신은 죽었습니다";
-        cellphone.canvas.SetActive(state == GameState.GameOver);
+        StartCoroutine(WaitForEnding("당신은 죽었습니다", GameState.GameOver));
         // ExitGame();
     }
     public void GameWin()
     {
-        cellphone.infoText.text = _dataManager.GetConditionRoute();
-        cellphone.canvas.SetActive(state == GameState.GameWin);
+        StartCoroutine(WaitForEnding(_dataManager.GetConditionRoute(), GameState.GameWin));
         // ExitGame();
     }
     IEnumerator WaitToChangeDate()
@@ -202,8 +205,7 @@ public class GameManager : MonoBehaviour
     {
         string location = _dataManager.GetLocation();
         string exit = _dataManager.GetConditionExit();
-        // if (exit == location && CheckMustItem())
-        if (CheckMustItem())
+        if (exit == location && CheckMustItem())
             UpdateGameState(GameState.GameWin);
         else UpdateGameState(GameState.GameOver);
     }
