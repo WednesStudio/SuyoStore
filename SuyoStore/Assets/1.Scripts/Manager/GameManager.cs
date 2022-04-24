@@ -108,8 +108,8 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         //Initial Game Setting
-        //_currentSceneNum = 1;
-        //date = ..
+        //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
+        //ChangeToOtherScene(?);
     }
     public void GameOver()
     {
