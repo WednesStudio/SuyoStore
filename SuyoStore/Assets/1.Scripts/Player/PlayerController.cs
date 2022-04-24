@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
 
     CharacterController characterController;
     public PlayerStatus pStatus;
-    GameObject nearObject;
+    GameObject nearItem;
+    GameObject nearZombie;
     GameObject playerObj;
     GameObject itemObj;
     ItemControl itemControl;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     ZombieAI zombieAI;
     // Related Zombie
     public bool isSafe = false;
+    public bool isAttack = false;
 
     // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
@@ -34,13 +36,16 @@ public class PlayerController : MonoBehaviour
     int useStamina = 10;
     int recoverStamina = 5;
 
+    // Attack
+    public GameObject[] weapons;
+    public bool[] hasWeapons;
+    Weapon equipWeapon;
+
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
         animator = GetComponentInChildren<Animator>();
-        zombieObj = GameObject.FindGameObjectWithTag("Zombie");
-        zombieAI = zombieObj.GetComponent<ZombieAI>();
         itemObj = GameObject.FindGameObjectWithTag("Item");
         itemControl = itemObj.GetComponent<ItemControl>();
     }
@@ -100,7 +105,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0)) {
-            Attack();
+            isAttack = Attack();
         }
     }
 
@@ -200,7 +205,7 @@ public class PlayerController : MonoBehaviour
         }
 
         float magnitud = Mathf.Clamp01(moveDirection.magnitude) * pStatus.CurSpeed;
-        characterController.SimpleMove(moveDirection* pStatus.CurSpeed);
+        characterController.Move(moveDirection* pStatus.CurSpeed * Time.deltaTime);
     }
 
     void SitInput()
@@ -232,22 +237,42 @@ public class PlayerController : MonoBehaviour
     {
         if(hit.gameObject.tag == "Item")
         {
-            Debug.Log("[Move System] Item : " + hit.gameObject.name);
-
-            nearObject = hit.gameObject;
+            Debug.Log("[Trigger System] Item : " + hit.gameObject.name);
+            nearItem = hit.gameObject;
         }
         else
         {
-            nearObject = null;
+            nearItem = null;
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Zombie")
+        {
+            Debug.Log("[Trigger System] Zombie!!!!");
+            nearZombie = other.gameObject;
+        }
+        else
+        {
+            nearZombie = null;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Zombie")
+        {
+            Debug.Log("[Trigger System] Zombie Out!!!!");
+            nearZombie = null;
+        }
+    }
 
     void GetItem()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            if(nearObject.tag == "Item")
+            if(nearItem.tag == "Item")
             {
                 // 파밍 가능
                 pStatus.CurFatigue--;
@@ -256,6 +281,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("PickUp");
                 // 타겟 아이템 위치가 바닥이 아닐 때:
                 /* 애니메이션 : CatchingItem */
+                StopCoroutine(WaitGetItemTime(2.0f));
                 StartCoroutine(WaitGetItemTime(2.0f));
             }
         }
@@ -269,42 +295,38 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaitGetItemTime(float time)
     {
         yield return new WaitForSeconds(time);
-        nearObject.GetComponent<ItemControl>().GetThisItem();
+        nearItem.GetComponent<ItemControl>().GetThisItem();
         //Destroy(hit.gameObject);
     }
 
-    void Attack()
+    bool Attack()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            if (nearObject.tag == "Zombie")
+            if (nearZombie.tag == "Zombie")
             {
                 isSit = false;
                 pStatus.CurFatigue -= 2;
 
-                if (pStatus.isEquipWeapon == true)
+                if(equipWeapon == null)
+                {
+                    // 무기 미착용 상태
+                    animator.SetTrigger("PunchNearZombie");
+                }
+                else
                 {
                     // 무기 착용 상태
                     animator.SetTrigger("SwingNearZombie");
                     //itemControl.GetThisItem();
                 }
-                else
-                {
-                    // 무기 미착용 상태
-                    animator.SetTrigger("PunchNearZombie");
-                }
 
-                /* 애니메이션 : WeaponAttack */
-                /* 애니메이션 : FistAttack */
-
-                zombieAI.isHurt = true;
+                state = PlayerState.Idle;
+                zombieAI = nearZombie.GetComponent<ZombieAI>();
+                zombieAI.Hit();
+                return true;
             }
         }
-        else
-        {
-            Debug.Log("[Move System] player can't attack");
-        }
-        state = PlayerState.Idle;
+        return false;
     }
 
     void LayDown()

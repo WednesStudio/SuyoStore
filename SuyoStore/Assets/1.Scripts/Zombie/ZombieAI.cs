@@ -7,6 +7,7 @@ public class ZombieAI : MonoBehaviour
 {
     private GameObject target;
     private PlayerStatus targetStatus;
+    private PlayerController targetController;
     public Image healthbar;
     private float timer;
     public int hp; //체력
@@ -20,14 +21,15 @@ public class ZombieAI : MonoBehaviour
     public bool isDetect;
     public bool isRandom;
     public float range;
-    bool isAttacking = false; // 플레이어와 닿아서 공격 중인지
-
+    bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
     Animator zombieAnim;
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
         targetStatus = target.GetComponent<PlayerStatus>();
+        targetController = target.GetComponent<PlayerController>();
+
         timer = 0;
         isDetect = false;
         isRandom = false;
@@ -122,6 +124,8 @@ public class ZombieAI : MonoBehaviour
     //피격
     public void Hit()
     {
+        Debug.Log("[Zombie System] Hit");
+
         //지금은 3데미지를 받지만 나중에 무기 공격력 가져오기
         curHp -= 3;
         healthbar.fillAmount = (float)curHp / (float)hp;
