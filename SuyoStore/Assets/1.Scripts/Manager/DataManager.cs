@@ -52,11 +52,6 @@ public class DataManager : MonoBehaviour
         //_csvReader.Read(out _creatureList, out _itemList);
         _loadExcel.LoadItemData();
         _totalItemList = _loadExcel.itemDatabase;
-
-        //
-        print("== remember to remove this == myItems.add(battery)");
-        MyItems.Add(GetItemID("배터리2"), 1);
-        MyItems.Add(GetItemID("침낭3"), 1);
     }
 
     public void SetCurrentInfo(string date, string location)
@@ -215,7 +210,7 @@ public class DataManager : MonoBehaviour
             _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(-capacity, maxCapacity);
         }
-        
+
         _uiManager.SetPlayerSpeed(_inventoryUI.GetCurrentCapacity(), maxCapacity);
     }
 
@@ -241,6 +236,7 @@ public class DataManager : MonoBehaviour
     public List<int> GetItemIDMyList(string name)
     {
         // 선택된 루트의 must item 중 "SM_Props_Battery" 같이 앞부분 글자를 포함한 모든 아이템 아이디를 저장
+
         List<int> idList = new List<int>();
         foreach (ItemData i in _totalItemList)
         {

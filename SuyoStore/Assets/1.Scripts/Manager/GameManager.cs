@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     private string[] routes = { "route1", "route2", "route3" };
     private int selectedRoute;
     private DateControl _dateControl;
+    private bool EndEventTrigger = false;
+    public void SetEndEventTrigger()
+    {
+        EndEventTrigger = true;
+    }
     private void Awake()
     {
         if (GM != null)
@@ -69,7 +74,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        if (_dataManager.dateControl.GetDays() == 7)
+        if (_dataManager.dateControl.GetDays() == 7 && EndEventTrigger)
             CheckCondition();
     }
 
