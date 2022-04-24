@@ -52,10 +52,13 @@ public class ZombieAI : MonoBehaviour
     //Player Tag를 가진 객체에 닿았을 떄
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && timer < 0)
+        if (other.tag == "Player")
         {
             curSpeed = 0;
-            Attack();
+            if (timer <= 0)
+            {
+                Attack();
+            }
             timer = coolTime;
         }
     }
@@ -70,6 +73,7 @@ public class ZombieAI : MonoBehaviour
 
     void Move()
     {
+        // 애니메이션 작동
         //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 공격 당해서 hp가 깍였을 때 추격
         if ((!target.GetComponent<PlayerController>().isSafe)
             && ((Vector3.Distance(target.transform.position, transform.position) < detection)
