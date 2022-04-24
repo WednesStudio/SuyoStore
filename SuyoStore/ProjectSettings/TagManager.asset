@@ -7,6 +7,8 @@ TagManager:
   - Item
   - UsedItem
   - Zombie
+  - SceneGate
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
