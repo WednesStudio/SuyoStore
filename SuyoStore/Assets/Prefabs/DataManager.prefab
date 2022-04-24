@@ -1,0 +1,473 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4949948174764474027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4949948174764474026}
+  - component: {fileID: 4949948174764474025}
+  m_Layer: 0
+  m_Name: Reader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4949948174764474026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949948174764474027}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -401.1354, y: -229.34904, z: 490.554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4949948175739766775}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4949948174764474025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949948174764474027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e41278d2c4d4469a99a90136bf33c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageDatabase:
+  - days: 1
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019\uC5D0\uC11C \uAC00\uC2A4\uD14C\uB7EC
+      \uBC1C\uC0DD...\n\uC9D1\uB2E8 \uC774\uC0C1 \uD589\uB3D9..."
+  - days: 2
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uC8FC\uC704\uC5D0 \uBC14\uB9AC\uCF00\uC774\uD2B8
+      \uC124\uCE58..."
+  - days: 3
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019\uC5D0\uC11C \uBC1C\uC0DD\uD55C
+      \uC774\uC0C1 \uD589\uB3D9 \uBC14\uC774\uB7EC\uC2A4 \uC804\uC5FC\uC131 \uC788\uC744\uC9C0\uB3C4
+      \uBAB0\uB77C..."
+  - days: 4
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uC8FC\uC704\uC5D0 \uACA9\uB9AC\uB9C9
+      \uC124\uCE58\n \uC678\uBD80 \uC774\uC0C1 \uD589\uB3D9\uC790 \uAD6C\uCD9C \uBC0F
+      \uD655\uBCF4 \uC2DC\uC791"
+  - days: 5
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019\uC5D0\uC11C \uBC1C\uC0DD\uD55C
+      \uC774\uC0C1 \uD589\uB3D9 \uBC14\uC774\uB7EC\uC2A4 \uC804\uC5FC\uC131 \uD655\uC778,
+      \uAC10\uC5FC\uC790\uB9C8\uB2E4 \uAC10\uC5FC\uB960 \uB2EC\uB77C...\n\uC9C1\uC811
+      \uBB3C\uB9AC\uC9C0 \uC54A\uC73C\uBA74 \uC548\uC804..."
+  - days: 6
+    message: "\uC804\uBB38\uAC00\uB4E4 \u201C\u2018\uC774\uC0C1 \uD589\uB3D9 \uBC14\uC774\uB7EC\uC2A4\u2019
+      \uAC10\uC5FC\uC790 \uC0AC\uC2E4\uC0C1 \uC0AC\uB9DD\uC0C1\uD0DC\u201D...\n\uC721\uCCB4\uAC00
+      \uAE30\uB2A5\uD558\uB294 \uC6D0\uC778 \uBABB\uCC3E\uC544...\n\uBC14\uC774\uB7EC\uC2A4\uC640\uC758
+      \uC5F0\uAD00\uC131\uB9CC \uCD94\uCE21\uC911"
+  - days: 7
+    message: "\uC804\uBB38\uAC00\uB4E4 \u201C\uAC10\uC5FC\uC790\uB4E4 \uAE30\uB2A5\uC774
+      \uC0B4\uC544\uC788\uB294 \uACF3\uC740 \u2018\uCCAD\uAC01\u2019\u201D...\n\uC18C\uB9AC\uC5D0
+      \uBBFC\uAC10\uD558\uAC8C \uBC18\uC751\uD558\uB294 \uAC83\uC73C\uB85C \uC608\uCE21\n"
+  - days: 8
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uBC29\uC5B4\uC120 \uD5DB\uC810
+      \uC874\uC7AC?\n\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uBC29\uC5B4\uC120
+      \uB118\uC5B4\uC11C \uAC10\uC5FC\uC790 \uBC1C\uACAC \uB3FC..."
+  - days: 9
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uBC29\uC5B4\uC120\uC5D0
+      \uB300\uD55C \uBD88\uC548\uAC10 \uC99D\uAC00, \u2018\uC218\uC694\uBC31\uD654\uC810\u2019\uC744
+      \uC5C6\uC560\uBC84\uB824\uC57C \uD55C\uB2E4\uB294 \uC8FC\uBBFC \uC758\uACAC
+      \uAE09\uC99D...\n\uC8FC\uBBFC \uC2DC\uC704 \uC2DC\uC791"
+  - days: 10
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uAD6C\uC870\uD300 \uAD6C\uCD95\uB418\uC5C8\uC9C0\uB9CC
+      \uC9C4\uC785\uC870\uCC28 \uBABB\uD574...\n1\uCE35\uC5D0 \uAC10\uC5FC\uC790\uB85C
+      \uAC00\uB4DD \uCC28...\n1\uCE35 \uC9C4\uC785 \uC2DC \uC678\uBD80\uB85C \uAC10\uC5FC\uC790
+      \uD0C8\uCD9C \uAC00\uB2A5\uC131 \u6709"
+  - days: 11
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uC704\uD5D8\uC131 \uB300\uB450\uC5D0
+      \uB300\uD55C \uCC98\uB9AC \uBC29\uC548 \uB17C\uC758 \uC2DC\uC791..."
+  - days: 12
+    message: "\uC804\uBB38\uAC00\uB4E4 \u201C\uC0AC\uC2E4\uC0C1 \u2018\uC218\uC694\uBC31\uD654\uC810\u2019
+      \uB0B4\uBD80\uC5D0 \uC0DD\uC874\uC790 \uC874\uC7AC \uAC00\uB2A5\uC131 \uD76C\uBC15\n\uB354
+      \uC774\uC0C1\uC758 \uC9C4\uC785 \uC2DC\uB3C4 \uBB34\uC758\uBBF8\u201D...\n\uC624\uD788\uB824
+      \uC0C8\uB85C\uC6B4 \uC778\uBA85\uD53C\uD574\uB9CC \uBC1C\uC0DD\uD55C\uB2E4\uACE0
+      \uBC1C\uC5B8"
+  - days: 13
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019\uC5D0 \uB300\uD55C \uCC98\uB9AC\uBC29\uC548
+      \uD68C\uC758 \uC2DC\uC791...\n\uB0B4\uC77C\uAE4C\uC9C0 \uACB0\uB860 \uB098\uC62C
+      \uB4EF..."
+  - days: 14
+    message: "\uC815\uBD80, \u2018\uC218\uC694\uBC31\uD654\uC810\u2019 2\uC8FC \uD6C4
+      \uD3ED\uACA9...\n\uC548\uC804\uD558\uAC8C \uAD00\uB9AC \uAC00\uB2A5\uD558\uC9C0\uB9CC
+      \uD639\uC2DC \uBAA8\uB97C \uC0AC\uD0DC \uB300\uBE44\uD55C \uACB0\uC815..."
+  - days: 15
+    message: "\uD3ED\uACA9\uC5D0 \uB300\uD55C \uC8FC\uBBFC \uBC18\uBC1C \uBC1C\uC0DD...\n\uC8FC\uBBFC
+      \uD53C\uD574 \uC0DD\uAC01\uD558\uC9C0 \uC54A\uB294 \uACB0\uC815\uC774\uB77C\uBA70
+      \uC2DC\uC704 \uC911"
+  - days: 16
+    message: "\uC815\uBD80, \uC8FC\uBCC0 \uD53C\uD574 \uCD5C\uC18C\uD654\uB97C \uC704\uD55C
+      \uC704\uB825 \uC870\uC808 \uAC00\uB2A5\uD574...\n\uD558\uC9C0\uB9CC \uB9CC\uC57D\uC758
+      \uC0AC\uD0DC\uB97C \uB300\uBE44\uD574 \uD3ED\uACA9 \uB2F9\uC77C\uAE4C\uC9C0\uB294
+      \uB300\uD53C\uD574 \uC788\uC5B4\uC57C..."
+  - days: 17
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uD3ED\uACA9\uD558\uBA74
+      \uC9C0\uD558\uAE4C\uC9C0 \uC644\uD30C..."
+  - days: 18
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uD3ED\uACA9\uC5D0 \uC0DD\uC874\uD560
+      \uAC10\uC5FC\uC790 \uB300\uBE44 \uC2A4\uB098\uC774\uD37C \uBC30\uCE58, \uC624\uB298
+      \uC624\uC804 \uC625\uC0C1\uC758 \uAC10\uC5FC\uC790 \uCC98\uB9AC \uC644\uB8CC"
+  - days: 19
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uAD6C\uC870\uD300 \uC9C4\uC785
+      \uACB0\uC815...\n\uBC31\uD654\uC810\uC5D0\uC11C \uBE5B\uC774 \uBCF4\uC778\uB2E4\uB294
+      \uC81C\uBCF4\uAC00 \uACB0\uC815\uC801..."
+  - days: 20
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uAD6C\uC870\uD300 \uC9C4\uC785
+      \uD6C4 \uC0DD\uC874\uC790 \uD3EC\uCC29 \uC2E4\uD328...\n \uC9C4\uC785 \uB2F9\uC2DC
+      \uC785\uAD6C \uD30C\uAD34\uD588\uC9C0\uB9CC \uD0C8\uCD9C \uB2F9\uC2DC \uAC10\uC5FC\uC790
+      \uC720\uCD9C \uBC29\uC9C0\uB97C \uC704\uD574 \uC154\uD130\uB97C \uB0B4\uB9B0
+      \uAC83\uC73C\uB85C \uC54C\uB824\uC838...\n \uAC10\uC5FC\uC790 \uD655\uC0B0
+      \uC704\uD611\uC740 \uC5C6\uB294\uB4EF..."
+  - days: 21
+    message: "\uC8FC\uBBFC \uB300\uD53C\uB97C \uC704\uD55C \uC808\uCC28 \uC9C4\uD589...\n\uB300\uD53C\uC18C
+      \uAD6C\uCD95\uC911..."
+  - days: 22
+    message: "\uB300\uD53C\uC18C \uAD6C\uCD95 \uC644\uB8CC \uC8FC\uBBFC \uB300\uD53C\uB97C
+      \uC704\uD55C \uACBD\uCC30 \uC778\uB825 \uB3D9\uC6D0..."
+  - days: 23
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uC778\uADFC \uC8FC\uBBFC
+      30% \uB300\uD53C \uC644\uB8CC...\n \uC815\uBD80, \u201C\uB300\uD53C \uC18D\uB3C4
+      \uC62C\uB824\uC57C\u201D..."
+  - days: 24
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uC8FC\uBBFC \uB300\uD53C\uC5D0
+      \uB09C\uD56D...\n\uC704\uD5D8\uC131 \uAC15\uC870\uC5D0\uB3C4 \uD611\uC870\uD558\uC9C0
+      \uC54A\uB294 \uC778\uC6D0 \uB9CE\uC544...\n"
+  - days: 25
+    message: "\uAD70, \u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uD3ED\uACA9 D-3,
+      \uC2DC\uBBAC\uB808\uC774\uC158 \uBC0F \uB300\uC751 \uD6C8\uB828 \uC2E4\uC2DC"
+  - days: 26
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uC778\uADFC \uC8FC\uBBFC
+      70% \uB300\uD53C...\n\uAD70\uC0AC \uD6C8\uB828\uC774 \uACBD\uAC01\uC2EC \uB192\uC778
+      \uACB0\uACFC..."
+  - days: 27
+    message: "\u2018\uC218\uC694\uBC31\uD654\uC810\u2019 \uC778\uADFC \uC8FC\uBBFC
+      \uB300\uD53C \uC644\uB8CC...\n\uD3ED\uACA9 D-1..."
+  - days: 28
+    message: "\uD3ED\uACA9 \uC2DC\uC791"
+  conditionList:
+    number: 0
+    route: 
+    message: 
+    sniper: []
+    must: 
+    count: 0
+    exit: 
+--- !u!1 &4949948175739766769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4949948175739766775}
+  - component: {fileID: 4949948175739766768}
+  - component: {fileID: 4949948175739766774}
+  - component: {fileID: 4949948175739766773}
+  - component: {fileID: 4949948175739766772}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4949948175739766775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949948175739766769}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 402.2024, y: 229.34904, z: -490.554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4949948174764474026}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4949948175739766768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949948175739766769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e5aa1fe0dc2a14f839724b6de70921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loadExcel: {fileID: 4949948175739766774}
+  _currentStateUI: {fileID: 0}
+  _uiManager: {fileID: 0}
+  _inventoryUI: {fileID: 0}
+  _itemObjects:
+  - ID: 0
+    Name: "\uBC30\uD130\uB9AC1"
+    Profile: {fileID: 21300000, guid: ac3f7f2314c524b43bfd6b3b58a2b957, type: 3}
+    Category: "\uBCF4\uC870\uBC30\uD130\uB9AC"
+    description: "\uC2A4\uB9C8\uD2B8\uD3F0\uC758 \uBC30\uD130\uB9AC\uB97C 20% \uCDA9\uC804\uC2DC\uD0A8\uB2E4."
+  - ID: 1
+    Name: "\uBC30\uD130\uB9AC2"
+    Profile: {fileID: 21300000, guid: 4daae647ddf3c6b47b7fbdb4cdbeb00a, type: 3}
+    Category: "\uBCF4\uC870\uBC30\uD130\uB9AC"
+    description: "\uC2A4\uB9C8\uD2B8\uD3F0\uC758 \uBC30\uD130\uB9AC\uB97C 10% \uCDA9\uC804\uC2DC\uD0A8\uB2E4."
+  - ID: 2
+    Name: "\uCE941"
+    Profile: {fileID: 21300000, guid: 2191f31fa9545fd45a6e2539ab6819e0, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 5 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 3
+    Name: "\uCE942"
+    Profile: {fileID: 21300000, guid: ae9470efc3df36f4a9a9912fc249c63e, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 6 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 4
+    Name: "\uCE943"
+    Profile: {fileID: 21300000, guid: 959f9e2716b64064981d14bd356aee48, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 7 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 5
+    Name: "\uCE947"
+    Profile: {fileID: 21300000, guid: cdcbebb5cb8062547bd0c6f8c72f62f8, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 8 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 6
+    Name: "\uCE948"
+    Profile: {fileID: 21300000, guid: e296b9439bff15146b10ca5dd61a5403, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 8 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 7
+    Name: "\uCE949"
+    Profile: {fileID: 21300000, guid: 68a6dcbfc1a8771489b2d5d616592a80, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 10 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 8
+    Name: "\uCE7C1"
+    Profile: {fileID: 21300000, guid: 982340dd47c51934c9821890b4dfdb6c, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 3 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 9
+    Name: "\uC74C\uB8CC1"
+    Profile: {fileID: 21300000, guid: 88acf8eba900b8646acca52f0a332bef, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 7 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 10
+    Name: "\uD6C4\uB77C\uC774\uD32C"
+    Profile: {fileID: 21300000, guid: 0a9532a9920eba1459ddabe49f8e2b7d, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 5 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 11
+    Name: "\uC57D1"
+    Profile: {fileID: 21300000, guid: 8e76502e1540bd7448daf86924c2cc37, type: 3}
+    Category: "\uCE58\uB8CC\uC81C"
+    description: "\uCCB4\uB825\uC744 30 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 12
+    Name: "\uC2A4\uB9C8\uD2B8\uD3F0"
+    Profile: {fileID: 21300000, guid: 1d6c5db616708c948b4a03ad81fd6fec, type: 3}
+    Category: "\uC2A4\uB9C8\uD2B8\uD3F0"
+    description: "\uC2A4\uB9C8\uD2B8\uD3F0. \uC720\uC77C\uD558\uAC8C \uBC14\uAE65
+      \uC18C\uC2DD\uC744 \uC54C \uC218 \uC788\uB2E4."
+  - ID: 13
+    Name: "\uB77C\uC774\uD2B82"
+    Profile: {fileID: 21300000, guid: e1233b4f91d476141ba6f8752e2881fc, type: 3}
+    Category: "\uB77C\uC774\uD2B8"
+    description: "\uC2DC\uC57C \uBC94\uC704\uB97C 10 \uB113\uD600\uC900\uB2E4."
+  - ID: 14
+    Name: "\uB77C\uC774\uD2B83"
+    Profile: {fileID: 21300000, guid: f3d602254d228c84eaaa309b610d541f, type: 3}
+    Category: "\uB77C\uC774\uD2B8"
+    description: "\uC2DC\uC57C \uBC94\uC704\uB97C 20 \uB113\uD600\uC900\uB2E4."
+  - ID: 15
+    Name: "\uB77C\uC774\uD2B85"
+    Profile: {fileID: 21300000, guid: 9327f796624eb9644ab634e03ff2c081, type: 3}
+    Category: "\uB77C\uC774\uD2B8"
+    description: "\uC2DC\uC57C \uBC94\uC704\uB97C 40 \uB113\uD600\uC900\uB2E4."
+  - ID: 16
+    Name: "\uBE60\uB8E8"
+    Profile: {fileID: 21300000, guid: 4c035e433294d794d91f1c18526e3248, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 17
+    Name: "\uB9DD\uCE58"
+    Profile: {fileID: 21300000, guid: 9fc6c21d9cbc019429b5604c19f63ac1, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 18
+    Name: "\uCE7C2"
+    Profile: {fileID: 21300000, guid: 371b96c7e222fbc478cf696f4f4b6f46, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 19
+    Name: "\uC0AC\uACFC"
+    Profile: {fileID: 21300000, guid: a5c4c43e88e91b74997626ecb79b8dc8, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 5 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 20
+    Name: "\uCE58\uC988"
+    Profile: {fileID: 21300000, guid: c7a9e77fcf90e984891dd78637e0c131, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 10 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 21
+    Name: "\uB2ED\uAC00\uC2B4\uC0B4"
+    Profile: {fileID: 21300000, guid: 8e64da2745a317b4aae3b77b04d46488, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 7 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 22
+    Name: "\uB3C4\uB11B"
+    Profile: {fileID: 21300000, guid: 29d4afcebef312448af2970dbc0b68c0, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 6 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 23
+    Name: "\uD3EC\uD14C\uC774\uD1A0"
+    Profile: {fileID: 21300000, guid: 695c34e4ae954744b85b8f38cc85a9cf, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 10 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 24
+    Name: "\uC18C\uC138\uC9C01"
+    Profile: {fileID: 21300000, guid: d7cfe3e3691eeba4986d21f2cff34df8, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 10 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 25
+    Name: "\uC18C\uC138\uC9C02"
+    Profile: {fileID: 21300000, guid: 74edecbab5157e745bc4f1e0040f15f9, type: 3}
+    Category: "\uC74C\uC2DD"
+    description: "\uD3EC\uB9CC\uAC10\uC744 30 \uD68C\uBCF5\uC2DC\uD0A8\uB2E4."
+  - ID: 26
+    Name: "\uBC14\uBCA8"
+    Profile: {fileID: 21300000, guid: aa8fd04a5c4fc7c499b72bcfd7969dfb, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 10 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 27
+    Name: "\uB364\uBCA8"
+    Profile: {fileID: 21300000, guid: e58cfe7fffb873e48845c219fba675dc, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 10 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 28
+    Name: "\uB178"
+    Profile: {fileID: 21300000, guid: 4342589f659dc3e48aea669836b8ec2d, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 4 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 29
+    Name: "\uB4A4\uC9D1\uAC1C"
+    Profile: {fileID: 21300000, guid: 5e2af98da37193d4aa0677b9c6c9e72e, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 2 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 30
+    Name: "\uAE30\uD0C0"
+    Profile: {fileID: 21300000, guid: 70a02be3b75af6b4190c0b619307085b, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 5 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 31
+    Name: "\uC77C\uB809\uAE30\uD0C0"
+    Profile: {fileID: 21300000, guid: 51c86911d6cc80f469ae49468aa40125, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 32
+    Name: "\uD14C\uB2C8\uC2A4\uB77C\uCF13"
+    Profile: {fileID: 21300000, guid: d3321728c0fbdba4fa73e28b65b0e42c, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 6 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 33
+    Name: "\uB098\uBB34\uBC29\uB9DD\uC774"
+    Profile: {fileID: 21300000, guid: c7a3a56a04d63914d8e35ac50ce43fc0, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 7 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 34
+    Name: "\uC1E0\uBC29\uB9DD\uC774"
+    Profile: {fileID: 21300000, guid: c28116b77985a1d46aa158b5865b2852, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 10 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 35
+    Name: "\uACE8\uD504\uCC44"
+    Profile: {fileID: 21300000, guid: 768a9be838bafe343b5de430f77fdc82, type: 3}
+    Category: "\uBB34\uAE30"
+    description: "\uACF5\uACA9\uB825\uC744 9 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+  - ID: 36
+    Name: "\uAC00\uBC291"
+    Profile: {fileID: 21300000, guid: fb9a368e2bc2fc241bd625c6d4471d47, type: 3}
+    Category: "\uAC00\uBC29"
+    description: "50\uB9CC\uD07C\uC758 \uC218\uB0A9\uB825\uC774 \uB298\uC5B4\uB09C\uB2E4."
+  - ID: 37
+    Name: "\uAC00\uBC292"
+    Profile: {fileID: 21300000, guid: 983cc1b38f1eedf4ba827ea7c729774f, type: 3}
+    Category: "\uAC00\uBC29"
+    description: "75\uB9CC\uD07C\uC758 \uC218\uB0A9\uB825\uC774 \uB298\uC5B4\uB09C\uB2E4."
+  - ID: 38
+    Name: "\uCE68\uB0AD1"
+    Profile: {fileID: 21300000, guid: 447d026f22bc11948997a58a456d6549, type: 3}
+    Category: "\uCE68\uB0AD"
+    description: "\uCCB4\uB825\uC744 10 \uD68C\uBCF5\uC2DC\uD0A4\uC9C0\uB9CC, \uD3EC\uB9CC\uAC10\uC774
+      30 \uC904\uC5B4\uB4E0\uB2E4."
+  - ID: 39
+    Name: "\uCE68\uB0AD2"
+    Profile: {fileID: 21300000, guid: 23d7eb39a90c6d248a964943954479ea, type: 3}
+    Category: "\uCE68\uB0AD"
+    description: "\uCCB4\uB825\uC744 15 \uD68C\uBCF5\uC2DC\uD0A4\uC9C0\uB9CC, \uD3EC\uB9CC\uAC10\uC774
+      -25 \uC904\uC5B4\uB4E0\uB2E4."
+  - ID: 40
+    Name: "\uCE68\uB0AD3"
+    Profile: {fileID: 21300000, guid: 4e8926dc07fe12a4bbc1557ffd99fd27, type: 3}
+    Category: "\uCE68\uB0AD"
+    description: "\uCCB4\uB825\uC744 20 \uD68C\uBCF5\uC2DC\uD0A4\uC9C0\uB9CC, \uD3EC\uB9CC\uAC10\uC774
+      -20 \uC904\uC5B4\uB4E0\uB2E4."
+  - ID: 41
+    Name: "\uD150\uD2B8"
+    Profile: {fileID: 21300000, guid: 6df231d1b12cd484bb0957c1b8754922, type: 3}
+    Category: "\uCE68\uB0AD"
+    description: "\uCCB4\uB825\uC744 30 \uD68C\uBCF5\uC2DC\uD0A4\uC9C0\uB9CC, \uD3EC\uB9CC\uAC10\uC774
+      -10 \uC904\uC5B4\uB4E0\uB2E4."
+  dateControl: {fileID: 0}
+--- !u!114 &4949948175739766774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949948175739766769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6d1479ba6b64570860111a38ac57a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDatabase: []
+--- !u!114 &4949948175739766773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949948175739766769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6443fffc52a42cbb3607bbb46fc435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 4949948175739766768}
+  _uiManager: {fileID: 0}
+--- !u!114 &4949948175739766772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4949948175739766769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7a1631a77e0b64c80158e58ff03bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
