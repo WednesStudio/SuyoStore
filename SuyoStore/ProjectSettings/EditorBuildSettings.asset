@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/0.Scenes/Suyeon_UI & Inventory.unity
-    guid: 9854559debd083b4fa3cbaca45a5ea24
-  - enabled: 1
-    path: Assets/0.Scenes/1.unity
-    guid: 22ee92321a12ee64dbc41bc454c384a9
-  - enabled: 1
     path: Assets/0.Scenes/Scenes/00.B2.unity
     guid: ba41bb00636ca9541833a392a29ace23
   - enabled: 1
     path: Assets/0.Scenes/Scenes/01.B1.unity
     guid: 4c75751f6bfcb8d4780643feea6f64da
+  - enabled: 1
+    path: Assets/0.Scenes/Scenes/02.F1.unity
+    guid: 61291561bf2b11943ba7547eeeab9723
+  - enabled: 1
+    path: Assets/0.Scenes/Scenes/03.F2.unity
+    guid: 04842159cb0205f45ad70d0371760939
+  - enabled: 1
+    path: Assets/0.Scenes/Scenes/04.F3.unity
+    guid: 87435a67d69253046867262ee2725bca
   m_configObjects: {}
