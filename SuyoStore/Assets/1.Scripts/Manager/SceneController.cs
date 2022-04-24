@@ -7,31 +7,61 @@ public class SceneController : MonoBehaviour
 {
     // ÇöÀç ÀÖ´Â ¾À
     Scene scene;
-
+    float gateTimer = 3.0f;
+    float timer = 0.0f;
     enum eGateType { GoUp, GoDown, NotUse };
     [SerializeField]
     eGateType gateType;
+    bool isInGate = false;
 
     private void Start()
     {
         scene = SceneManager.GetActiveScene();
     }
 
+    private void Update()
+    {
+        if (isInGate)
+        {
+            timer += Time.deltaTime;
+            Debug.Log(timer);
+            if (timer >= gateTimer)
+            {
+                if (gateType == eGateType.GoUp)
+                {
+                    UpstairsByGate();
+                }
+                else if (gateType == eGateType.GoDown)
+                {
+                    DownstairsByGate();
+                }
+                else
+                {
+                    timer = 0.0f;
+                }
+
+                timer = 0.0f;
+            }
+        }
+        else
+        {
+            timer = 0.0f;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            if (gateType == eGateType.GoUp)
-            {
-                UpstairsByGate();
-            }
-            else if(gateType == eGateType.GoDown)
-            {
-                DownstairsByGate();
-            }
-            else
-            {
-            }
+            isInGate = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            isInGate = false;
         }
     }
 
