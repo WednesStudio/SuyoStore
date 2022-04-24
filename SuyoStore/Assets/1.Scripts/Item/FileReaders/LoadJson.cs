@@ -23,6 +23,8 @@ public class LoadJson : MonoBehaviour
     {
         Dictionary<string, object> data = JsonReader.ReadCondition(file)[0];
         int number = int.Parse(data["number"].ToString(), System.Globalization.NumberStyles.Integer);
+        string route = data["route"].ToString();
+        string message = data["message"].ToString();
         string[] sniper = ((IEnumerable)data["sniper"])
                             .Cast<object>()
                             .Select(x => x.ToString())
@@ -30,7 +32,7 @@ public class LoadJson : MonoBehaviour
         string must = data["must"].ToString();
         int count = int.Parse(data["count"].ToString(), System.Globalization.NumberStyles.Integer);
         string exit = data["exit"].ToString();
-        AddConditionData(number, sniper, must, count, exit);
+        AddConditionData(number, route, message, sniper, must, count, exit);
     }
     void AddData(string days, string message)
     {
@@ -39,8 +41,8 @@ public class LoadJson : MonoBehaviour
         JsonData newJsonData = new JsonData(_days, _message);
         messageDatabase.Add(newJsonData);
     }
-    void AddConditionData(int n, string[] s, string m, int c, string e)
+    void AddConditionData(int number, string route, string msg, string[] sniper, string must, int count, string exit)
     {
-        conditionList = new JsonConditionData(n, s, m, c, e);
+        conditionList = new JsonConditionData(number, route, msg, sniper, must, count, exit);
     }
 }

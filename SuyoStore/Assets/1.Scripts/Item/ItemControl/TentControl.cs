@@ -53,18 +53,20 @@ public class TentControl : MonoBehaviour
             SetItem();
         else
         {
-            if (_dataManager.dateControl.GetDays() < 7 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
+            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
             {
                 _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(_ray, out _hit, 1000f))
                     canvas.SetActive(true);
+                if (_dataManager.dateControl.GetDays() == 7)
+                    GameManager.GM.SetEndEventTrigger();
             }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             isNearPlayer = true;
         }
@@ -72,7 +74,7 @@ public class TentControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             isNearPlayer = false;
         }

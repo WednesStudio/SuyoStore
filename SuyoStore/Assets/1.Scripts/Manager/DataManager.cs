@@ -28,6 +28,7 @@ public class DataManager : MonoBehaviour
     public Sprite GetItemImage(int ID) => _itemObjects[ID].Profile;
     public string GetDescription(int ID) => _itemObjects[ID].description;
     public bool IsContainItem(int ID) => MyItems.ContainsKey(ID);
+    public string GetConditionRoute() => jsonConditionData.route;
     public string GetConditionMust() => jsonConditionData.must;
     public int GetConditionCount() => jsonConditionData.count;
     public string GetConditionExit() => jsonConditionData.exit;
@@ -51,11 +52,6 @@ public class DataManager : MonoBehaviour
         //_csvReader.Read(out _creatureList, out _itemList);
         _loadExcel.LoadItemData();
         _totalItemList = _loadExcel.itemDatabase;
-
-        //
-        print("== remember to remove this == myItems.add(battery)");
-        MyItems.Add(GetItemID("배터리2"), 1);
-        MyItems.Add(GetItemID("침낭3"), 1);
     }
 
     public void SetCurrentInfo(string date, string location)
@@ -88,7 +84,7 @@ public class DataManager : MonoBehaviour
         int capacity = _totalItemList[itemID].weight;
         //가방 설정
         string category = _totalItemList[itemID].subCategory;
-        if(count > 0)
+        if (count > 0)
         {
             if (IsContainItem(itemID))
             {
@@ -170,7 +166,7 @@ public class DataManager : MonoBehaviour
         }
         else
         {
-            if(!MyItems.ContainsKey(itemID)) return;
+            if (!MyItems.ContainsKey(itemID)) return;
             if (MyItems[itemID] > 0)
             {
                 if (MyItems[itemID] == 1)
@@ -214,7 +210,7 @@ public class DataManager : MonoBehaviour
             _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(-capacity, maxCapacity);
         }
-        
+
         _uiManager.SetPlayerSpeed(_inventoryUI.GetCurrentCapacity(), maxCapacity);
     }
 
@@ -239,6 +235,8 @@ public class DataManager : MonoBehaviour
     }
     public List<int> GetItemIDMyList(string name)
     {
+        // 선택된 루트의 must item 중 "SM_Props_Battery" 같이 앞부분 글자를 포함한 모든 아이템 아이디를 저장
+
         List<int> idList = new List<int>();
         foreach (ItemData i in _totalItemList)
         {
