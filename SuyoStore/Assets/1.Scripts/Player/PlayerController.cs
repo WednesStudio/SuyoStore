@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
     public GameObject[] Bags;
 
     // Attack
-    public GameObject[] weapons;
     public bool[] hasWeapons;
     Weapon equipWeapon;
 

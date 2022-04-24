@@ -163,19 +163,19 @@ public class ItemUse : MonoBehaviour
             //기존 장착된 아이템 찾아서 삭제
             if(_dataManager.GetItemSubCategory(currentItemID) == "무기")
             {
-                GameObject weapon = FindExactWeapon(_dataManager.GetItemName(currentItemID));
+                GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipItem(currentItemID);
                 weapon.SetActive(false);
             }
             else if(_dataManager.GetItemSubCategory(currentItemID) == "라이트")
             {
-                GameObject light = FindExactLight(_dataManager.GetItemName(currentItemID));
+                GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipItem(currentItemID);
                 light.SetActive(false);
             }
             else // 가방
             {
-                GameObject bag = FindExactBag(_dataManager.GetItemName(currentItemID));
+                GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipItem(currentItemID);
                 bag.SetActive(false);
             }
@@ -207,7 +207,7 @@ public class ItemUse : MonoBehaviour
                 //location, rotation -> 플레이어 쪽으로 수정 필요
                 // GameObject newBag = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
                 // newBag.tag = "UsedItem";
-                GameObject bag = FindExactBag(_dataManager.GetItemName(itemID));
+                GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
                 bag.SetActive(true);
                 playerStatus.AddEquipItem(itemID);
             }
@@ -217,7 +217,7 @@ public class ItemUse : MonoBehaviour
             ChangeItem(-1, itemID);
             // GameObject newBag = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             // newBag.tag = "UsedItem";
-            GameObject bag = FindExactBag(_dataManager.GetItemName(itemID));
+            GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
             bag.SetActive(true);
         }
     }
@@ -263,7 +263,7 @@ public class ItemUse : MonoBehaviour
                 ChangeItem(-1, itemID);
                 //location, rotation -> 플레이어 쪽으로 수정 필요
                 //GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-                GameObject weapon = FindExactWeapon(_dataManager.GetItemName(itemID));
+                GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(itemID));
                 weapon.SetActive(true);
                 playerStatus.AddEquipItem(itemID);
                 //newWeapon.tag = "UsedItem";
@@ -274,7 +274,7 @@ public class ItemUse : MonoBehaviour
             ChangeItem(-1, itemID);
             // GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             // newWeapon.tag = "UsedItem";
-            GameObject weapon = FindExactWeapon(_dataManager.GetItemName(itemID));
+            GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(itemID));
             weapon.SetActive(true);
         }
     }
@@ -312,7 +312,7 @@ public class ItemUse : MonoBehaviour
                 //location, rotation -> 플레이어 쪽으로 수정 필요
                 // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
                 // newLight.tag = "UsedItem";
-                GameObject light = FindExactLight(_dataManager.GetItemName(itemID));
+                GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
                 light.SetActive(true);
                 playerStatus.AddEquipItem(itemID);
             }
@@ -322,7 +322,7 @@ public class ItemUse : MonoBehaviour
             ChangeItem(-1, itemID);
             // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             // newLight.tag = "UsedItem";
-            GameObject light = FindExactLight(_dataManager.GetItemName(itemID));
+            GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
             light.SetActive(true);
         }
     }
