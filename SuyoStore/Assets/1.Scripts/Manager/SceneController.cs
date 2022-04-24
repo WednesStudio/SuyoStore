@@ -7,7 +7,7 @@ public class SceneController : MonoBehaviour
 {
     // 현재 있는 씬
     Scene scene;
-    float gateTimer = 3.0f;
+    float gateTimer = 2.0f;
     float timer = 0.0f;
     enum eGateType { GoUp, GoDown, NotUse };
     [SerializeField]
