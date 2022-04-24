@@ -66,7 +66,7 @@ public class OptionSettingUI : MonoBehaviour
     public void OffOptionWindow()
     {
         _optionWindow.SetActive(false);
-        OnScreenPanel();
+        OnSoundPanel();
     }
 
     //Exit game
@@ -118,7 +118,7 @@ public class OptionSettingUI : MonoBehaviour
     //Screen panel
     public void OnScreenPanel()
     {
-        OnPanels(3, 3, 0);
+        //OnPanels(3, 3, 0);
     }
 
 
@@ -152,13 +152,13 @@ public class OptionSettingUI : MonoBehaviour
     //Sound Panel
     public void OnSoundPanel()
     {
-        OnPanels(3, 3, 1);
+        OnPanels(3, 2, 0);
     }
 
     //Service Panel
     public void OnServicePanel()
     {
-        OnPanels(3, 3, 2);
+        OnPanels(3, 2, 1);
     }
 
     public void OnCredit()

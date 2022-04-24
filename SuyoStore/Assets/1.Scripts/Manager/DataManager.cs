@@ -92,9 +92,87 @@ public class DataManager : MonoBehaviour
         }
 
         string category = _totalItemList[itemID].subCategory;
-
-        if (count < 0)
+        if(count > 0)
         {
+            if (IsContainItem(itemID))
+            {
+                MyItems[itemID] += count;
+
+                switch (category)
+                {
+                    case battery:
+                        _inventoryUI.SetBatteryBagContents();
+                        break;
+                    case food:
+                        _inventoryUI.SetFoodBagContents();
+                        break;
+                    case weapon:
+                        _inventoryUI.SetWeaponBagContents();
+                        break;
+                    case pill:
+                        _inventoryUI.SetMedicineBagContents();
+                        break;
+                    case flashLight:
+                        _inventoryUI.SetLightBagContents();
+                        break;
+                    case bag:
+                        maxCapacity = 30 + _totalItemList[itemID].capacity;
+                        GameManager.GM.UseItem(itemID);
+                        break;
+                    case sleepingBag:
+                        _inventoryUI.SetSleepingBagContents();
+                        break;
+                    case smartPhone:
+                        _inventoryUI.SetImportantBagContents();
+                        break;
+                    default:
+                        Debug.Log("item Category doesn't exist!");
+                        break;
+                }
+                if (category != bag) _inventoryUI.SetTotalBagContents();
+                _inventoryUI.SetBagCapacity(capacity, maxCapacity);
+            }
+            else
+            {
+                MyItems.Add(itemID, count);
+                switch (category)
+                {
+                    case battery:
+                        _inventoryUI.SetBatteryBagContents();
+                        break;
+                    case food:
+                        _inventoryUI.SetFoodBagContents();
+                        break;
+                    case weapon:
+                        _inventoryUI.SetWeaponBagContents();
+                        break;
+                    case pill:
+                        _inventoryUI.SetMedicineBagContents();
+                        break;
+                    case flashLight:
+                        _inventoryUI.SetLightBagContents();
+                        break;
+                    case bag:
+                        maxCapacity = 30 + _totalItemList[itemID].capacity;
+                        GameManager.GM.UseItem(itemID);
+                        break;
+                    case sleepingBag:
+                        _inventoryUI.SetSleepingBagContents();
+                        break;
+                    case smartPhone:
+                        _inventoryUI.SetImportantBagContents();
+                        break;
+                    default:
+                        Debug.Log("item Category doesn't exist!");
+                        break;
+                }
+                if (category != bag) _inventoryUI.SetTotalBagContents();
+                _inventoryUI.SetBagCapacity(capacity, maxCapacity);
+            }
+        }
+        else
+        {
+            if(!MyItems.ContainsKey(itemID)) return;
             if (MyItems[itemID] > 0)
             {
                 if (MyItems[itemID] == 1)
@@ -135,83 +213,6 @@ public class DataManager : MonoBehaviour
             }
             _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(-capacity, maxCapacity);
-            return;
-        }
-
-        if (IsContainItem(itemID))
-        {
-            MyItems[itemID] += count;
-
-            switch (category)
-            {
-                case battery:
-                    _inventoryUI.SetBatteryBagContents();
-                    break;
-                case food:
-                    _inventoryUI.SetFoodBagContents();
-                    break;
-                case weapon:
-                    _inventoryUI.SetWeaponBagContents();
-                    break;
-                case pill:
-                    _inventoryUI.SetMedicineBagContents();
-                    break;
-                case flashLight:
-                    _inventoryUI.SetLightBagContents();
-                    break;
-                case bag:
-                    maxCapacity = 30 + _totalItemList[itemID].capacity;
-                    GameManager.GM.UseItem(itemID);
-                    break;
-                case sleepingBag:
-                    _inventoryUI.SetSleepingBagContents();
-                    break;
-                case smartPhone:
-                    _inventoryUI.SetImportantBagContents();
-                    break;
-                default:
-                    Debug.Log("item Category doesn't exist!");
-                    break;
-            }
-            if (category != bag) _inventoryUI.SetTotalBagContents();
-            _inventoryUI.SetBagCapacity(capacity, maxCapacity);
-        }
-        else
-        {
-            MyItems.Add(itemID, count);
-            switch (category)
-            {
-                case battery:
-                    _inventoryUI.SetBatteryBagContents();
-                    break;
-                case food:
-                    _inventoryUI.SetFoodBagContents();
-                    break;
-                case weapon:
-                    _inventoryUI.SetWeaponBagContents();
-                    break;
-                case pill:
-                    _inventoryUI.SetMedicineBagContents();
-                    break;
-                case flashLight:
-                    _inventoryUI.SetLightBagContents();
-                    break;
-                case bag:
-                    maxCapacity = 30 + _totalItemList[itemID].capacity;
-                    GameManager.GM.UseItem(itemID);
-                    break;
-                case sleepingBag:
-                    _inventoryUI.SetSleepingBagContents();
-                    break;
-                case smartPhone:
-                    _inventoryUI.SetImportantBagContents();
-                    break;
-                default:
-                    Debug.Log("item Category doesn't exist!");
-                    break;
-            }
-            if (category != bag) _inventoryUI.SetTotalBagContents();
-            _inventoryUI.SetBagCapacity(capacity, maxCapacity);
         }
     }
 
