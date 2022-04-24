@@ -16,17 +16,13 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject _totalContentsParent = null;
     [SerializeField] private GameObject _weaponContentsParent = null;
     [SerializeField] private GameObject _lightContentsParent = null;
-    [SerializeField] private GameObject _sleepingBagContentsParent = null;
     [SerializeField] private GameObject _foodContentsParent = null;
     [SerializeField] private GameObject _medicineContentsParent = null;
-    [SerializeField] private GameObject _batteryContentsParent = null;
     [SerializeField] private GameObject _importantContentsParent = null;
     private BagItems[] _totalContents = null;
     private BagItems[] _weaponContents = null;
     private BagItems[] _lightContents = null;
-    private BagItems[] _sleepingBagContents = null;
     private BagItems[] _foodContents = null;
-    private BagItems[] _batteryContents = null;
     private BagItems[] _medicineContents = null;
     private BagItems[] _importantContents = null;
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", smartPhone = "스마트폰", bag = "가방";
@@ -210,52 +206,16 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void SetSleepingBagContents()
-    {
-        if (_sleepingBagContents == null) _sleepingBagContents = _sleepingBagContentsParent.GetComponentsInChildren<BagItems>();
-
-        int i = 0;
-        foreach (BagItems b in _sleepingBagContents)
-        {
-            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "침낭")
-            {
-                b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
-                b.gameObject.SetActive(true);
-                i++;
-                continue;
-            }
-            b.gameObject.SetActive(false);
-            i++;
-        }
-    }
-
-    public void SetBatteryBagContents()
-    {
-        if (_batteryContents == null) _batteryContents = _batteryContentsParent.GetComponentsInChildren<BagItems>();
-
-        int i = 0;
-        foreach (BagItems b in _batteryContents)
-        {
-            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "배터리")
-            {
-                b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
-                b.gameObject.SetActive(true);
-                i++;
-                continue;
-            }
-            b.gameObject.SetActive(false);
-            i++;
-        }
-    }
-
     public void SetImportantBagContents()
     {
         if (_importantContents == null) _importantContents = _importantContentsParent.GetComponentsInChildren<BagItems>();
 
         int i = 0;
+        string category;
         foreach (BagItems b in _importantContents)
         {
-            if (GameManager.GM.GetItemCount(i) > 0 && _dataManager.GetItemSubCategory(i) == "스마트폰")
+            category = _dataManager.GetItemSubCategory(i);
+            if (GameManager.GM.GetItemCount(i) > 0 && (category == "스마트폰" || category == "침낭" || category == "보조배터리"))
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);

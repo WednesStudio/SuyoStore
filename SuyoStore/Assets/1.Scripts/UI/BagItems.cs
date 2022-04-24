@@ -17,10 +17,10 @@ public class BagItems : MonoBehaviour
         this._profileImage.sprite = sprite;
         this._description.text = description;
         this._itemCount.text = count.ToString();
-        this._button.onClick.AddListener(() => SelectButton(id));
     }
-    public void SelectButton(int id)
+    public void SelectButton()
     {
+        int id = GameManager.GM.GetItemID(_itemName.text);
         GameManager.GM.CheckUseItem(id);
     }
 }

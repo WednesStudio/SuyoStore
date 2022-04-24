@@ -257,10 +257,15 @@ public class PlayerStatus : Status
     public void AddEquipItem(int _itemID)
     {
         EquipItemsList.Add(_itemID);
+        if(GameManager.GM.GetItemSubCategory(_itemID) == "무기")    playerController.hasWeapon = true;
     }
 
     public void RemoveEquipItem(int _itemID)
     {
         EquipItemsList.Remove(_itemID);
+        if(GameManager.GM.GetItemSubCategory(_itemID) == "무기")    playerController.hasWeapon = false;
+        //공격력 원래대로
+        curAttack = 10;
+        //시야 감소
     }
 }

@@ -142,11 +142,20 @@ public class GameManager : MonoBehaviour
     {
         Item temp = _dataManager.SetNewItem(itemID);
         string category = _dataManager.GetItemSubCategory(itemID);
-
-        if (category != "가방" && category != "스마트폰") _dataManager.AddItem(itemID, -1);
+        print(category);
+        if (category != "가방" && category != "스마트폰" && category != "침낭" && category != "보조배터리") _dataManager.AddItem(itemID, -1);
         _itemUse.UseItem(itemID);
     }
 
+    public string GetItemSubCategory(int id)
+    {
+        return _dataManager.GetItemSubCategory(id);
+    }
+
+    public int GetItemID(string name)
+    {
+        return _dataManager.GetItemID(name);
+    }
     public int GetItemCount(int itemID)
     {
         return _dataManager.GetItemCount(itemID);
