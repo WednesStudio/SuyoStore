@@ -23,6 +23,8 @@ public class JsonList
 public class JsonConditionData
 {
     public int number;
+    public string route;
+    public string message;
     public string[] sniper;
     public string must;
     public int count;
@@ -30,14 +32,18 @@ public class JsonConditionData
     public JsonConditionData()
     {
         number = 0;
+        route = "";
+        message = "";
         sniper = new string[] { };
         must = "";
         count = 0;
         exit = "";
     }
-    public JsonConditionData(int n, string[] s, string m, int c, string e)
+    public JsonConditionData(int n, string r, string msg, string[] s, string m, int c, string e)
     {
         number = n;
+        route = r;
+        message = msg;
         sniper = s;
         must = m;
         count = c;

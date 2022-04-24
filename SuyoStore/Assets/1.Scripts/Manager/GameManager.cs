@@ -20,8 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DataManager _dataManager;
     [SerializeField] UIManager _uiManager;
     [SerializeField] ItemUse _itemUse;
-    [SerializeField] GameObject gameOverPanel, gameWinPanel;
-    [SerializeField] TextMeshProUGUI WinText;
+    private CellPhoneMsgs cellphone;
     public static GameManager GM = null;
     private int _currentSceneNum;
     public GameState state;
@@ -43,8 +42,8 @@ public class GameManager : MonoBehaviour
             SetWholeUI();
             selectedRoute = UnityEngine.Random.Range(0, 3);
             GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData(directory + routes[selectedRoute]);
+            cellphone = FindObjectOfType<CellPhoneMsgs>();
         }
-
     }
     private void Start()
     {
@@ -104,21 +103,27 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        gameOverPanel.SetActive(state == GameState.GameOver);
+        cellphone.infoText.text = "당신은 죽었습니다";
+        cellphone.canvas.SetActive(state == GameState.GameOver);
         // ExitGame();
     }
     public void GameWin()
     {
-        gameWinPanel.SetActive(state == GameState.GameWin);
-        UnityEngine.Debug.Log(WinText.text + " " + selectedRoute);
+        cellphone.infoText.text = _dataManager.GetConditionRoute();
+        cellphone.canvas.SetActive(state == GameState.GameWin);
         // ExitGame();
     }
-    public void DateSetting()
+    IEnumerator WaitToChangeDate()
     {
+        yield return new WaitForSeconds(2);
         System.DateTime result = System.DateTime.Parse(_dateControl.GetDate());
         result = result.AddDays(1);
         _dateControl.SetDate(result.ToString("yyyy/MM/dd"));
+    }
+    public void DateSetting()
+    {
         gameObject.GetComponent<SceneEffect>().FadeEffect(-1);
+        StartCoroutine(WaitToChangeDate());
     }
     private void SetWholeUI()
     {

@@ -33,6 +33,7 @@
         {
             "number":3,
             "route":"지하에서 버틸 경우(7일차에 지하에서 취침기능 이용 시 생존)",
+            "message":"",
             "sniper": ["F1", "F3"],
             "must": "SM_Prop_SleepingBag",
             "count": 1,

@@ -33,6 +33,7 @@
         {
             "number": 2,
             "route":"옥상으로 탈출(배터리를 모아 옥상문에 배터리 할당량을 채울 시 오픈)",
+            "message":"",
             "sniper": ["F1"],
             "must": "SM_Item_Battery",
             "count": 1, 
