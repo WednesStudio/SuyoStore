@@ -311,9 +311,9 @@ public class PlayerController : MonoBehaviour
 
     void SwitchWeapon()
     {
-        //int weaponIndex;
-        //hasWeapons[weaponIndex] = true;
-        //weapons[weaponIndex].SetActive(true);
+        //int weaponindex = itemID;
+        //hasweapons[weaponindex] = true;
+        //weapons[weaponindex].SetActive(true);
     }
 
     bool Attack()
