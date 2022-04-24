@@ -17,5 +17,12 @@ public class CustomEditorWindow : EditorWindow
         {
             GameObject.Find("ItemDatabase").GetComponent<LoadExcel>().LoadItemData();
         }
+
+        GUILayout.Label("Reload Json Database", EditorStyles.boldLabel);
+        if (GUILayout.Button("Reload Message"))
+        {
+            GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData("Data/route1");
+        }
+
     }
 }

@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     ZombieAI zombieAI;
     // Related Zombie
     public bool isSafe = false;
-    public bool isAttack = false;
 
     // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
@@ -116,7 +115,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0)) {
-            isAttack = Attack();
+            Attack();
         }
     }
 
@@ -317,7 +316,7 @@ public class PlayerController : MonoBehaviour
         //weapons[weaponindex].SetActive(true);
     }
 
-    bool Attack()
+    void Attack()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
@@ -352,10 +351,8 @@ public class PlayerController : MonoBehaviour
                 state = PlayerState.Idle;
                 zombieAI = nearZombie.GetComponent<ZombieAI>();
                 zombieAI.Hit();
-                return true;
             }
         }
-        return false;
     }
 
     void LayDown()

@@ -20,6 +20,8 @@ public class TentControl : MonoBehaviour
     private DataManager _dataManager;
     private Item item = null;
     private Item tent;
+    private bool isNearPlayer = false;
+
     void Start()
     {
         playerStatus = FindObjectOfType<PlayerStatus>();
@@ -51,7 +53,7 @@ public class TentControl : MonoBehaviour
             SetItem();
         else
         {
-            if (_dataManager.dateControl.GetDays() < 7 && Input.GetMouseButtonDown(0))
+            if (_dataManager.dateControl.GetDays() < 7 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
             {
                 _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(_ray, out _hit, 1000f))
@@ -60,9 +62,23 @@ public class TentControl : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            isNearPlayer = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            isNearPlayer = false;
+        }
+    }
     private void UseTent(Item item)
     {
-        print("== UseHeal/Food error ==");
         playerStatus.RecoverStatus(Status.eCurStatusType.cHp, item.GetHEAL());
         playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, item.GetSATIETY());
         GameManager.GM.DateSetting();
