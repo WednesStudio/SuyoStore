@@ -1462,25 +1462,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Down (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 181734, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1513,6 +1497,10 @@ PrefabInstance:
     - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -5915,6 +5903,10 @@ PrefabInstance:
     - target: {fileID: 499746, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -35.144
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586226035422637637, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
+      propertyPath: gateType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41d465be26c5aaa40bebb821e450d287, type: 3}
@@ -16628,10 +16620,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 977429822}
     m_Modifications:
-    - target: {fileID: 146432, guid: cc028665d31776846b03ec45e19339b4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 165698, guid: cc028665d31776846b03ec45e19339b4, type: 3}
       propertyPath: m_Name
       value: Up (1)
@@ -16639,18 +16627,6 @@ PrefabInstance:
     - target: {fileID: 411162, guid: cc028665d31776846b03ec45e19339b4, type: 3}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 411162, guid: cc028665d31776846b03ec45e19339b4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 411162, guid: cc028665d31776846b03ec45e19339b4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 411162, guid: cc028665d31776846b03ec45e19339b4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 411162, guid: cc028665d31776846b03ec45e19339b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16685,8 +16661,16 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 411162, guid: cc028665d31776846b03ec45e19339b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411162, guid: cc028665d31776846b03ec45e19339b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -35.144
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614611850620405794, guid: cc028665d31776846b03ec45e19339b4, type: 3}
+      propertyPath: gateType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc028665d31776846b03ec45e19339b4, type: 3}

@@ -13,6 +13,7 @@ public class SceneController : MonoBehaviour
     [SerializeField]
     eGateType gateType;
     bool isInGate = false;
+    int changeSceneNum;
 
     private void Start()
     {
@@ -70,39 +71,41 @@ public class SceneController : MonoBehaviour
         switch (scene.name)
         {
             case "04.F3":
-                SceneManager.LoadScene("03.F2");
+                changeSceneNum = 3;
                 break;
             case "03.F2":
-                SceneManager.LoadScene("02.F1");
+                changeSceneNum = 2;
                 break;
             case "02.F1":
-                SceneManager.LoadScene("01.B1");
+                changeSceneNum = 1;
                 break;
             case "01.B1":
-                SceneManager.LoadScene("00.B2");
+                changeSceneNum = 0;
                 break;
             default:
                 break;
         }
+        GameManager.GM.ChangeToOtherScene(changeSceneNum);
     }
     public void UpstairsByGate()
     {
         switch (scene.name)
         {
             case "00.B2":
-                SceneManager.LoadScene("01.B1");
+                changeSceneNum = 1;
                 break;
             case "01.B1":
-                SceneManager.LoadScene("02.F1");
+                changeSceneNum = 2;
                 break;
             case "02.F1":
-                SceneManager.LoadScene("03.F2");
+                changeSceneNum = 3;
                 break;
             case "03.F2":
-                SceneManager.LoadScene("04.F3");
+                changeSceneNum = 4;
                 break;
             default:
                 break;
         }
+        GameManager.GM.ChangeToOtherScene(changeSceneNum);
     }
 }
