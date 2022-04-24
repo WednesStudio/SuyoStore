@@ -17,10 +17,12 @@ public class CustomEditorWindow : EditorWindow
         {
             GameObject.Find("ItemDatabase").GetComponent<LoadExcel>().LoadItemData();
         }
-        GUILayout.Label("Reload CellPhone Info Database", EditorStyles.boldLabel);
-        if (GUILayout.Button("Reload Info"))
+
+        GUILayout.Label("Reload Json Database", EditorStyles.boldLabel);
+        if (GUILayout.Button("Reload Message"))
         {
-            GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData();
+            GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData("Data/route1");
         }
+
     }
 }

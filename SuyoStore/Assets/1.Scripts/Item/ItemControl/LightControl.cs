@@ -18,7 +18,6 @@ public class LightControl
             counter = new Counter(light);
             isLightOn = true;
         }
-        UnityEngine.Debug.Log("light " + light + " " + isLightOn.ToString());
     }
     public bool LightDurability()
     {
@@ -31,6 +30,10 @@ public class LightControl
                 isLightOn = false;
         }
         return false;
+    }
+    public int StopCounter()
+    {
+        return counter.StopCounter();
     }
     public int GetID() => itemID;
 }

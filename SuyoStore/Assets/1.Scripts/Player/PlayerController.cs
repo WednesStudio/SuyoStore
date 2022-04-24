@@ -1,47 +1,102 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    CharacterController characterController;
-    public PlayerStatus pStatus;
-    GameObject playerObj;
+    private float gravity = -9.81f;
 
+    CharacterController characterController;
+    DataManager _dataManager;
+    public PlayerStatus pStatus;
+    GameObject nearItem;
+    GameObject nearZombie;
+    GameObject playerObj;
+    GameObject itemObj;
+    ItemControl itemControl;
+    GameObject zombieObj;
+    ZombieAI zombieAI;
+    // Related Zombie
     public bool isSafe = false;
 
-    [SerializeField]
-    private float rotationSpeed = 360f; // 회전(방향전환) 속도
+    // Move
+    private float rotationSpeed = 1000f; // 회전(방향전환) 속도
     private Vector3 moveDirection; // 이동 방향
     float hAxis;
     float vAxis;
 
-    // 액션
-    public enum PlayerState{ Idle, Walk, Run, Sit, Attack, Lay, Dead };
+    // Action
+    public enum PlayerState{ Idle, Walk, Run, Sit, SitWalk, Lay, Dead };
     public PlayerState state = PlayerState.Idle;
+    
     Animator animator;
-
     public bool isMove = false;
     bool isSit = false;
 
-    public void Awake()
+    // Status
+    int useStamina = 10;
+    int recoverStamina = 5;
+
+
+    //weapon
+    public GameObject[] Weapons;
+
+    //light
+    public GameObject[] Lights;
+
+    //bag
+    public GameObject[] Bags;
+
+    // Attack
+    public bool hasWeapon;
+    Weapon equipWeapon;
+
+    private void Start()
     {
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
-        animator = GetComponent<Animator>();
-        playerObj = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponentInChildren<Animator>();
+        itemObj = GameObject.FindGameObjectWithTag("Item");
+        itemControl = itemObj.GetComponent<ItemControl>();
+        _dataManager = FindObjectOfType<DataManager>();
     }
 
     private void Update()
     {
+        Anim();
         GetInput();
         Move();
+    }
+
+    void Anim()
+    {
+        animator.SetBool("isIdle", state == PlayerState.Idle);
+        animator.SetBool("isWalk", state == PlayerState.Walk);
+        animator.SetBool("isRun", state == PlayerState.Run);
+        animator.SetBool("isSit", state == PlayerState.Sit);
+        animator.SetBool("isSitWalk", state == PlayerState.SitWalk);
+        animator.SetBool("isDie", state == PlayerState.Dead);
     }
 
     void ChangeSpeed()
     {
         //if (state == PlayerState.Walk) pStatus.CurSpeed = 0;
-        if (state == PlayerState.Idle || state == PlayerState.Walk) pStatus.CurSpeed = pStatus.WalkSpeed;
-        if (state == PlayerState.Run) pStatus.CurSpeed = pStatus.WalkSpeed + pStatus.RunAddSpeed;
-        if (state == PlayerState.Sit) pStatus.CurSpeed = pStatus.SitSpeed;
+        if (state == PlayerState.Idle || state == PlayerState.Walk)
+        {
+            pStatus.CurSpeed = pStatus.WalkSpeed;
+        }
+        else if (state == PlayerState.Run)
+        {
+            pStatus.CurSpeed = pStatus.WalkSpeed + pStatus.RunAddSpeed;
+        }
+        else if (state == PlayerState.Sit || state == PlayerState.SitWalk)
+        {
+            pStatus.CurSpeed = pStatus.SitSpeed;
+        }
+        else
+        {
+            pStatus.CurSpeed = pStatus.WalkSpeed;
+            Debug.Log("[Move System] ?? State");
+        }
     }
 
     void GetInput()
@@ -52,90 +107,174 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
         {
-            Sit();
+            SitInput();
         }
-
         if (Input.GetKeyUp(KeyCode.G))
         {
             GetItem();
         }
 
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonUp(0)) {
             Attack();
         }
     }
+
+
     void RunInput()
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            if (state != PlayerState.Sit)
+            if (isSit)
+            {
+                if (isMove) state = PlayerState.SitWalk;
+                else state = PlayerState.Sit;
+            } 
+            else
             {
                 state = PlayerState.Run;
-                ChangeSpeed();
-                pStatus.UseStaminaTime -= Time.deltaTime;
-                pStatus.UseStaminaTime = pStatus.GetBackTime(pStatus.UseStaminaTime, pStatus.StaminaTime);
-                Debug.Log("[Anim] Run");
+                if (pStatus.CurStamina > 0)
+                {
+                    pStatus.UseStamina(useStamina);
+                }
+                else
+                {
+                    if (isMove) state = PlayerState.SitWalk;
+                    else state = PlayerState.Sit;
+                }
             }
         }
+        ChangeSpeed();
     }
 
     void Move()
     {
+        // 캐릭터에 중력 적용
+        if (characterController.isGrounded == false)
+        {
+            moveDirection.y += gravity * Time.deltaTime;
+        }
+
         moveDirection = new Vector3(hAxis, 0, vAxis).normalized;
         moveDirection.Normalize();
 
-        float magnitud = Mathf.Clamp01(moveDirection.magnitude) * pStatus.CurSpeed;
-        characterController.SimpleMove(moveDirection * pStatus.CurSpeed);
+        if (state != PlayerState.Run)
+        {
+            if (pStatus.CurStamina < pStatus.Stamina)
+            {
+                pStatus.RecoveryStamina(recoverStamina);
+            }
+        }
 
         // 움직임 여부 체크
         if (moveDirection != Vector3.zero)
         {
-            state = PlayerState.Walk;
             isMove = true;
-            RunInput();
-            ChangeSpeed();
-            if (pStatus.CurStamina <= 0)
+
+            if (isSit == true)
+            {
+                state = PlayerState.SitWalk;
+            }
+            else
             {
                 state = PlayerState.Walk;
+                if(state == PlayerState.Idle || state == PlayerState.Walk)
+                {
+                    RunInput();
+                }
             }
+
+            ChangeSpeed();
 
             // 바라보는 방향으로 회전
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             characterController.transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-
         }
         else
         {
             isMove = false;
-            state = PlayerState.Idle;
-            /* 애니메이션 : Idle */
-            Debug.Log("[Anim] Idle");
-        }
-    }
 
-    void Sit()
-    {
-        if (state == PlayerState.Idle || state == PlayerState.Walk || state == PlayerState.Run)
-        {
-            if (isSit == false)
+            if(isSit == true)
             {
-                isSit = true;
                 state = PlayerState.Sit;
-                /* 애니메이션 : Sit */
-                Debug.Log("[Move System] Player is Sitting");
-                Debug.Log("[Anim] Sit");
             }
             else
             {
-                // Release a sit state
-                Debug.Log("[Move System] Player is Standing Up");
+                state = PlayerState.Idle;
+            }
+            ChangeSpeed();
+        }
+
+        if (state == PlayerState.Run)
+        {
+            // When stop running, Reset useTime to Time for prevent to stop (ex.)0.54 second
+            pStatus.UseRecoveryStaminaTime = pStatus.RecoveryStaminaTime;
+        }
+        else {
+            // When stop running, Reset useTime to Time for prevent to stop (ex.)0.54 second
+            pStatus.UseStaminaTime = pStatus.StaminaTime;
+        }
+
+        float magnitud = Mathf.Clamp01(moveDirection.magnitude) * pStatus.CurSpeed;
+        characterController.Move(moveDirection* pStatus.CurSpeed * Time.deltaTime);
+    }
+
+    void SitInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+        {
+            if(isSit == false)
+            {
+                isSit = true;
+                if (moveDirection != Vector3.zero)
+                {
+                    state = PlayerState.SitWalk;
+                }
+                else
+                {
+                    state = PlayerState.Sit;
+                }
+            }
+            else
+            {
                 isSit = false;
             }
         }
+        ChangeSpeed();
+    }
+
+    // Judge Item ojbect near Player For GetItem()
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.tag == "Item")
+        {
+            Debug.Log("[Trigger System] Item : " + hit.gameObject.name);
+            nearItem = hit.gameObject;
+        }
         else
         {
-            Debug.Log("Player can't Sit");
-            isSit = false;
+            nearItem = null;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Zombie")
+        {
+            Debug.Log("[Trigger System] Zombie!!!!");
+            nearZombie = other.gameObject;
+        }
+        else
+        {
+            nearZombie = null;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Zombie")
+        {
+            Debug.Log("[Trigger System] Zombie Out!!!!");
+            nearZombie = null;
         }
     }
 
@@ -143,49 +282,76 @@ public class PlayerController : MonoBehaviour
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            // 파밍 가능
-            pStatus.CurFatigue--;
-            Debug.Log("[Move System] Get Item");
-            // 타겟 아이템 위치가 바닥일 때:
-            /* 애니메이션 : PickUpItem */
+            if(nearItem.tag == "Item")
+            {
+                // 파밍 가능
+                pStatus.CurFatigue--;
 
-            // 타겟 아이템 위치가 바닥이 아닐 때:
-            /* 애니메이션 : CatchingItem */
-
-
-            /*
-             * 타겟 아이템 사라짐
-             * 인벤토리에 타겟 아이템 추가
-             */
-
-            // 아이템 루팅 완료 시 기본 자세로 전환
+                // 타겟 아이템 위치가 바닥일 때:
+                animator.SetTrigger("PickUp");
+                // 타겟 아이템 위치가 바닥이 아닐 때:
+                /* 애니메이션 : CatchingItem */
+                StopCoroutine(WaitGetItemTime(1.0f));
+                StartCoroutine(WaitGetItemTime(1.0f));
+            }
         }
         else
         {
+            // 파밍 불가능
             Debug.Log("[Move System] Can't Get Item");
-            return; // 파밍 불가능
         }
+
+    }
+    IEnumerator WaitGetItemTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        nearItem.GetComponent<ItemControl>().GetThisItem();
+        //Destroy(hit.gameObject);
+    }
+
+    void SwitchWeapon()
+    {
+        //int weaponindex = itemID;
+        //hasweapons[weaponindex] = true;
+        //weapons[weaponindex].SetActive(true);
     }
 
     void Attack()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            pStatus.CurFatigue -= 2;
-            Debug.Log("[Move System] player attack zombie");
+            if (nearZombie.tag == "Zombie")
+            {
+                isSit = false;
+                pStatus.CurFatigue -= 2;
 
-            // 무기 착용 상태
-            /* 애니메이션 : WeaponAttack */
+                //if(equipWeapon == null)
+                if(!hasWeapon)
+                {
+                    // 무기 미착용 상태
+                    animator.SetTrigger("PunchNearZombie");
+                    //pStatus.EquipItemsList
+                }
+                else
+                {
+                    // 무기 착용 상태
+                    animator.SetTrigger("SwingNearZombie");
+                    ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
 
-            // 무기 미착용 상태
-            /* 애니메이션 : FistAttack */
+                    //공격할 때마다 장착한 무기 내구도 줄어들음
+                    foreach(int i in pStatus.EquipItemsList)
+                    {
+                        if(_dataManager.GetItemSubCategory(i) == "무기")
+                        {
+                            itemUse.SetItemDURABILITY(i);
+                        }
+                    }
+                }
 
-            state = PlayerState.Idle;
-        }
-        else
-        {
-            Debug.Log("[Move System] player can't attack");
-            return; // 공격 불가능
+                state = PlayerState.Idle;
+                zombieAI = nearZombie.GetComponent<ZombieAI>();
+                zombieAI.Hit();
+            }
         }
     }
 

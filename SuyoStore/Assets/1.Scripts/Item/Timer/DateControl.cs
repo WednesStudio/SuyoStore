@@ -7,7 +7,7 @@ using TMPro;
 
 public class DateControl : MonoBehaviour
 {
-    public string dateInput;
+    public string dateInput = "2020/04/06";
     private TextMeshProUGUI text;
     private DateTime dateTime;
     private int days;
@@ -23,12 +23,6 @@ public class DateControl : MonoBehaviour
         text.text = newDate;
         ++days;
     }
-    public string GetDate()
-    {
-        return text.text;
-    }
-    public int GetDays()
-    {
-        return days;
-    }
+    public string GetDate() => text.text;
+    public int GetDays() => days;
 }

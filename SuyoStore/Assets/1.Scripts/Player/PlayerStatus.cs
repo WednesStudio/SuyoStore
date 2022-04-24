@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerStatus : Status
 {
     PlayerController playerController;
+    public bool isEquipWeapon = false;
+
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class PlayerStatus : Status
         maxSatiety = 100;
         maxFatigue = 100;
 
-        curHp = 10;
+        curHp = 100;
         curSatiety = 50;
         curFatigue = 50;
 
@@ -39,12 +41,16 @@ public class PlayerStatus : Status
 
         // Time related status
         time = 100;
-        hungerTime = 60; // 60��
-        hungerDieTime = 120; // 120��
+        hungerTime = 60;
+        hungerDieTime = 120;
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 60; // 1��
+        staminaTime = 1;
         useStaminaTime = staminaTime;
+        recoveryStaminaTime = 1;
+        useRecoveryStaminaTime = recoveryStaminaTime;
+        //sturnStaminaTime = 5;
+        //useSturnStaminaTime = sturnStaminaTime;
     }
 
     private void Update()
@@ -60,7 +66,7 @@ public class PlayerStatus : Status
 
     public virtual void Die()
     {
-        Debug.Log(transform.name + " died.");
+        playerController.state = PlayerController.PlayerState.Dead;
     }
 
     /// <summary> Hp Status </summary>
@@ -68,7 +74,6 @@ public class PlayerStatus : Status
     {
         CurHp -= zomPower;  //CurHp = ReduceStatus(eCurStatusType.cHp, zomPower);
         CurHp = RemainStatusValue(CurHp, MaxHp);
-        Debug.Log("[Status System] HP : " + curHp);
 
         // GameOver
         if (curHp <= 0)
@@ -205,20 +210,62 @@ public class PlayerStatus : Status
     }
 
     /// <summary> Stamina Status </summary>
-
-
-    void OnEquipmentChange(Item newItem, Item oldItem)
+    public void UseStamina(int _value)
     {
-        if(newItem != null)
+        UseStaminaTime -= Time.deltaTime;
+        if (UseStaminaTime <= 0)
         {
-
+            CurStamina -= _value;
+            UseStaminaTime = GetBackTime(UseStaminaTime, StaminaTime);
         }
-
-        if(oldItem != null)
+        if(CurStamina <= 0)
         {
-            
+            CurStamina = RemainStatusValue(curStamina, Stamina);
         }
     }
 
-    
+    public void RecoveryStamina(int _value)
+    {
+        if(CurStamina < Stamina)
+        {
+            UseRecoveryStaminaTime -= Time.deltaTime;
+            if (useRecoveryStaminaTime <= 0)
+            {
+                CurStamina += _value;
+                UseRecoveryStaminaTime = GetBackTime(UseRecoveryStaminaTime, RecoveryStaminaTime);
+            }
+            CurStamina = RemainStatusValue(curStamina, Stamina);
+        }
+    }
+
+    //void OnEquipmentChange(Item newItem, Item oldItem)
+    //{
+    //    if(newItem != null)
+    //    {
+
+    //    }
+
+    //    if(oldItem != null)
+    //    {
+
+    //    }
+    //}
+
+    // 장비
+    public List<int> EquipItemsList = new List<int>();
+
+    public void AddEquipItem(int _itemID)
+    {
+        EquipItemsList.Add(_itemID);
+        if(GameManager.GM.GetItemSubCategory(_itemID) == "무기")    playerController.hasWeapon = true;
+    }
+
+    public void RemoveEquipItem(int _itemID)
+    {
+        EquipItemsList.Remove(_itemID);
+        if(GameManager.GM.GetItemSubCategory(_itemID) == "무기")    playerController.hasWeapon = false;
+        //공격력 원래대로
+        curAttack = 10;
+        //시야 감소
+    }
 }

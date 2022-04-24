@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,9 @@ public class ItemControl : MonoBehaviour
     private int itemID;
     private int[] attributes = new int[(int)Attributes.TOTAL];
     private char[] separatorChar = { '(', ' ' };
-
     private void Start()
     {
+        _dataManager = FindObjectOfType<DataManager>();
         _database = _dataManager.GetComponent<LoadExcel>();
         string name = this.name.Split(separatorChar)[0];
         for (int i = 0; i < _database.itemDatabase.Count; i++)
@@ -40,10 +41,17 @@ public class ItemControl : MonoBehaviour
     }
     public void GetThisItem()
     {
-        GameManager.GM.AddItem(itemID, 1);
+        if (_dataManager.GetItemName(itemID) == "텐트")
+        {
+            GameManager.GM.UseItem(itemID);
+        }
+        else
+        {
+            GameManager.GM.AddItem(itemID, 1);
+            Destroy(gameObject);
+        }
         print("get this item! " + itemID);
     }
-
     public int GetItemID()
     {
         return itemID;

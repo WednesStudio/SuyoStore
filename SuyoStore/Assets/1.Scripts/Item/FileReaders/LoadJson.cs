@@ -1,24 +1,17 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LoadJson : MonoBehaviour
 {
-    private JsonData blankData;
     public List<JsonData> messageDatabase = new List<JsonData>();
-    private string[] routes = { "route1.json", "route2.json", "route3.json" };
-    // private string directory = "Data/";
-    private void Awake()
+    public JsonConditionData conditionList;
+    public void LoadMsgData(string file)
     {
-        LoadMsgData();
-    }
-    public void LoadMsgData()
-    {
-        // int rnd = Random.Range(0, 3);
-        // string file = directory + routes[rnd];
-        // print(file);
         messageDatabase.Clear();
-        List<Dictionary<string, object>> data = JsonReader.Read("Data/route1");
+        List<Dictionary<string, object>> data = JsonReader.Read(file);
         for (int i = 0; i < data.Count; i++)
         {
             string days = data[i]["days"].ToString();
@@ -26,13 +19,30 @@ public class LoadJson : MonoBehaviour
             AddData(days, message);
         }
     }
+    public void LoadConditionData(string file)
+    {
+        Dictionary<string, object> data = JsonReader.ReadCondition(file)[0];
+        int number = int.Parse(data["number"].ToString(), System.Globalization.NumberStyles.Integer);
+        string route = data["route"].ToString();
+        string message = data["message"].ToString();
+        string[] sniper = ((IEnumerable)data["sniper"])
+                            .Cast<object>()
+                            .Select(x => x.ToString())
+                            .ToArray();
+        string must = data["must"].ToString();
+        int count = int.Parse(data["count"].ToString(), System.Globalization.NumberStyles.Integer);
+        string exit = data["exit"].ToString();
+        AddConditionData(number, route, message, sniper, must, count, exit);
+    }
     void AddData(string days, string message)
     {
-        JsonData tempData = new JsonData(blankData);
-
-        tempData.days = int.Parse(days);
-        tempData.message = message;
-
-        messageDatabase.Add(tempData);
+        int _days = int.Parse(days);
+        string _message = message;
+        JsonData newJsonData = new JsonData(_days, _message);
+        messageDatabase.Add(newJsonData);
+    }
+    void AddConditionData(int number, string route, string msg, string[] sniper, string must, int count, string exit)
+    {
+        conditionList = new JsonConditionData(number, route, msg, sniper, must, count, exit);
     }
 }

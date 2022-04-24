@@ -7,11 +7,13 @@ public class ZombieAI : MonoBehaviour
 {
     private GameObject target;
     private PlayerStatus targetStatus;
+    private PlayerController targetController;
     public Image healthbar;
     private float timer;
     public int hp; //체력
     private int curHp; //현재 체력
     public int detection; //감지 범위
+    public int curSpeed;
     public int speed; //속도
     public int power; //공격력
     public int coolTime; //쿨타임
@@ -20,17 +22,23 @@ public class ZombieAI : MonoBehaviour
     public bool isDetect;
     public bool isRandom;
     public float range;
+    bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
+    Animator zombieAnim;
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
         targetStatus = target.GetComponent<PlayerStatus>();
+        targetController = target.GetComponent<PlayerController>();
+
         timer = 0;
         isDetect = false;
         isRandom = false;
         spawn = transform.position;
         curHp = hp;
+        curSpeed = speed;
         range = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().range;
+        zombieAnim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -40,18 +48,32 @@ public class ZombieAI : MonoBehaviour
         Move();
     }
 
+
     //Player Tag를 가진 객체에 닿았을 떄
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && timer < 0)
+        if (other.tag == "Player")
         {
-            Attack();
+            curSpeed = 0;
+            if (timer <= 0)
+            {
+                Attack();
+            }
             timer = coolTime;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            curSpeed = speed;
         }
     }
 
     void Move()
     {
+        // 애니메이션 작동
         //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 공격 당해서 hp가 깍였을 때 추격
         if ((!target.GetComponent<PlayerController>().isSafe)
             && ((Vector3.Distance(target.transform.position, transform.position) < detection)
@@ -59,7 +81,6 @@ public class ZombieAI : MonoBehaviour
         {
             isDetect = true;
             transform.LookAt(target.gameObject.transform);
-
         }
         //스폰 된 지역과 가까워지면 탐색을 계속할지 판단
         else if (Vector3.Distance(spawn, transform.position) < 0.3)
@@ -72,12 +93,12 @@ public class ZombieAI : MonoBehaviour
             if (!isRandom)
                 StartCoroutine("RandomMove");
         }
-        //스폰 된 지역이로 이동
+        //스폰 된 지역으로 이동
         else
         {
             transform.LookAt(spawn);
         }
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.Translate(Vector3.forward * Time.deltaTime * curSpeed);
     }
 
     IEnumerator RandomMove()
@@ -109,19 +130,31 @@ public class ZombieAI : MonoBehaviour
         */
     }
 
-    void Die()
+    public void Die()
     {
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<ParticleSystem>().Play();
+        StartCoroutine("DieEffect");
+    }
+
+    IEnumerator DieEffect()
+    {
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
     //피격
-    void Hit()
+    public void Hit()
     {
+        Debug.Log("[Zombie System] Hit");
+
         //지금은 3데미지를 받지만 나중에 무기 공격력 가져오기
         curHp -= 3;
         healthbar.fillAmount = (float)curHp / (float)hp;
         if (curHp <= 0)
+        {
             Die();
+        }
     }
 
     //테스트용
@@ -132,7 +165,7 @@ public class ZombieAI : MonoBehaviour
         Debug.Log(hp);
         healthbar.fillAmount = (float)curHp / (float)hp;
         Debug.Log("좀비 체력: " + curHp);
-        if (curHp <= 0)
+   if (curHp <= 0)
             Die();
     }
 }

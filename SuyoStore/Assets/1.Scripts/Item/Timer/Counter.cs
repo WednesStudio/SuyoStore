@@ -7,6 +7,7 @@ using UnityEngine;
 public class Counter
 {
     private bool printSwitch = true;
+    private bool timeSwitch = true;
     private float timeValue = -1;
     public Counter(int time)
     {
@@ -14,9 +15,18 @@ public class Counter
     }
     public int Update()
     {
-        DisplayTime(timeValue);
-        if (timeValue > 0)
+        if (timeSwitch && timeValue > 0)
+        {
+            DisplayTime(timeValue);
             timeValue -= Time.deltaTime;
+            return (int)GetTimeValue();
+        }
+        else
+            return -1;
+    }
+    public int StopCounter()
+    {
+        timeSwitch = false;
         return (int)GetTimeValue();
     }
     public void SetTimeValue(float _timeValue)
