@@ -9,6 +9,7 @@ TagManager:
   - Zombie
   - SceneGate
   - PlayerSpawn
+  - PlayerAndCam
   layers:
   - Default
   - TransparentFX
