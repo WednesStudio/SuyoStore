@@ -29,7 +29,7 @@ public class ZombieSpawner : MonoBehaviour
             {
                 float randomX = Random.Range(x, x + range) - range/2;
                 float randomY = Random.Range(z, z + range) - range/2;
-                Vector3 randomPos = new Vector3(randomX, 0.5f, randomY);
+                Vector3 randomPos = new Vector3(randomX, 10f, randomY);
                 Instantiate(prefabs[i], randomPos, Quaternion.identity);
                 allCount++;
             }
@@ -44,12 +44,9 @@ public class ZombieSpawner : MonoBehaviour
 
     void B2Spawn()
     {
-        range = 10;
-        int[] zCount = {5, 5, 5, 5, 5, 5, 5}; 
-        Spawn(44, 33, zCount);
-        range = 55;
-        int[] zCount2 = {5, 5, 5, 5, 5, 5, 5}; 
-        Spawn(22, 27, zCount2);
+        range = 30;
+        int[] zCount = {10, 10, 10, 10, 10, 10, 10}; 
+        Spawn(0, 20, zCount);
     } 
     
     void B1Spawn()
