@@ -291,8 +291,8 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("PickUp");
                 // 타겟 아이템 위치가 바닥이 아닐 때:
                 /* 애니메이션 : CatchingItem */
-                StopCoroutine(WaitGetItemTime(2.0f));
-                StartCoroutine(WaitGetItemTime(2.0f));
+                StopCoroutine(WaitGetItemTime(1.0f));
+                StartCoroutine(WaitGetItemTime(1.0f));
             }
         }
         else
