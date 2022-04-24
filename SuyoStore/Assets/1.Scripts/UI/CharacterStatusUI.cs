@@ -65,7 +65,7 @@ public class CharacterStatusUI : MonoBehaviour
     {
         _attackPowerText.text = attackPower.ToString();
         if(attackPower == 10) _attackText.text = "Attack Power : 10 + (0)";
-        else _attackText.text = "Attack Power : " + attackPower.ToString() + "()";
+        else _attackText.text = "Attack Power : 10 + " + "(" + (attackPower - 10).ToString() + ")";
     }
 
     /// <summary> Get information of the debuff type and set prefab to 'Player Status' /// </summary>

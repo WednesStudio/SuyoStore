@@ -49,14 +49,12 @@ public class ItemUse : MonoBehaviour
                 break;
             case weapon:
                 WeaponSetting(itemID);
-                UseWeapon(item.GetATTACK(), itemID);
                 break;
             case pill:
                 UseHeal(item.GetHEAL());
                 break;
             case flashLight:
                 LightSetting(itemID);
-                UseLight(item, itemID);
                 break;
             case sleepingBag:
                 UseSleepingBag(item, itemID);
@@ -71,9 +69,9 @@ public class ItemUse : MonoBehaviour
                 Debug.Log("Cannot Use Item");
                 break;
         }
-        if (item.GetDURABILITY() > 0) item.SetDURABILITY(-1);
-        if (item.GetDURABILITY() == 0)
-            DestroyObject(0, itemID);
+        // if (item.GetDURABILITY() > 0) item.SetDURABILITY(-1);
+        // if (item.GetDURABILITY() == 0)
+        //     DestroyObject(0, itemID);
     }
     private void DestroyObject(int use, int itemID)
     {
@@ -89,6 +87,13 @@ public class ItemUse : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetItemDURABILITY(int itemID)
+    {
+        MyUsedItem[itemID].SetDURABILITY(-1);
+        _uiManager.SetCurrentItemStatus(itemID, MyUsedItem[itemID]);
+        print("Durability : " + MyUsedItem[itemID].GetDURABILITY());
     }
 
     private GameObject FindExactWeapon(string itemName)
@@ -156,7 +161,6 @@ public class ItemUse : MonoBehaviour
             else    //내구도 0 이하라 더 이상 쓸 수 없을 경우 버림
             {
                 MyUsedItem.Remove(currentItemID);
-
                 //DestroyObject(0, currentItemID);    
             }
 
@@ -254,12 +258,15 @@ public class ItemUse : MonoBehaviour
                     if (_dataManager.GetItemSubCategory(id) == "무기")
                     {
                         ChangeItem(id, itemID);
+                        UseWeapon(item.GetATTACK(), itemID);
+                        return;
                     }
                 }
             }
             //이미 장착되어 있는 무기가 없다면
             else
             {
+                UseWeapon(item.GetATTACK(), itemID);
                 ChangeItem(-1, itemID);
                 //location, rotation -> 플레이어 쪽으로 수정 필요
                 //GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
@@ -280,9 +287,9 @@ public class ItemUse : MonoBehaviour
     }
     public void UseWeapon(int attack, int itemID)
     {
-        playerStatus.CurAttack += attack;
+        playerStatus.CurAttack = 10 + attack;
         // 휘두를 때마다 내구도 마이나스
-        item.SetDURABILITY(-1);
+        //item.SetDURABILITY(-1);
     }
     public void UseHeal(int heal)
     {
@@ -302,6 +309,7 @@ public class ItemUse : MonoBehaviour
                         item.SetDURABILITY(lightControl.StopCounter());
                         isLightOn = false;
                         ChangeItem(id, itemID);
+                        UseLight(item, itemID);
                     }
                 }
             }
@@ -309,6 +317,7 @@ public class ItemUse : MonoBehaviour
             else
             {
                 ChangeItem(-1, itemID);
+                UseLight(item, itemID);
                 //location, rotation -> 플레이어 쪽으로 수정 필요
                 // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
                 // newLight.tag = "UsedItem";

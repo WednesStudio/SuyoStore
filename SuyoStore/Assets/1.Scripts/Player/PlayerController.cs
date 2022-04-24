@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     private float gravity = -9.81f;
 
     CharacterController characterController;
+    DataManager _dataManager;
     public PlayerStatus pStatus;
     GameObject nearItem;
     GameObject nearZombie;
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] Bags;
 
     // Attack
-    public bool[] hasWeapons;
+    public bool hasWeapon;
     Weapon equipWeapon;
 
     private void Start()
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         itemObj = GameObject.FindGameObjectWithTag("Item");
         itemControl = itemObj.GetComponent<ItemControl>();
+        _dataManager = FindObjectOfType<DataManager>();
     }
 
     private void Update()
@@ -324,16 +326,27 @@ public class PlayerController : MonoBehaviour
                 isSit = false;
                 pStatus.CurFatigue -= 2;
 
-                if(equipWeapon == null)
+                //if(equipWeapon == null)
+                if(!hasWeapon)
                 {
                     // 무기 미착용 상태
                     animator.SetTrigger("PunchNearZombie");
+                    //pStatus.EquipItemsList
                 }
                 else
                 {
                     // 무기 착용 상태
                     animator.SetTrigger("SwingNearZombie");
-                    //itemControl.GetThisItem();
+                    ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
+
+                    //공격할 때마다 장착한 무기 내구도 줄어들음
+                    foreach(int i in pStatus.EquipItemsList)
+                    {
+                        if(_dataManager.GetItemSubCategory(i) == "무기")
+                        {
+                            itemUse.SetItemDURABILITY(i);
+                        }
+                    }
                 }
 
                 state = PlayerState.Idle;

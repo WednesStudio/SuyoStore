@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject _gameStartUI;
     [SerializeField] GameObject _inGameUI;
     [SerializeField] GameObject _mainCamera;
+    private bool _overCapacity;
+    private int _debuffSpeed;
 
     private void Start() 
     {
@@ -35,6 +37,10 @@ public class UIManager : MonoBehaviour
           _characterStatusUI.SetStaminaBar(_characterInfo.CurHp, _characterInfo.MaxHp);
           _characterStatusUI.SetSatietyBar(_characterInfo.CurSatiety, _characterInfo.MaxSatiety);
           _characterStatusUI.SetFatigueBar(_characterInfo.CurFatigue, _characterInfo.MaxFatigue);
+          if(_overCapacity)
+          {
+              _characterInfo.CurSpeed -= _debuffSpeed;
+          }
           _characterStatusUI.SetSpeed(_characterInfo.WalkSpeed, _characterInfo.CurSpeed);
           _characterStatusUI.SetAttackPower(_characterInfo.CurAttack);
         }
@@ -70,13 +76,27 @@ public class UIManager : MonoBehaviour
     public void SetInitialInventory()
     {
         _inventoryUI.SetTotalBagContents();
-        _inventoryUI.SetBatteryBagContents();
         _inventoryUI.SetFoodBagContents();
         _inventoryUI.SetLightBagContents();
         _inventoryUI.SetWeaponBagContents();
         _inventoryUI.SetMedicineBagContents();
-        _inventoryUI.SetSleepingBagContents();
         _inventoryUI.SetImportantBagContents();
+    }
+
+    public void SetPlayerSpeed(int curCapacity, int maxCapacity)
+    {
+        double excessRate = (double)curCapacity / (double) maxCapacity;
+        if(excessRate >= 1.0f)
+        {
+            _overCapacity = true;
+            _debuffSpeed = ((int)excessRate * 2);
+            
+        }
+        else
+        {
+            _overCapacity = false;
+            _debuffSpeed = 0;
+        } 
     }
 
     public void CheckUseItem(string name)

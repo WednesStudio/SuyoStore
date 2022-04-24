@@ -8,6 +8,7 @@ public class DataManager : MonoBehaviour
     [Header("Other Scripts")]
     [SerializeField] LoadExcel _loadExcel = null;
     [SerializeField] CurrentStateUI _currentStateUI = null;
+    [SerializeField] UIManager _uiManager = null;
     [SerializeField] InventoryUI _inventoryUI = null;
 
     [Header("Objects")]
@@ -86,11 +87,6 @@ public class DataManager : MonoBehaviour
     {
         int capacity = _totalItemList[itemID].weight;
         //가방 설정
-        if (_inventoryUI.GetCurrentCapacity() + capacity > maxCapacity)
-        {
-            //status랑 연결 _ UI Manager에서 관리
-        }
-
         string category = _totalItemList[itemID].subCategory;
         if(count > 0)
         {
@@ -101,7 +97,7 @@ public class DataManager : MonoBehaviour
                 switch (category)
                 {
                     case battery:
-                        _inventoryUI.SetBatteryBagContents();
+                        _inventoryUI.SetImportantBagContents();
                         break;
                     case food:
                         _inventoryUI.SetFoodBagContents();
@@ -120,7 +116,7 @@ public class DataManager : MonoBehaviour
                         GameManager.GM.UseItem(itemID);
                         break;
                     case sleepingBag:
-                        _inventoryUI.SetSleepingBagContents();
+                        _inventoryUI.SetImportantBagContents();
                         break;
                     case smartPhone:
                         _inventoryUI.SetImportantBagContents();
@@ -138,7 +134,8 @@ public class DataManager : MonoBehaviour
                 switch (category)
                 {
                     case battery:
-                        _inventoryUI.SetBatteryBagContents();
+                        _inventoryUI.SetImportantBagContents();
+                        //_inventoryUI.SetBatteryBagContents();
                         break;
                     case food:
                         _inventoryUI.SetFoodBagContents();
@@ -157,7 +154,8 @@ public class DataManager : MonoBehaviour
                         GameManager.GM.UseItem(itemID);
                         break;
                     case sleepingBag:
-                        _inventoryUI.SetSleepingBagContents();
+                        _inventoryUI.SetImportantBagContents();
+                        //_inventoryUI.SetSleepingBagContents();
                         break;
                     case smartPhone:
                         _inventoryUI.SetImportantBagContents();
@@ -184,7 +182,8 @@ public class DataManager : MonoBehaviour
                 switch (category)
                 {
                     case battery:
-                        _inventoryUI.SetBatteryBagContents();
+                        _inventoryUI.SetImportantBagContents();
+                        //_inventoryUI.SetBatteryBagContents();
                         break;
                     case food:
                         _inventoryUI.SetFoodBagContents();
@@ -201,7 +200,8 @@ public class DataManager : MonoBehaviour
                     case bag:
                         break;
                     case sleepingBag:
-                        _inventoryUI.SetSleepingBagContents();
+                        _inventoryUI.SetImportantBagContents();
+                        //_inventoryUI.SetSleepingBagContents();
                         break;
                     case smartPhone:
                         _inventoryUI.SetImportantBagContents();
@@ -214,6 +214,8 @@ public class DataManager : MonoBehaviour
             _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(-capacity, maxCapacity);
         }
+        
+        _uiManager.SetPlayerSpeed(_inventoryUI.GetCurrentCapacity(), maxCapacity);
     }
 
     public int GetItemCount(int itemID)
