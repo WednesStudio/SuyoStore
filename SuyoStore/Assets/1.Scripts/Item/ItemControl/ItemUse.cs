@@ -7,12 +7,13 @@ public class ItemUse : MonoBehaviour
 {
     [SerializeField] DataManager _dataManager;
     [SerializeField] UIManager _uiManager;
+    private GameObject mustItemCanvas;
     private GameObject player;
     private PlayerStatus playerStatus;
     private PlayerController playerController;
     private LightControl lightControl;
     private bool isLightOn = false;
-    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag = "가방", smartPhone = "스마트폰";
+    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag = "가방", smartPhone = "스마트폰", cardKey = "카드키";
     private Dictionary<int, Item> MyUsedItem = new Dictionary<int, Item>();
     public int GetItemDurability(int id) => MyUsedItem[id].GetDURABILITY();
     private Item item;
@@ -21,6 +22,7 @@ public class ItemUse : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStatus = player.GetComponent<PlayerStatus>();
         playerController = player.GetComponent<PlayerController>();
+        mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
     }
     private void Update()
     {
@@ -42,7 +44,10 @@ public class ItemUse : MonoBehaviour
         switch (item.GetItemName())
         {
             case battery:
-                UseBattery();
+                CheckMustItemDays();
+                break;
+            case cardKey:
+                CheckMustItemDays();
                 break;
             case food:
                 UseFood(item.GetSATIETY());
@@ -99,9 +104,9 @@ public class ItemUse : MonoBehaviour
     private GameObject FindExactWeapon(string itemName)
     {
         GameObject[] weapon = playerController.Weapons;
-        foreach(GameObject w in weapon)
+        foreach (GameObject w in weapon)
         {
-            if(w.name == itemName)
+            if (w.name == itemName)
             {
                 return w;
             }
@@ -113,9 +118,9 @@ public class ItemUse : MonoBehaviour
     private GameObject FindExactLight(string itemName)
     {
         GameObject[] light = playerController.Lights;
-        foreach(GameObject l in light)
+        foreach (GameObject l in light)
         {
-            if(l.name == itemName)
+            if (l.name == itemName)
             {
                 return l;
             }
@@ -127,9 +132,9 @@ public class ItemUse : MonoBehaviour
     private GameObject FindExactBag(string itemName)
     {
         GameObject[] bag = playerController.Bags;
-        foreach(GameObject b in bag)
+        foreach (GameObject b in bag)
         {
-            if(b.name == itemName)
+            if (b.name == itemName)
             {
                 return b;
             }
@@ -165,13 +170,13 @@ public class ItemUse : MonoBehaviour
             }
 
             //기존 장착된 아이템 찾아서 삭제
-            if(_dataManager.GetItemSubCategory(currentItemID) == "무기")
+            if (_dataManager.GetItemSubCategory(currentItemID) == "무기")
             {
                 GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipItem(currentItemID);
                 weapon.SetActive(false);
             }
-            else if(_dataManager.GetItemSubCategory(currentItemID) == "라이트")
+            else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")
             {
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipItem(currentItemID);
@@ -225,17 +230,25 @@ public class ItemUse : MonoBehaviour
             bag.SetActive(true);
         }
     }
-    private void UseBattery()
+    IEnumerator WaitToDisappear()
     {
-        //특수 조건 만족 시(문 여는데 필요)
-
+        yield return new WaitForSeconds(4);
+        mustItemCanvas.SetActive(false);
+    }
+    private bool CheckMustItemDays()
+    {
+        if (_dataManager.dateControl.GetDays() < 7)
+        {
+            mustItemCanvas.SetActive(true);
+            StartCoroutine(WaitToDisappear());
+            return false;
+        }
+        return true;
     }
     private void UseSleepingBag(Item item, int itemID)
     {
         //조건 확인해서 사용(마지막 날, 특정 위치에서)
-        if (_dataManager.dateControl.GetDays() < 7)
-            UnityEngine.Debug.Log("not yet");
-        else
+        if (CheckMustItemDays())
         {
             //쓰려면 instantiate
             GameObject model = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);

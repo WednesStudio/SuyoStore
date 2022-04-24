@@ -42,10 +42,13 @@ public class DataManager : MonoBehaviour
 
     private JsonConditionData jsonConditionData;
     public DateControl dateControl;
+    private void Awake()
+    {
+        dateControl = FindObjectOfType<DateControl>();
+    }
     void Start()
     {
         jsonConditionData = GameObject.Find("Reader").GetComponent<LoadJson>().conditionList;
-        dateControl = FindObjectOfType<DateControl>();
     }
     public void SetData() //out bool isGameDataExist)
     {
