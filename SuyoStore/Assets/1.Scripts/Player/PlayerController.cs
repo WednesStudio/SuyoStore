@@ -299,6 +299,13 @@ public class PlayerController : MonoBehaviour
         //Destroy(hit.gameObject);
     }
 
+    void SwitchWeapon()
+    {
+        //int weaponIndex;
+        //hasWeapons[weaponIndex] = true;
+        //weapons[weaponIndex].SetActive(true);
+    }
+
     bool Attack()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
