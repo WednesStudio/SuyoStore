@@ -5,13 +5,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CellPhoneMsgs : MonoBehaviour
 {
     private DataManager dataManager;
-    public GameObject gameUI;
     public GameObject canvas;
-    public Text infoText;
+    public TextMeshProUGUI infoText;
     public Button closeUIButton;
     private LoadJson list;
     private string message;
@@ -46,12 +46,10 @@ public class CellPhoneMsgs : MonoBehaviour
                 break;
             }
         }
-        gameUI.SetActive(false);
         canvas.SetActive(true);
     }
     public void Hide()
     {
-        gameUI.SetActive(true);
         canvas.SetActive(false);
     }
 }

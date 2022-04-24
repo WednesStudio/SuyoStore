@@ -131,15 +131,16 @@ public class GameManager : MonoBehaviour
 
     public void CheckUseItem(int ID)
     {
-        _uiManager.CheckUseItem(_dataManager.GetItemName(ID));
+        if(_dataManager.GetItemCategory(ID) == "소모")  _uiManager.CheckUseItem(_dataManager.GetItemName(ID));
+        else UseItem(ID);
     }
 
     public void UseItem(int itemID)
     {
         Item temp = _dataManager.SetNewItem(itemID);
         string category = _dataManager.GetItemSubCategory(itemID);
-
-        if (category != "가방") _dataManager.AddItem(itemID, -1);
+        if (category != "가방" && category != "스마트폰") _dataManager.AddItem(itemID, -1);
+        
         _itemUse.UseItem(itemID);
     }
 

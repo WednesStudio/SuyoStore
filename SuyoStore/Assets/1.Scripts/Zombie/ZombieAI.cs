@@ -13,6 +13,7 @@ public class ZombieAI : MonoBehaviour
     public int hp; //체력
     private int curHp; //현재 체력
     public int detection; //감지 범위
+    public int curSpeed;
     public int speed; //속도
     public int power; //공격력
     public int coolTime; //쿨타임
@@ -35,8 +36,8 @@ public class ZombieAI : MonoBehaviour
         isRandom = false;
         spawn = transform.position;
         curHp = hp;
+        curSpeed = speed;
         range = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().range;
-        
         zombieAnim = GetComponentInChildren<Animator>();
     }
 
@@ -53,8 +54,17 @@ public class ZombieAI : MonoBehaviour
     {
         if (other.tag == "Player" && timer < 0)
         {
+            curSpeed = 0;
             Attack();
             timer = coolTime;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            curSpeed = speed;
         }
     }
 
@@ -84,7 +94,7 @@ public class ZombieAI : MonoBehaviour
         {
             transform.LookAt(spawn);
         }
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.Translate(Vector3.forward * Time.deltaTime * curSpeed);
     }
 
     IEnumerator RandomMove()
@@ -118,6 +128,14 @@ public class ZombieAI : MonoBehaviour
 
     public void Die()
     {
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<ParticleSystem>().Play();
+        StartCoroutine("DieEffect");
+    }
+
+    IEnumerator DieEffect()
+    {
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
@@ -136,14 +154,14 @@ public class ZombieAI : MonoBehaviour
     }
 
     //테스트용
-    //void OnMouseDown()
-    //{
-    //    curHp -= 3;
-    //    Debug.Log(curHp);
-    //    Debug.Log(hp);
-    //    healthbar.fillAmount = (float)curHp / (float)hp;
-    //    Debug.Log("좀비 체력: " + curHp);
-    //    if (curHp <= 0)
-    //        Die();
-    //}
+    void OnMouseDown()
+    {
+        curHp -= 3;
+        Debug.Log(curHp);
+        Debug.Log(hp);
+        healthbar.fillAmount = (float)curHp / (float)hp;
+        Debug.Log("좀비 체력: " + curHp);
+   if (curHp <= 0)
+            Die();
+    }
 }
