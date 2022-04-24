@@ -64,7 +64,10 @@ public class PlayerController : MonoBehaviour
     {
         Anim();
         GetInput();
-        Move();
+        if(state != PlayerState.Dead)
+        {
+            Move();
+        }
     }
 
     void Anim()
