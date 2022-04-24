@@ -33,6 +33,15 @@ public class PlayerController : MonoBehaviour
     int useStamina = 10;
     int recoverStamina = 5;
 
+    //weapon
+    public GameObject[] Weapons;
+
+    //light
+    public GameObject[] Lights;
+
+    //
+    public GameObject[] Bags;
+
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
