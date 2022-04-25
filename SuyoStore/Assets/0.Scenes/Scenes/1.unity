@@ -37519,9 +37519,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 659249255}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ExitGameUI
+      - m_Target: {fileID: 768228872}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -54324,9 +54324,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 659249255}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GameStartUI
+      - m_Target: {fileID: 768228872}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -58935,6 +58935,10 @@ PrefabInstance:
       propertyPath: Weapons.Array.data[14]
       value: 
       objectReference: {fileID: 1008890987}
+    - target: {fileID: 4043400717476164480, guid: a6f3512b4e71f6b46acd13dda12487e9, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4115638605491435886, guid: a6f3512b4e71f6b46acd13dda12487e9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 8.917875
