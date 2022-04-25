@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
-            SetPopUP();
+            //SetPopUP();
         }
     }
     private void Start()
