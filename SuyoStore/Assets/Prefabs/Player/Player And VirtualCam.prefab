@@ -374,6 +374,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3921142179196987829}
     m_Modifications:
+    - target: {fileID: 34010200008928488, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 72237940511880385, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
       propertyPath: m_Name
       value: Player
@@ -422,10 +426,119 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 838444758350527983, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000907505550049513, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470355964570285529, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537239155154894728, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903531272752598217, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464696899290337685, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791855441387818584, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3854878522078990950, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193089948596473424, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291832892832757545, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368353107327286120, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516531891511775472, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6720085666913574840, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6811327338368600718, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008156965014900148, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7279472756382267859, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973749133217339213, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1070552421730542200, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 6465726095051943208, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 5632463553752019174, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 6573448658531178657, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 717427828194871591, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 7890691315170601774, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 9195322656340838329, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 142698174713996311, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 250059050587314359, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 8844612357156296668, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 357937792567418289, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 372901116641969497, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 7018604558112568633, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 2730681932392289200, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 6740216496495372597, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 1231153634133546303, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 6310293358357463484, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+    - {fileID: 6529276499661004892, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+--- !u!1 &4043400717476164480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 72237940511880385, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
+  m_PrefabInstance: {fileID: 4115638606129645377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4041920028224349184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 74985973387404097, guid: 0d773d8d5ff1d774c85f319d3f9da054, type: 3}
   m_PrefabInstance: {fileID: 4115638606129645377}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9024263719707628648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043400717476164480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 4
+  outlineColor: {r: 0.3063813, g: 0.764151, b: 0.6899344, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
