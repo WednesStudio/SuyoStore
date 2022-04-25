@@ -23,7 +23,9 @@ public class ZombieAI : MonoBehaviour
     public bool isRandom;
     public float range;
     bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
-    Animator zombieAnim;
+    public Animator zombieAnim;
+    public GameObject child;
+    ZombieSpawner zombieSp;
 
     void Start()
     {
@@ -37,8 +39,8 @@ public class ZombieAI : MonoBehaviour
         spawn = transform.position;
         curHp = hp;
         curSpeed = speed;
-        range = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>().range;
-        zombieAnim = GetComponentInChildren<Animator>();
+        zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
+        range = zombieSp.range;
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class ZombieAI : MonoBehaviour
     {
         timer -= Time.deltaTime;
         Move();
+        Debug.Log(child.name);
     }
 
 
@@ -54,6 +57,7 @@ public class ZombieAI : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            zombieAnim.SetBool("isAttack", true);
             curSpeed = 0;
             if (timer <= 0)
             {
@@ -68,6 +72,7 @@ public class ZombieAI : MonoBehaviour
         if (other.tag == "Player")
         {
             curSpeed = speed;
+            zombieAnim.SetBool("isAttack", false);
         }
     }
 
@@ -104,12 +109,12 @@ public class ZombieAI : MonoBehaviour
     IEnumerator RandomMove()
     {
         //range 범위 안에서 움직임
-        float randomX = Random.Range(0, 2 * range) - range;
-        float randomY = Random.Range(0, 2 * range) - range;
-        Vector3 randomPos = new Vector3(randomX, 0.5f, randomY);
+        float randomX = Random.Range(zombieSp.spX, zombieSp.spX + 2 * range) - range;
+        float randomY = Random.Range(zombieSp.spZ, zombieSp.spZ + 2 * range) - range;
+        Vector3 randomPos = new Vector3(randomX, zombieSp.spY, randomY);
         transform.LookAt(randomPos);
         isRandom = true;
-        yield return new WaitForSeconds(Random.Range(0.5f, 1f));
+        yield return new WaitForSeconds(Random.Range(0.5f, 3f));
         isRandom = false;
     }
 
@@ -132,7 +137,7 @@ public class ZombieAI : MonoBehaviour
 
     public void Die()
     {
-        GetComponent<MeshRenderer>().enabled = false;
+        child.SetActive(false);
         GetComponent<ParticleSystem>().Play();
         StartCoroutine("DieEffect");
     }

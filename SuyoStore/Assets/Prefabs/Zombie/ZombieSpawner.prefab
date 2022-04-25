@@ -44,12 +44,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 518210881706747564, guid: 01ab8638a8b734a4faf539664f26839d, type: 3}
-  - {fileID: 5701696205275253616, guid: bd88231db79f541cb96efef04f2e31c0, type: 3}
-  - {fileID: 1263426036935558173, guid: d6d241e66b7da4831b629a076e33499b, type: 3}
-  - {fileID: 6816480456247614038, guid: f967cda7fcf73448c98fd419376505ee, type: 3}
+  - {fileID: 4352895309758246047, guid: 633531cee1cb446fab7c7ddf2e4be84e, type: 3}
+  - {fileID: 4352895309758246047, guid: 633531cee1cb446fab7c7ddf2e4be84e, type: 3}
+  - {fileID: 4352895309758246047, guid: 633531cee1cb446fab7c7ddf2e4be84e, type: 3}
+  - {fileID: 4352895309758246047, guid: 633531cee1cb446fab7c7ddf2e4be84e, type: 3}
+  - {fileID: 4052139219949626693, guid: 3660de62f70aa423db2a7c5134256705, type: 3}
+  - {fileID: 3588585188261943126, guid: 46885a5093e8e4cd6a5ef9ee7e5364aa, type: 3}
+  - {fileID: 7069827925290365070, guid: 33a9152abfb7543b380694186250a168, type: 3}
   range: 200
   n1: 5
+  n2: 0
+  n3: 0
+  n4: 0
   g: 4
   y: 3
   r: 1

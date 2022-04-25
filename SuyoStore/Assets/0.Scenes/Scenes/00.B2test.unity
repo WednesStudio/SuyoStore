@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43858626, g: 0.48670036, b: 0.5669739, a: 1}
+  m_IndirectSpecularColor: {r: 0.4385864, g: 0.4867003, b: 0.566974, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2896,7 +2896,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54151014}
   m_LocalRotation: {x: 0.31813204, y: 0, z: 0, w: 0.9480465}
-  m_LocalPosition: {x: 7.44, y: 7.3820796, z: 7.8241606}
+  m_LocalPosition: {x: -1.4, y: 7.3820796, z: 7.8241606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1959111246}
@@ -32192,10 +32192,8 @@ MonoBehaviour:
   _totalContentsParent: {fileID: 1713104697}
   _weaponContentsParent: {fileID: 288625658}
   _lightContentsParent: {fileID: 36436932}
-  _sleepingBagContentsParent: {fileID: 1943210417}
   _foodContentsParent: {fileID: 686113281}
   _medicineContentsParent: {fileID: 1729902857}
-  _batteryContentsParent: {fileID: 1505983717}
   _importantContentsParent: {fileID: 176035858}
 --- !u!114 &659249258
 MonoBehaviour:
@@ -36267,6 +36265,7 @@ MonoBehaviour:
   _dataManager: {fileID: 893203683}
   _uiManager: {fileID: 659249255}
   _itemUse: {fileID: 893203686}
+  state: 0
 --- !u!4 &768228873
 Transform:
   m_ObjectHideFlags: 0
@@ -41720,6 +41719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadExcel: {fileID: 893203685}
   _currentStateUI: {fileID: 659249253}
+  _uiManager: {fileID: 0}
   _inventoryUI: {fileID: 659249257}
   _itemObjects:
   - ID: 0
@@ -41932,6 +41932,7 @@ MonoBehaviour:
     Profile: {fileID: 0}
     Category: "\uCE68\uB0AD"
     description: 
+  dateControl: {fileID: 0}
 --- !u!4 &893203684
 Transform:
   m_ObjectHideFlags: 0
@@ -45238,6 +45239,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1629301704965002, guid: a873d8350eff40743a6d1b19c977bce9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1629301704965002, guid: a873d8350eff40743a6d1b19c977bce9, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -45247,7 +45252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4233708181367818, guid: a873d8350eff40743a6d1b19c977bce9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.44
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 4233708181367818, guid: a873d8350eff40743a6d1b19c977bce9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -51461,6 +51466,7 @@ MonoBehaviour:
   useStaminaTime: 0
   useRecoveryStaminaTime: 0
   isEquipWeapon: 0
+  EquipItemsList: 
 --- !u!114 &1077935381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51477,6 +51483,10 @@ MonoBehaviour:
   isSafe: 0
   state: 0
   isMove: 0
+  Weapons: []
+  Lights: []
+  Bags: []
+  hasWeapon: 0
 --- !u!143 &1077935382
 CharacterController:
   m_ObjectHideFlags: 0
@@ -57595,6 +57605,36 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3360151244870032821, guid: d73e5c729256228449a1aa14ac4043ea, type: 3}
   m_PrefabInstance: {fileID: 1231010195}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1235479714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1235479715}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1235479715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235479714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.5, y: -10.440443, z: 25.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1235996236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90354,7 +90394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005078840}
   m_LocalRotation: {x: 0.31813204, y: 0, z: 0, w: 0.9480465}
-  m_LocalPosition: {x: 7.44, y: 7.3820796, z: 7.8241606}
+  m_LocalPosition: {x: -1.4, y: 7.3820796, z: 7.8241606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
