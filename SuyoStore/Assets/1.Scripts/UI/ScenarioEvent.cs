@@ -41,7 +41,7 @@ public class ScenarioEvent : MonoBehaviour
             _scenarioText.text = "전원이 들어와있다. 1층의 셔터를 조작할 수 있을 것 같다.";
         }
         //쉘터 컴퓨터 클릭 시
-        else if(assetName == "Computer")
+        else if(assetName == "PC")
         {
             int cardKeyID = GameManager.GM.GetItemID("카드키");
             //카드키 없음

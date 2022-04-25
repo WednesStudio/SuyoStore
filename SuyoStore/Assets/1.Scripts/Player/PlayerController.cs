@@ -328,6 +328,10 @@ public class PlayerController : MonoBehaviour
                 //StartCoroutine(WaitGetItemTime(1.0f));
                 nearItem.GetComponent<ItemControl>().GetThisItem();
             }
+            else if(nearItem.tag == "ScenarioAsset")
+            {
+                _scenarioEvent.GetScenarioItem(nearItem.gameObject);
+            }
         }
         else
         {
