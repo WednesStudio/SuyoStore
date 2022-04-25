@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+public enum DebuffType
+{
+    ZombieAttack, FatigueEffect, SpeedLow
+}
 public class CharacterStatusUI : MonoBehaviour
 {
     //character info script
@@ -11,8 +15,7 @@ public class CharacterStatusUI : MonoBehaviour
     [SerializeField] Slider _staminaBar, _staietyBar, _fatigueBar;
     [SerializeField] TextMeshProUGUI _speedText, _attackPowerText;
     [Header("Debuff")]
-    [SerializeField] GameObject _debuffPrefab;
-    [SerializeField] GameObject _debuffObject;
+    [SerializeField] GameObject[] _debuffs;
     [SerializeField] Sprite[] _debuffImages;
     [SerializeField] TextMeshProUGUI _staminaText, _satietyText, _fatigueText, _attackText, _spText;
     [Header("Weapon Status")]
@@ -25,8 +28,7 @@ public class CharacterStatusUI : MonoBehaviour
     [SerializeField] Image _bagImage;
     [SerializeField] TextMeshProUGUI _bagNameText, _bagCapacityText;
     private float _staminaValue = 1.0f, _satietyValue = 1.0f, _fatigueValue = 1.0f;
-    private List<int> _debuffTypeList = new List<int>();
-    private List<GameObject> _debuffList = new List<GameObject>();
+    
 
     //Main Bar Setting
     #region 
@@ -68,42 +70,13 @@ public class CharacterStatusUI : MonoBehaviour
         else _attackText.text = "Attack Power : 10 + " + "(" + (attackPower - 10).ToString() + ")";
     }
 
-    /// <summary> Get information of the debuff type and set prefab to 'Player Status' /// </summary>
-    /// <param = "debuffType"> Get debuffType and set type of debuff object </param>
-    /// <param = "isActive"> if 'True' : instantiate new debuff, else : remove the debuff of that type from the list </param>
-    public void GetAndSetDebuff(int debuffType, bool isActive)
+    public void GetAndSetDebuff(DebuffType type, bool isActive)
     {
         if(isActive)
         {
-            GameObject debuff = Instantiate(_debuffPrefab, _debuffObject.transform.position, Quaternion.identity);
-            debuff.transform.parent = _debuffObject.transform;
-            debuff.GetComponent<Image>().sprite = _debuffImages[debuffType];
-            _debuffList.Add(debuff);
-            _debuffTypeList.Add(debuffType);
+            _debuffs[(int)type].SetActive(true);
         }
-        else
-        {
-            if(_debuffTypeList.Contains(debuffType))
-            {
-                int index = _debuffTypeList.IndexOf(debuffType);
-                _debuffTypeList.Remove(debuffType);
-                _debuffList.RemoveAt(index);
-                int numOfList = _debuffList.Count;    
-                
-                for(int i = 0; i < numOfList; i++)
-                {
-                    Destroy(_debuffList[i]);
-                }
-
-                for(int i = 0; i < numOfList; i++)
-                {
-                    GameObject debuff = Instantiate(_debuffPrefab, _debuffObject.transform.position, Quaternion.identity);
-                    debuff.transform.parent = _debuffObject.transform;
-                    debuff.GetComponent<Image>().sprite = _debuffImages[_debuffTypeList[i]];
-                    _debuffList.Add(debuff);
-                }
-            }
-        }
+        else _debuffs[(int)type].SetActive(false);
     }
 
     #endregion
