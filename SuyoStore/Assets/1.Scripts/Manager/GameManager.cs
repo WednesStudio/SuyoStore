@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
-            SetPopUP();
+            SetPopUp();
         }
     }
     private void Start()
@@ -60,21 +60,21 @@ public class GameManager : MonoBehaviour
         if (_dataManager.dateControl.GetDays() == 7 && EndEventTrigger)
             CheckCondition();
     }
-    
-  public void GameStart()
+
+    public void GameStart()
     {
         //Initial Game Setting
         //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
         ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
     }
-
-    private void SetPopUP()
+    private void SetPopUp()
     {
         mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
         msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
         backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
+        UnityEngine.Debug.Log("pop up set " + mustItemCanvas + ", " + msg + ", " + backgroundPanel);
     }
-    
+
     public void UpdateGameState(GameState newState)
     {
         state = newState;
@@ -106,8 +106,10 @@ public class GameManager : MonoBehaviour
         backgroundPanel.color = tempColor;
         msg.text = text;
         mustItemCanvas.SetActive(state == gameState);
+        yield return new WaitForSeconds(4);
+        msg.text = "축하합니다.\n당신은 살아남았습니다.";
     }
-    
+
     public void GameOver()
     {
         if (coroutineSwitch)
@@ -186,14 +188,14 @@ public class GameManager : MonoBehaviour
         GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        foreach(GameObject c in cameras)
+        foreach (GameObject c in cameras)
         {
-            if(!c.activeSelf) Destroy(c);
+            if (!c.activeSelf) Destroy(c);
         }
 
-        foreach(GameObject p in players)
+        foreach (GameObject p in players)
         {
-            if(!p.activeSelf) Destroy(p);
+            if (!p.activeSelf) Destroy(p);
         }
     }
     private bool CheckMustItem()
@@ -213,6 +215,7 @@ public class GameManager : MonoBehaviour
     public void CheckCondition()
     {
         string location = _dataManager.GetLocation();
+        UnityEngine.Debug.Log("location " + location);
         string exit = _dataManager.GetConditionExit();
         // if (exit == location && CheckMustItem())
         if (CheckMustItem())
