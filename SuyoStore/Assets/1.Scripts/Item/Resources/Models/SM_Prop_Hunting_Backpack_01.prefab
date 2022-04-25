@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 64888650260407404}
   - component: {fileID: 2530247015043160971}
   - component: {fileID: 3685018781730102350}
+  - component: {fileID: 966199955513257293}
   m_Layer: 0
   m_Name: SM_Prop_Hunting_Backpack_01
   m_TagString: Item
@@ -127,3 +128,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.6, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &966199955513257293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092060676733230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.7735849, g: 0.7392248, b: 0.14960839, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     ZombieAI zombieAI;
     // Related Zombie
     public bool isSafe = false;
+    public GameObject nearSenarioItem;
 
     // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
@@ -36,12 +37,12 @@ public class PlayerController : MonoBehaviour
     int useStamina = 10;
     int recoverStamina = 5;
 
-
     //weapon
     public GameObject[] Weapons;
 
     //light
     public GameObject[] Lights;
+    bool islightOn = false;
 
     //bag
     public GameObject[] Bags;
@@ -56,8 +57,8 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
         animator = GetComponentInChildren<Animator>();
-        itemObj = GameObject.FindGameObjectWithTag("Item");
-        itemControl = itemObj.GetComponent<ItemControl>();
+        //itemObj = GameObject.FindGameObjectWithTag("Item");
+        //itemControl = itemObj.GetComponent<ItemControl>();
         _dataManager = FindObjectOfType<DataManager>();
     }
 
@@ -120,6 +121,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)) {
             Attack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            UseFlashlight();
         }
     }
 
@@ -262,6 +268,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "SenarioAsset")
+        {
+            nearSenarioItem = other.gameObject;
+        }
+        else
+        {
+            nearSenarioItem = null;
+        }
+
         if (other.tag == "Zombie")
         {
             Debug.Log("[Trigger System] Zombie!!!!");
@@ -275,6 +290,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.tag == "SenarioAsset")
+        {
+            nearSenarioItem = null;
+        }
+
         if (other.tag == "Zombie")
         {
             Debug.Log("[Trigger System] Zombie Out!!!!");
@@ -389,5 +409,9 @@ public class PlayerController : MonoBehaviour
          * 체력, 포만감 스테이터스 변화(아이템에 따라 값이 달라짐)
          * 하루가 스킵된 이후 눕기 자세에서 기본 자세로 전환
          */
+    }
+
+    void UseFlashlight()
+    {
     }
 }

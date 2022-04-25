@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 64163794283030624}
   - component: {fileID: 3266371510143219374}
   - component: {fileID: 6000132063734709445}
+  - component: {fileID: -6072572902625728451}
   m_Layer: 0
   m_Name: SM_Prop_Food_Sausage_Cooked_01
   m_TagString: Item
@@ -127,3 +128,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3, z: 0.5}
   m_Center: {x: 0, y: 0.03, z: 0}
+--- !u!114 &-6072572902625728451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361989794947370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.7735849, g: 0.7392248, b: 0.14960839, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

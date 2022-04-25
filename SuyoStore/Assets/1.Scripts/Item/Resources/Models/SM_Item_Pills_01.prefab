@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 64485202792677594}
   - component: {fileID: 102422161858765273}
   - component: {fileID: 4465237039332650915}
+  - component: {fileID: -9190963920014991159}
   m_Layer: 0
   m_Name: SM_Item_Pills_01
   m_TagString: Item
@@ -127,3 +128,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.4, z: 0.3}
   m_Center: {x: 0.000000011175871, y: 0.1183202, z: 0.00000016018748}
+--- !u!114 &-9190963920014991159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337799580505134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.7735849, g: 0.7392248, b: 0.14960839, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
