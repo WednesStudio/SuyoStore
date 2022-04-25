@@ -60,15 +60,13 @@ public class GameManager : MonoBehaviour
         if (_dataManager.dateControl.GetDays() == 7 && EndEventTrigger)
             CheckCondition();
     }
-    
 
-      {
+    public void GameStart()
+    {
         //Initial Game Setting
         //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
         ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
     }
-
-    private void SetPopUP()
     private void SetPopUp()
     {
         mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
@@ -76,10 +74,10 @@ public class GameManager : MonoBehaviour
         backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
         UnityEngine.Debug.Log("pop up set " + mustItemCanvas + ", " + msg + ", " + backgroundPanel);
     }
-    
+
     public void UpdateGameState(GameState newState)
     {
-    state = newState;
+        state = newState;
 
         switch (newState)
         {
@@ -111,10 +109,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         msg.text = "축하합니다.\n당신은 살아남았습니다.";
     }
-    
+
     public void GameOver()
     {
-    if (coroutineSwitch)
+        if (coroutineSwitch)
             StartCoroutine(WaitForEnding("당신은 죽었습니다", GameState.GameOver));
     }
     public void GameWin()
@@ -190,17 +188,17 @@ public class GameManager : MonoBehaviour
         GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        foreach(GameObject c in cameras)
+        foreach (GameObject c in cameras)
         {
-            if(!c.activeSelf) Destroy(c);
-        } 
+            if (!c.activeSelf) Destroy(c);
+        }
 
-        foreac h(GameObject p in players)
+        foreach (GameObject p in players)
         {
-            if(!p.activeSelf) Destroy(p);
-        } 
+            if (!p.activeSelf) Destroy(p);
+        }
     }
-    private bo ol CheckMustItem()
+    private bool CheckMustItem()
     {
         Dictionary<int, int> itemList = _dataManager.GetMyItems();
         string must = _dataManager.GetConditionMust();
