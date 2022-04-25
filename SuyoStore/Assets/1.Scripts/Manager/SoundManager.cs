@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum SfxSoundName
 {
-    BtnExit, BtnGo, BtnPopUp
+    ButtonClick
 }
 
 public enum EnvironmentalSoundName

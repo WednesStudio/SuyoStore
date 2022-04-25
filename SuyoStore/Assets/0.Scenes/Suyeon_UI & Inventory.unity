@@ -22263,10 +22263,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451c15c6e32faf04d853145654b81e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bgmAudio: {fileID: 0}
-  _EnvironmentAudio: {fileID: 0}
-  _sfxAudio: {fileID: 0}
-  _sfxs: []
+  _bgmAudio: {fileID: 1127827144}
+  _EnvironmentAudio: {fileID: 1200225926}
+  _sfxAudio: {fileID: 2059038859}
+  _sfxs:
+  - {fileID: 8300000, guid: 196d9362bab234b7092b94ec981c7fd5, type: 3}
   _environmentals: []
 --- !u!1001 &790592330
 PrefabInstance:
@@ -32593,7 +32594,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 132687f2892ad4bce99bde39ff5f4ed6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
