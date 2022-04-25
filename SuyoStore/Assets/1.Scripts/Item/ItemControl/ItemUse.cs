@@ -254,8 +254,8 @@ public class ItemUse : MonoBehaviour
             string message = "배터리의 양이 부족한 것 같다. (" + myItems[itemID] + "/10)";
             CheckMustItemDays(message, true);
         }
-        else if (CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다."))
-            GameManager.GM.CheckCondition();
+        else
+            CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.");
     }
     private void UseCardKey(Item item)
     {
