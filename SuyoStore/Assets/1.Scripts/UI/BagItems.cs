@@ -21,6 +21,7 @@ public class BagItems : MonoBehaviour
     public void SelectButton()
     {
         int id = GameManager.GM.GetItemID(_itemName.text);
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         GameManager.GM.CheckUseItem(id);
     }
 }

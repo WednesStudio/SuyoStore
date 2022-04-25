@@ -76,7 +76,7 @@ public class DataManager : MonoBehaviour
 
     public void SetCurrentInfo(string date, string location)
     {
-        if(location != "") this._date = date;
+        this._date = dateControl.GetDate();
         int num;
         switch(location)
         {

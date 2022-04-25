@@ -51,12 +51,14 @@ public class UIManager : MonoBehaviour
         _inGameUI.SetActive(true);
         _mainCamera.SetActive(true);
         GameManager.GM.GameStart();
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
     }
 
     public void ExitGameUI()
     {
         //Fade out
         GameManager.GM.ExitGame();
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
     }
 
     public void SetTopBarUI(float hp, float satiety, float fatigue, int speed, int attackPower)

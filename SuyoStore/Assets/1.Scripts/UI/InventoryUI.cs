@@ -55,6 +55,7 @@ public class InventoryUI : MonoBehaviour
                 
             } 
         }
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
     }
 
     public void OnCheckItemUseWindow(string itemName)
