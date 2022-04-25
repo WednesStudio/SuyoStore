@@ -60,8 +60,7 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
         animator = GetComponentInChildren<Animator>();
-        //itemObj = GameObject.FindGameObjectWithTag("Item");
-        //itemControl = itemObj.GetComponent<ItemControl>();
+
         _dataManager = FindObjectOfType<DataManager>();
         _uiManager = FindObjectOfType<UIManager>();
         _scenarioEvent = _uiManager.GetComponent<ScenarioEvent>();
@@ -258,12 +257,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Judge Item ojbect near Player For GetItem()
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerStay(Collider other)
     {
-        if(hit.gameObject.tag == "Item")
+        if(other.tag == "Item")
         {
-            Debug.Log("[Trigger System] Item : " + hit.gameObject.name);
-            nearItem = hit.gameObject;
+            Debug.Log("[Trigger System] Item : " + other.gameObject.name);
+            nearItem = other.gameObject;
         }
         else
         {
@@ -311,6 +310,8 @@ public class PlayerController : MonoBehaviour
 
     void GetItem()
     {
+        itemObj = GameObject.FindGameObjectWithTag("Item");
+        itemControl = itemObj.GetComponent<ItemControl>();
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
             if(nearItem.tag == "Item")
@@ -322,8 +323,9 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("PickUp");
                 // 타겟 아이템 위치가 바닥이 아닐 때:
                 /* 애니메이션 : CatchingItem */
-                StopCoroutine(WaitGetItemTime(1.0f));
-                StartCoroutine(WaitGetItemTime(1.0f));
+                //StopCoroutine(WaitGetItemTime(1.0f));
+                //StartCoroutine(WaitGetItemTime(1.0f));
+                nearItem.GetComponent<ItemControl>().GetThisItem();
             }
         }
         else
@@ -336,7 +338,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaitGetItemTime(float time)
     {
         yield return new WaitForSeconds(time);
-        nearItem.GetComponent<ItemControl>().GetThisItem();
         //Destroy(hit.gameObject);
     }
 

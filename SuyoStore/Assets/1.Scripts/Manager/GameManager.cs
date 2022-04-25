@@ -67,7 +67,8 @@ public class GameManager : MonoBehaviour
     {
         //Initial Game Setting
         //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
-        ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
+        //ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
+        ChangeToOtherScene(4);  //빌드 번호가 바로 4인 지상 3층으로 스폰
     }
     private void SetPopUp()
     {

@@ -14,13 +14,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        // 바닥에 닿지 않을 때
-        if(characterController.isGrounded == false)
-        {
-            moveDirection.y += gravity * Time.deltaTime;
-        }
+        //// 바닥에 닿지 않을 때
+        //if(characterController.isGrounded == false)
+        //{
+        //    moveDirection.y += gravity * Time.deltaTime;
+        //}
 
-        characterController = GetComponent<CharacterController>();
+        //characterController = GetComponent<CharacterController>();
     }
 
     private void Update()
