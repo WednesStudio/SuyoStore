@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Types;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class ItemUse : MonoBehaviour
 {
@@ -17,8 +18,14 @@ public class ItemUse : MonoBehaviour
     private Dictionary<int, Item> MyUsedItem = new Dictionary<int, Item>();
     public int GetItemDurability(int id) => MyUsedItem[id].GetDURABILITY();
     private Item item;
+    
+    // light로 시야 확보할 Global Volume
+    GameObject volumeObj;
+    Volume globalVolume;
+
     private void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
         playerStatus = player.GetComponent<PlayerStatus>();
         playerController = player.GetComponent<PlayerController>();
@@ -196,8 +203,8 @@ public class ItemUse : MonoBehaviour
     private void UseBag(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 가방이 있다면
-        if (playerStatus != null)
-        {
+        //if (playerStatus != null)
+        //{
             if (playerStatus.EquipItemsList.Count > 0)
             {
                 foreach (int id in playerStatus.EquipItemsList)
@@ -219,15 +226,15 @@ public class ItemUse : MonoBehaviour
                 bag.SetActive(true);
                 playerStatus.AddEquipItem(itemID);
             }
-        }
-        else    //just for test
-        {
-            ChangeItem(-1, itemID);
-            // GameObject newBag = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            // newBag.tag = "UsedItem";
-            GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
-            bag.SetActive(true);
-        }
+        //}
+        //else    //just for test
+        //{
+        //    ChangeItem(-1, itemID);
+        //    // GameObject newBag = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
+        //    // newBag.tag = "UsedItem";
+        //    GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
+        //    bag.SetActive(true);
+        //}
     }
     IEnumerator WaitToDisappear()
     {
@@ -328,8 +335,8 @@ public class ItemUse : MonoBehaviour
     }
     private void LightSetting(int itemID)
     {
-        if (playerStatus != null)
-        {
+        //if (playerStatus != null)
+        //{
             //만약 플레이어에게 이미 장착되어 있는 라이트가 있다면
             if (playerStatus.EquipItemsList.Count > 0)
             {
@@ -356,20 +363,23 @@ public class ItemUse : MonoBehaviour
                 light.SetActive(true);
                 playerStatus.AddEquipItem(itemID);
             }
-        }
-        else    //just for test
-        {
-            ChangeItem(-1, itemID);
-            // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            // newLight.tag = "UsedItem";
-            GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
-            light.SetActive(true);
-        }
+        //}
+        //else    //just for test
+        //{
+        //    ChangeItem(-1, itemID);
+        //    // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
+        //    // newLight.tag = "UsedItem";
+        //    GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
+        //    light.SetActive(true);
+        //}
     }
     private void UseLight(Item item, int itemID)
     {
         isLightOn = true;
         lightControl = new LightControl(item.GetDURABILITY(), itemID);
+        volumeObj = GameObject.FindGameObjectWithTag("GlobalVolume");
+        globalVolume = volumeObj.GetComponent<Volume>();
+        globalVolume.weight = 0.5f ;
     }
     private void UseSmartphone()
     {

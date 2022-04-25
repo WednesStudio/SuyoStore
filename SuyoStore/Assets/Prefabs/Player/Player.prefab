@@ -574,6 +574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pStatus: {fileID: 0}
   isSafe: 0
+  nearSenarioItem: {fileID: 0}
   state: 0
   isMove: 0
   Weapons:
@@ -599,7 +600,7 @@ MonoBehaviour:
   Bags:
   - {fileID: 8084173130078292402}
   - {fileID: 1974745804559131790}
-  hasWeapons: 
+  hasWeapon: 0
 --- !u!114 &73585713532184940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4070,7 +4071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9021982051006910423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 18.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 684542794678783457}
