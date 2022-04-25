@@ -142,20 +142,27 @@ public class PlayerController : MonoBehaviour
         {
             if (isSit)
             {
+                // Can't Run, only Sit
                 if (isMove) state = PlayerState.SitWalk;
                 else state = PlayerState.Sit;
             } 
             else
             {
                 state = PlayerState.Run;
+
                 if (pStatus.CurStamina > 0)
                 {
+                    // stamina 감소
                     pStatus.UseStamina(useStamina);
                 }
                 else
                 {
-                    if (isMove) state = PlayerState.SitWalk;
-                    else state = PlayerState.Sit;
+                    // only walk, not Run
+                    if (isMove) state = PlayerState.Walk;
+                    else state = PlayerState.Idle;
+                    // 앉는 거 아님
+                    //if (isMove) state = PlayerState.SitWalk;
+                    //else state = PlayerState.Sit;
                 }
             }
         }
