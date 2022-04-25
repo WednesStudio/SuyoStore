@@ -38,7 +38,7 @@ public class DataManager : MonoBehaviour
     //private List<Item> _itemList = null;
     private string _date, _location;
     private List<ItemData> _totalItemList;
-    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", smartPhone = "스마트폰", bag = "가방";
+    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", smartPhone = "스마트폰", bag = "가방", cardKey = "카드키";
     private int maxCapacity = 30;
 
     private JsonConditionData jsonConditionData;
@@ -59,21 +59,20 @@ public class DataManager : MonoBehaviour
         GameObject.Find("Reader").GetComponent<LoadJson>().LoadConditionData(dir);
         jsonConditionData = GameObject.Find("Reader").GetComponent<LoadJson>().conditionList;
     }
-    public void SetData() //out bool isGameDataExist)
+    public void SetData()
     {
-        //_csvReader.Read(out _creatureList, out _itemList);
         _loadExcel.LoadItemData();
         _totalItemList = _loadExcel.itemDatabase;
 
         // MyItems.Add(GetItemID("배터리1"), 10);
-        // MyItems.Add(GetItemID("카드키"), 10);
+        MyItems.Add(GetItemID("카드키"), 1);
         // MyItems.Add(GetItemID("침낭1"), 1);
     }
 
     public void SetCurrentInfo(string date, string location)
     {
         this._date = date;
-        this._location = location;
+        if(location != "") this._location = location;
         if (_currentStateUI != null) _currentStateUI.SetCurrentState(_date, _location);
     }
 
@@ -133,6 +132,9 @@ public class DataManager : MonoBehaviour
                     case smartPhone:
                         _inventoryUI.SetImportantBagContents();
                         break;
+                    case cardKey:
+                        _inventoryUI.SetImportantBagContents();
+                        break;
                     default:
                         Debug.Log("item Category doesn't exist!");
                         break;
@@ -172,6 +174,9 @@ public class DataManager : MonoBehaviour
                     case smartPhone:
                         _inventoryUI.SetImportantBagContents();
                         break;
+                    case cardKey:
+                    _inventoryUI.SetImportantBagContents();
+                    break;
                     default:
                         Debug.Log("item Category doesn't exist!");
                         break;
@@ -216,6 +221,9 @@ public class DataManager : MonoBehaviour
                         //_inventoryUI.SetSleepingBagContents();
                         break;
                     case smartPhone:
+                        _inventoryUI.SetImportantBagContents();
+                        break;
+                    case cardKey:
                         _inventoryUI.SetImportantBagContents();
                         break;
                     default:

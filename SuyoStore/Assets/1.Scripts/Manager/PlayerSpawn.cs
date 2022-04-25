@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSpawn : MonoBehaviour
 {
-    Scene scene; // ÇöÀç ÀÖ´Â ¾À
-    int changeSceneNum; // ÀüÈ¯ÇÒ ¾À ¹øÈ£
+    Scene scene; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½
+    int changeSceneNum; // ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È£
     public int playerIntoGateNum;
-    float gateTimer = 2.0f; // ¾À ÀüÈ¯±îÁöÀÇ ½Ã°£
+    float gateTimer = 2.0f; // ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     float timer = 0.0f;
 
-    // °ÔÀÌÆ®ÀÇ Á¾·ù
+    // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public enum GateType { GoUp, GoDown, NotUseUp, NotUseDown };
     public GateType gateType;
-    //bool isInGate = false; // ÇÃ·¹ÀÌ¾î°¡ °ÔÀÌÆ®¿¡ ÁøÀÔÇß´ÂÁö ÆÇ´Ü
+    //bool isInGate = false; // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½
 
     private void Start()
     {
@@ -25,13 +25,13 @@ public class PlayerSpawn : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            // ÀÛµ¿ÇÏ´Â °ÔÀÌÆ®¶ó¸é
+            // ï¿½Ûµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½
             if (gateType == GateType.GoUp || gateType == GateType.GoDown)
             {
-                // Å¸ÀÌ¸Ó ÀÛµ¿
+                // Å¸ï¿½Ì¸ï¿½ ï¿½Ûµï¿½
                 timer += Time.deltaTime;
 
-                // ÀÏÁ¤ ½Ã°£ ÈÄ ¾À ÀüÈ¯
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¯
                 if (timer >= gateTimer)
                 {
                     timer = 0.0f;
@@ -45,14 +45,14 @@ public class PlayerSpawn : MonoBehaviour
                     }
                     else
                     {
-                        // ¿¹¿ÜÃ³¸®
+                        // ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
                         timer = 0.0f;
                     }
                 }
             }
             else
             {
-                // ÀÛµ¿ÇÏÁö ¾Ê´Â °ÔÀÌÆ®¶ó¸é Å¸ÀÌ¸Ó ¸®¼Â
+                // ï¿½Ûµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
                 timer = 0.0f;
             }
         }
@@ -79,6 +79,7 @@ public class PlayerSpawn : MonoBehaviour
         }
         SceneController.instance.currentGateNum = passedGateNum;
         GameManager.GM.ChangeToOtherScene(changeSceneNum);
+        GameManager.GM.SetCurrentScene(scene.name);
     }
     public void UpstairsByGate(int passedGateNum)
     {
