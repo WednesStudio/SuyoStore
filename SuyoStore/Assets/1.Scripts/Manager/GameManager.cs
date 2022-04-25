@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
-            SetPopUP();
+            SetPopUp();
         }
     }
     private void Start()
@@ -61,23 +61,25 @@ public class GameManager : MonoBehaviour
             CheckCondition();
     }
     
-  public void GameStart()
-    {
+
+      {
         //Initial Game Setting
         //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
         ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
     }
 
     private void SetPopUP()
+    private void SetPopUp()
     {
         mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
         msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
         backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
+        UnityEngine.Debug.Log("pop up set " + mustItemCanvas + ", " + msg + ", " + backgroundPanel);
     }
     
     public void UpdateGameState(GameState newState)
     {
-        state = newState;
+    state = newState;
 
         switch (newState)
         {
@@ -106,11 +108,13 @@ public class GameManager : MonoBehaviour
         backgroundPanel.color = tempColor;
         msg.text = text;
         mustItemCanvas.SetActive(state == gameState);
+        yield return new WaitForSeconds(4);
+        msg.text = "축하합니다.\n당신은 살아남았습니다.";
     }
     
     public void GameOver()
     {
-        if (coroutineSwitch)
+    if (coroutineSwitch)
             StartCoroutine(WaitForEnding("당신은 죽었습니다", GameState.GameOver));
     }
     public void GameWin()
@@ -189,14 +193,14 @@ public class GameManager : MonoBehaviour
         foreach(GameObject c in cameras)
         {
             if(!c.activeSelf) Destroy(c);
-        }
+        } 
 
-        foreach(GameObject p in players)
+        foreac h(GameObject p in players)
         {
             if(!p.activeSelf) Destroy(p);
-        }
+        } 
     }
-    private bool CheckMustItem()
+    private bo ol CheckMustItem()
     {
         Dictionary<int, int> itemList = _dataManager.GetMyItems();
         string must = _dataManager.GetConditionMust();
@@ -213,6 +217,7 @@ public class GameManager : MonoBehaviour
     public void CheckCondition()
     {
         string location = _dataManager.GetLocation();
+        UnityEngine.Debug.Log("location " + location);
         string exit = _dataManager.GetConditionExit();
         // if (exit == location && CheckMustItem())
         if (CheckMustItem())

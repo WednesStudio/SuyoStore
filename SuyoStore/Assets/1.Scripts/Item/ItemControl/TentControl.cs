@@ -57,8 +57,7 @@ public class TentControl : MonoBehaviour
             SetItem();
         else
         {
-            // if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
-            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G))
+            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
             {
                 _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(_ray, out _hit, 1000f))
