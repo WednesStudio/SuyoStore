@@ -17,6 +17,11 @@ public class ScenarioEvent : MonoBehaviour
         _dataManager = FindObjectOfType<DataManager>();
     }
 
+    public void GetScenarioItemName(string name)
+    {
+        SetScenario(name);
+    }
+
     public void GetScenarioItem(GameObject scenarioAsset)
     {
         this._scenarioAsset = scenarioAsset;
@@ -110,21 +115,25 @@ public class ScenarioEvent : MonoBehaviour
                 //침낭 보유
                 else
                 {
-                    //7일차 이전
-                    if(GameManager.GM.GetCurrentDay() < 7)
-                    {
-                        _scenarioText.text = "아직은 사용할 때가 아닌 것 같다.";
-                    }
-                    //7일차
-                    else
-                    {
-                        _scenarioText.text = "굉음을 내며 백화점이 무너진다. 살 수 있을까.";
-                        StartCoroutine(Waitfor3Seconds());
-                        //sound
-                        GameManager.GM.SetEndEventTrigger();
-                    }
+                    _scenarioText.text = "침낭이 있다면 이곳에서 자도 좀비로부터 안전할까?";
                 }
                 isBasementEntered = true;
+            }
+        }
+        else if(assetName == "Sleeping Bag")
+        {
+            //7일차 이전
+            if(GameManager.GM.GetCurrentDay() < 7)
+            {
+                _scenarioText.text = "아직은 사용할 때가 아닌 것 같다.";
+            }
+            //7일차
+            else
+            {
+                _scenarioText.text = "굉음을 내며 백화점이 무너진다. 살 수 있을까.";
+                StartCoroutine(Waitfor3Seconds());
+                //sound
+                GameManager.GM.SetEndEventTrigger();
             }
         }
         _scenarioWindow.SetActive(true);

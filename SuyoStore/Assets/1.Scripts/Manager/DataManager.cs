@@ -71,7 +71,6 @@ public class DataManager : MonoBehaviour
         _totalItemList = _loadExcel.itemDatabase;
 
         // MyItems.Add(GetItemID("배터리1"), 10);
-        MyItems.Add(GetItemID("카드키"), 1);
         // MyItems.Add(GetItemID("침낭1"), 1);
     }
 
@@ -208,8 +207,8 @@ public class DataManager : MonoBehaviour
                         _inventoryUI.SetImportantBagContents();
                         break;
                     case cardKey:
-                    _inventoryUI.SetImportantBagContents();
-                    break;
+                        _inventoryUI.SetImportantBagContents();
+                        break;
                     default:
                         Debug.Log("item Category doesn't exist!");
                         break;
