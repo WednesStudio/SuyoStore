@@ -6,8 +6,9 @@ public class PlayerStatus : Status
 {
     PlayerController playerController;
     public bool isEquipWeapon = false;
-
-
+    public bool isInfect = false;
+    float dotInfectTimer = 10.0f;
+    float timer = 0.0f;
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -51,6 +52,7 @@ public class PlayerStatus : Status
         useRecoveryStaminaTime = recoveryStaminaTime;
         //sturnStaminaTime = 5;
         //useSturnStaminaTime = sturnStaminaTime;
+
     }
 
     private void Update()
@@ -62,6 +64,17 @@ public class PlayerStatus : Status
         }
         SatietyModifier();
         SpeedModifier();
+
+        if (isInfect)
+        {
+            //10초마다 hp -1
+            timer += Time.deltaTime;
+            if(timer >= dotInfectTimer)
+            {
+                ReduceHp(1);
+                timer = 0.0f;
+            }
+        }
     }
 
     public virtual void Die()
@@ -75,13 +88,6 @@ public class PlayerStatus : Status
     {
         CurHp -= zomPower;  //CurHp = ReduceStatus(eCurStatusType.cHp, zomPower);
         CurHp = RemainStatusValue(CurHp, MaxHp);
-
-        // GameOver
-        if (curHp <= 0)
-        {
-            Die();
-            Debug.Log("[GAME OVER] HP is ZERO");
-        }
     }
 
     public void RecoverStatus(eCurStatusType _statusType, int _value)
