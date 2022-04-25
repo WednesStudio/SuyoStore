@@ -57,31 +57,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //Detect picking up some item
-        //Get Item -> Add Item()  
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform.gameObject.tag == "Item")
-                {
-                    hit.transform.gameObject.GetComponent<ItemControl>().GetThisItem();
-                }
-            }
-        }
-        if (_dataManager.dateControl.GetDays() >= 7 && EndEventTrigger)
+        if (_dataManager.dateControl.GetDays() == 7 && EndEventTrigger)
             CheckCondition();
     }
+    
+  public void GameStart()
+    {
+        //Initial Game Setting
+        //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
+        ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
+    }
+
     private void SetPopUP()
     {
         mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
         msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
         backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
     }
+    
     public void UpdateGameState(GameState newState)
     {
         state = newState;
@@ -114,12 +107,7 @@ public class GameManager : MonoBehaviour
         msg.text = text;
         mustItemCanvas.SetActive(state == gameState);
     }
-    public void GameStart()
-    {
-        //Initial Game Setting
-        //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
-        //ChangeToOtherScene(?);
-    }
+    
     public void GameOver()
     {
         if (coroutineSwitch)
@@ -195,6 +183,18 @@ public class GameManager : MonoBehaviour
     {
         //Keep data
         gameObject.GetComponent<SceneEffect>().SceneChange(sceneNum);
+        GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach(GameObject c in cameras)
+        {
+            if(!c.activeSelf) Destroy(c);
+        }
+
+        foreach(GameObject p in players)
+        {
+            if(!p.activeSelf) Destroy(p);
+        }
     }
     private bool CheckMustItem()
     {
