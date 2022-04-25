@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //itemObj = GameObject.FindGameObjectWithTag("Item");
+        //itemControl = itemObj.GetComponent<ItemControl>();
         //playerObj = GameObject.FindGameObjectWithTag("Player");
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
@@ -310,8 +312,7 @@ public class PlayerController : MonoBehaviour
 
     void GetItem()
     {
-        itemObj = GameObject.FindGameObjectWithTag("Item");
-        itemControl = itemObj.GetComponent<ItemControl>();
+
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
             if(nearItem.tag == "Item")

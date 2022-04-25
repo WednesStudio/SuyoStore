@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 179315712655705105}
   - component: {fileID: 6633114572940716870}
   - component: {fileID: 6649538041781043998}
+  - component: {fileID: 7081538233339339270}
   m_Layer: 0
   m_Name: SM_Prop_Sport_Bat_01
   m_TagString: Item
@@ -146,3 +147,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &7081538233339339270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693188977817816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 0}

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6239675372925074416}
   - component: {fileID: 185283375216404394}
   - component: {fileID: -1176249542083121919}
+  - component: {fileID: -2941591145844878159}
   m_Layer: 0
   m_Name: SM_Wep_Hammer_01
   m_TagString: Item
@@ -146,3 +147,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-2941591145844878159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238499803652380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 0}

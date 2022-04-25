@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 828148010515083803}
   - component: {fileID: 2890904868176392963}
   - component: {fileID: -8202682518227543126}
+  - component: {fileID: -8308172787665978106}
   m_Layer: 0
   m_Name: SM_Prop_Music_Acoustic_Guitar_02
   m_TagString: Item
@@ -146,3 +147,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-8308172787665978106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690120943321838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 0}

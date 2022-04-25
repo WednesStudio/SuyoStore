@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 102422161858765273}
   - component: {fileID: 4465237039332650915}
   - component: {fileID: -9190963920014991159}
+  - component: {fileID: -8366620294708757002}
   m_Layer: 0
   m_Name: SM_Item_Pills_01
   m_TagString: Item
@@ -146,3 +147,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &-8366620294708757002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337799580505134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 0}

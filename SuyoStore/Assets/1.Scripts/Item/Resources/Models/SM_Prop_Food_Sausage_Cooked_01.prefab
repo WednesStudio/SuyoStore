@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3266371510143219374}
   - component: {fileID: 6000132063734709445}
   - component: {fileID: -6072572902625728451}
+  - component: {fileID: 5048990026269179081}
   m_Layer: 0
   m_Name: SM_Prop_Food_Sausage_Cooked_01
   m_TagString: Item
@@ -146,3 +147,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &5048990026269179081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361989794947370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 0}
