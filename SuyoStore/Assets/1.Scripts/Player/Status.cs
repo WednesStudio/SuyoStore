@@ -11,8 +11,11 @@ public class Status : MonoBehaviour
     // Speed
     [SerializeField]
     protected float curSpeed;
+    [SerializeField]
     protected float walkSpeed; // 기본 이동 속도
+    [SerializeField]
     protected float runAddSpeed; // 달리기 상태일 때 추가될 이동 속도
+    [SerializeField]
     protected float sitSpeed; // 앉기 상태일 때 이동 속도
 
     // Max Status
@@ -101,27 +104,27 @@ public class Status : MonoBehaviour
     {
         // Status Initial Value
         // Speed
-        walkSpeed = 10.0f;
-        runAddSpeed = 5.0f; 
-        sitSpeed = 3.0f; 
+        //walkSpeed = 10.0f;
+        //runAddSpeed = 5.0f; 
+        //sitSpeed = 3.0f; 
 
-        // Status
-        maxHp = 100;
-        maxSatiety = 100;
-        maxFatigue = 100; 
+        //// Status
+        //maxHp = 100;
+        //maxSatiety = 100;
+        //maxFatigue = 100; 
 
-        curHp = 10;
-        curSatiety = 50; 
-        curFatigue = 50; 
+        //curHp = 10;
+        //curSatiety = 50; 
+        //curFatigue = 50; 
 
-        // Ability
-        maxCarryingBag = 30;
-        attack = 10; 
-        stamina = 100;
+        //// Ability
+        //maxCarryingBag = 30;
+        //attack = 10; 
+        //stamina = 100;
 
-        curCarryingBag = 30;
-        curAttack = 10;
-        curStamina = 100;
+        //curCarryingBag = 30;
+        //curAttack = 10;
+        //curStamina = 100;
     }
 
     // 현재 상태가 Max나 0을 넘지 않게 --test 필요

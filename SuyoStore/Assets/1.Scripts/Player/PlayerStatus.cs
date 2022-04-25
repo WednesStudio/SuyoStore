@@ -17,9 +17,9 @@ public class PlayerStatus : Status
     {
         // Status Initial Value
         // Speed
-        walkSpeed = 10.0f;
-        runAddSpeed = 5.0f;
-        sitSpeed = 3.0f;
+        walkSpeed = 3.0f;
+        runAddSpeed = 3.0f;
+        sitSpeed = 2.0f;
 
         // Status
         maxHp = 100;
@@ -67,6 +67,7 @@ public class PlayerStatus : Status
     public virtual void Die()
     {
         playerController.state = PlayerController.PlayerState.Dead;
+        GameManager.GM.GameOver();
     }
 
     /// <summary> Hp Status </summary>
@@ -206,6 +207,11 @@ public class PlayerStatus : Status
         if (curCarryingBag >= maxCarryingBag)
         {
             CurSpeed = walkSpeed - 2 * count;
+        }
+
+        if(CurSpeed <= 0)
+        {
+            CurSpeed = 1;
         }
     }
 
