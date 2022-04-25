@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
-            SetPopUp();
+            // SetPopUp();
         }
     }
     private void Start()
@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_dataManager.dateControl.GetDays() == 7 && EndEventTrigger)
+        if (_dataManager.dateControl.GetDays() >= 7 && EndEventTrigger)
+            // if (_dataManager.dateControl.GetDays() >= 7)
             CheckCondition();
     }
 
@@ -72,7 +73,6 @@ public class GameManager : MonoBehaviour
         mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
         msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
         backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
-        UnityEngine.Debug.Log("pop up set " + mustItemCanvas + ", " + msg + ", " + backgroundPanel);
     }
 
     public void UpdateGameState(GameState newState)
@@ -203,19 +203,21 @@ public class GameManager : MonoBehaviour
         Dictionary<int, int> itemList = _dataManager.GetMyItems();
         string must = _dataManager.GetConditionMust();
         List<int> itemId = _dataManager.GetItemIDMyList(must);
+        int total = 0;
 
         // UnityEngine.Debug.Log("must-have: " + must + " ,  found: " + itemId.Count);
         foreach (int i in itemId)
         {
-            if (_dataManager.IsContainItem(i) && itemList[i] >= _dataManager.GetConditionCount())
-                return true;
+            if (_dataManager.IsContainItem(i))
+                total += itemList[i];
         }
+        if (total >= _dataManager.GetConditionCount())
+            return true;
         return false;
     }
     public void CheckCondition()
     {
         string location = _dataManager.GetLocation();
-        UnityEngine.Debug.Log("location " + location);
         string exit = _dataManager.GetConditionExit();
         // if (exit == location && CheckMustItem())
         if (CheckMustItem())

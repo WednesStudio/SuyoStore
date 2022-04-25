@@ -5,11 +5,6 @@ using UnityEngine.UI;
 
 public class PCControl : MonoBehaviour
 {
-    // camera settings
-    private Camera _mainCamera;
-    private Renderer _renderer;
-    private Ray _ray;
-    private RaycastHit _hit;
     public PlayerStatus playerStatus;
     private DataManager _dataManager;
     private bool isNearPlayer = false;
@@ -19,8 +14,6 @@ public class PCControl : MonoBehaviour
     void Start()
     {
         playerStatus = FindObjectOfType<PlayerStatus>();
-        _mainCamera = Camera.main;
-        _renderer = GetComponent<Renderer>();
         _dataManager = GameObject.Find("DataManager").GetComponent<DataManager>();
     }
     void Update()
@@ -42,8 +35,6 @@ public class PCControl : MonoBehaviour
                 }
                 else
                     StartCoroutine(WaitToDisappear("조작하려면 카드키가 필요한 것 같다. 카드키를 찾아보자"));
-                // _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-                // if (Physics.Raycast(_ray, out _hit, 1000f))
             }
             else if (printSwitch && nearSwitch)
             {

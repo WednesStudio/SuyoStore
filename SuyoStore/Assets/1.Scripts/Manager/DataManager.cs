@@ -251,7 +251,7 @@ public class DataManager : MonoBehaviour
     }
     public List<int> GetItemIDMyList(string name)
     {
-        // 선택된 루트의 must item 중 "SM_Props_Battery" 같이 앞부분 글자를 포함한 모든 아이템 아이디를 저장
+        // 선택된 루트의 must item 중 "SM_Item_Battery" 같이 앞부분 글자를 포함한 모든 아이템 아이디를 저장
 
         List<int> idList = new List<int>();
         foreach (ItemData i in _totalItemList)
