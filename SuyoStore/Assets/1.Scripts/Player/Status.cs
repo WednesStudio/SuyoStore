@@ -11,40 +11,40 @@ public class Status : MonoBehaviour
     // Speed
     [SerializeField]
     protected float curSpeed;
-    protected float walkSpeed; // ±âº» ÀÌµ¿ ¼Óµµ
-    protected float runAddSpeed; // ´Þ¸®±â »óÅÂÀÏ ¶§ Ãß°¡µÉ ÀÌµ¿ ¼Óµµ
-    protected float sitSpeed; // ¾É±â »óÅÂÀÏ ¶§ ÀÌµ¿ ¼Óµµ
+    protected float walkSpeed; // ê¸°ë³¸ ì´ë™ ì†ë„
+    protected float runAddSpeed; // ë‹¬ë¦¬ê¸° ìƒíƒœì¼ ë•Œ ì¶”ê°€ë  ì´ë™ ì†ë„
+    protected float sitSpeed; // ì•‰ê¸° ìƒíƒœì¼ ë•Œ ì´ë™ ì†ë„
 
     // Max Status
-    protected int maxHp; // ÃÖ´ë Ã¼·Â
-    protected private int maxSatiety; // ÃÖ´ë Æ÷¸¸°¨
-    protected int maxFatigue; // ÃÖ´ë ÇÇ·Îµµ
+    protected int maxHp; // ìµœëŒ€ ì²´ë ¥
+    protected private int maxSatiety; // ìµœëŒ€ í¬ë§Œê°
+    protected int maxFatigue; // ìµœëŒ€ í”¼ë¡œë„
 
     // Current Status
     [SerializeField]
-    protected int curHp; // ÇöÀç Ã¼·Â
+    protected int curHp; // í˜„ìž¬ ì²´ë ¥
     [SerializeField]
-    protected int curSatiety; // ÇöÀç Æ÷¸¸°¨
+    protected int curSatiety; // í˜„ìž¬ í¬ë§Œê°
     [SerializeField]
-    protected int curFatigue; // ÇöÀç ÇÇ·Îµµ
+    protected int curFatigue; // í˜„ìž¬ í”¼ë¡œë„
 
     // Ability
-    protected int maxCarryingBag; // ±âº» ÀûÀç·®
-    protected int attack; // ±âº» °ø°Ý·Â
-    protected int stamina; // ±âº» Áö±¸·Â
+    protected int maxCarryingBag; // ê¸°ë³¸ ì ìž¬ëŸ‰
+    protected int attack; // ê¸°ë³¸ ê³µê²©ë ¥
+    protected int stamina; // ê¸°ë³¸ ì§€êµ¬ë ¥
 
     // Current Ability
     [SerializeField]
-    protected int curCarryingBag; // ±âº» ÀûÀç·®
+    protected int curCarryingBag; // ê¸°ë³¸ ì ìž¬ëŸ‰
     [SerializeField]
-    protected int curAttack; // ÇöÀç °ø°Ý·Â
+    protected int curAttack; // í˜„ìž¬ ê³µê²©ë ¥
     [SerializeField]
-    protected int curStamina; // ÇöÀç Áö±¸·Â
+    protected int curStamina; // í˜„ìž¬ ì§€êµ¬ë ¥
 
-    // status¿Í °ü·ÃµÈ ½Ã°£
-    protected float time; // ½Ç½Ã°£
-    protected float hungerTime; // Æ÷¸¸°¨ÀÌ °¨¼ÒÇÏ´Â ÀÏÁ¤½Ã°£(±âÁØ)
-    protected float hungerDieTime; // Æ÷¸¸°¨ÀÌ 0ÀÌ Áö¼ÓµÇ¸é »ç¸ÁÇÏ´Â ½Ã°£
+    // statusì™€ ê´€ë ¨ëœ ì‹œê°„
+    protected float time; // ì‹¤ì‹œê°„
+    protected float hungerTime; // í¬ë§Œê°ì´ ê°ì†Œí•˜ëŠ” ì¼ì •ì‹œê°„(ê¸°ì¤€)
+    protected float hungerDieTime; // í¬ë§Œê°ì´ 0ì´ ì§€ì†ë˜ë©´ ì‚¬ë§í•˜ëŠ” ì‹œê°„
     [SerializeField]
     protected float useHungerTime;
     [SerializeField]
@@ -52,7 +52,7 @@ public class Status : MonoBehaviour
 
     [SerializeField]
     protected float useStaminaTime;
-    protected float staminaTime; // ½ºÅ×¹Ì³ª°¡ °¨¼ÒÇÏ´Â ÀÏÁ¤½Ã°£(±âÁØ)
+    protected float staminaTime; // ìŠ¤í…Œë¯¸ë‚˜ê°€ ê°ì†Œí•˜ëŠ” ì¼ì •ì‹œê°„(ê¸°ì¤€)
     [SerializeField]
     protected float useRecoveryStaminaTime;
     protected float recoveryStaminaTime;
@@ -124,7 +124,7 @@ public class Status : MonoBehaviour
         curStamina = 100;
     }
 
-    // ÇöÀç »óÅÂ°¡ Max³ª 0À» ³ÑÁö ¾Ê°Ô --test ÇÊ¿ä
+    // í˜„ìž¬ ìƒíƒœê°€ Maxë‚˜ 0ì„ ë„˜ì§€ ì•Šê²Œ --test í•„ìš”
     public int RemainStatusValue(int _curVal, int  _maxVal)
     {
         if (_curVal >= _maxVal) _curVal = _maxVal;
@@ -147,14 +147,14 @@ public class Status : MonoBehaviour
 }
 
 /*
-equip : ¼ÕÀü , ¹æ¸Á,
-ReE (¹æ¸Á)
-equip : ¼ÕÀü
+equip : ì†ì „ , ë°©ë§,
+ReE (ë°©ë§)
+equip : ì†ì „
  * 
  * 
- * Ä³¸¯ÅÍ°¡ ºó¼Õ
- * -±ÙÃ³¿¡ ¾ÆÀÌÅÛ
- * G : ¾ÆÀÌÅÛ -> ÀÎº¥Åä¸®
- * ÀÎº¥Åä¸® -> »ç¿ë => ÀåÂø
+ * ìºë¦­í„°ê°€ ë¹ˆì†
+ * -ê·¼ì²˜ì— ì•„ì´í…œ
+ * G : ì•„ì´í…œ -> ì¸ë²¤í† ë¦¬
+ * ì¸ë²¤í† ë¦¬ -> ì‚¬ìš© => ìž¥ì°©
  */
 

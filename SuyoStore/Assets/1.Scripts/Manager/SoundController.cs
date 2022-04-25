@@ -12,6 +12,7 @@ public class SoundController : MonoBehaviour
     [SerializeField] Slider _masterVolSlider, _musicVolSlider, _environmentVolSlider, _sfxVolSlider;
     
     private bool _isMasterOn = true, _isMusicOn = true, _isEnvironmentOn = true, _isSfxOn = true;
+    private float _curMasterVol;
 
     public void SetMasterVolume(float volume)
     {
@@ -22,6 +23,8 @@ public class SoundController : MonoBehaviour
         _musicSource.volume = volume;
         _environmentSource.volume = volume;
         _sfxSource.volume = volume;
+
+        _curMasterVol = volume;
 
         _masterButton.GetComponent<Image>().sprite = _soundOffImage;
     }
@@ -60,6 +63,7 @@ public class SoundController : MonoBehaviour
             _environmentSource.enabled = true;
             _sfxSource.enabled = true;
             _musicButton.GetComponent<Image>().sprite = _soundOffImage;
+            SetMasterVolume(_curMasterVol);
             _isMasterOn = true;
         }
     }
