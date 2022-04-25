@@ -17,9 +17,13 @@ public class PlayerController : MonoBehaviour
     ItemControl itemControl;
     GameObject zombieObj;
     ZombieAI zombieAI;
+
+    RaycastHit rayhit;
+
     // Related Zombie
     public bool isSafe = false;
     public GameObject nearSenarioItem;
+    public bool isChangeScene = false;
 
     // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
@@ -70,13 +74,27 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // When change scene, player don't be attacked by zombie
+        if (isChangeScene)
+        {
+            SafeTime();
+        }
+
         Anim();
         GetInput();
         if(state != PlayerState.Dead)
         {
             Move();
         }
+
+        //if (Physics.Raycast(this.transform.position, this.transform.forward, out rayhit, 10f))
+        //{
+        //    rayhit.transform;
+        //}
     }
+
+
+
 
     void Anim()
     {
@@ -413,5 +431,19 @@ public class PlayerController : MonoBehaviour
         else {
             return; // 눕기 불가능
         }
+    }
+
+    void SafeTime()
+    {
+        StopCoroutine(WaitSafeTime(4.0f));
+        isSafe = true;
+        StartCoroutine(WaitSafeTime(4.0f));
+    }
+
+    IEnumerator WaitSafeTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isSafe = false;
+        isChangeScene = false;
     }
 }

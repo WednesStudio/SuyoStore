@@ -10,7 +10,6 @@ public class PlayerSpawn : MonoBehaviour
     public int playerIntoGateNum;
     float gateTimer = 2.0f; // �� ��ȯ������ �ð�
     float timer = 0.0f;
-    [SerializeField] float safeTimer = 5.0f;
     // ����Ʈ�� ����
     public enum GateType { GoUp, GoDown, NotUseUp, NotUseDown };
     public GateType gateType;
@@ -25,7 +24,6 @@ public class PlayerSpawn : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            // �۵��ϴ� ����Ʈ���
             if (gateType == GateType.GoUp || gateType == GateType.GoDown)
             {
                 // Ÿ�̸� �۵�
@@ -35,6 +33,8 @@ public class PlayerSpawn : MonoBehaviour
                 if (timer >= gateTimer)
                 {
                     timer = 0.0f;
+                    Debug.Log("before : " + scene.name);
+
                     if (gateType == GateType.GoUp)
                     {
                         UpstairsByGate(playerIntoGateNum);
@@ -43,16 +43,17 @@ public class PlayerSpawn : MonoBehaviour
                     {
                         DownstairsByGate(playerIntoGateNum);
                     }
-                    else
-                    {
-                        // ����ó��
-                        timer = 0.0f;
-                    }
+                    
+                    scene = SceneManager.GetActiveScene();
+                    Debug.Log("after : " + scene.name);
+                    GameManager.GM.SetCurrentScene(scene.name);
+                    SceneController.instance.player.GetComponent<PlayerController>().isChangeScene = true;
+                    timer = 0.0f;
                 }
             }
             else
             {
-                // �۵����� �ʴ� ����Ʈ��� Ÿ�̸� ����
+                // When gateType == notUse Up or Down
                 timer = 0.0f;
             }
         }
@@ -78,10 +79,10 @@ public class PlayerSpawn : MonoBehaviour
                 break;
         }
         SceneController.instance.currentGateNum = passedGateNum;
+
         GameManager.GM.ChangeToOtherScene(changeSceneNum);
-        GameManager.GM.SetCurrentScene(scene.name);
-        StartCoroutine(WaitSpawnTime(safeTimer));
     }
+
     public void UpstairsByGate(int passedGateNum)
     {
         switch (scene.name)
@@ -102,15 +103,7 @@ public class PlayerSpawn : MonoBehaviour
                 break;
         }
         SceneController.instance.currentGateNum = passedGateNum;
+
         GameManager.GM.ChangeToOtherScene(changeSceneNum);
-        GameManager.GM.SetCurrentScene(scene.name);
-        StartCoroutine(WaitSpawnTime(safeTimer));
-    }
-    IEnumerator WaitSpawnTime(float timer)
-    {
-        // Player's Safe time when player spawn with change scene 
-        // after timer, player is not safe
-        yield return new WaitForSeconds(timer);
-        SceneController.instance.player.GetComponent<PlayerController>().isSafe = false;
     }
 }
