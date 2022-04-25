@@ -13,6 +13,7 @@ public class ItemUse : MonoBehaviour
     private PlayerStatus playerStatus;
     private PlayerController playerController;
     private LightControl lightControl;
+    private ScenarioEvent _scenarioEvent;
     private bool isLightOn = false;
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", bag = "가방", smartPhone = "스마트폰", cardKey = "카드키";
     private Dictionary<int, Item> MyUsedItem = new Dictionary<int, Item>();
@@ -29,6 +30,7 @@ public class ItemUse : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStatus = player.GetComponent<PlayerStatus>();
         playerController = player.GetComponent<PlayerController>();
+        _scenarioEvent = _uiManager.GetComponent<ScenarioEvent>();
     }
     private void Update()
     {
@@ -203,38 +205,27 @@ public class ItemUse : MonoBehaviour
     private void UseBag(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 가방이 있다면
-        //if (playerStatus != null)
-        //{
-            if (playerStatus.EquipItemsList.Count > 0)
+        if (playerStatus.EquipItemsList.Count > 0)
+        {
+            foreach (int id in playerStatus.EquipItemsList)
             {
-                foreach (int id in playerStatus.EquipItemsList)
+                if (_dataManager.GetItemSubCategory(id) == "가방")
                 {
-                    if (_dataManager.GetItemSubCategory(id) == "가방")
-                    {
-                        ChangeItem(id, itemID);
-                    }
+                    ChangeItem(id, itemID);
                 }
             }
-            //이미 장착되어 있는 가방이 없다면
-            else
-            {
-                ChangeItem(-1, itemID);
-                //location, rotation -> 플레이어 쪽으로 수정 필요
-                // GameObject newBag = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-                // newBag.tag = "UsedItem";
-                GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
-                bag.SetActive(true);
-                playerStatus.AddEquipItem(itemID);
-            }
-        //}
-        //else    //just for test
-        //{
-        //    ChangeItem(-1, itemID);
-        //    // GameObject newBag = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-        //    // newBag.tag = "UsedItem";
-        //    GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
-        //    bag.SetActive(true);
-        //}
+        }
+        //이미 장착되어 있는 가방이 없다면
+        else
+        {
+            ChangeItem(-1, itemID);
+            //location, rotation -> 플레이어 쪽으로 수정 필요
+            // GameObject newBag = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
+            // newBag.tag = "UsedItem";
+            GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
+            bag.SetActive(true);
+            playerStatus.AddEquipItem(itemID);
+        }
     }
     IEnumerator WaitToDisappear()
     {
@@ -272,13 +263,15 @@ public class ItemUse : MonoBehaviour
     private void UseSleepingBag(Item item, int itemID)
     {
         //조건 확인해서 사용(마지막 날, 특정 위치에서)
-        if (CheckMustItemDays("아직은 사용할 때가 아닌 것 같다."))
+        if (GameManager.GM.GetSceneName() == "00.B2")
         {
-            //쓰려면 instantiate
-            GameObject model = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            // GameManager.GM.DateSetting();
-            GameManager.GM.CheckCondition();
+            _scenarioEvent.GetScenarioItemName("Sleeping Bag");
         }
+        else
+        {
+            CheckMustItemDays("아직은 사용할 때가 아닌 것 같다.");
+        }
+        
     }
     public void UseFood(int satiety)
     {
@@ -286,41 +279,30 @@ public class ItemUse : MonoBehaviour
     }
     private void WeaponSetting(int itemID)
     {
-        if (playerStatus != null)
+        //만약 플레이어에게 이미 장착되어 있는 무기가 있다면
+        if (playerStatus.EquipItemsList.Count > 0)
         {
-            //만약 플레이어에게 이미 장착되어 있는 무기가 있다면
-            if (playerStatus.EquipItemsList.Count > 0)
+            foreach (int id in playerStatus.EquipItemsList)
             {
-                foreach (int id in playerStatus.EquipItemsList)
+                if (_dataManager.GetItemSubCategory(id) == "무기")
                 {
-                    if (_dataManager.GetItemSubCategory(id) == "무기")
-                    {
-                        ChangeItem(id, itemID);
-                        UseWeapon(item.GetATTACK(), itemID);
-                        return;
-                    }
+                    ChangeItem(id, itemID);
+                    UseWeapon(item.GetATTACK(), itemID);
+                    return;
                 }
             }
-            //이미 장착되어 있는 무기가 없다면
-            else
-            {
-                UseWeapon(item.GetATTACK(), itemID);
-                ChangeItem(-1, itemID);
-                //location, rotation -> 플레이어 쪽으로 수정 필요
-                //GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-                GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(itemID));
-                weapon.SetActive(true);
-                playerStatus.AddEquipItem(itemID);
-                //newWeapon.tag = "UsedItem";
-            }
         }
-        else    //UI Scene 테스트 용!! 무시 가능
+        //이미 장착되어 있는 무기가 없다면
+        else
         {
+            UseWeapon(item.GetATTACK(), itemID);
             ChangeItem(-1, itemID);
-            // GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            // newWeapon.tag = "UsedItem";
+            //location, rotation -> 플레이어 쪽으로 수정 필요
+            //GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(itemID));
             weapon.SetActive(true);
+            playerStatus.AddEquipItem(itemID);
+            //newWeapon.tag = "UsedItem";
         }
     }
     public void UseWeapon(int attack, int itemID)
@@ -335,43 +317,34 @@ public class ItemUse : MonoBehaviour
     }
     private void LightSetting(int itemID)
     {
-        //if (playerStatus != null)
-        //{
-            //만약 플레이어에게 이미 장착되어 있는 라이트가 있다면
-            if (playerStatus.EquipItemsList.Count > 0)
+        //만약 플레이어에게 이미 장착되어 있는 라이트가 있다면
+        if (playerStatus.EquipItemsList.Count > 0)
+        {
+            foreach (int id in playerStatus.EquipItemsList)
+
             {
-                foreach (int id in playerStatus.EquipItemsList)
+                if (_dataManager.GetItemSubCategory(id) == "라이트")
                 {
-                    if (_dataManager.GetItemSubCategory(id) == "라이트")
-                    {
-                        item.SetDURABILITY(lightControl.StopCounter());
-                        isLightOn = false;
-                        ChangeItem(id, itemID);
-                        UseLight(item, itemID);
-                    }
+                    item.SetDURABILITY(lightControl.StopCounter());
+                    isLightOn = false;
+                    ChangeItem(id, itemID);
+                    UseLight(item, itemID);
                 }
             }
-            //이미 장착되어 있는 라이트가 없다면
-            else
-            {
-                ChangeItem(-1, itemID);
-                UseLight(item, itemID);
-                //location, rotation -> 플레이어 쪽으로 수정 필요
-                // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-                // newLight.tag = "UsedItem";
-                GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
-                light.SetActive(true);
-                playerStatus.AddEquipItem(itemID);
-            }
-        //}
-        //else    //just for test
-        //{
-        //    ChangeItem(-1, itemID);
-        //    // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-        //    // newLight.tag = "UsedItem";
-        //    GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
-        //    light.SetActive(true);
-        //}
+        }
+        //이미 장착되어 있는 라이트가 없다면
+        else
+        {
+            ChangeItem(-1, itemID);
+            UseLight(item, itemID);
+            //location, rotation -> 플레이어 쪽으로 수정 필요
+            // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
+            // newLight.tag = "UsedItem";
+            GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
+            light.SetActive(true);
+            playerStatus.AddEquipItem(itemID);
+        }
+
     }
     private void UseLight(Item item, int itemID)
     {

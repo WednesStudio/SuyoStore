@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     CharacterController characterController;
     DataManager _dataManager;
+    UIManager _uiManager;
+    ScenarioEvent _scenarioEvent;
     public PlayerStatus pStatus;
     GameObject nearItem;
     GameObject nearZombie;
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
     // Attack
     public bool hasWeapon;
     Weapon equipWeapon;
+    public GameObject nearScenarioItem;
 
     private void Start()
     {
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour
         //itemObj = GameObject.FindGameObjectWithTag("Item");
         //itemControl = itemObj.GetComponent<ItemControl>();
         _dataManager = FindObjectOfType<DataManager>();
+        _uiManager = FindObjectOfType<UIManager>();
+        _scenarioEvent = _uiManager.GetComponent<ScenarioEvent>();
     }
 
     private void Update()
@@ -268,13 +273,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "SenarioAsset")
+        if (other.tag == "ScenarioAsset")
         {
-            nearSenarioItem = other.gameObject;
+            nearScenarioItem = other.gameObject;
+            _scenarioEvent.GetScenarioItem(nearScenarioItem);
         }
         else
         {
-            nearSenarioItem = null;
+            nearScenarioItem = null;
         }
 
         if (other.tag == "Zombie")
@@ -292,7 +298,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "SenarioAsset")
         {
-            nearSenarioItem = null;
+            nearScenarioItem = null;
+
         }
 
         if (other.tag == "Zombie")

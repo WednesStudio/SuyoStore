@@ -215,7 +215,7 @@ public class InventoryUI : MonoBehaviour
         foreach (BagItems b in _importantContents)
         {
             category = _dataManager.GetItemSubCategory(i);
-            if (GameManager.GM.GetItemCount(i) > 0 && (category == "스마트폰" || category == "침낭" || category == "보조배터리"))
+            if (GameManager.GM.GetItemCount(i) > 0 && (category == "스마트폰" || category == "침낭" || category == "보조배터리" || category == "카드키"))
             {
                 b.SetBagContent(i, _dataManager.GetItem(i).itemName, _dataManager.GetItemImage(i), _dataManager.GetDescription(i) ,_dataManager.GetItemCount(i));                
                 b.gameObject.SetActive(true);

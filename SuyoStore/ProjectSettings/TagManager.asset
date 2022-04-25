@@ -9,6 +9,7 @@ TagManager:
   - SceneGate
   - PlayerSpawn
   - PlayerAndCam
+  - ScenarioAsset
   - GlobalVolume
   layers:
   - Default

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DataManager _dataManager;
     [SerializeField] UIManager _uiManager;
     [SerializeField] ItemUse _itemUse;
+    [SerializeField] ScenarioEvent _scenarioEvent;
     [NonSerialized]
     public GameObject mustItemCanvas;
     [NonSerialized]
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     private int _currentSceneNum;
     [NonSerialized]
     public GameState state;
+    private string _sceneName;
     public static event Action<GameState> OnGameStateChanged;
     private bool EndEventTrigger = false;
     private bool coroutineSwitch = true;
@@ -43,7 +45,6 @@ public class GameManager : MonoBehaviour
         else
         {
             GM = this;
-            DontDestroyOnLoad(gameObject);
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.GameStart:
-                GameStart();
+                //GameStart();
                 break;
             case GameState.GameOver:
                 GameOver();
@@ -132,6 +133,11 @@ public class GameManager : MonoBehaviour
         gameObject.GetComponent<SceneEffect>().FadeEffect(-1);
         StartCoroutine(WaitToChangeDate());
     }
+    public int GetCurrentDay()
+    {
+        int day = _dataManager.dateControl.GetDays();
+        return day;
+    }
     private void SetWholeUI()
     {
         _uiManager.SetTopBarUI(10f, 50f, 50f, 10, 10);
@@ -155,7 +161,7 @@ public class GameManager : MonoBehaviour
         Item temp = _dataManager.SetNewItem(itemID);
         string category = _dataManager.GetItemSubCategory(itemID);
         print(category);
-        if (category != "가방" && category != "스마트폰" && category != "침낭" && category != "보조배터리") _dataManager.AddItem(itemID, -1);
+        if (category != "가방" && category != "스마트폰" && category != "침낭" && category != "보조배터리" && category != "카드키") _dataManager.AddItem(itemID, -1);
         _itemUse.UseItem(itemID);
     }
 
@@ -198,6 +204,22 @@ public class GameManager : MonoBehaviour
             if (!p.activeSelf) Destroy(p);
         }
     }
+
+    public void SetCurrentScene(string sceneName)
+    {
+        _sceneName = sceneName;
+        _dataManager.SetCurrentInfo("", _sceneName);
+        if(_sceneName == "02.F1")
+        {
+            if(_scenarioEvent.isShelterClear) SetEndEventTrigger();
+        }
+    }
+
+    public string GetSceneName()
+    {
+        return _sceneName;
+    }
+
     private bool CheckMustItem()
     {
         Dictionary<int, int> itemList = _dataManager.GetMyItems();
