@@ -33,7 +33,11 @@ public class TentControl : MonoBehaviour
         closeUIButton.onClick.RemoveAllListeners();
         sleepUIButton.onClick.AddListener(() =>
         {
-            UseTent(item);
+
+            if (_dataManager.dateControl.GetDays() < 7)
+                UseTent(item);
+            else
+                GameManager.GM.SetEndEventTrigger();
             canvas.SetActive(false);
         });
         closeUIButton.onClick.AddListener(() => canvas.SetActive(false));
@@ -53,13 +57,12 @@ public class TentControl : MonoBehaviour
             SetItem();
         else
         {
-            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
+            // if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
+            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G))
             {
                 _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(_ray, out _hit, 1000f))
                     canvas.SetActive(true);
-                if (_dataManager.dateControl.GetDays() == 7)
-                    GameManager.GM.SetEndEventTrigger();
             }
         }
     }

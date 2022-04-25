@@ -33,7 +33,7 @@
         {
             "number":3,
             "route":"지하에서 버틸 경우(7일차에 지하에서 취침기능 이용 시 생존)",
-            "message":"",
+            "message":"굉음을 내며 백화점이 무너진다.\n살 수 있을까",
             "sniper": ["F1", "F3"],
             "must": "SM_Prop_SleepingBag",
             "count": 1,
