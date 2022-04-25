@@ -10,7 +10,7 @@ public class PlayerSpawn : MonoBehaviour
     public int playerIntoGateNum;
     float gateTimer = 2.0f; // �� ��ȯ������ �ð�
     float timer = 0.0f;
-
+    [SerializeField] float safeTimer = 5.0f;
     // ����Ʈ�� ����
     public enum GateType { GoUp, GoDown, NotUseUp, NotUseDown };
     public GateType gateType;
@@ -80,6 +80,7 @@ public class PlayerSpawn : MonoBehaviour
         SceneController.instance.currentGateNum = passedGateNum;
         GameManager.GM.ChangeToOtherScene(changeSceneNum);
         GameManager.GM.SetCurrentScene(scene.name);
+        StartCoroutine(WaitSpawnTime(safeTimer));
     }
     public void UpstairsByGate(int passedGateNum)
     {
@@ -102,23 +103,14 @@ public class PlayerSpawn : MonoBehaviour
         }
         SceneController.instance.currentGateNum = passedGateNum;
         GameManager.GM.ChangeToOtherScene(changeSceneNum);
+        GameManager.GM.SetCurrentScene(scene.name);
+        StartCoroutine(WaitSpawnTime(safeTimer));
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.tag == "Player")
-    //    {
-    //        isInGate = true;
-    //    }
-    //}
-
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "Player")
-    //    {
-    //        isInGate = false;
-    //    }
-    //}
-
-
+    IEnumerator WaitSpawnTime(float timer)
+    {
+        // Player's Safe time when player spawn with change scene 
+        // after timer, player is not safe
+        yield return new WaitForSeconds(timer);
+        SceneController.instance.player.GetComponent<PlayerController>().isSafe = false;
+    }
 }
