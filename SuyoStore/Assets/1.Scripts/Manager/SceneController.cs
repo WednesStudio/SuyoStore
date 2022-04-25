@@ -28,6 +28,10 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    //private void Start()
+    //{
+    //    player.transform.position = GatesArray[0].transform.position;
+    //}
 
     private void OnLevelWasLoaded()
     {

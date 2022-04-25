@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 64650867528186962}
   - component: {fileID: 4347497438803639559}
   - component: {fileID: 6339240500872035439}
+  - component: {fileID: -1102457100108806450}
   m_Layer: 0
   m_Name: SM_Item_Can_07
   m_TagString: Item
@@ -127,3 +128,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: -0.0002261363, y: 0.041578703, z: -0.000497587}
+--- !u!114 &-1102457100108806450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333788564670996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.7735849, g: 0.7392248, b: 0.14960839, a: 1}
+  outlineWidth: 4
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

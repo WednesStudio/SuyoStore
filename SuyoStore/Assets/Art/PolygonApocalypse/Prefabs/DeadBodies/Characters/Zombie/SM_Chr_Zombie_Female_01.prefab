@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 2093864160}
   - component: {fileID: 2093864159}
   - component: {fileID: 2093864158}
+  - component: {fileID: 1889217825584713784}
   m_Layer: 0
   m_Name: SM_Chr_Zombie_Female_01
   m_TagString: Untagged
@@ -5383,6 +5384,30 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 4085909743079178}
+  m_Layer: 0
+  m_Name: IndexFinger_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4085909743079178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034400542732604}
+  m_LocalRotation: {x: 0.00028049533, y: 0.065794446, z: 0.004253931, w: 0.99782413}
+  m_LocalPosition: {x: -0.10396561, y: 0.003987151, z: 0.026726495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4395267540616988}
+  m_Father: {fileID: 4339882329543162}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1045491205266736
   - component: {fileID: 4085909743079178}
   m_Layer: 0
   m_Name: IndexFinger_01

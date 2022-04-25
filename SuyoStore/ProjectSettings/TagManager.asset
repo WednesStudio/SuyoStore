@@ -10,6 +10,7 @@ TagManager:
   - PlayerSpawn
   - PlayerAndCam
   - ScenarioAsset
+  - GlobalVolume
   layers:
   - Default
   - TransparentFX

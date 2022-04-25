@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Types;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class ItemUse : MonoBehaviour
 {
@@ -18,8 +19,14 @@ public class ItemUse : MonoBehaviour
     private Dictionary<int, Item> MyUsedItem = new Dictionary<int, Item>();
     public int GetItemDurability(int id) => MyUsedItem[id].GetDURABILITY();
     private Item item;
+    
+    // light로 시야 확보할 Global Volume
+    GameObject volumeObj;
+    Volume globalVolume;
+
     private void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
         playerStatus = player.GetComponent<PlayerStatus>();
         playerController = player.GetComponent<PlayerController>();
@@ -245,8 +252,8 @@ public class ItemUse : MonoBehaviour
             string message = "배터리의 양이 부족한 것 같다. (" + myItems[itemID] + "/10)";
             CheckMustItemDays(message, true);
         }
-        else if (CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다."))
-            GameManager.GM.CheckCondition();
+        else
+            CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.");
     }
     private void UseCardKey(Item item)
     {
@@ -314,6 +321,7 @@ public class ItemUse : MonoBehaviour
         if (playerStatus.EquipItemsList.Count > 0)
         {
             foreach (int id in playerStatus.EquipItemsList)
+
             {
                 if (_dataManager.GetItemSubCategory(id) == "라이트")
                 {
@@ -336,11 +344,15 @@ public class ItemUse : MonoBehaviour
             light.SetActive(true);
             playerStatus.AddEquipItem(itemID);
         }
+
     }
     private void UseLight(Item item, int itemID)
     {
         isLightOn = true;
         lightControl = new LightControl(item.GetDURABILITY(), itemID);
+        volumeObj = GameObject.FindGameObjectWithTag("GlobalVolume");
+        globalVolume = volumeObj.GetComponent<Volume>();
+        globalVolume.weight = 0.5f ;
     }
     private void UseSmartphone()
     {

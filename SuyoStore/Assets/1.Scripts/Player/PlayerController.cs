@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     ZombieAI zombieAI;
     // Related Zombie
     public bool isSafe = false;
+    public GameObject nearSenarioItem;
 
     // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
@@ -38,12 +39,12 @@ public class PlayerController : MonoBehaviour
     int useStamina = 10;
     int recoverStamina = 5;
 
-
     //weapon
     public GameObject[] Weapons;
 
     //light
     public GameObject[] Lights;
+    bool islightOn = false;
 
     //bag
     public GameObject[] Bags;
@@ -55,11 +56,12 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //playerObj = GameObject.FindGameObjectWithTag("Player");
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
         animator = GetComponentInChildren<Animator>();
-        itemObj = GameObject.FindGameObjectWithTag("Item");
-        itemControl = itemObj.GetComponent<ItemControl>();
+        //itemObj = GameObject.FindGameObjectWithTag("Item");
+        //itemControl = itemObj.GetComponent<ItemControl>();
         _dataManager = FindObjectOfType<DataManager>();
         _uiManager = FindObjectOfType<UIManager>();
         _scenarioEvent = _uiManager.GetComponent<ScenarioEvent>();
@@ -124,6 +126,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)) {
             Attack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            UseFlashlight();
         }
     }
 
@@ -292,6 +299,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "SenarioAsset")
         {
             nearScenarioItem = null;
+
         }
 
         if (other.tag == "Zombie")
@@ -354,6 +362,7 @@ public class PlayerController : MonoBehaviour
                     // 무기 미착용 상태
                     animator.SetTrigger("PunchNearZombie");
                     //pStatus.EquipItemsList
+                    //SoundManager.SM.sour
                 }
                 else
                 {
@@ -407,5 +416,9 @@ public class PlayerController : MonoBehaviour
          * 체력, 포만감 스테이터스 변화(아이템에 따라 값이 달라짐)
          * 하루가 스킵된 이후 눕기 자세에서 기본 자세로 전환
          */
+    }
+
+    void UseFlashlight()
+    {
     }
 }
