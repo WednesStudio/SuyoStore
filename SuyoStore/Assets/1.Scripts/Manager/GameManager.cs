@@ -74,7 +74,14 @@ public class GameManager : MonoBehaviour
         msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
         backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
     }
-    
+
+    public void GameStart()
+    {
+        //Initial Game Setting
+        //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
+        ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
+    }
+
     public void UpdateGameState(GameState newState)
     {
         state = newState;
