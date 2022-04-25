@@ -70,7 +70,7 @@ public class CharacterStatusUI : MonoBehaviour
         else _attackText.text = "Attack Power : 10 + " + "(" + (attackPower - 10).ToString() + ")";
     }
 
-    public void GetAndSetDebuff(DebuffType type, bool isActive)
+    public void SetDebuff(DebuffType type, bool isActive)
     {
         if(isActive)
         {
