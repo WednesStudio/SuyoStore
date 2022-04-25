@@ -29,6 +29,7 @@ public class DataManager : MonoBehaviour
     public string GetDescription(int ID) => _itemObjects[ID].description;
     public bool IsContainItem(int ID) => MyItems.ContainsKey(ID);
     public string GetConditionRoute() => jsonConditionData.route;
+    public string GetConditionMsg() => jsonConditionData.message;
     public string GetConditionMust() => jsonConditionData.must;
     public int GetConditionCount() => jsonConditionData.count;
     public string GetConditionExit() => jsonConditionData.exit;
@@ -41,13 +42,21 @@ public class DataManager : MonoBehaviour
     private int maxCapacity = 30;
 
     private JsonConditionData jsonConditionData;
+    private string directory = "Data/";
+    private string[] routes = { "route1", "route2", "route3" };
+    private int selectedRoute;
+    public int GetSelectedRoute() => selectedRoute;
     public DateControl dateControl;
-    private void Awake()
+    public void Awake()
     {
         dateControl = FindObjectOfType<DateControl>();
     }
-    void Start()
+    public void LoadJsonData()
     {
+        selectedRoute = UnityEngine.Random.Range(0, 3);
+        string dir = directory + routes[selectedRoute];
+        GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData(dir);
+        GameObject.Find("Reader").GetComponent<LoadJson>().LoadConditionData(dir);
         jsonConditionData = GameObject.Find("Reader").GetComponent<LoadJson>().conditionList;
     }
     public void SetData() //out bool isGameDataExist)
@@ -55,6 +64,10 @@ public class DataManager : MonoBehaviour
         //_csvReader.Read(out _creatureList, out _itemList);
         _loadExcel.LoadItemData();
         _totalItemList = _loadExcel.itemDatabase;
+
+        // MyItems.Add(GetItemID("배터리1"), 10);
+        // MyItems.Add(GetItemID("카드키"), 10);
+        // MyItems.Add(GetItemID("침낭1"), 1);
     }
 
     public void SetCurrentInfo(string date, string location)

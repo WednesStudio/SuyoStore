@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4581139053942930614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4581139053942930608}
+  - component: {fileID: 4581139053942930620}
+  - component: {fileID: 4581139053942930615}
+  - component: {fileID: 4581139053942930609}
+  - component: {fileID: 4581139053942930610}
+  - component: {fileID: 4581139053942930611}
+  - component: {fileID: 4581139053942930621}
+  - component: {fileID: 4581139053942930623}
+  - component: {fileID: 4581139053942930622}
+  m_Layer: 0
+  m_Name: UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4581139053942930608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 344.2859, y: 185.2428, z: -156.13239}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4581139053942930620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11509f704cd4dd74daf5aa36f3b4f9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCanvas: {fileID: 0}
+  _panels:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &4581139053942930615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8520140da8570384aa1b296e4dc5e39f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _staminaBar: {fileID: 0}
+  _staietyBar: {fileID: 0}
+  _fatigueBar: {fileID: 0}
+  _speedText: {fileID: 0}
+  _attackPowerText: {fileID: 0}
+  _debuffPrefab: {fileID: 8323219385421324175, guid: ba59a302e83586a42bd370709805986c, type: 3}
+  _debuffObject: {fileID: 0}
+  _debuffImages: []
+  _staminaText: {fileID: 0}
+  _satietyText: {fileID: 0}
+  _fatigueText: {fileID: 0}
+  _attackText: {fileID: 0}
+  _spText: {fileID: 0}
+  _weaponImage: {fileID: 0}
+  _weaponNameText: {fileID: 0}
+  _weaponPowerText: {fileID: 0}
+  _weaponDurabilityText: {fileID: 0}
+  _lightImage: {fileID: 0}
+  _lightNameText: {fileID: 0}
+  _lightSightText: {fileID: 0}
+  _lightDurabilityText: {fileID: 0}
+  _bagImage: {fileID: 0}
+  _bagNameText: {fileID: 0}
+  _bagCapacityText: {fileID: 0}
+--- !u!114 &4581139053942930609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f683461d02e0a1e49a12b7fe31e99694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dateText: {fileID: 0}
+  _locationText: {fileID: 0}
+--- !u!114 &4581139053942930610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47492b11d3dee4b42a5d6aa282ed97d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statusInventoryWindow: {fileID: 0}
+  _manipulationWindow: {fileID: 0}
+  _optionWindow: {fileID: 0}
+  _statusPanels: []
+  _inventoryPanels: []
+  _manipulationPanels: []
+  _optionPanels:
+  - {fileID: 0}
+  - {fileID: 0}
+  _exitGameWindow: {fileID: 0}
+  _resolutionScrollview: {fileID: 0}
+  _mouseSensitivitySlider: {fileID: 0}
+  _creditPanel: {fileID: 0}
+--- !u!114 &4581139053942930611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8602733aeb4a1146b8a026ffc97cb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 0}
+  _characterStatusUI: {fileID: 4581139053942930615}
+  _currentStateUI: {fileID: 4581139053942930609}
+  _optionSettingUI: {fileID: 4581139053942930610}
+  _itemUse: {fileID: 0}
+  _inventoryUI: {fileID: 4581139053942930621}
+  _dataManager: {fileID: 0}
+  _gameStartUI: {fileID: 0}
+  _inGameUI: {fileID: 0}
+  _mainCamera: {fileID: 0}
+--- !u!114 &4581139053942930621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1dd5a3ff17a2f4e81b9f3c080427d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 0}
+  _statusInventoryWindow: {fileID: 0}
+  _checkUseItemWindow: {fileID: 0}
+  _categoryButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _itemScrollViews:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _bagCapacity: {fileID: 0}
+  _totalContentsParent: {fileID: 0}
+  _weaponContentsParent: {fileID: 0}
+  _lightContentsParent: {fileID: 0}
+  _foodContentsParent: {fileID: 0}
+  _medicineContentsParent: {fileID: 0}
+  _importantContentsParent: {fileID: 0}
+--- !u!114 &4581139053942930623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7a1631a77e0b64c80158e58ff03bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4581139053942930622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581139053942930614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d614f777b7232a24d86dcd406a97fc1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -20,16 +20,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] DataManager _dataManager;
     [SerializeField] UIManager _uiManager;
     [SerializeField] ItemUse _itemUse;
-    private CellPhoneMsgs cellphone;
+    [NonSerialized]
+    public GameObject mustItemCanvas;
+    [NonSerialized]
+    public TextMeshProUGUI msg;
+    private Image backgroundPanel;
     public static GameManager GM = null;
     private int _currentSceneNum;
+    [NonSerialized]
     public GameState state;
     public static event Action<GameState> OnGameStateChanged;
-    private string directory = "Data/";
-    private string[] routes = { "route1", "route2", "route3" };
-    private int selectedRoute;
-    private DateControl _dateControl;
     private bool EndEventTrigger = false;
+    private bool coroutineSwitch = true;
     public void SetEndEventTrigger()
     {
         EndEventTrigger = true;
@@ -43,41 +45,36 @@ public class GameManager : MonoBehaviour
             GM = this;
             DontDestroyOnLoad(gameObject);
             _dataManager.SetData();
-            _dateControl = FindObjectOfType<DateControl>();
             SetWholeUI();
-            selectedRoute = UnityEngine.Random.Range(0, 3);
-            GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData(directory + routes[selectedRoute]);
-            cellphone = FindObjectOfType<CellPhoneMsgs>();
+            _dataManager.LoadJsonData();
+            SetPopUP();
         }
     }
     private void Start()
     {
         UpdateGameState(GameState.GameStart);
-        GameObject.Find("Reader").GetComponent<LoadJson>().LoadConditionData(directory + routes[selectedRoute]);
     }
 
     private void Update()
     {
-        //Detect picking up some item
-        //Get Item -> Add Item()  
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform.gameObject.tag == "Item")
-                {
-                    hit.transform.gameObject.GetComponent<ItemControl>().GetThisItem();
-                }
-            }
-        }
         if (_dataManager.dateControl.GetDays() == 7 && EndEventTrigger)
             CheckCondition();
     }
+    
+  public void GameStart()
+    {
+        //Initial Game Setting
+        //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
+        ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
+    }
 
+    private void SetPopUP()
+    {
+        mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
+        msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
+        backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
+    }
+    
     public void UpdateGameState(GameState newState)
     {
         state = newState;
@@ -101,32 +98,32 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator WaitForEnding(string text, GameState gameState)
     {
-        yield return new WaitForSeconds(4);
-        cellphone.infoText.text = text;
-        cellphone.canvas.SetActive(state == gameState);
+        coroutineSwitch = false;
+        gameObject.GetComponent<SceneEffect>().FadeEffect(-1);
+        yield return new WaitForSeconds(2);
+        Color tempColor = backgroundPanel.color;
+        tempColor.a = 255;
+        backgroundPanel.color = tempColor;
+        msg.text = text;
+        mustItemCanvas.SetActive(state == gameState);
     }
-    public void GameStart()
-    {
-        //Initial Game Setting
-        //_currentSceneNum = 1;
-        //date = ..
-    }
+    
     public void GameOver()
     {
-        StartCoroutine(WaitForEnding("당신은 죽었습니다", GameState.GameOver));
-        // ExitGame();
+        if (coroutineSwitch)
+            StartCoroutine(WaitForEnding("당신은 죽었습니다", GameState.GameOver));
     }
     public void GameWin()
     {
-        StartCoroutine(WaitForEnding(_dataManager.GetConditionRoute(), GameState.GameWin));
-        // ExitGame();
+        if (coroutineSwitch)
+            StartCoroutine(WaitForEnding(_dataManager.GetConditionMsg(), GameState.GameWin));
     }
     IEnumerator WaitToChangeDate()
     {
         yield return new WaitForSeconds(2);
-        System.DateTime result = System.DateTime.Parse(_dateControl.GetDate());
+        System.DateTime result = System.DateTime.Parse(_dataManager.dateControl.GetDate());
         result = result.AddDays(1);
-        _dateControl.SetDate(result.ToString("yyyy/MM/dd"));
+        _dataManager.dateControl.SetDate(result.ToString("yyyy/MM/dd"));
     }
     public void DateSetting()
     {
@@ -186,6 +183,18 @@ public class GameManager : MonoBehaviour
     {
         //Keep data
         gameObject.GetComponent<SceneEffect>().SceneChange(sceneNum);
+        GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach(GameObject c in cameras)
+        {
+            if(!c.activeSelf) Destroy(c);
+        }
+
+        foreach(GameObject p in players)
+        {
+            if(!p.activeSelf) Destroy(p);
+        }
     }
     private bool CheckMustItem()
     {
@@ -196,7 +205,7 @@ public class GameManager : MonoBehaviour
         // UnityEngine.Debug.Log("must-have: " + must + " ,  found: " + itemId.Count);
         foreach (int i in itemId)
         {
-            if (_dataManager.IsContainItem(i) && itemList[i] == _dataManager.GetConditionCount())
+            if (_dataManager.IsContainItem(i) && itemList[i] >= _dataManager.GetConditionCount())
                 return true;
         }
         return false;
@@ -205,10 +214,9 @@ public class GameManager : MonoBehaviour
     {
         string location = _dataManager.GetLocation();
         string exit = _dataManager.GetConditionExit();
-        if (exit == location && CheckMustItem())
+        // if (exit == location && CheckMustItem())
+        if (CheckMustItem())
             UpdateGameState(GameState.GameWin);
         else UpdateGameState(GameState.GameOver);
     }
-
-    public int GetSelectedRoute() => selectedRoute;
 }

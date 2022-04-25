@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 4614611850620405794}
   m_Layer: 0
   m_Name: BlueSwirlyAura
-  m_TagString: Untagged
+  m_TagString: SceneGate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4890,7 +4890,7 @@ Transform:
   m_GameObject: {fileID: 165698}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.50000006, y: 0.5000002, z: 0.5000001}
   m_Children:
   - {fileID: 417350}
   - {fileID: 459594}
@@ -9617,7 +9617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53e968a1342e8143bbd988124ebe637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gateType: 0
+  gateType: 2
 --- !u!1 &187930
 GameObject:
   m_ObjectHideFlags: 0

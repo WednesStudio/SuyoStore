@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 1389046071652286235}
   - component: {fileID: 7040703071257393236}
   - component: {fileID: 4018709523558748588}
-
   - component: {fileID: 3533782998361744960}
   m_Layer: 0
   m_Name: YellowZombie
@@ -34,11 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263426036935558173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-
-  m_LocalPosition: {x: 13.6, y: 10, z: 0}
-
-  m_LocalPosition: {x: 13.6, y: 0, z: 0}
-
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1263426036633849622}
@@ -5009,7 +5004,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1001 &6982462816908777196
 PrefabInstance:
