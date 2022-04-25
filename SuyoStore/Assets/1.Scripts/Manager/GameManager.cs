@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
-            SetPopUP();
+            SetPopUp();
         }
     }
     private void Start()
@@ -76,11 +76,12 @@ public class GameManager : MonoBehaviour
         if (_dataManager.dateControl.GetDays() >= 7 && EndEventTrigger)
             CheckCondition();
     }
-    private void SetPopUP()
+    private void SetPopUp()
     {
         mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
         msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
         backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
+        UnityEngine.Debug.Log("pop up set " + mustItemCanvas + ", " + msg + ", " + backgroundPanel);
     }
     public void UpdateGameState(GameState newState)
     {
@@ -113,6 +114,8 @@ public class GameManager : MonoBehaviour
         backgroundPanel.color = tempColor;
         msg.text = text;
         mustItemCanvas.SetActive(state == gameState);
+        yield return new WaitForSeconds(4);
+        msg.text = "축하합니다.\n당신은 살아남았습니다.";
     }
     public void GameStart()
     {
@@ -213,6 +216,7 @@ public class GameManager : MonoBehaviour
     public void CheckCondition()
     {
         string location = _dataManager.GetLocation();
+        UnityEngine.Debug.Log("location " + location);
         string exit = _dataManager.GetConditionExit();
         // if (exit == location && CheckMustItem())
         if (CheckMustItem())
