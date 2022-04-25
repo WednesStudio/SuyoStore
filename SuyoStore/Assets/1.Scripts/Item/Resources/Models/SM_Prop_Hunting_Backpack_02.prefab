@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8867264103793761897}
   - component: {fileID: 5170183902443760387}
   - component: {fileID: 7077256988928618169}
+  - component: {fileID: 7516039359615613691}
   m_Layer: 0
   m_Name: SM_Prop_Hunting_Backpack_02
   m_TagString: Item
@@ -146,3 +147,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &7516039359615613691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302295699681424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 0}

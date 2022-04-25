@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9122380716720287859}
   - component: {fileID: 1360660649311688644}
   - component: {fileID: 5587776737084450618}
+  - component: {fileID: 6727966416672353275}
   m_Layer: 0
   m_Name: SM_Prop_Sport_Golf_Club_02
   m_TagString: Item
@@ -146,3 +147,16 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &6727966416672353275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692453123131592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eeb0dbb8831427cbfed84672eaf50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataManager: {fileID: 0}
