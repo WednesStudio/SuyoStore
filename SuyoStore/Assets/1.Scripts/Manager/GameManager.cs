@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
     public void SetCurrentScene(string sceneName)
     {
         SceneName = sceneName;
-        _dataManager.SetCurrentInfo(SceneName, "");
+        _dataManager.SetCurrentInfo("", SceneName);
         if(SceneName == "02.F1")
         {
             if(_scenarioEvent.isShelterClear) SetEndEventTrigger();

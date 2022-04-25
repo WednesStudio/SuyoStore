@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Types;
 
+public enum Location
+{
+    B2, B1, F1, F2, F3
+}
+
 public class DataManager : MonoBehaviour
 {
     [Header("Other Scripts")]
@@ -47,6 +52,7 @@ public class DataManager : MonoBehaviour
     private int selectedRoute;
     public int GetSelectedRoute() => selectedRoute;
     public DateControl dateControl;
+    private string[] locationName = {"B2 : 주차장", "B1 : 식품관", "F1 : 행사 및 카페테리아", "F2 : 엔터테인먼트", "F3 : 휴게 공간"};
     public void Awake()
     {
         dateControl = FindObjectOfType<DateControl>();
@@ -71,9 +77,36 @@ public class DataManager : MonoBehaviour
 
     public void SetCurrentInfo(string date, string location)
     {
-        this._date = date;
-        if(location != "") this._location = location;
-        if (_currentStateUI != null) _currentStateUI.SetCurrentState(_date, _location);
+        if(location != "") this._date = date;
+        int num;
+        switch(location)
+        {
+            case "04.F3":
+                num = 4;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+            case "03.F2":
+                num = 3;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+            case "02.F1":
+                num = 2;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+            case "01.B1":
+                num = 1;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+            case "00.B2":
+                num = 0;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+        }
     }
 
     public Item SetNewItem(int ID)
