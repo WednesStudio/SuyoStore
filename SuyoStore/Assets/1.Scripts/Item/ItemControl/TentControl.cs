@@ -83,8 +83,11 @@ public class TentControl : MonoBehaviour
     }
     private void UseTent(Item item)
     {
-        playerStatus.RecoverStatus(Status.eCurStatusType.cHp, item.GetHEAL());
-        playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, item.GetSATIETY());
+        playerStatus.RecoverStatus(Status.eCurStatusType.cHp, 30);
+        playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, -10);
+        playerStatus.RecoverStatus(Status.eCurStatusType.cFatigue, playerStatus.MaxFatigue);
+        //playerStatus.RecoverStatus(Status.eCurStatusType.cHp, item.GetHEAL());
+        //playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, item.GetSATIETY());
         GameManager.GM.DateSetting();
     }
 }
