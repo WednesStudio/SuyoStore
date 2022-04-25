@@ -9,6 +9,7 @@ TagManager:
   - SceneGate
   - PlayerSpawn
   - PlayerAndCam
+  - GlobalVolume
   layers:
   - Default
   - TransparentFX
