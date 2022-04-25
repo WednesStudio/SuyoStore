@@ -4993,7 +4993,7 @@ GameObject:
   - component: {fileID: 4053112610399078453}
   - component: {fileID: 4053112610399078455}
   - component: {fileID: 4053112610399078408}
-  - component: {fileID: 4053112610399078409}
+  - component: {fileID: 2016532881794351272}
   m_Layer: 0
   m_Name: N1 (1)
   m_TagString: Zombie
@@ -9940,7 +9940,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4053112610399078409
+--- !u!114 &2016532881794351272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9953,19 +9953,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthbar: {fileID: 5283192778341792783}
-  hp: 10
-  detection: 6
+  hp: 50
+  detection: 3
   curSpeed: 0
   speed: 1
-  power: 5
+  power: 1
   coolTime: 1
-  infection: 10
+  infection: 5
   spawn: {x: 0, y: 0, z: 0}
   isDetect: 0
   isRandom: 0
   range: 0
-  zombieAnim: {fileID: 4137903499149589661}
-  child: {fileID: 4051815379722615895}
+  zombieAnim: {fileID: 0}
+  child: {fileID: 0}
 --- !u!1 &4052148931233002049
 GameObject:
   m_ObjectHideFlags: 0

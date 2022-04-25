@@ -5215,7 +5215,6 @@ GameObject:
   - component: {fileID: 3503212678937726606}
   - component: {fileID: 3588995481653230117}
   - component: {fileID: 3588995481653230118}
-  - component: {fileID: 3588995481653230106}
   - component: {fileID: 3588995482961547415}
   - component: {fileID: 3588995482961547409}
   - component: {fileID: 3588995482961547414}
@@ -5323,32 +5322,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300058, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
---- !u!114 &3588995481653230106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3588585188261943126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 443d280759f7e4b78b957eb0fc4ba7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbar: {fileID: 4656875700742704668}
-  hp: 10
-  detection: 10
-  curSpeed: 0
-  speed: 1
-  power: 5
-  coolTime: 1
-  infection: 30
-  spawn: {x: 0, y: 0, z: 0}
-  isDetect: 0
-  isRandom: 0
-  range: 0
-  zombieAnim: {fileID: 3503212678937726606}
-  child: {fileID: 3588073546298458702}
 --- !u!54 &3588995482961547415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10242,7 +10215,7 @@ MonoBehaviour:
   speed: 2
   power: 5
   coolTime: 1
-  infection: 1
+  infection: 5
   spawn: {x: 0, y: 0, z: 0}
   isDetect: 0
   isRandom: 0
@@ -10801,17 +10774,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8173513970371713530, guid: 10f5c07a27aa94217a2b054d8b1d257d, type: 3}
   m_PrefabInstance: {fileID: 3588995481678025911}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4656875700742704668 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8173513970864118443, guid: 10f5c07a27aa94217a2b054d8b1d257d, type: 3}
-  m_PrefabInstance: {fileID: 3588995481678025911}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3588995482062339868
 PrefabInstance:
   m_ObjectHideFlags: 0
