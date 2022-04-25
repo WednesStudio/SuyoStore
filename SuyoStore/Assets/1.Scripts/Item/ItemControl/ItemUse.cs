@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Types;
+using TMPro;
 
 public class ItemUse : MonoBehaviour
 {
     [SerializeField] DataManager _dataManager;
     [SerializeField] UIManager _uiManager;
-    private GameObject mustItemCanvas;
     private GameObject player;
     private PlayerStatus playerStatus;
     private PlayerController playerController;
@@ -22,7 +22,6 @@ public class ItemUse : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStatus = player.GetComponent<PlayerStatus>();
         playerController = player.GetComponent<PlayerController>();
-        mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
     }
     private void Update()
     {
@@ -44,10 +43,10 @@ public class ItemUse : MonoBehaviour
         switch (item.GetItemName())
         {
             case battery:
-                CheckMustItemDays();
+                UseBattery(itemID);
                 break;
             case cardKey:
-                CheckMustItemDays();
+                UseCardKey(item);
                 break;
             case food:
                 UseFood(item.GetSATIETY());
@@ -233,26 +232,45 @@ public class ItemUse : MonoBehaviour
     IEnumerator WaitToDisappear()
     {
         yield return new WaitForSeconds(4);
-        mustItemCanvas.SetActive(false);
+        GameManager.GM.mustItemCanvas.SetActive(false);
     }
-    private bool CheckMustItemDays()
+    private bool CheckMustItemDays(string _msg, bool check = false)
     {
-        if (_dataManager.dateControl.GetDays() < 7)
+        if (_dataManager.dateControl.GetDays() < 7 || check)
         {
-            mustItemCanvas.SetActive(true);
+            GameManager.GM.msg.text = _msg;
+            GameManager.GM.mustItemCanvas.SetActive(true);
             StartCoroutine(WaitToDisappear());
             return false;
         }
         return true;
     }
+    private void UseBattery(int itemID)
+    {
+        Dictionary<int, int> myItems = _dataManager.GetMyItems();
+        // 배터리 모으는 루트가 아니어도 10개 안 모았다고 말해주는지?
+        if (myItems[itemID] < 10)
+        {
+            string message = "배터리의 양이 부족한 것 같다. (" + myItems[itemID] + "/10)";
+            CheckMustItemDays(message, true);
+        }
+        else if (CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다."))
+            GameManager.GM.CheckCondition();
+    }
+    private void UseCardKey(Item item)
+    {
+        if (CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다."))
+            GameManager.GM.CheckCondition();
+    }
     private void UseSleepingBag(Item item, int itemID)
     {
         //조건 확인해서 사용(마지막 날, 특정 위치에서)
-        if (CheckMustItemDays())
+        if (CheckMustItemDays("아직은 사용할 때가 아닌 것 같다."))
         {
             //쓰려면 instantiate
             GameObject model = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            GameManager.GM.DateSetting();
+            // GameManager.GM.DateSetting();
+            GameManager.GM.CheckCondition();
         }
     }
     public void UseFood(int satiety)

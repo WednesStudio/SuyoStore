@@ -33,7 +33,7 @@
         {
             "number":1,
             "route":"1층으로 셔터를 열고 탈출(셔터의 경우 좀비를 잡고 드랍하는 카드키로 오픈가능)",
-            "message":"",
+            "message":"셔터가 올라가는 소리가\n백화점에 울린다",
             "sniper": ["F3"],
             "must": "SM_Prop_CardKey",
             "count": 1,
