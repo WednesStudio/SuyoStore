@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //playerObj = GameObject.FindGameObjectWithTag("Player");
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
         animator = GetComponentInChildren<Animator>();
@@ -334,6 +335,7 @@ public class PlayerController : MonoBehaviour
                     // 무기 미착용 상태
                     animator.SetTrigger("PunchNearZombie");
                     //pStatus.EquipItemsList
+                    //SoundManager.SM.sour
                 }
                 else
                 {
