@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isMove)
+        if (isMove && (!SoundManager.SM.isPlayingSfxSound()))
         {
             SoundManager.SM.PlaySfxSound(SfxSoundName.WalkSound);
         }
@@ -145,7 +145,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.G))
         {
             GetItem();
-            SoundManager.SM.PlaySfxSound(SfxSoundName.GetItemSoound);
+            if (isMove && (!SoundManager.SM.isPlayingSfxSound()))
+            {
+                SoundManager.SM.PlaySfxSound(SfxSoundName.GetItemSoound);
+            }
+            else
+            {
+                SoundManager.SM.StopSfxSound();
+            }
         }
 
         if (Input.GetMouseButtonUp(0)) {
@@ -313,7 +320,14 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("[Trigger System] Zombie!!!!");
             nearZombie = other.gameObject;
-            SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.ZombieSound);
+            if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
+            {
+                SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.ZombieSound);
+            }
+            else
+            {
+                SoundManager.SM.StopSfxSound();
+            }
         }
         else
         {

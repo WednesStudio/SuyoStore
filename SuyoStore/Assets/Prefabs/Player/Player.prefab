@@ -575,6 +575,7 @@ MonoBehaviour:
   pStatus: {fileID: 0}
   isSafe: 0
   nearSenarioItem: {fileID: 0}
+  isChangeScene: 0
   state: 0
   isMove: 0
   Weapons:
@@ -601,6 +602,7 @@ MonoBehaviour:
   - {fileID: 8084173130078292402}
   - {fileID: 1974745804559131790}
   hasWeapon: 0
+  nearScenarioItem: {fileID: 0}
 --- !u!114 &73585713532184940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +616,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curSpeed: 0
+  walkSpeed: 0
+  runAddSpeed: 0
+  sitSpeed: 0
   curHp: 0
   curSatiety: 0
   curFatigue: 0
@@ -625,6 +630,7 @@ MonoBehaviour:
   useStaminaTime: 0
   useRecoveryStaminaTime: 0
   isEquipWeapon: 0
+  isInfect: 0
   EquipItemsList: 
 --- !u!1 &72244812641594901
 GameObject:

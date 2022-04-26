@@ -22414,8 +22414,8 @@ MonoBehaviour:
   _sfxAudio: {fileID: 2059038859}
   _sfxs:
   - {fileID: 8300000, guid: 196d9362bab234b7092b94ec981c7fd5, type: 3}
-  - {fileID: 8300000, guid: f990f24bb8d074e16893b8a77d9c14a1, type: 3}
-  - {fileID: 8300000, guid: d357ff59e885946b9a1356c1e322ea3e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   _environmentals:
   - {fileID: 8300000, guid: 461fd263bb667430d86125f23f9a8c21, type: 3}
 --- !u!1001 &790592330

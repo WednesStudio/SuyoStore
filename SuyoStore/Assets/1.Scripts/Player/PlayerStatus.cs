@@ -7,7 +7,7 @@ public class PlayerStatus : Status
     PlayerController playerController;
     UIManager uiManager;
     public bool isEquipWeapon = false;
-    public bool isInfect = true;
+    public bool isInfect = false;
     float dotInfectTimer = 10.0f;
     float timer = 0.0f;
     private void Awake()

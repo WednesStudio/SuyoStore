@@ -45,6 +45,19 @@ public class SoundManager : MonoBehaviour
 
     public void StopEnvironmentalSound()
     {
-        if (_sfxAudio.isPlaying) _EnvironmentAudio.Stop();
+        if (_EnvironmentAudio.isPlaying) _EnvironmentAudio.Stop();
     }
+
+    public bool isPlayingSfxSound()
+    {
+        if (_sfxAudio.isPlaying) return true;
+        else return false;
+    }
+
+    public bool isPlayingEnvironmentalSound()
+    {
+        if (_EnvironmentAudio.isPlaying) return true;
+        else return false;
+    }
+
 }
