@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerStatus : Status
 {
     PlayerController playerController;
+    UIManager uiManager;
     public bool isEquipWeapon = false;
-    public bool isInfect = false;
+    public bool isInfect = true;
     float dotInfectTimer = 10.0f;
     float timer = 0.0f;
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void Start()
@@ -68,7 +70,7 @@ public class PlayerStatus : Status
         if (isInfect)
         {
             // setActive debuff UI
-            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, true);
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, true);
             //10초마다 hp -1
             timer += Time.deltaTime;
             if(timer >= dotInfectTimer)
@@ -79,7 +81,7 @@ public class PlayerStatus : Status
         }
         else
         {
-            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, false);
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, false);
         }
     }
 
@@ -159,7 +161,7 @@ public class PlayerStatus : Status
         // GameOver
         if (curSatiety <= 0)
         {
-            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SatietyEffect, true);
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SatietyEffect, true);
             UseHungerDieTime -= Time.deltaTime;
             if (useHungerDieTime <= 0)
             {
@@ -171,7 +173,7 @@ public class PlayerStatus : Status
         }
         else
         {
-            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SatietyEffect, false);
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SatietyEffect, false);
         }
 
         UseHungerTime -= Time.deltaTime;
@@ -223,12 +225,12 @@ public class PlayerStatus : Status
 
         if (curCarryingBag >= maxCarryingBag)
         {
-            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, true);
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, true);
             CurSpeed = walkSpeed - 2 * count;
         }
         else
         {
-            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, false);
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, false);
         }
         if (CurSpeed <= 0)
         {
