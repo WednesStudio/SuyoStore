@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         {
             SafeTime();
         }
-
+        ChangeSound();
         Anim();
         GetInput();
         if(state != PlayerState.Dead)
@@ -93,9 +93,6 @@ public class PlayerController : MonoBehaviour
         //}
     }
 
-
-
-
     void Anim()
     {
         animator.SetBool("isIdle", state == PlayerState.Idle);
@@ -104,6 +101,11 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isSit", state == PlayerState.Sit);
         animator.SetBool("isSitWalk", state == PlayerState.SitWalk);
         animator.SetBool("isDie", state == PlayerState.Dead);
+    }
+
+    void ChangeSound()
+    {
+        if (state == PlayerState.Walk || state==PlayerState.SitWalk) SoundManager.SM.PlaySfxSound(SfxSoundName.WalkSound);
     }
 
     void ChangeSpeed()
@@ -141,6 +143,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.G))
         {
             GetItem();
+            SoundManager.SM.PlaySfxSound(SfxSoundName.GetItemSoound);
         }
 
         if (Input.GetMouseButtonUp(0)) {
@@ -308,6 +311,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("[Trigger System] Zombie!!!!");
             nearZombie = other.gameObject;
+            SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.ZombieSound);
         }
         else
         {

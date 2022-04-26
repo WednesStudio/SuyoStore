@@ -5,12 +5,12 @@ using UnityEngine;
 
 public enum SfxSoundName
 {
-    ButtonClick
+    ButtonClick, WalkSound, GetItemSoound
 }
 
 public enum EnvironmentalSoundName
 {
-    BtnExit, BtnGo, BtnPopUp
+    ZombieSound
 }
 public class SoundManager : MonoBehaviour
 {
