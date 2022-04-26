@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +16,7 @@ public class ZombieAI : MonoBehaviour
     public int speed; //속도
     public int power; //공격력
     public int coolTime; //쿨타임
-    public int infection=5; //감염률
+    public int infection = 5; //감염률
     public Vector3 spawn; //스폰 위치
     public bool isDetect;
     public bool isRandom;
@@ -178,7 +177,7 @@ public class ZombieAI : MonoBehaviour
         Debug.Log(hp);
         healthbar.fillAmount = (float)curHp / (float)hp;
         Debug.Log("좀비 체력: " + curHp);
-   if (curHp <= 0)
+        if (curHp <= 0)
             Die();
     }
 }
