@@ -17,9 +17,13 @@ public class PlayerController : MonoBehaviour
     ItemControl itemControl;
     GameObject zombieObj;
     ZombieAI zombieAI;
+
+    RaycastHit rayhit;
+
     // Related Zombie
     public bool isSafe = false;
     public GameObject nearSenarioItem;
+    public bool isChangeScene = false;
 
     // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
@@ -70,13 +74,27 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // When change scene, player don't be attacked by zombie
+        if (isChangeScene)
+        {
+            SafeTime();
+        }
+
         Anim();
         GetInput();
         if(state != PlayerState.Dead)
         {
             Move();
         }
+
+        //if (Physics.Raycast(this.transform.position, this.transform.forward, out rayhit, 10f))
+        //{
+        //    rayhit.transform;
+        //}
     }
+
+
+
 
     void Anim()
     {
@@ -127,11 +145,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)) {
             Attack();
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            UseFlashlight();
         }
     }
 
@@ -360,6 +373,12 @@ public class PlayerController : MonoBehaviour
         //weapons[weaponindex].SetActive(true);
     }
 
+    IEnumerator WaitAttackTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        nearZombie.GetComponent<ZombieAI>().Hit();
+    }
+
     void Attack()
     {
         if (state == PlayerState.Idle || state == PlayerState.Sit)
@@ -392,10 +411,9 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
+                StartCoroutine(WaitAttackTime(1.0f));
 
                 state = PlayerState.Idle;
-                zombieAI = nearZombie.GetComponent<ZombieAI>();
-                zombieAI.Hit();
             }
         }
     }
@@ -422,16 +440,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Sleep()
+    void SafeTime()
     {
-        /* 
-         * 하루 스킵(day++;)
-         * 체력, 포만감 스테이터스 변화(아이템에 따라 값이 달라짐)
-         * 하루가 스킵된 이후 눕기 자세에서 기본 자세로 전환
-         */
+        StopCoroutine(WaitSafeTime(4.0f));
+        isSafe = true;
+        StartCoroutine(WaitSafeTime(4.0f));
     }
 
-    void UseFlashlight()
+    IEnumerator WaitSafeTime(float time)
     {
+        yield return new WaitForSeconds(time);
+        isSafe = false;
+        isChangeScene = false;
     }
 }

@@ -22,7 +22,7 @@ public class ZombieAI : MonoBehaviour
     public bool isDetect;
     public bool isRandom;
     public float range;
-    bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
+    //bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
     public Animator zombieAnim;
     public GameObject child;
     ZombieSpawner zombieSp;
@@ -59,7 +59,7 @@ public class ZombieAI : MonoBehaviour
     //Player Tag를 가진 객체에 닿았을 떄
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !targetController.isSafe)
         {
             zombieAnim.SetBool("isAttack", true);
             curSpeed = 0;

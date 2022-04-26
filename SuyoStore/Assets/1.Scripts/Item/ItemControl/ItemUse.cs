@@ -353,7 +353,22 @@ public class ItemUse : MonoBehaviour
         lightControl = new LightControl(item.GetDURABILITY(), itemID);
         volumeObj = GameObject.FindGameObjectWithTag("GlobalVolume");
         globalVolume = volumeObj.GetComponent<Volume>();
-        globalVolume.weight = 0.5f ;
+        switch (itemID)
+        {
+            // 밝기 세기 : 13 < 14 < 15
+            case 13:
+                globalVolume.weight = 0.9f; // 10
+                break;
+            case 14:
+                globalVolume.weight = 0.8f; // 20
+                break;
+            case 15:
+                globalVolume.weight = 0.6f; // 40
+                break;
+            default:
+                break;
+        }
+        
     }
     private void UseSmartphone()
     {
