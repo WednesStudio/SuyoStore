@@ -67,6 +67,8 @@ public class PlayerStatus : Status
 
         if (isInfect)
         {
+            // setActive debuff UI
+            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, true);
             //10초마다 hp -1
             timer += Time.deltaTime;
             if(timer >= dotInfectTimer)
@@ -74,6 +76,10 @@ public class PlayerStatus : Status
                 ReduceHp(1);
                 timer = 0.0f;
             }
+        }
+        else
+        {
+            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, false);
         }
     }
 
@@ -153,14 +159,19 @@ public class PlayerStatus : Status
         // GameOver
         if (curSatiety <= 0)
         {
+            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SatietyEffect, true);
             UseHungerDieTime -= Time.deltaTime;
-            if(useHungerDieTime <= 0)
+            if (useHungerDieTime <= 0)
             {
                 Die();
                 Debug.Log("[GAME OVER] Player is Hungry T^T");
 
                 UseHungerDieTime = GetBackTime(UseHungerDieTime, hungerDieTime);
             }
+        }
+        else
+        {
+            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SatietyEffect, false);
         }
 
         UseHungerTime -= Time.deltaTime;
@@ -212,10 +223,14 @@ public class PlayerStatus : Status
 
         if (curCarryingBag >= maxCarryingBag)
         {
+            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, true);
             CurSpeed = walkSpeed - 2 * count;
         }
-
-        if(CurSpeed <= 0)
+        else
+        {
+            GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, false);
+        }
+        if (CurSpeed <= 0)
         {
             CurSpeed = 1;
         }

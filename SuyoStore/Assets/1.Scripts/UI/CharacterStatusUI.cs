@@ -6,7 +6,7 @@ using TMPro;
 
 public enum DebuffType
 {
-    ZombieAttack, FatigueEffect, SpeedLow
+    ZombieAttack, SatietyEffect, SpeedLow
 }
 public class CharacterStatusUI : MonoBehaviour
 {
