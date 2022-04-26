@@ -17,7 +17,7 @@ public class ZombieAI : MonoBehaviour
     public int speed; //속도
     public int power; //공격력
     public int coolTime; //쿨타임
-    public int infection; //감염률
+    public int infection=5; //감염률
     public Vector3 spawn; //스폰 위치
     public bool isDetect;
     public bool isRandom;
@@ -32,6 +32,10 @@ public class ZombieAI : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
         targetStatus = target.GetComponent<PlayerStatus>();
         targetController = target.GetComponent<PlayerController>();
+
+        hp = 50;
+        detection = 6;
+        speed = 2;
 
         timer = 0;
         isDetect = false;
@@ -120,13 +124,17 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        //Player 공격과 감염
-        if (Random.Range(1, 101) <= infection)
-        {
-            Debug.Log("감염되었습니다");
-        }
-
+        //Player를 공격
         targetStatus.ReduceHp(power);
+
+        if (!targetStatus.isInfect)
+        {
+            if (Random.Range(1, 101) <= infection)
+            {
+                targetStatus.isInfect = true;
+                Debug.Log("감염되었습니다");
+            }
+        }
 
         /*
         // 원래 코드

@@ -314,6 +314,7 @@ public class ItemUse : MonoBehaviour
     public void UseHeal(int heal)
     {
         playerStatus.RecoverStatus(Status.eCurStatusType.cHp, heal);
+        playerStatus.isInfect = false;
     }
     private void LightSetting(int itemID)
     {

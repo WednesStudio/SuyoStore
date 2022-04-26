@@ -6,8 +6,9 @@ public class PlayerStatus : Status
 {
     PlayerController playerController;
     public bool isEquipWeapon = false;
-
-
+    public bool isInfect = false;
+    float dotInfectTimer = 10.0f;
+    float timer = 0.0f;
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
@@ -17,9 +18,9 @@ public class PlayerStatus : Status
     {
         // Status Initial Value
         // Speed
-        walkSpeed = 10.0f;
-        runAddSpeed = 5.0f;
-        sitSpeed = 3.0f;
+        walkSpeed = 3.0f;
+        runAddSpeed = 3.0f;
+        sitSpeed = 2.0f;
 
         // Status
         maxHp = 100;
@@ -51,6 +52,7 @@ public class PlayerStatus : Status
         useRecoveryStaminaTime = recoveryStaminaTime;
         //sturnStaminaTime = 5;
         //useSturnStaminaTime = sturnStaminaTime;
+
     }
 
     private void Update()
@@ -62,11 +64,23 @@ public class PlayerStatus : Status
         }
         SatietyModifier();
         SpeedModifier();
+
+        if (isInfect)
+        {
+            //10초마다 hp -1
+            timer += Time.deltaTime;
+            if(timer >= dotInfectTimer)
+            {
+                ReduceHp(1);
+                timer = 0.0f;
+            }
+        }
     }
 
     public virtual void Die()
     {
         playerController.state = PlayerController.PlayerState.Dead;
+        GameManager.GM.GameOver();
     }
 
     /// <summary> Hp Status </summary>
@@ -74,13 +88,6 @@ public class PlayerStatus : Status
     {
         CurHp -= zomPower;  //CurHp = ReduceStatus(eCurStatusType.cHp, zomPower);
         CurHp = RemainStatusValue(CurHp, MaxHp);
-
-        // GameOver
-        if (curHp <= 0)
-        {
-            Die();
-            Debug.Log("[GAME OVER] HP is ZERO");
-        }
     }
 
     public void RecoverStatus(eCurStatusType _statusType, int _value)
@@ -206,6 +213,11 @@ public class PlayerStatus : Status
         if (curCarryingBag >= maxCarryingBag)
         {
             CurSpeed = walkSpeed - 2 * count;
+        }
+
+        if(CurSpeed <= 0)
+        {
+            CurSpeed = 1;
         }
     }
 
