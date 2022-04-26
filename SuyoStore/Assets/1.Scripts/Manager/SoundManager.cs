@@ -38,4 +38,13 @@ public class SoundManager : MonoBehaviour
         _EnvironmentAudio.PlayOneShot(_environmentals[(int)eName]);
     }
 
+    public void StopSfxSound()
+    {
+        if (_sfxAudio.isPlaying) _sfxAudio.Stop();
+    }
+
+    public void StopEnvironmentalSound()
+    {
+        if (_sfxAudio.isPlaying) _EnvironmentAudio.Stop();
+    }
 }

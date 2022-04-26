@@ -74,12 +74,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (isMove)
+        {
+            SoundManager.SM.PlaySfxSound(SfxSoundName.WalkSound);
+        }
+        else
+        {
+            SoundManager.SM.StopSfxSound();
+        }
         // When change scene, player don't be attacked by zombie
         if (isChangeScene)
         {
             SafeTime();
         }
-        ChangeSound();
         Anim();
         GetInput();
         if(state != PlayerState.Dead)
@@ -101,11 +108,6 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isSit", state == PlayerState.Sit);
         animator.SetBool("isSitWalk", state == PlayerState.SitWalk);
         animator.SetBool("isDie", state == PlayerState.Dead);
-    }
-
-    void ChangeSound()
-    {
-        if (state == PlayerState.Walk || state==PlayerState.SitWalk) SoundManager.SM.PlaySfxSound(SfxSoundName.WalkSound);
     }
 
     void ChangeSpeed()
@@ -316,6 +318,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             nearZombie = null;
+            SoundManager.SM.StopEnvironmentalSound();
         }
     }
 
@@ -385,39 +388,42 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        if (state == PlayerState.Idle || state == PlayerState.Sit)
+        if(nearZombie != null)
         {
-            if (nearZombie.tag == "Zombie")
+            if (state == PlayerState.Idle || state == PlayerState.Sit)
             {
-                isSit = false;
-                pStatus.CurFatigue -= 2;
-
-                //if(equipWeapon == null)
-                if(!hasWeapon)
+                if (nearZombie.tag == "Zombie")
                 {
-                    // 무기 미착용 상태
-                    animator.SetTrigger("PunchNearZombie");
-                    //pStatus.EquipItemsList
-                    //SoundManager.SM.sour
-                }
-                else
-                {
-                    // 무기 착용 상태
-                    animator.SetTrigger("SwingNearZombie");
-                    ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
+                    isSit = false;
+                    pStatus.CurFatigue -= 2;
 
-                    //공격할 때마다 장착한 무기 내구도 줄어들음
-                    foreach(int i in pStatus.EquipItemsList)
+                    //if(equipWeapon == null)
+                    if (!hasWeapon)
                     {
-                        if(_dataManager.GetItemSubCategory(i) == "무기")
+                        // 무기 미착용 상태
+                        animator.SetTrigger("PunchNearZombie");
+                        //pStatus.EquipItemsList
+                        //SoundManager.SM.sour
+                    }
+                    else
+                    {
+                        // 무기 착용 상태
+                        animator.SetTrigger("SwingNearZombie");
+                        ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
+
+                        //공격할 때마다 장착한 무기 내구도 줄어들음
+                        foreach (int i in pStatus.EquipItemsList)
                         {
-                            itemUse.SetItemDURABILITY(i);
+                            if (_dataManager.GetItemSubCategory(i) == "무기")
+                            {
+                                itemUse.SetItemDURABILITY(i);
+                            }
                         }
                     }
-                }
-                StartCoroutine(WaitAttackTime(1.0f));
+                    StartCoroutine(WaitAttackTime(1.0f));
 
-                state = PlayerState.Idle;
+                    state = PlayerState.Idle;
+                }
             }
         }
     }
