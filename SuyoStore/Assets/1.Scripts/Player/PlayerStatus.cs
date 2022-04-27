@@ -30,8 +30,8 @@ public class PlayerStatus : Status
         maxFatigue = 100;
 
         curHp = 100;
-        curSatiety = 50;
-        curFatigue = 50;
+        curSatiety = 100;
+        curFatigue = 100;
 
         // Ability
         maxCarryingBag = 30;

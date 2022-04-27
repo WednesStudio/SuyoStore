@@ -8,12 +8,12 @@ public enum BGMSoundName
 }
 public enum SfxSoundName
 {
-    ButtonClick, WalkSound, GetItemSoound
+    ButtonClick
 }
 
 public enum EnvironmentalSoundName
 {
-    ZombieSound
+    ZombieSound, WalkSound, GetItemSoound
 }
 public class SoundManager : MonoBehaviour
 {

@@ -65,7 +65,8 @@ public class DataManager : MonoBehaviour
     }
     public void LoadJsonData()
     {
-        selectedRoute = UnityEngine.Random.Range(0, 3);
+        selectedRoute = 2;
+        //selectedRoute = UnityEngine.Random.Range(0, 3);
         string dir = directory + routes[selectedRoute];
         GameObject.Find("Reader").GetComponent<LoadJson>().LoadMsgData(dir);
         GameObject.Find("Reader").GetComponent<LoadJson>().LoadConditionData(dir);
