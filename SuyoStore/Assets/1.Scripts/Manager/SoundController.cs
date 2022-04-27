@@ -12,7 +12,7 @@ public class SoundController : MonoBehaviour
     [SerializeField] Slider _masterVolSlider, _musicVolSlider, _environmentVolSlider, _sfxVolSlider;
     
     private bool _isMasterOn = true, _isMusicOn = true, _isEnvironmentOn = true, _isSfxOn = true;
-    private float _curMasterVol;
+    private float _curMasterVol = 0.8f;
 
     public void SetMasterVolume(float volume)
     {
