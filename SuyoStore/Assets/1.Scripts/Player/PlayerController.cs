@@ -74,14 +74,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (isMove && (!SoundManager.SM.isPlayingSfxSound()))
-        {
-            SoundManager.SM.PlaySfxSound(SfxSoundName.WalkSound);
-        }
-        else
-        {
-            SoundManager.SM.StopSfxSound();
-        }
+        //if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
+        //{
+        //    SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.WalkSound);
+        //}
+        //else
+        //{
+        //    SoundManager.SM.StopEnvironmentalSound();
+        //}
         // When change scene, player don't be attacked by zombie
         if (isChangeScene)
         {
@@ -145,14 +145,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.G))
         {
             GetItem();
-            if (isMove && (!SoundManager.SM.isPlayingSfxSound()))
-            {
-                SoundManager.SM.PlaySfxSound(SfxSoundName.GetItemSoound);
-            }
-            else
-            {
-                SoundManager.SM.StopSfxSound();
-            }
+            //if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
+            //{
+            //    SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.GetItemSoound);
+            //}
+            //else
+            //{
+            //    SoundManager.SM.StopEnvironmentalSound();
+            //}
         }
 
         if (Input.GetMouseButtonUp(0)) {
