@@ -7,11 +7,12 @@ public class SoundController : MonoBehaviour
 {
     [SerializeField] AudioSource _musicSource, _environmentSource, _sfxSource;
     [SerializeField] Sprite _soundOnImage, _soundOffImage;
-    [SerializeField] Sprite _sfxOnImage, _sfxOffImage;
+    [SerializeField] Sprite _startOnImage, _startOffImage;
     [SerializeField] Button _masterButton, _musicButton, _environmentButton, _sfxButton;
+    [SerializeField] Button _startMusicButton;
     [SerializeField] Slider _masterVolSlider, _musicVolSlider, _environmentVolSlider, _sfxVolSlider;
     
-    private bool _isMasterOn = true, _isMusicOn = true, _isEnvironmentOn = true, _isSfxOn = true;
+    private bool _isMasterOn = true, _isMusicOn = true, _isEnvironmentOn = true, _isSfxOn = true, _isStartMusicOn;
     private float _curMasterVol = 0.8f;
 
     public void SetMasterVolume(float volume)
@@ -38,13 +39,13 @@ public class SoundController : MonoBehaviour
     {
         _environmentSource.enabled = true;
         _environmentSource.volume = volume;
-        _environmentButton.GetComponent<Image>().sprite = _sfxOffImage;
+        _environmentButton.GetComponent<Image>().sprite = _soundOnImage;
     }
     public void SetSFxVolume(float volume)
     {
         _sfxSource.enabled = true;
         _sfxSource.volume = volume;
-        _sfxButton.GetComponent<Image>().sprite = _sfxOffImage;
+        _sfxButton.GetComponent<Image>().sprite = _soundOffImage;
     }
 
     public void MasterOnOff()
@@ -89,13 +90,13 @@ public class SoundController : MonoBehaviour
         if(_isEnvironmentOn)
         {
             _environmentSource.enabled = false;
-            _environmentButton.GetComponent<Image>().sprite = _sfxOnImage;
+            _environmentButton.GetComponent<Image>().sprite = _soundOnImage;
             _isEnvironmentOn = false;
         }
         else
         {
             _environmentSource.enabled = true;
-            _environmentButton.GetComponent<Image>().sprite = _sfxOffImage;
+            _environmentButton.GetComponent<Image>().sprite = _soundOffImage;
             _isEnvironmentOn = true;
         }
     }
@@ -105,14 +106,30 @@ public class SoundController : MonoBehaviour
         if(_isSfxOn)
         {
             _sfxSource.enabled = false;
-            _sfxButton.GetComponent<Image>().sprite = _sfxOnImage;
+            _sfxButton.GetComponent<Image>().sprite = _soundOnImage;
             _isSfxOn = false;
         }
         else
         {
             _sfxSource.enabled = true;
-            _sfxButton.GetComponent<Image>().sprite = _sfxOffImage;
+            _sfxButton.GetComponent<Image>().sprite = _soundOffImage;
             _isSfxOn = true;
         }        
+    }
+
+    public void SetStartSound()
+    {
+        if(_isStartMusicOn)
+        {
+            _musicSource.enabled = false;
+            _startMusicButton.GetComponent<Image>().sprite = _startOnImage;
+            _isStartMusicOn = false;
+        }
+        else
+        {
+            _musicSource.enabled = true;
+            _startMusicButton.GetComponent<Image>().sprite = _startOffImage;
+            _isStartMusicOn = true;
+        }
     }
 }
