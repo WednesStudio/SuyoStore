@@ -261,7 +261,6 @@ Transform:
   - {fileID: 4358155311646349703}
   - {fileID: 4352072741295913069}
   - {fileID: 4358224695936421963}
-  - {fileID: 5549890259874229200}
   - {fileID: 5549890259054638724}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5199,8 +5198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443d280759f7e4b78b957eb0fc4ba7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   healthbar: {fileID: 5549890258235730049}
   hp: 50
+
   detection: 10
   curSpeed: 0
   speed: 2
@@ -10661,7 +10662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8173513970371713530, guid: 10f5c07a27aa94217a2b054d8b1d257d, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 8173513970371713530, guid: 10f5c07a27aa94217a2b054d8b1d257d, type: 3}
       propertyPath: m_AnchorMax.x

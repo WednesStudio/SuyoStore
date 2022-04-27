@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum BGMSoundName
+{
+    MainMusic
+}
 public enum SfxSoundName
 {
     ButtonClick
@@ -17,6 +20,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource _bgmAudio = null;
     [SerializeField] private AudioSource _EnvironmentAudio = null;
     [SerializeField] private AudioSource _sfxAudio = null;
+    [SerializeField] private AudioClip[] _bgms = null;
     [SerializeField] private AudioClip[] _sfxs = null;
     [SerializeField] private AudioClip[] _environmentals = null;
     public static SoundManager SM;
@@ -28,14 +32,24 @@ public class SoundManager : MonoBehaviour
         _soundController = gameObject.GetComponent<SoundController>();
     }
 
+    public void PlayBGMSound(BGMSoundName bName)
+    {
+        if(_bgmAudio.clip != null) _bgmAudio.PlayOneShot(_bgms[(int)bName]);
+    }
+
     public void PlaySfxSound(SfxSoundName sName)
     {
-        _sfxAudio.PlayOneShot(_sfxs[(int)sName]);
+        if(_sfxAudio.clip != null) _sfxAudio.PlayOneShot(_sfxs[(int)sName]);
     }
 
     public void PlayEnvironmentalSound(EnvironmentalSoundName eName)
     {
-        _EnvironmentAudio.PlayOneShot(_environmentals[(int)eName]);
+        if(_EnvironmentAudio.clip != null) _EnvironmentAudio.PlayOneShot(_environmentals[(int)eName]);
+    }
+
+    public void StopBGMSound()
+    {
+        if (_bgmAudio.isPlaying) _bgmAudio.Stop();
     }
 
     public void StopSfxSound()
@@ -46,6 +60,12 @@ public class SoundManager : MonoBehaviour
     public void StopEnvironmentalSound()
     {
         if (_EnvironmentAudio.isPlaying) _EnvironmentAudio.Stop();
+    }
+
+    public bool isPlayingBGMSound()
+    {
+        if (_bgmAudio.isPlaying) return true;
+        else return false;
     }
 
     public bool isPlayingSfxSound()
