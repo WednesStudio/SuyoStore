@@ -92,7 +92,6 @@ public class UIManager : MonoBehaviour
         {
             _overCapacity = true;
             _debuffSpeed = ((int)excessRate * 2);
-            
         }
         else
         {
