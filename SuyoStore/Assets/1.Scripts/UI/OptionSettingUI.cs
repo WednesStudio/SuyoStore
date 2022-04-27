@@ -42,29 +42,35 @@ public class OptionSettingUI : MonoBehaviour
     
     public void OnStatusAndInventoryWindow()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _statusInventoryWindow.SetActive(true);
     }
     public void OnManipulationWindow()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _manipulationWindow.SetActive(true);
     }
     public void OnOptionWindow()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _optionWindow.SetActive(true);
     }
     
     //Off window
     public void OffStatusAndInventoryWindow()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         gameObject.GetComponent<InventoryUI>().ChangeScrollView(0);
         _statusInventoryWindow.SetActive(false);
     }
     public void OffManipulationWindow()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _manipulationWindow.SetActive(false);
     }
     public void OffOptionWindow()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _optionWindow.SetActive(false);
         OnSoundPanel();
     }
@@ -72,6 +78,7 @@ public class OptionSettingUI : MonoBehaviour
     //Exit game
     public void ExitGame()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _exitGameWindow.SetActive(true);
     }
 
@@ -86,6 +93,7 @@ public class OptionSettingUI : MonoBehaviour
 
     public void CancleExitGame()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _exitGameWindow.SetActive(false);
     }
 
@@ -124,6 +132,7 @@ public class OptionSettingUI : MonoBehaviour
 
     public void OnResolutionSetting()
     {
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _resolutionScrollview.SetActive(true);
     }
 
@@ -132,33 +141,35 @@ public class OptionSettingUI : MonoBehaviour
         _resolutionScrollview.SetActive(false);
     }
 
-    public void WindowModeSetting()
-    {
+    // public void WindowModeSetting()
+    // {
 
-    }
+    // }
 
-    public void MouseSetting(float val)
-    {
-        // Vector2 sensitivity = new Vector2(0.5f, 0.5f);
-        // Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X") * sensitivity.x,
-        //                                     Input.GetAxisRaw("Mouse Y") * sensitivity.y);
-        // print(mouseMovement);
-        if(!_mouseInitialized) return;
-        if(!Application.isPlaying) return;
-        PlayerPrefs.SetFloat("Sensitivity", val);
-        Debug.Log(val);
-    }
+    // public void MouseSetting(float val)
+    // {
+    //     // Vector2 sensitivity = new Vector2(0.5f, 0.5f);
+    //     // Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X") * sensitivity.x,
+    //     //                                     Input.GetAxisRaw("Mouse Y") * sensitivity.y);
+    //     // print(mouseMovement);
+    //     if(!_mouseInitialized) return;
+    //     if(!Application.isPlaying) return;
+    //     PlayerPrefs.SetFloat("Sensitivity", val);
+    //     Debug.Log(val);
+    // }
 
     //Sound Panel
     public void OnSoundPanel()
     {
         OnPanels(3, 2, 0);
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
     }
 
     //Service Panel
     public void OnServicePanel()
     {
         OnPanels(3, 2, 1);
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
     }
 
     public void OnCredit()

@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     CharacterController characterController;
     DataManager _dataManager;
+    UIManager _uiManager;
+    ScenarioEvent _scenarioEvent;
     public PlayerStatus pStatus;
     GameObject nearItem;
     GameObject nearZombie;
@@ -15,8 +17,13 @@ public class PlayerController : MonoBehaviour
     ItemControl itemControl;
     GameObject zombieObj;
     ZombieAI zombieAI;
+
+    RaycastHit rayhit;
+
     // Related Zombie
     public bool isSafe = false;
+    public GameObject nearSenarioItem;
+    public bool isChangeScene = false;
 
     // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
@@ -36,12 +43,12 @@ public class PlayerController : MonoBehaviour
     int useStamina = 10;
     int recoverStamina = 5;
 
-
     //weapon
     public GameObject[] Weapons;
 
     //light
     public GameObject[] Lights;
+    bool islightOn = false;
 
     //bag
     public GameObject[] Bags;
@@ -49,25 +56,48 @@ public class PlayerController : MonoBehaviour
     // Attack
     public bool hasWeapon;
     Weapon equipWeapon;
+    public GameObject nearScenarioItem;
 
     private void Start()
     {
+        //itemObj = GameObject.FindGameObjectWithTag("Item");
+        //itemControl = itemObj.GetComponent<ItemControl>();
+        //playerObj = GameObject.FindGameObjectWithTag("Player");
         characterController = GetComponent<CharacterController>();
         pStatus = GetComponent<PlayerStatus>();
         animator = GetComponentInChildren<Animator>();
-        itemObj = GameObject.FindGameObjectWithTag("Item");
-        itemControl = itemObj.GetComponent<ItemControl>();
+
         _dataManager = FindObjectOfType<DataManager>();
+        _uiManager = FindObjectOfType<UIManager>();
+        _scenarioEvent = _uiManager.GetComponent<ScenarioEvent>();
     }
 
     private void Update()
     {
+        if (isMove && (!SoundManager.SM.isPlayingSfxSound()))
+        {
+            SoundManager.SM.PlaySfxSound(SfxSoundName.WalkSound);
+        }
+        else
+        {
+            SoundManager.SM.StopSfxSound();
+        }
+        // When change scene, player don't be attacked by zombie
+        if (isChangeScene)
+        {
+            SafeTime();
+        }
         Anim();
         GetInput();
         if(state != PlayerState.Dead)
         {
             Move();
         }
+
+        //if (Physics.Raycast(this.transform.position, this.transform.forward, out rayhit, 10f))
+        //{
+        //    rayhit.transform;
+        //}
     }
 
     void Anim()
@@ -115,6 +145,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.G))
         {
             GetItem();
+            if (isMove && (!SoundManager.SM.isPlayingSfxSound()))
+            {
+                SoundManager.SM.PlaySfxSound(SfxSoundName.GetItemSoound);
+            }
+            else
+            {
+                SoundManager.SM.StopSfxSound();
+            }
         }
 
         if (Input.GetMouseButtonUp(0)) {
@@ -129,20 +167,27 @@ public class PlayerController : MonoBehaviour
         {
             if (isSit)
             {
+                // Can't Run, only Sit
                 if (isMove) state = PlayerState.SitWalk;
                 else state = PlayerState.Sit;
             } 
             else
             {
                 state = PlayerState.Run;
+
                 if (pStatus.CurStamina > 0)
                 {
+                    // stamina 감소
                     pStatus.UseStamina(useStamina);
                 }
                 else
                 {
-                    if (isMove) state = PlayerState.SitWalk;
-                    else state = PlayerState.Sit;
+                    // only walk, not Run
+                    if (isMove) state = PlayerState.Walk;
+                    else state = PlayerState.Idle;
+                    // 앉는 거 아님
+                    //if (isMove) state = PlayerState.SitWalk;
+                    //else state = PlayerState.Sit;
                 }
             }
         }
@@ -246,12 +291,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Judge Item ojbect near Player For GetItem()
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnTriggerStay(Collider other)
     {
-        if(hit.gameObject.tag == "Item")
+        if(other.tag == "Item")
         {
-            Debug.Log("[Trigger System] Item : " + hit.gameObject.name);
-            nearItem = hit.gameObject;
+            Debug.Log("[Trigger System] Item : " + other.gameObject.name);
+            nearItem = other.gameObject;
         }
         else
         {
@@ -261,19 +306,44 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "ScenarioAsset")
+        {
+            nearScenarioItem = other.gameObject;
+            _scenarioEvent.GetScenarioItem(nearScenarioItem);
+        }
+        else
+        {
+            nearScenarioItem = null;
+        }
+
         if (other.tag == "Zombie")
         {
             Debug.Log("[Trigger System] Zombie!!!!");
             nearZombie = other.gameObject;
+            if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
+            {
+                SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.ZombieSound);
+            }
+            else
+            {
+                SoundManager.SM.StopSfxSound();
+            }
         }
         else
         {
             nearZombie = null;
+            SoundManager.SM.StopEnvironmentalSound();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.tag == "SenarioAsset")
+        {
+            nearScenarioItem = null;
+
+        }
+
         if (other.tag == "Zombie")
         {
             Debug.Log("[Trigger System] Zombie Out!!!!");
@@ -283,6 +353,7 @@ public class PlayerController : MonoBehaviour
 
     void GetItem()
     {
+
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
             if(nearItem.tag == "Item")
@@ -294,8 +365,13 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("PickUp");
                 // 타겟 아이템 위치가 바닥이 아닐 때:
                 /* 애니메이션 : CatchingItem */
-                StopCoroutine(WaitGetItemTime(1.0f));
-                StartCoroutine(WaitGetItemTime(1.0f));
+                //StopCoroutine(WaitGetItemTime(1.0f));
+                //StartCoroutine(WaitGetItemTime(1.0f));
+                nearItem.GetComponent<ItemControl>().GetThisItem();
+            }
+            else if(nearItem.tag == "ScenarioAsset")
+            {
+                _scenarioEvent.GetScenarioItem(nearItem.gameObject);
             }
         }
         else
@@ -308,7 +384,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaitGetItemTime(float time)
     {
         yield return new WaitForSeconds(time);
-        nearItem.GetComponent<ItemControl>().GetThisItem();
         //Destroy(hit.gameObject);
     }
 
@@ -319,41 +394,50 @@ public class PlayerController : MonoBehaviour
         //weapons[weaponindex].SetActive(true);
     }
 
+    IEnumerator WaitAttackTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        nearZombie.GetComponent<ZombieAI>().Hit();
+    }
+
     void Attack()
     {
-        if (state == PlayerState.Idle || state == PlayerState.Sit)
+        if(nearZombie != null)
         {
-            if (nearZombie.tag == "Zombie")
+            if (state == PlayerState.Idle || state == PlayerState.Sit)
             {
-                isSit = false;
-                pStatus.CurFatigue -= 2;
-
-                //if(equipWeapon == null)
-                if(!hasWeapon)
+                if (nearZombie.tag == "Zombie")
                 {
-                    // 무기 미착용 상태
-                    animator.SetTrigger("PunchNearZombie");
-                    //pStatus.EquipItemsList
-                }
-                else
-                {
-                    // 무기 착용 상태
-                    animator.SetTrigger("SwingNearZombie");
-                    ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
+                    isSit = false;
+                    pStatus.CurFatigue -= 2;
 
-                    //공격할 때마다 장착한 무기 내구도 줄어들음
-                    foreach(int i in pStatus.EquipItemsList)
+                    //if(equipWeapon == null)
+                    if (!hasWeapon)
                     {
-                        if(_dataManager.GetItemSubCategory(i) == "무기")
+                        // 무기 미착용 상태
+                        animator.SetTrigger("PunchNearZombie");
+                        //pStatus.EquipItemsList
+                        //SoundManager.SM.sour
+                    }
+                    else
+                    {
+                        // 무기 착용 상태
+                        animator.SetTrigger("SwingNearZombie");
+                        ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
+
+                        //공격할 때마다 장착한 무기 내구도 줄어들음
+                        foreach (int i in pStatus.EquipItemsList)
                         {
-                            itemUse.SetItemDURABILITY(i);
+                            if (_dataManager.GetItemSubCategory(i) == "무기")
+                            {
+                                itemUse.SetItemDURABILITY(i);
+                            }
                         }
                     }
-                }
+                    StartCoroutine(WaitAttackTime(1.0f));
 
-                state = PlayerState.Idle;
-                zombieAI = nearZombie.GetComponent<ZombieAI>();
-                zombieAI.Hit();
+                    state = PlayerState.Idle;
+                }
             }
         }
     }
@@ -380,12 +464,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Sleep()
+    void SafeTime()
     {
-        /* 
-         * 하루 스킵(day++;)
-         * 체력, 포만감 스테이터스 변화(아이템에 따라 값이 달라짐)
-         * 하루가 스킵된 이후 눕기 자세에서 기본 자세로 전환
-         */
+        StopCoroutine(WaitSafeTime(4.0f));
+        isSafe = true;
+        StartCoroutine(WaitSafeTime(4.0f));
+    }
+
+    IEnumerator WaitSafeTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isSafe = false;
+        isChangeScene = false;
     }
 }

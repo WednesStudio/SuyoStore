@@ -19,15 +19,13 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Objects")]
     [SerializeField] GameObject _gameStartUI;
-    [SerializeField] GameObject _inGameUI;
-    [SerializeField] GameObject _mainCamera;
     private bool _overCapacity;
     private int _debuffSpeed;
 
     private void Start() 
     {
         _character = GameObject.FindGameObjectWithTag("Player");
-        _characterInfo = _character.GetComponent<PlayerStatus>();    
+        _characterInfo = _character.GetComponent<PlayerStatus>();
     }
 
     private void Update() 
@@ -47,16 +45,16 @@ public class UIManager : MonoBehaviour
     }
     public void GameStartUI()
     {
-        _gameStartUI.SetActive(false);
-        _inGameUI.SetActive(true);
-        _mainCamera.SetActive(true);
         GameManager.GM.GameStart();
+        _gameStartUI.SetActive(false);
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
     }
 
     public void ExitGameUI()
     {
         //Fade out
         GameManager.GM.ExitGame();
+        SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
     }
 
     public void SetTopBarUI(float hp, float satiety, float fatigue, int speed, int attackPower)
@@ -90,7 +88,6 @@ public class UIManager : MonoBehaviour
         {
             _overCapacity = true;
             _debuffSpeed = ((int)excessRate * 2);
-            
         }
         else
         {

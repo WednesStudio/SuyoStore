@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Types;
 
+public enum Location
+{
+    B2, B1, F1, F2, F3
+}
+
 public class DataManager : MonoBehaviour
 {
     [Header("Other Scripts")]
@@ -36,20 +41,27 @@ public class DataManager : MonoBehaviour
     public string GetLocation() => _location;
 
     //private List<Item> _itemList = null;
+    private GameObject player;
+    private PlayerStatus pStatus;
     private string _date, _location;
     private List<ItemData> _totalItemList;
-    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", smartPhone = "스마트폰", bag = "가방";
+    private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", smartPhone = "스마트폰", bag = "가방", cardKey = "카드키";
     private int maxCapacity = 30;
 
+    [Header("Game Ending System")]
     private JsonConditionData jsonConditionData;
     private string directory = "Data/";
     private string[] routes = { "route1", "route2", "route3" };
     private int selectedRoute;
     public int GetSelectedRoute() => selectedRoute;
     public DateControl dateControl;
+
+    private string[] locationName = {"B2 : 주차장", "B1 : 식품관", "F1 : 행사 및 카페테리아", "F2 : 엔터테인먼트", "F3 : 휴게 공간"};
     public void Awake()
     {
         dateControl = FindObjectOfType<DateControl>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        pStatus = player.GetComponent<PlayerStatus>();
     }
     public void LoadJsonData()
     {
@@ -59,22 +71,47 @@ public class DataManager : MonoBehaviour
         GameObject.Find("Reader").GetComponent<LoadJson>().LoadConditionData(dir);
         jsonConditionData = GameObject.Find("Reader").GetComponent<LoadJson>().conditionList;
     }
-    public void SetData() //out bool isGameDataExist)
+    public void SetData()
     {
-        //_csvReader.Read(out _creatureList, out _itemList);
         _loadExcel.LoadItemData();
         _totalItemList = _loadExcel.itemDatabase;
 
         // MyItems.Add(GetItemID("배터리1"), 10);
-        // MyItems.Add(GetItemID("카드키"), 10);
         // MyItems.Add(GetItemID("침낭1"), 1);
     }
 
     public void SetCurrentInfo(string date, string location)
     {
-        this._date = date;
-        this._location = location;
-        if (_currentStateUI != null) _currentStateUI.SetCurrentState(_date, _location);
+        this._date = dateControl.GetDate();
+        int num;
+        switch(location)
+        {
+            case "04.F3":
+                num = 4;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+            case "03.F2":
+                num = 3;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+            case "02.F1":
+                num = 2;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+            case "01.B1":
+                num = 1;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+            case "00.B2":
+                num = 0;
+                this._location = locationName[num];
+                _currentStateUI.SetCurrentState(_date, _location);
+                break;
+        }
     }
 
     public Item SetNewItem(int ID)
@@ -133,6 +170,9 @@ public class DataManager : MonoBehaviour
                     case smartPhone:
                         _inventoryUI.SetImportantBagContents();
                         break;
+                    case cardKey:
+                        _inventoryUI.SetImportantBagContents();
+                        break;
                     default:
                         Debug.Log("item Category doesn't exist!");
                         break;
@@ -170,6 +210,9 @@ public class DataManager : MonoBehaviour
                         //_inventoryUI.SetSleepingBagContents();
                         break;
                     case smartPhone:
+                        _inventoryUI.SetImportantBagContents();
+                        break;
+                    case cardKey:
                         _inventoryUI.SetImportantBagContents();
                         break;
                     default:
@@ -218,6 +261,9 @@ public class DataManager : MonoBehaviour
                     case smartPhone:
                         _inventoryUI.SetImportantBagContents();
                         break;
+                    case cardKey:
+                        _inventoryUI.SetImportantBagContents();
+                        break;
                     default:
                         Debug.Log("item Category doesn't exist!");
                         break;
@@ -226,7 +272,7 @@ public class DataManager : MonoBehaviour
             _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(-capacity, maxCapacity);
         }
-
+        pStatus.CurCarryingBag += capacity;
         _uiManager.SetPlayerSpeed(_inventoryUI.GetCurrentCapacity(), maxCapacity);
     }
 
@@ -251,7 +297,7 @@ public class DataManager : MonoBehaviour
     }
     public List<int> GetItemIDMyList(string name)
     {
-        // 선택된 루트의 must item 중 "SM_Props_Battery" 같이 앞부분 글자를 포함한 모든 아이템 아이디를 저장
+        // 선택된 루트의 must item 중 "SM_Item_Battery" 같이 앞부분 글자를 포함한 모든 아이템 아이디를 저장
 
         List<int> idList = new List<int>();
         foreach (ItemData i in _totalItemList)

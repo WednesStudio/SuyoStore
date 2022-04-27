@@ -13,6 +13,7 @@ public class RightClickHandler : MonoBehaviour, IPointerClickHandler
         {
             ui = FindObjectOfType<UIManager>();
             ui.ChangeWeaponState(gameObject);
+            SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         }
     }
 }

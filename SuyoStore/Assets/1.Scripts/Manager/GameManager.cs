@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DataManager _dataManager;
     [SerializeField] UIManager _uiManager;
     [SerializeField] ItemUse _itemUse;
+    [SerializeField] ScenarioEvent _scenarioEvent;
     [NonSerialized]
     public GameObject mustItemCanvas;
     [NonSerialized]
@@ -29,9 +30,12 @@ public class GameManager : MonoBehaviour
     private int _currentSceneNum;
     [NonSerialized]
     public GameState state;
+    private string _sceneName;
     public static event Action<GameState> OnGameStateChanged;
     private bool EndEventTrigger = false;
     private bool coroutineSwitch = true;
+    private bool isGameStart = false;
+
     public void SetEndEventTrigger()
     {
         EndEventTrigger = true;
@@ -43,38 +47,49 @@ public class GameManager : MonoBehaviour
         else
         {
             GM = this;
-            DontDestroyOnLoad(gameObject);
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
-            SetPopUP();
+            // SetPopUp();
         }
     }
     private void Start()
     {
-        UpdateGameState(GameState.GameStart);
+        //UpdateGameState(GameState.GameStart);
     }
 
     private void Update()
     {
-        if (_dataManager.dateControl.GetDays() == 7 && EndEventTrigger)
-            CheckCondition();
+        if(isGameStart)
+        {
+            if (_dataManager.dateControl.GetDays() >= 7 && EndEventTrigger)
+            // if (_dataManager.dateControl.GetDays() >= 7)
+                CheckCondition();
+        }
+        
     }
-    
-  public void GameStart()
+
+    public void GameStart()
     {
         //Initial Game Setting
         //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
-        ChangeToOtherScene(0);  //빌드 번호가 바로 0인 지하 2층으로 스폰
+        ChangeToOtherScene(4);  //빌드 번호가 바로 4인 지상 3층으로 스폰
+        UpdateGameState(GameState.GameStart);
+        isGameStart = true;
+        if(!SoundManager.SM.isPlayingBGMSound()) SoundManager.SM.PlayBGMSound(BGMSoundName.MainMusic);
+        else
+        {
+            SoundManager.SM.StopBGMSound();
+            SoundManager.SM.PlayBGMSound(BGMSoundName.MainMusic);
+        }
     }
-
-    private void SetPopUP()
+    private void SetPopUp()
     {
         mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
         msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
         backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
     }
-    
+
     public void UpdateGameState(GameState newState)
     {
         state = newState;
@@ -82,7 +97,7 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.GameStart:
-                GameStart();
+                //GameStart();
                 break;
             case GameState.GameOver:
                 GameOver();
@@ -106,8 +121,10 @@ public class GameManager : MonoBehaviour
         backgroundPanel.color = tempColor;
         msg.text = text;
         mustItemCanvas.SetActive(state == gameState);
+        yield return new WaitForSeconds(4);
+        msg.text = "축하합니다.\n당신은 살아남았습니다.";
     }
-    
+
     public void GameOver()
     {
         if (coroutineSwitch)
@@ -129,6 +146,11 @@ public class GameManager : MonoBehaviour
     {
         gameObject.GetComponent<SceneEffect>().FadeEffect(-1);
         StartCoroutine(WaitToChangeDate());
+    }
+    public int GetCurrentDay()
+    {
+        int day = _dataManager.dateControl.GetDays();
+        return day;
     }
     private void SetWholeUI()
     {
@@ -153,7 +175,7 @@ public class GameManager : MonoBehaviour
         Item temp = _dataManager.SetNewItem(itemID);
         string category = _dataManager.GetItemSubCategory(itemID);
         print(category);
-        if (category != "가방" && category != "스마트폰" && category != "침낭" && category != "보조배터리") _dataManager.AddItem(itemID, -1);
+        if (category != "가방" && category != "스마트폰" && category != "침낭" && category != "보조배터리" && category != "카드키") _dataManager.AddItem(itemID, -1);
         _itemUse.UseItem(itemID);
     }
 
@@ -186,28 +208,47 @@ public class GameManager : MonoBehaviour
         GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        foreach(GameObject c in cameras)
+        foreach (GameObject c in cameras)
         {
-            if(!c.activeSelf) Destroy(c);
+            if (!c.activeSelf) Destroy(c);
         }
 
-        foreach(GameObject p in players)
+        foreach (GameObject p in players)
         {
-            if(!p.activeSelf) Destroy(p);
+            if (!p.activeSelf) Destroy(p);
         }
     }
+
+    public void SetCurrentScene(string sceneName)
+    {
+        _sceneName = sceneName;
+        _dataManager.SetCurrentInfo("", _sceneName);
+        if(_sceneName == "02.F1")
+        {
+            if(_scenarioEvent.isShelterClear) SetEndEventTrigger();
+        }
+    }
+
+    public string GetSceneName()
+    {
+        return _sceneName;
+    }
+
     private bool CheckMustItem()
     {
         Dictionary<int, int> itemList = _dataManager.GetMyItems();
         string must = _dataManager.GetConditionMust();
         List<int> itemId = _dataManager.GetItemIDMyList(must);
+        int total = 0;
 
         // UnityEngine.Debug.Log("must-have: " + must + " ,  found: " + itemId.Count);
         foreach (int i in itemId)
         {
-            if (_dataManager.IsContainItem(i) && itemList[i] >= _dataManager.GetConditionCount())
-                return true;
+            if (_dataManager.IsContainItem(i))
+                total += itemList[i];
         }
+        if (total >= _dataManager.GetConditionCount())
+            return true;
         return false;
     }
     public void CheckCondition()

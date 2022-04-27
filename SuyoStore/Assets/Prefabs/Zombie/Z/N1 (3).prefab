@@ -4826,7 +4826,6 @@ GameObject:
   - component: {fileID: 7155601210366437718}
   - component: {fileID: 7070238400160816637}
   - component: {fileID: 7070238400160816638}
-  - component: {fileID: 7070238400160816578}
   - component: {fileID: 7070238400172227669}
   - component: {fileID: 7070238400172227667}
   - component: {fileID: 7070238400172227666}
@@ -4933,32 +4932,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300058, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
---- !u!114 &7070238400160816578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7069827925290365070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 443d280759f7e4b78b957eb0fc4ba7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthbar: {fileID: 1400812979895642564}
-  hp: 10
-  detection: 5
-  curSpeed: 0
-  speed: 1
-  power: 5
-  coolTime: 1
-  infection: 100
-  spawn: {x: 0, y: 0, z: 0}
-  isDetect: 0
-  isRandom: 0
-  range: 0
-  zombieAnim: {fileID: 7155601210366437718}
-  child: {fileID: 7068842121131761472}
 --- !u!54 &7070238400172227669
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9845,14 +9818,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443d280759f7e4b78b957eb0fc4ba7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthbar: {fileID: 0}
-  hp: 10
+
+  healthbar: {fileID: 1400812980784365947}
+  hp: 50
+
   detection: 10
   curSpeed: 0
   speed: 2
   power: 5
   coolTime: 1
-  infection: 1
+  infection: 5
   spawn: {x: 0, y: 0, z: 0}
   isDetect: 0
   isRandom: 0
@@ -10800,14 +10775,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8173513970371713530, guid: 10f5c07a27aa94217a2b054d8b1d257d, type: 3}
   m_PrefabInstance: {fileID: 7070238400168850287}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1400812979895642564 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8173513970864118443, guid: 10f5c07a27aa94217a2b054d8b1d257d, type: 3}
-  m_PrefabInstance: {fileID: 7070238400168850287}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

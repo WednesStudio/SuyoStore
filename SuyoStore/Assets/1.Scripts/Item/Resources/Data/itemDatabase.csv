@@ -37,8 +37,8 @@
 장비,무기,골프채,SM_Prop_Sport_Golf_Club_02,9,0,0,0,0,0,0,35,20
 장비,가방,가방1,SM_Prop_Hunting_Backpack_01,0,0,0,0,0,50,0,0,0
 장비,가방,가방2,SM_Prop_Hunting_Backpack_02,0,0,0,0,0,75,0,0,0
-장비,침낭,침낭1,SM_Prop_SleepingBag_01,0,10,-30,0,0,0,20,1,15
-장비,침낭,침낭2,SM_Prop_SleepingBag_02,0,15,-25,0,0,0,15,1,15
-장비,침낭,침낭3,SM_Prop_SleepingBag_03,0,20,-20,0,0,0,10,1,15
-장비,텐트,텐트,SM_Prop_Hunting_Tent_Dome_01,0,30,-10,0,0,0,0,3,30
+장비,침낭,침낭1,SM_Prop_SleepingBag_01,0,10,-30,0,0,0,20,1,0
+장비,침낭,침낭2,SM_Prop_SleepingBag_02,0,15,-25,0,0,0,15,1,0
+장비,침낭,침낭3,SM_Prop_SleepingBag_03,0,20,-20,0,0,0,10,1,0
+장비,텐트,텐트,SM_Prop_Hunting_Tent_Dome_01,0,30,-10,0,0,0,0,3,0
 장비,카드키,카드키,SM_Prop_CardKey_01,0,0,0,0,0,0,0,0,0

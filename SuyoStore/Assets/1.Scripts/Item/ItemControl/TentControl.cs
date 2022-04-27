@@ -10,12 +10,12 @@ public class TentControl : MonoBehaviour
     public Button sleepUIButton;
     public Button closeUIButton;
     public PlayerStatus playerStatus;
-    // camera settings
-    private Camera _mainCamera;
-    private Renderer _renderer;
-    private Ray _ray;
-    private RaycastHit _hit;
-    // 
+    // // camera settings
+    // private Camera _mainCamera;
+    // private Renderer _renderer;
+    // private Ray _ray;
+    // private RaycastHit _hit;
+    // // 
     private bool isReady = false;
     private DataManager _dataManager;
     private Item item = null;
@@ -25,8 +25,8 @@ public class TentControl : MonoBehaviour
     void Start()
     {
         playerStatus = FindObjectOfType<PlayerStatus>();
-        _mainCamera = Camera.main;
-        _renderer = GetComponent<Renderer>();
+        // _mainCamera = Camera.main;
+        // _renderer = GetComponent<Renderer>();
         _dataManager = GameObject.Find("DataManager").GetComponent<DataManager>();
         SetItem();
         sleepUIButton.onClick.RemoveAllListeners();
@@ -57,12 +57,11 @@ public class TentControl : MonoBehaviour
             SetItem();
         else
         {
-            // if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
-            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G))
+            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
             {
-                _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(_ray, out _hit, 1000f))
-                    canvas.SetActive(true);
+                // _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+                // if (Physics.Raycast(_ray, out _hit, 1000f))
+                canvas.SetActive(true);
             }
         }
     }
@@ -84,8 +83,11 @@ public class TentControl : MonoBehaviour
     }
     private void UseTent(Item item)
     {
-        playerStatus.RecoverStatus(Status.eCurStatusType.cHp, item.GetHEAL());
-        playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, item.GetSATIETY());
+        playerStatus.RecoverStatus(Status.eCurStatusType.cHp, 30);
+        playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, -10);
+        playerStatus.RecoverStatus(Status.eCurStatusType.cFatigue, playerStatus.MaxFatigue);
+        //playerStatus.RecoverStatus(Status.eCurStatusType.cHp, item.GetHEAL());
+        //playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, item.GetSATIETY());
         GameManager.GM.DateSetting();
     }
 }

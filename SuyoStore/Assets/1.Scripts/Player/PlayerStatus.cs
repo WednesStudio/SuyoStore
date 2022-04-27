@@ -5,21 +5,24 @@ using UnityEngine;
 public class PlayerStatus : Status
 {
     PlayerController playerController;
+    UIManager uiManager;
     public bool isEquipWeapon = false;
-
-
+    public bool isInfect = false;
+    float dotInfectTimer = 10.0f;
+    float timer = 0.0f;
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void Start()
     {
         // Status Initial Value
         // Speed
-        walkSpeed = 10.0f;
-        runAddSpeed = 5.0f;
-        sitSpeed = 3.0f;
+        walkSpeed = 3.0f;
+        runAddSpeed = 3.0f;
+        sitSpeed = 2.0f;
 
         // Status
         maxHp = 100;
@@ -35,7 +38,7 @@ public class PlayerStatus : Status
         attack = 10;
         stamina = 100;
 
-        curCarryingBag = 30;
+        curCarryingBag = 0;
         curAttack = 10;
         curStamina = 100;
 
@@ -51,6 +54,7 @@ public class PlayerStatus : Status
         useRecoveryStaminaTime = recoveryStaminaTime;
         //sturnStaminaTime = 5;
         //useSturnStaminaTime = sturnStaminaTime;
+
     }
 
     private void Update()
@@ -62,11 +66,29 @@ public class PlayerStatus : Status
         }
         SatietyModifier();
         SpeedModifier();
+
+        if (isInfect)
+        {
+            // setActive debuff UI
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, true);
+            //10초마다 hp -1
+            timer += Time.deltaTime;
+            if(timer >= dotInfectTimer)
+            {
+                ReduceHp(1);
+                timer = 0.0f;
+            }
+        }
+        else
+        {
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, false);
+        }
     }
 
     public virtual void Die()
     {
         playerController.state = PlayerController.PlayerState.Dead;
+        GameManager.GM.GameOver();
     }
 
     /// <summary> Hp Status </summary>
@@ -74,13 +96,6 @@ public class PlayerStatus : Status
     {
         CurHp -= zomPower;  //CurHp = ReduceStatus(eCurStatusType.cHp, zomPower);
         CurHp = RemainStatusValue(CurHp, MaxHp);
-
-        // GameOver
-        if (curHp <= 0)
-        {
-            Die();
-            Debug.Log("[GAME OVER] HP is ZERO");
-        }
     }
 
     public void RecoverStatus(eCurStatusType _statusType, int _value)
@@ -146,14 +161,19 @@ public class PlayerStatus : Status
         // GameOver
         if (curSatiety <= 0)
         {
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SatietyEffect, true);
             UseHungerDieTime -= Time.deltaTime;
-            if(useHungerDieTime <= 0)
+            if (useHungerDieTime <= 0)
             {
                 Die();
                 Debug.Log("[GAME OVER] Player is Hungry T^T");
 
                 UseHungerDieTime = GetBackTime(UseHungerDieTime, hungerDieTime);
             }
+        }
+        else
+        {
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SatietyEffect, false);
         }
 
         UseHungerTime -= Time.deltaTime;
@@ -202,10 +222,18 @@ public class PlayerStatus : Status
     {
         int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% over weight
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
-
         if (curCarryingBag >= maxCarryingBag)
         {
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, true);
             CurSpeed = walkSpeed - 2 * count;
+        }
+        else
+        {
+            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, false);
+        }
+        if (CurSpeed <= 0)
+        {
+            CurSpeed = 1;
         }
     }
 

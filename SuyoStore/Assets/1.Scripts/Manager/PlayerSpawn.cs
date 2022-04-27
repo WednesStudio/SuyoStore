@@ -5,16 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSpawn : MonoBehaviour
 {
-    Scene scene; // «ˆ¿Á ¿÷¥¬ æ¿
-    int changeSceneNum; // ¿¸»Ø«“ æ¿ π¯»£
+    Scene scene; // ÔøΩÔøΩÔøΩÔøΩ ÔøΩ÷¥ÔøΩ ÔøΩÔøΩ
+    int changeSceneNum; // ÔøΩÔøΩ»ØÔøΩÔøΩ ÔøΩÔøΩ ÔøΩÔøΩ»£
     public int playerIntoGateNum;
-    float gateTimer = 2.0f; // æ¿ ¿¸»Ø±Ó¡ˆ¿« Ω√∞£
+    float gateTimer = 2.0f; // ÔøΩÔøΩ ÔøΩÔøΩ»ØÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩ√∞ÔøΩ
     float timer = 0.0f;
-
-    // ∞‘¿Ã∆Æ¿« ¡æ∑˘
+    // ÔøΩÔøΩÔøΩÔøΩ∆ÆÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ
     public enum GateType { GoUp, GoDown, NotUseUp, NotUseDown };
     public GateType gateType;
-    //bool isInGate = false; // «√∑π¿ÃæÓ∞° ∞‘¿Ã∆Æø° ¡¯¿‘«ﬂ¥¬¡ˆ ∆«¥‹
+    //bool isInGate = false; // ÔøΩ√∑ÔøΩÔøΩÃæÓ∞° ÔøΩÔøΩÔøΩÔøΩ∆ÆÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩﬂ¥ÔøΩÔøΩÔøΩ ÔøΩ«¥ÔøΩ
 
     private void Start()
     {
@@ -25,16 +24,17 @@ public class PlayerSpawn : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            // ¿€µø«œ¥¬ ∞‘¿Ã∆Æ∂Û∏È
             if (gateType == GateType.GoUp || gateType == GateType.GoDown)
             {
-                // ≈∏¿Ã∏” ¿€µø
+                // ≈∏ÔøΩÃ∏ÔøΩ ÔøΩ€µÔøΩ
                 timer += Time.deltaTime;
 
-                // ¿œ¡§ Ω√∞£ »ƒ æ¿ ¿¸»Ø
+                // ÔøΩÔøΩÔøΩÔøΩ ÔøΩ√∞ÔøΩ ÔøΩÔøΩ ÔøΩÔøΩ ÔøΩÔøΩ»Ø
                 if (timer >= gateTimer)
                 {
                     timer = 0.0f;
+                    Debug.Log("before : " + scene.name);
+
                     if (gateType == GateType.GoUp)
                     {
                         UpstairsByGate(playerIntoGateNum);
@@ -43,16 +43,17 @@ public class PlayerSpawn : MonoBehaviour
                     {
                         DownstairsByGate(playerIntoGateNum);
                     }
-                    else
-                    {
-                        // øπø‹√≥∏Æ
-                        timer = 0.0f;
-                    }
+                    
+                    scene = SceneManager.GetActiveScene();
+                    Debug.Log("after : " + scene.name);
+                    GameManager.GM.SetCurrentScene(scene.name);
+                    SceneController.instance.player.GetComponent<PlayerController>().isChangeScene = true;
+                    timer = 0.0f;
                 }
             }
             else
             {
-                // ¿€µø«œ¡ˆ æ ¥¬ ∞‘¿Ã∆Æ∂Û∏È ≈∏¿Ã∏” ∏Æº¬
+                // When gateType == notUse Up or Down
                 timer = 0.0f;
             }
         }
@@ -78,8 +79,10 @@ public class PlayerSpawn : MonoBehaviour
                 break;
         }
         SceneController.instance.currentGateNum = passedGateNum;
+
         GameManager.GM.ChangeToOtherScene(changeSceneNum);
     }
+
     public void UpstairsByGate(int passedGateNum)
     {
         switch (scene.name)
@@ -100,24 +103,7 @@ public class PlayerSpawn : MonoBehaviour
                 break;
         }
         SceneController.instance.currentGateNum = passedGateNum;
+
         GameManager.GM.ChangeToOtherScene(changeSceneNum);
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.tag == "Player")
-    //    {
-    //        isInGate = true;
-    //    }
-    //}
-
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "Player")
-    //    {
-    //        isInGate = false;
-    //    }
-    //}
-
-
 }
