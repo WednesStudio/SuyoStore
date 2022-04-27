@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        GameStart();
         UpdateGameState(GameState.GameStart);
     }
 
@@ -141,7 +142,7 @@ public class GameManager : MonoBehaviour
     private void SetWholeUI()
     {
         _uiManager.SetTopBarUI(10f, 50f, 50f, 10, 10);
-        _uiManager.SetCurrentStateUI("2022/04/05", "1F");
+        _uiManager.SetCurrentStateUI("2022/04/06", "F3 휴게공간");
         _uiManager.SetInitialInventory();
     }
 
