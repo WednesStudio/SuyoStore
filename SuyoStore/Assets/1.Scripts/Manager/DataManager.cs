@@ -41,21 +41,27 @@ public class DataManager : MonoBehaviour
     public string GetLocation() => _location;
 
     //private List<Item> _itemList = null;
+    private GameObject player;
+    private PlayerStatus pStatus;
     private string _date, _location;
     private List<ItemData> _totalItemList;
     private const string battery = "보조배터리", food = "음식", weapon = "무기", pill = "치료제", flashLight = "라이트", sleepingBag = "침낭", smartPhone = "스마트폰", bag = "가방", cardKey = "카드키";
     private int maxCapacity = 30;
 
+    [Header("Game Ending System")]
     private JsonConditionData jsonConditionData;
     private string directory = "Data/";
     private string[] routes = { "route1", "route2", "route3" };
     private int selectedRoute;
     public int GetSelectedRoute() => selectedRoute;
     public DateControl dateControl;
+
     private string[] locationName = {"B2 : 주차장", "B1 : 식품관", "F1 : 행사 및 카페테리아", "F2 : 엔터테인먼트", "F3 : 휴게 공간"};
     public void Awake()
     {
         dateControl = FindObjectOfType<DateControl>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        pStatus = player.GetComponent<PlayerStatus>();
     }
     public void LoadJsonData()
     {
@@ -266,7 +272,7 @@ public class DataManager : MonoBehaviour
             _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(-capacity, maxCapacity);
         }
-
+        pStatus.CurCarryingBag += capacity;
         _uiManager.SetPlayerSpeed(_inventoryUI.GetCurrentCapacity(), maxCapacity);
     }
 

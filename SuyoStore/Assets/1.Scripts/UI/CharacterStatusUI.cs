@@ -74,7 +74,6 @@ public class CharacterStatusUI : MonoBehaviour
     {
         if(isActive)
         {
-            print((int)type);
             _debuffs[(int)type].SetActive(true);
         }
         else _debuffs[(int)type].SetActive(false);

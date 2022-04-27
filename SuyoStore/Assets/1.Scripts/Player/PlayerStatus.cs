@@ -38,7 +38,7 @@ public class PlayerStatus : Status
         attack = 10;
         stamina = 100;
 
-        curCarryingBag = 30;
+        curCarryingBag = 0;
         curAttack = 10;
         curStamina = 100;
 
@@ -222,7 +222,6 @@ public class PlayerStatus : Status
     {
         int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% over weight
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
-
         if (curCarryingBag >= maxCarryingBag)
         {
             uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, true);
