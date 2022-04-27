@@ -79,7 +79,7 @@ public class ScenarioEvent : MonoBehaviour
             //1<배터리<10
             else if((battery1Count + battery2Count) > 1 && (battery1Count + battery2Count) < 10)
             {
-                _scenarioText.text = "배터리의 양이 부족한 것 같다. (n/10)";
+                _scenarioText.text = "배터리의 양이 부족한 것 같다. (" + (battery1Count + battery2Count) + "/10)";
             }
             //배터리 10개
             else if((battery1Count + battery2Count) >= 10)
