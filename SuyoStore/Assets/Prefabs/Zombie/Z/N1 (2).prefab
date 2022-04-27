@@ -5271,7 +5271,6 @@ Transform:
   - {fileID: 3584877493033894820}
   - {fileID: 3593351654888336258}
   - {fileID: 4656875699544286950}
-  - {fileID: 4656875700229524813}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5322,6 +5321,33 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300058, guid: ffdfcb810f2918b4f8fe9f917f07bc78, type: 3}
+--- !u!114 &3588995481653230106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588585188261943126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443d280759f7e4b78b957eb0fc4ba7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 0}
+  hp: 10
+  detection: 10
+  curSpeed: 0
+  speed: 1
+  power: 5
+  coolTime: 1
+  infection: 30
+  spawn: {x: 0, y: 0, z: 0}
+  isDetect: 0
+  isRandom: 0
+  range: 0
+  zombieAnim: {fileID: 3503212678937726606}
+  child: {fileID: 3588073546298458702}
+
 --- !u!54 &3588995482961547415
 Rigidbody:
   m_ObjectHideFlags: 0
