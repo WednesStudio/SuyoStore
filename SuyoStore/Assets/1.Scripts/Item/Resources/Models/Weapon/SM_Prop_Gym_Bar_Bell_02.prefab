@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4682687518758854}
   - component: {fileID: 33190797105687374}
   - component: {fileID: 23251028776486692}
-  - component: {fileID: 64534239196964414}
   - component: {fileID: 3540887989528618070}
+  - component: {fileID: -7903853698099669021}
   m_Layer: 0
   m_Name: SM_Prop_Gym_Bar_Bell_02
   m_TagString: Item
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64534239196964414
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031860391748574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43317489792645736, guid: 5199acce0cb8bb84e93e4d04f46d8873, type: 2}
 --- !u!114 &3540887989528618070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &-7903853698099669021
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031860391748574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6225091, y: 0.1364511, z: 0.08420021}
+  m_Center: {x: 0, y: -0.02528387, z: 0}

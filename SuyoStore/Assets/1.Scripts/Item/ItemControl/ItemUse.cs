@@ -182,19 +182,19 @@ public class ItemUse : MonoBehaviour
             if (_dataManager.GetItemSubCategory(currentItemID) == "무기")   //해제해야 할 게 무기라면
             {
                 GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));   //player에 붙어있는 무기 배열 속 아이템 받아옴
-                playerStatus.RemoveEquipItem(currentItemID);    //player status의 equipList 업데이트
+                playerStatus.RemoveEquipWeapon(currentItemID);    //player status의 equipList 업데이트
                 weapon.SetActive(false);    //받아온 무기 아이템 안 보이게
             }
             else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")    //무기와 동일한 방식으로 작동
             {
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.RemoveEquipItem(currentItemID);
+                playerStatus.RemoveEquipFlashlight(currentItemID);
                 light.SetActive(false);
             }
             else // 가방
             {
                 GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.RemoveEquipItem(currentItemID);
+                playerStatus.RemoveEquipBag(currentItemID);
                 bag.SetActive(false);
             }
         }
@@ -209,19 +209,19 @@ public class ItemUse : MonoBehaviour
             if (_dataManager.GetItemSubCategory(currentItemID) == "무기")   //장착해야 할 게 무기라면
             {
                 GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));   //무기 배열 속 아이템 받아옴
-                playerStatus.AddEquipItem(currentItemID);    //player status의 equipList 업데이트
+                playerStatus.AddEquipWeapon(currentItemID);    //player status의 equipList 업데이트
                 weapon.SetActive(true);    //받아온 무기 아이템이 보이도록
             }
             else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")    //무기와 동일한 방식으로 작동
             {
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.AddEquipItem(currentItemID);
+                playerStatus.AddEquipFlashlight(currentItemID);
                 light.SetActive(true);
             }
             else // 가방
             {
                 GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.AddEquipItem(currentItemID);
+                playerStatus.AddEquipBag(currentItemID);
                 bag.SetActive(true);
             }
         } 
@@ -230,9 +230,9 @@ public class ItemUse : MonoBehaviour
     private void UseBag(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 가방이 있다면
-        if (playerStatus.EquipItemsList.Count > 0)
+        if (playerStatus.EquipBagList.Count > 0)
         {
-            foreach (int id in playerStatus.EquipItemsList)
+            foreach (int id in playerStatus.EquipBagList)
             {
                 if (_dataManager.GetItemSubCategory(id) == "가방")
                 {
@@ -299,9 +299,9 @@ public class ItemUse : MonoBehaviour
     private void WeaponSetting(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 아이템이 있다면 (무기, 라이트 둘 다 하나라도 있으면 1 초과)
-        if (playerStatus.EquipItemsList.Count > 0)
+        if (playerStatus.EquipWeaponList.Count > 0)
         {
-            foreach (int id in playerStatus.EquipItemsList)
+            foreach (int id in playerStatus.EquipWeaponList)
             {
                 //장착되어 있는 아이템 중 무기가 있다면
                 if (_dataManager.GetItemSubCategory(id) == "무기")
@@ -316,7 +316,7 @@ public class ItemUse : MonoBehaviour
         else
         {
             UseWeapon(item.GetATTACK(), itemID);
-            ChangeItem(-1, itemID); //기존 아이템 없으므로 새로운거 장착만
+            ChangeItem(-1, itemID);
         }
     }
     public void UseWeapon(int attack, int itemID)
@@ -331,9 +331,9 @@ public class ItemUse : MonoBehaviour
     private void LightSetting(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 라이트가 있다면
-        if (playerStatus.EquipItemsList.Count > 0)
+        if (playerStatus.EquipFlashlighList.Count > 0)
         {
-            foreach (int id in playerStatus.EquipItemsList)
+            foreach (int id in playerStatus.EquipFlashlighList)
 
             {
                 if (_dataManager.GetItemSubCategory(id) == "라이트")

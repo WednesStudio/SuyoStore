@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4066131270179648}
   - component: {fileID: 33986935175165724}
   - component: {fileID: 23916811371100682}
-  - component: {fileID: 64147894695550086}
   - component: {fileID: 2162013830772561571}
+  - component: {fileID: 5971658966919126189}
   m_Layer: 0
   m_Name: SM_Wep_Melee_HuntingKnife_01
   m_TagString: Item
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64147894695550086
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458518773578602}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43856028016176034, guid: 4ea66b82d8fd9dc46a012a2503947b1f, type: 2}
 --- !u!114 &2162013830772561571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &5971658966919126189
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458518773578602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.031224426, y: 0.06322533, z: 0.3922084}
+  m_Center: {x: 0, y: -0.000000039115548, z: 0.120848924}

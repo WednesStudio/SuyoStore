@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4795537432680194}
   - component: {fileID: 33657615553688222}
   - component: {fileID: 23794505455888038}
-  - component: {fileID: 64209107376142500}
   - component: {fileID: -145931071652903171}
+  - component: {fileID: -9219779736234999597}
   m_Layer: 0
   m_Name: SM_Item_Craft_Knife_01
   m_TagString: Item
@@ -84,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64209107376142500
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312856516239564}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43514586940730946, guid: 125a1bd3e47542a428a017fcd8c06de0, type: 2}
 --- !u!114 &-145931071652903171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +97,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &-9219779736234999597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312856516239564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.027416993, y: 0.08374664, z: 0.28467172}
+  m_Center: {x: 0.0005496214, y: -0.01014664, z: 0.002444446}
 --- !u!1 &1523871098909904
 GameObject:
   m_ObjectHideFlags: 0

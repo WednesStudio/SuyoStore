@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4406905088400494}
   - component: {fileID: 33934103637057986}
   - component: {fileID: 23867829530722990}
-  - component: {fileID: 64642084146484166}
   - component: {fileID: 4073186782313015399}
+  - component: {fileID: -7162350407925541253}
   m_Layer: 0
   m_Name: SM_Prop_Hunting_Kayak_Paddle_01
   m_TagString: Item
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64642084146484166
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137171577756772}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43176033968780840, guid: 07ac48f65098e3240a093d60a1a6e6d0, type: 2}
 --- !u!114 &4073186782313015399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &-7162350407925541253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137171577756772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33076537, y: 0.33076543, z: 3.4765997}
+  m_Center: {x: 0, y: -0.009929702, z: 0}

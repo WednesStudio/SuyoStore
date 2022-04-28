@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4553473065278920}
   - component: {fileID: 33328789680733222}
   - component: {fileID: 23788848410876870}
-  - component: {fileID: 64843442416557128}
   - component: {fileID: 6267929778483204347}
+  - component: {fileID: 4216756911420116364}
   m_Layer: 0
   m_Name: SM_Prop_Gym_Dumbbell_05
   m_TagString: Item
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64843442416557128
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452059561765510}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43856621389191976, guid: a5249b02db6af614fa333c8f059f11d9, type: 2}
 --- !u!114 &6267929778483204347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &4216756911420116364
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452059561765510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.10839294, y: 0.093871094, z: 0.3313434}
+  m_Center: {x: 0, y: 0, z: 0}

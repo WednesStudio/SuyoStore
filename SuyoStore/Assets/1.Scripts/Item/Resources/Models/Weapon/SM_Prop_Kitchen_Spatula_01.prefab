@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4266322029732482}
   - component: {fileID: 33186662666077908}
   - component: {fileID: 23335083298404152}
-  - component: {fileID: 64265140911026692}
   - component: {fileID: 494782153629591337}
+  - component: {fileID: 7904633041451704085}
   m_Layer: 0
   m_Name: SM_Prop_Kitchen_Spatula_01
   m_TagString: Item
@@ -83,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64265140911026692
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424832807081228}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43793455607891252, guid: 721ed54f1593d2e4f86c4e998223796a, type: 2}
 --- !u!114 &494782153629591337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &7904633041451704085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424832807081228}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15873098, y: 0.17825675, z: 0.62743074}
+  m_Center: {x: 0, y: -0.02778942, z: 0.19317864}

@@ -55,7 +55,9 @@ public class PlayerController : MonoBehaviour
 
     // Attack
     public bool hasWeapon;
-    Weapon equipWeapon;
+    public bool hasFlashlight;
+    public bool hasBag;
+    //Weapon equipWeapon; // 무기별 공격범위나 속도.. 였는데 안씀
     public GameObject nearScenarioItem;
 
     private void Start()
@@ -142,7 +144,7 @@ public class PlayerController : MonoBehaviour
         {
             SitInput();
         }
-        if (Input.GetKeyUp(KeyCode.G))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             GetItem();
             //if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
@@ -353,26 +355,27 @@ public class PlayerController : MonoBehaviour
 
     void GetItem()
     {
+        if (nearItem.tag == "Item")
+        {
+            // 파밍 가능
+            pStatus.CurFatigue--;
 
+            // 타겟 아이템 위치가 바닥일 때:
+            animator.SetTrigger("PickUp");
+            // 타겟 아이템 위치가 바닥이 아닐 때:
+            /* 애니메이션 : CatchingItem */
+            //StopCoroutine(WaitGetItemTime(1.0f));
+            //StartCoroutine(WaitGetItemTime(1.0f));
+            nearItem.GetComponent<ItemControl>().GetThisItem();
+        }
+        else if (nearItem.tag == "ScenarioAsset")
+        {
+            _scenarioEvent.GetScenarioItem(nearItem.gameObject);
+        }
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            if(nearItem.tag == "Item")
-            {
-                // 파밍 가능
-                pStatus.CurFatigue--;
+            Debug.Log("[Move System] Can't Get Item222");
 
-                // 타겟 아이템 위치가 바닥일 때:
-                animator.SetTrigger("PickUp");
-                // 타겟 아이템 위치가 바닥이 아닐 때:
-                /* 애니메이션 : CatchingItem */
-                //StopCoroutine(WaitGetItemTime(1.0f));
-                //StartCoroutine(WaitGetItemTime(1.0f));
-                nearItem.GetComponent<ItemControl>().GetThisItem();
-            }
-            else if(nearItem.tag == "ScenarioAsset")
-            {
-                _scenarioEvent.GetScenarioItem(nearItem.gameObject);
-            }
         }
         else
         {
@@ -426,7 +429,7 @@ public class PlayerController : MonoBehaviour
                         ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
 
                         //공격할 때마다 장착한 무기 내구도 줄어들음
-                        foreach (int i in pStatus.EquipItemsList)
+                        foreach (int i in pStatus.EquipWeaponList)
                         {
                             if (_dataManager.GetItemSubCategory(i) == "무기")
                             {

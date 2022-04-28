@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
     {
         //Initial Game Setting
         //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
-        ChangeToOtherScene(4);  //빌드 번호가 바로 4인 지상 3층으로 스폰
         UpdateGameState(GameState.GameStart);
         isGameStart = true;
         if(!SoundManager.SM.isPlayingBGMSound()) SoundManager.SM.PlayBGMSound(BGMSoundName.MainMusic);
