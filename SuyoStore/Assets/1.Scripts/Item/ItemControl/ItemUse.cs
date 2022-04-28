@@ -181,19 +181,19 @@ public class ItemUse : MonoBehaviour
             if (_dataManager.GetItemSubCategory(currentItemID) == "무기")
             {
                 GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.RemoveEquipItem(currentItemID);
+                playerStatus.RemoveEquipWeapon(currentItemID);
                 weapon.SetActive(false);
             }
             else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")
             {
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.RemoveEquipItem(currentItemID);
+                playerStatus.RemoveEquipFlashlight(currentItemID);
                 light.SetActive(false);
             }
             else // 가방
             {
                 GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.RemoveEquipItem(currentItemID);
+                playerStatus.RemoveEquipBag(currentItemID);
                 bag.SetActive(false);
             }
         }
@@ -205,9 +205,9 @@ public class ItemUse : MonoBehaviour
     private void UseBag(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 가방이 있다면
-        if (playerStatus.EquipItemsList.Count > 0)
+        if (playerStatus.EquipBagList.Count > 0)
         {
-            foreach (int id in playerStatus.EquipItemsList)
+            foreach (int id in playerStatus.EquipBagList)
             {
                 if (_dataManager.GetItemSubCategory(id) == "가방")
                 {
@@ -224,7 +224,7 @@ public class ItemUse : MonoBehaviour
             // newBag.tag = "UsedItem";
             GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
             bag.SetActive(true);
-            playerStatus.AddEquipItem(itemID);
+            playerStatus.AddEquipBag(itemID);
         }
     }
     IEnumerator WaitToDisappear()
@@ -280,9 +280,9 @@ public class ItemUse : MonoBehaviour
     private void WeaponSetting(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 무기가 있다면
-        if (playerStatus.EquipItemsList.Count > 0)
+        if (playerStatus.EquipWeaponList.Count > 0)
         {
-            foreach (int id in playerStatus.EquipItemsList)
+            foreach (int id in playerStatus.EquipWeaponList)
             {
                 if (_dataManager.GetItemSubCategory(id) == "무기")
                 {
@@ -301,7 +301,7 @@ public class ItemUse : MonoBehaviour
             //GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
             GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(itemID));
             weapon.SetActive(true);
-            playerStatus.AddEquipItem(itemID);
+            playerStatus.AddEquipWeapon(itemID);
             //newWeapon.tag = "UsedItem";
         }
     }
@@ -319,9 +319,9 @@ public class ItemUse : MonoBehaviour
     private void LightSetting(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 라이트가 있다면
-        if (playerStatus.EquipItemsList.Count > 0)
+        if (playerStatus.EquipFlashlighList.Count > 0)
         {
-            foreach (int id in playerStatus.EquipItemsList)
+            foreach (int id in playerStatus.EquipFlashlighList)
 
             {
                 if (_dataManager.GetItemSubCategory(id) == "라이트")
@@ -343,7 +343,7 @@ public class ItemUse : MonoBehaviour
             // newLight.tag = "UsedItem";
             GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
             light.SetActive(true);
-            playerStatus.AddEquipItem(itemID);
+            playerStatus.AddEquipFlashlight(itemID);
         }
 
     }

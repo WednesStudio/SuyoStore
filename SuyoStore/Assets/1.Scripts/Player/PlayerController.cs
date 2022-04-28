@@ -55,7 +55,9 @@ public class PlayerController : MonoBehaviour
 
     // Attack
     public bool hasWeapon;
-    Weapon equipWeapon;
+    public bool hasFlashlight;
+    public bool hasBag;
+    //Weapon equipWeapon; // 무기별 공격범위나 속도.. 였는데 안씀
     public GameObject nearScenarioItem;
 
     private void Start()
@@ -142,7 +144,7 @@ public class PlayerController : MonoBehaviour
         {
             SitInput();
         }
-        if (Input.GetKeyUp(KeyCode.G))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             GetItem();
             //if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
@@ -426,7 +428,7 @@ public class PlayerController : MonoBehaviour
                         ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
 
                         //공격할 때마다 장착한 무기 내구도 줄어들음
-                        foreach (int i in pStatus.EquipItemsList)
+                        foreach (int i in pStatus.EquipWeaponList)
                         {
                             if (_dataManager.GetItemSubCategory(i) == "무기")
                             {
