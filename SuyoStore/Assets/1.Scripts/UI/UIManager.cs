@@ -141,6 +141,10 @@ public class UIManager : MonoBehaviour
 
     public void SetMonologuePanel(string msg)
     {
+        if(GameManager.GM.IsTutorialItemDone)
+        {
+            _monologuePanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(true);
+        }
         _monologuePanel.SetActive(true);
         _monologueText.text = msg;
         if(_optionSettingUI.GetInventoryWindow().activeSelf)

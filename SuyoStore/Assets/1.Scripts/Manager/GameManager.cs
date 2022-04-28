@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     // public TextMeshProUGUI msg;
     [SerializeField] Image GameOverPanel;
     public static GameManager GM = null;
+    private Tutorial _tutorial;
     private int _currentSceneNum;
     [NonSerialized]
     public GameState state;
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     private bool EndEventTrigger = false;
     private bool coroutineSwitch = true;
     private bool isGameStart = false;
+    private int _tutorialItemCount = 0;
+    public bool IsTutorialItemDone = false;
 
     public void SetEndEventTrigger()
     {
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
+            _tutorial = _uiManager.GetComponent<Tutorial>();
             // SetPopUp();
         }
     }
@@ -171,6 +175,18 @@ public class GameManager : MonoBehaviour
 
     public void AddItem(int itemID, int count = 1)
     {
+        if(!IsTutorialItemDone && _tutorialItemCount < 4)
+        {
+            if(GetItemSubCategory(itemID) == "치료제" || GetItemSubCategory(itemID) == "스마트폰" || GetItemSubCategory(itemID) == "음식")
+            {
+                _tutorialItemCount += 1;
+                if(_tutorialItemCount == 3)
+                {
+                    _tutorial.GetExactTutorial();
+                }
+            }
+        }
+        
         _dataManager.AddItem(itemID, count);
     }
 
@@ -182,8 +198,15 @@ public class GameManager : MonoBehaviour
 
     public void UseItem(int itemID)
     {
-        Item temp = _dataManager.SetNewItem(itemID);
         string category = _dataManager.GetItemSubCategory(itemID);
+        if(!IsTutorialItemDone && _tutorialItemCount < 6)
+        {
+            if(category == "치료제" || category == "스마트폰" || category == "음식")
+            {
+                _tutorialItemCount += 1;
+                _tutorial.GetExactTutorial();
+            }
+        }
         if (category != "가방" && category != "스마트폰" && category != "침낭" && category != "보조배터리" && category != "카드키") _dataManager.AddItem(itemID, -1);
         _itemUse.UseItem(itemID);
     }
