@@ -355,26 +355,27 @@ public class PlayerController : MonoBehaviour
 
     void GetItem()
     {
+        if (nearItem.tag == "Item")
+        {
+            // 파밍 가능
+            pStatus.CurFatigue--;
 
+            // 타겟 아이템 위치가 바닥일 때:
+            animator.SetTrigger("PickUp");
+            // 타겟 아이템 위치가 바닥이 아닐 때:
+            /* 애니메이션 : CatchingItem */
+            //StopCoroutine(WaitGetItemTime(1.0f));
+            //StartCoroutine(WaitGetItemTime(1.0f));
+            nearItem.GetComponent<ItemControl>().GetThisItem();
+        }
+        else if (nearItem.tag == "ScenarioAsset")
+        {
+            _scenarioEvent.GetScenarioItem(nearItem.gameObject);
+        }
         if (state == PlayerState.Idle || state == PlayerState.Sit)
         {
-            if(nearItem.tag == "Item")
-            {
-                // 파밍 가능
-                pStatus.CurFatigue--;
+            Debug.Log("[Move System] Can't Get Item222");
 
-                // 타겟 아이템 위치가 바닥일 때:
-                animator.SetTrigger("PickUp");
-                // 타겟 아이템 위치가 바닥이 아닐 때:
-                /* 애니메이션 : CatchingItem */
-                //StopCoroutine(WaitGetItemTime(1.0f));
-                //StartCoroutine(WaitGetItemTime(1.0f));
-                nearItem.GetComponent<ItemControl>().GetThisItem();
-            }
-            else if(nearItem.tag == "ScenarioAsset")
-            {
-                _scenarioEvent.GetScenarioItem(nearItem.gameObject);
-            }
         }
         else
         {
