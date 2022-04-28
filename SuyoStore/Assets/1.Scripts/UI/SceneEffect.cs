@@ -35,9 +35,19 @@ public class SceneEffect : MonoBehaviour
             _fadeImage.color = fadeAlpha;
             yield return null;
         }
+        GameManager.GM.isSceneLoadDone = true;
 
         //Change Scene
-        if(num != -1)  SceneManager.LoadScene(num);
+        if(num != -1)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(num);
+            // Scene을 불러오는 것이 완료되면, AsyncOperation은 isDone 상태가 된다.
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+            if(asyncLoad.isDone) GameManager.GM.isSceneLoadDone = true;
+        }  
         
         //Fade In
         _time = 0f;
@@ -51,6 +61,7 @@ public class SceneEffect : MonoBehaviour
             yield return null;
         }
         _fadeImage.gameObject.SetActive(false);
+        GameManager.GM.isSceneLoadDone = false;
         yield return null;
     }
 }

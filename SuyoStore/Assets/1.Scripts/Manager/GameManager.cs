@@ -21,20 +21,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] UIManager _uiManager;
     [SerializeField] ItemUse _itemUse;
     [SerializeField] ScenarioEvent _scenarioEvent;
-    [NonSerialized]
-    public GameObject mustItemCanvas;
-    [NonSerialized]
-    public TextMeshProUGUI msg;
-    private Image backgroundPanel;
+    // [NonSerialized]
+    // public GameObject mustItemCanvas;
+    // [NonSerialized]
+    // public TextMeshProUGUI msg;
+    [SerializeField] Image GameOverPanel;
     public static GameManager GM = null;
+    private Tutorial _tutorial;
     private int _currentSceneNum;
     [NonSerialized]
     public GameState state;
+    public bool isSceneLoadDone = false;
     private string _sceneName;
     public static event Action<GameState> OnGameStateChanged;
     private bool EndEventTrigger = false;
     private bool coroutineSwitch = true;
     private bool isGameStart = false;
+    private int _tutorialItemCount = 0;
+    public bool IsTutorialItemDone = false;
 
     public void SetEndEventTrigger()
     {
@@ -50,6 +54,7 @@ public class GameManager : MonoBehaviour
             _dataManager.SetData();
             SetWholeUI();
             _dataManager.LoadJsonData();
+            _tutorial = _uiManager.GetComponent<Tutorial>();
             // SetPopUp();
         }
     }
@@ -63,9 +68,10 @@ public class GameManager : MonoBehaviour
     {
         if(isGameStart)
         {
-            if (_dataManager.dateControl.GetDays() >= 7 && EndEventTrigger)
-            // if (_dataManager.dateControl.GetDays() >= 7)
+            if (_dataManager.dateControl.GetDays() == 7 && EndEventTrigger)
+            {
                 CheckCondition();
+            }         
         }
         
     }
@@ -83,11 +89,16 @@ public class GameManager : MonoBehaviour
             SoundManager.SM.PlayBGMSound(BGMSoundName.MainMusic);
         }
     }
-    private void SetPopUp()
+    // private void SetPopUp()
+    // {
+    //     mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
+    //     msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
+    //     backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
+    // }
+
+    public void UpdateMonologue(string msg)
     {
-        mustItemCanvas = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas");
-        msg = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel/Text_Panel/MessageText").GetComponent<TextMeshProUGUI>();
-        backgroundPanel = GameObject.Find("==POPUP==/[MustItemPopUp]/MustItemCanvas/Background_Panel").GetComponent<Image>();
+        _uiManager.SetMonologuePanel(msg);
     }
 
     public void UpdateGameState(GameState newState)
@@ -116,13 +127,16 @@ public class GameManager : MonoBehaviour
         coroutineSwitch = false;
         gameObject.GetComponent<SceneEffect>().FadeEffect(-1);
         yield return new WaitForSeconds(2);
-        Color tempColor = backgroundPanel.color;
+        Color tempColor = GameOverPanel.color;
         tempColor.a = 255;
-        backgroundPanel.color = tempColor;
-        msg.text = text;
-        mustItemCanvas.SetActive(state == gameState);
-        yield return new WaitForSeconds(4);
-        msg.text = "축하합니다.\n당신은 살아남았습니다.";
+        GameOverPanel.color = tempColor;
+        if(state == gameState)
+        {
+            UpdateMonologue(text);
+            GameOverPanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(false);
+            yield return new WaitForSeconds(4);
+            if(gameState == GameState.GameWin)  UpdateMonologue("축하합니다.\n당신은 살아남았습니다.");
+        }
     }
 
     public void GameOver()
@@ -161,20 +175,38 @@ public class GameManager : MonoBehaviour
 
     public void AddItem(int itemID, int count = 1)
     {
+        if(!IsTutorialItemDone && _tutorialItemCount < 4)
+        {
+            if(GetItemSubCategory(itemID) == "치료제" || GetItemSubCategory(itemID) == "스마트폰" || GetItemSubCategory(itemID) == "음식")
+            {
+                _tutorialItemCount += 1;
+                if(_tutorialItemCount == 3)
+                {
+                    _tutorial.GetExactTutorial();
+                }
+            }
+        }
+        
         _dataManager.AddItem(itemID, count);
     }
 
     public void CheckUseItem(int ID)
     {
-        if (_dataManager.GetItemCategory(ID) == "소모") _uiManager.CheckUseItem(_dataManager.GetItemName(ID));
+        if (_dataManager.GetItemCategory(ID) == "소모" && GetItemSubCategory(ID) != "보조배터리") _uiManager.CheckUseItem(_dataManager.GetItemName(ID));
         else UseItem(ID);
     }
 
     public void UseItem(int itemID)
     {
-        Item temp = _dataManager.SetNewItem(itemID);
         string category = _dataManager.GetItemSubCategory(itemID);
-        print(category);
+        if(!IsTutorialItemDone && _tutorialItemCount < 6)
+        {
+            if(category == "치료제" || category == "스마트폰" || category == "음식")
+            {
+                _tutorialItemCount += 1;
+                _tutorial.GetExactTutorial();
+            }
+        }
         if (category != "가방" && category != "스마트폰" && category != "침낭" && category != "보조배터리" && category != "카드키") _dataManager.AddItem(itemID, -1);
         _itemUse.UseItem(itemID);
     }
@@ -257,7 +289,12 @@ public class GameManager : MonoBehaviour
         string exit = _dataManager.GetConditionExit();
         // if (exit == location && CheckMustItem())
         if (CheckMustItem())
+        {
             UpdateGameState(GameState.GameWin);
-        else UpdateGameState(GameState.GameOver);
+        }
+        else
+        {
+            UpdateGameState(GameState.GameOver);
+        } 
     }
 }

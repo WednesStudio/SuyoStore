@@ -272,42 +272,35 @@ public class ItemUse : MonoBehaviour
     {
         if (_dataManager.dateControl.GetDays() < 7 || check)
         {
-            GameManager.GM.msg.text = _msg;
-            GameManager.GM.mustItemCanvas.SetActive(true);
-            StartCoroutine(WaitToDisappear());
+            GameManager.GM.UpdateMonologue(_msg);
             return false;
         }
         return true;
     }
     private void UseBattery(int itemID)
     {
-        Dictionary<int, int> myItems = _dataManager.GetMyItems();
-        // 배터리 모으는 루트가 아니어도 10개 안 모았다고 말해주는지?
-        if (myItems[itemID] < 10)
-        {
-            string message = "배터리의 양이 부족한 것 같다. (" + myItems[itemID] + "/10)";
-            CheckMustItemDays(message, true);
-        }
-        else
-            CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.");
+        // Dictionary<int, int> myItems = _dataManager.GetMyItems();
+        // // 배터리 모으는 루트가 아니어도 10개 안 모았다고 말해주는지?
+        // if (myItems[itemID] < 10)
+        // {
+        //     string message = "배터리의 양이 부족한 것 같다. (" + myItems[itemID] + "/10)";
+        //     CheckMustItemDays(message, true);
+        // }
+        // else
+        //     CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.");
     }
     private void UseCardKey(Item item)
     {
-        if (CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다."))
-            GameManager.GM.CheckCondition();
+        // if (CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다."))
+        //     GameManager.GM.CheckCondition();
     }
     private void UseSleepingBag(Item item, int itemID)
     {
         //조건 확인해서 사용(마지막 날, 특정 위치에서)
-        if (GameManager.GM.GetSceneName() == "00.B2")
+        if (player.GetComponent<Transform>().position.y < 20)
         {
             _scenarioEvent.GetScenarioItemName("Sleeping Bag");
-        }
-        else
-        {
-            CheckMustItemDays("아직은 사용할 때가 아닌 것 같다.");
-        }
-        
+        }        
     }
     public void UseFood(int satiety)
     {

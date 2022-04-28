@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     DataManager _dataManager;
     UIManager _uiManager;
     ScenarioEvent _scenarioEvent;
+    Tutorial _tutorial;
     public PlayerStatus pStatus;
     GameObject nearItem;
     GameObject nearZombie;
@@ -59,6 +60,8 @@ public class PlayerController : MonoBehaviour
     public bool hasBag;
     //Weapon equipWeapon; // 무기별 공격범위나 속도.. 였는데 안씀
     public GameObject nearScenarioItem;
+    public GameObject nearTutorialItem;
+    
 
     private void Start()
     {
@@ -72,6 +75,7 @@ public class PlayerController : MonoBehaviour
         _dataManager = FindObjectOfType<DataManager>();
         _uiManager = FindObjectOfType<UIManager>();
         _scenarioEvent = _uiManager.GetComponent<ScenarioEvent>();
+        _tutorial = _uiManager.GetComponent<Tutorial>();
     }
 
     private void Update()
@@ -94,6 +98,11 @@ public class PlayerController : MonoBehaviour
         if(state != PlayerState.Dead)
         {
             Move();
+        }
+
+        if(_scenarioEvent.isShelterClear && gameObject.GetComponent<Transform>().position.y > -13 && gameObject.GetComponent<Transform>().position.y < 20)
+        {
+            GameManager.GM.SetEndEventTrigger();
         }
 
         //if (Physics.Raycast(this.transform.position, this.transform.forward, out rayhit, 10f))
@@ -304,6 +313,16 @@ public class PlayerController : MonoBehaviour
         {
             nearItem = null;
         }
+
+        if (other.tag == "ScenarioAsset")
+        {
+            nearScenarioItem = other.gameObject;
+            if(Input.GetMouseButtonUp(0))
+            {
+                _scenarioEvent.GetClickItemName(nearScenarioItem.name);
+            }
+            nearScenarioItem = null;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -343,7 +362,13 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "SenarioAsset")
         {
             nearScenarioItem = null;
+        }
 
+        if(other.tag == "TutorialSpot")
+        {
+            nearTutorialItem = other.gameObject;
+            Destroy(nearTutorialItem);
+            _tutorial.GetExactTutorial();
         }
 
         if (other.tag == "Zombie")
