@@ -74,7 +74,7 @@ public class ItemUse : MonoBehaviour
                 UseSleepingBag(item, itemID);
                 break;
             case bag:
-                UseBag(itemID);
+                BagSetting(itemID);
                 break;
             case smartPhone:
                 UseSmartphone();
@@ -191,11 +191,15 @@ public class ItemUse : MonoBehaviour
                 playerStatus.RemoveEquipFlashlight(currentItemID);
                 light.SetActive(false);
             }
-            else // 가방
+            else if (_dataManager.GetItemSubCategory(currentItemID) == "가방")// 가방
             {
                 GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.RemoveEquipBag(currentItemID);
+                playerStatus.AddEquipBag(currentItemID);
                 bag.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("[ChangeItem system] Player doesn't have this Item. Can't setactive");
             }
         }
 
@@ -206,47 +210,64 @@ public class ItemUse : MonoBehaviour
             _uiManager.SetCurrentItemStatus(newItemID, MyUsedItem[newItemID]);
 
             //새로 장착할 아이템 찾아서 setActive true
-            if (_dataManager.GetItemSubCategory(currentItemID) == "무기")   //장착해야 할 게 무기라면
+            if (_dataManager.GetItemSubCategory(newItemID) == "무기")   //장착해야 할 게 무기라면
             {
-                GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));   //무기 배열 속 아이템 받아옴
-                playerStatus.AddEquipWeapon(currentItemID);    //player status의 equipList 업데이트
+                GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(newItemID));   //무기 배열 속 아이템 받아옴
+                playerStatus.AddEquipWeapon(newItemID);    //player status의 equipList 업데이트
                 weapon.SetActive(true);    //받아온 무기 아이템이 보이도록
             }
-            else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")    //무기와 동일한 방식으로 작동
+            else if (_dataManager.GetItemSubCategory(newItemID) == "라이트")    //무기와 동일한 방식으로 작동
             {
-                GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.AddEquipFlashlight(currentItemID);
+                GameObject light = FindExactLight(_dataManager.GetItemFileName(newItemID));
+                playerStatus.AddEquipFlashlight(newItemID);
                 light.SetActive(true);
             }
-            else // 가방
+            else if(_dataManager.GetItemSubCategory(newItemID) == "가방")// 가방
             {
-                GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.AddEquipBag(currentItemID);
+                GameObject bag = FindExactBag(_dataManager.GetItemFileName(newItemID));
+                playerStatus.AddEquipBag(newItemID);
                 bag.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("[ChangeItem system] Player can't set this Item.");
             }
         } 
     }
-
-    private void UseBag(int itemID)
+    private void BagSetting(int itemID)
     {
-        //만약 플레이어에게 이미 장착되어 있는 가방이 있다면
+        //만약 플레이어에게 이미 장착되어 있는 가방이 있다면(1 이상)
         if (playerStatus.EquipBagList.Count > 0)
         {
             foreach (int id in playerStatus.EquipBagList)
             {
+                //장착되어 있는 아이템 중 가방이 있다면
                 if (_dataManager.GetItemSubCategory(id) == "가방")
                 {
-                    ChangeItem(id, itemID);
+                    ChangeItem(id, itemID);     //기존 아이템 해제(SetActive false), 새로운 아이템 장착
+                    UseBag(item.GetCAPACITY(), itemID);    //플레이어의 가방 최대량(MaxCarryingBag)을 바꿔줌
+                    return;
                 }
             }
         }
-        //이미 장착되어 있는 가방이 없다면
+        //이미 장착 중인 가방이 없다면
         else
         {
+            UseBag(item.GetCAPACITY(), itemID);
             ChangeItem(-1, itemID);
         }
     }
-
+    private void UseBag(int capacity, int itemID)
+    {
+        //capacity = 가방 크기(최대 수용가는한 적재량)
+        //가방 최대량 달라지기
+        playerStatus.MaxCarryingBag = capacity;
+    }
+    IEnumerator WaitToDisappear()
+    {
+        yield return new WaitForSeconds(4);
+        GameManager.GM.mustItemCanvas.SetActive(false);
+    }
     private bool CheckMustItemDays(string _msg, bool check = false)
     {
         if (_dataManager.dateControl.GetDays() < 7 || check)
@@ -340,7 +361,6 @@ public class ItemUse : MonoBehaviour
             ChangeItem(-1, itemID);
             UseLight(item, itemID);
         }
-
     }
     private void UseLight(Item item, int itemID)
     {
@@ -352,13 +372,13 @@ public class ItemUse : MonoBehaviour
         {
             // 밝기 세기 : 13 < 14 < 15
             case 13:
-                globalVolume.weight = 0.9f; // 10
+                globalVolume.weight = 0.8f; // 10
                 break;
             case 14:
-                globalVolume.weight = 0.8f; // 20
+                globalVolume.weight = 0.6f; // 20
                 break;
             case 15:
-                globalVolume.weight = 0.6f; // 40
+                globalVolume.weight = 0.4f; // 40
                 break;
             default:
                 break;
