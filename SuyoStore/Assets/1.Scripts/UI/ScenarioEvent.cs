@@ -39,15 +39,13 @@ public class ScenarioEvent : MonoBehaviour
         //1층 출입구 셔터 앞
         if(assetName == "EndingZone-Shutter")
         {
-            _scenarioText.text = "셔터가 내려와 있어 나갈 수 없다. 셔터를 움직일 방법을 찾아보자.";
-            _scenarioWindow.SetActive(true);
+            GameManager.GM.UpdateMonologue("셔터가 내려와 있어 나갈 수 없다. 셔터를 움직일 방법을 찾아보자.");
         }
         //쉘터 컴퓨터 주변
         else if(assetName == "PC")
         {
             //F키를 누르지 않고 컴퓨터 주변에 있을 때
-            _scenarioText.text = "전원이 들어와있다. 1층의 셔터를 조작할 수 있을 것 같다."; 
-            _scenarioWindow.SetActive(true);
+            GameManager.GM.UpdateMonologue("전원이 들어와있다. 1층의 셔터를 조작할 수 있을 것 같다.");
         }
         else if(assetName == "PC Click")
         {
@@ -56,23 +54,20 @@ public class ScenarioEvent : MonoBehaviour
             //카드키 없음
             if(GameManager.GM.GetItemCount(cardKeyID) == 0)
             {
-                _scenarioText.text = "조작하려면 카드키가 필요한 것 같다. 카드키를 찾아보자.";
-                _scenarioWindow.SetActive(true);
+                GameManager.GM.UpdateMonologue("조작하려면 카드키가 필요한 것 같다. 카드키를 찾아보자.");
             }
             else
             {
                 //7일차 이전
                 if(GameManager.GM.GetCurrentDay() < 7)
                 {
-                    _scenarioText.text = "아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.";
-                    _scenarioWindow.SetActive(true);
+                    GameManager.GM.UpdateMonologue("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.");
                 }
                 //7일차
                 else
                 {
-                    _scenarioText.text = "셔터가 올라가는 소리가 백화점에 울린다.";
+                    GameManager.GM.UpdateMonologue("셔터가 올라가는 소리가 백화점에 울린다.");
                     isShelterClear = true;
-                    _scenarioWindow.SetActive(true);
                 }
             }
         }
@@ -86,14 +81,13 @@ public class ScenarioEvent : MonoBehaviour
             //옥상으로 가는 에스컬레이터 앞(배터리 0개)
             if((battery1Count + battery2Count) == 0)
             {
-                _scenarioText.text = "옥상문의 보안장치가 꺼져있다. 보안장치를 키려면 배터리가 필요한 것 같다.";
-                _scenarioWindow.SetActive(true);
+                GameManager.GM.UpdateMonologue("옥상문의 보안장치가 꺼져있다. 보안장치를 키려면 배터리가 필요한 것 같다.");
             }
             //1<배터리<10
             else if((battery1Count + battery2Count) > 1 && (battery1Count + battery2Count) < 10)
             {
-                _scenarioText.text = "배터리의 양이 부족한 것 같다. (" + (battery1Count + battery2Count) + "/10)";
-                _scenarioWindow.SetActive(true);
+                string txt = "배터리의 양이 부족한 것 같다. (" + (battery1Count + battery2Count) + "/10)";
+                GameManager.GM.UpdateMonologue(txt);
             }
             //배터리 10개
             else if((battery1Count + battery2Count) >= 10)
@@ -101,15 +95,13 @@ public class ScenarioEvent : MonoBehaviour
                 //7일차 이전
                 if(GameManager.GM.GetCurrentDay() < 7)
                 {
-                    _scenarioText.text = "아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.";
-                    _scenarioWindow.SetActive(true);
+                    GameManager.GM.UpdateMonologue("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.");
                 }
                 //7일차
                 else
                 {
-                    _scenarioText.text = "밖에 헬기소리가 백화점 안까지 울린다.";
+                    //GameManager.GM.UpdateMonologue("밖에 헬기소리가 백화점 안까지 울린다.");
                     GameManager.GM.SetEndEventTrigger();
-                    _scenarioWindow.SetActive(true);
                 }
             }
         }
@@ -126,14 +118,12 @@ public class ScenarioEvent : MonoBehaviour
                 //침낭 없음
                 if((bag1Count + bag2Count) == 0)
                 {
-                    _scenarioText.text = "지하 2층이지만 생각보다 깊은 것 같다. 백화점이 무너져도 이곳은 안전할까?";
-                    _scenarioWindow.SetActive(true);
+                    GameManager.GM.UpdateMonologue("지하 2층이지만 생각보다 깊은 것 같다. 백화점이 무너져도 이곳은 안전할까?");
                 }
                 //침낭 보유
                 else
                 {
-                    _scenarioText.text = "침낭이 있다면 이곳에서 자도 좀비로부터 안전할까?";
-                    _scenarioWindow.SetActive(true);
+                    GameManager.GM.UpdateMonologue("침낭이 있다면 이곳에서 자도 좀비로부터 안전할까?");
                 }
                 isBasementEntered = true;
             }
@@ -143,25 +133,19 @@ public class ScenarioEvent : MonoBehaviour
             //7일차 이전
             if(GameManager.GM.GetCurrentDay() < 7)
             {
-                _scenarioText.text = "아직은 사용할 때가 아닌 것 같다.";
-                _scenarioWindow.SetActive(true);
+                GameManager.GM.UpdateMonologue("아직은 사용할 때가 아닌 것 같다.");
             }
             //7일차
             else
             {
-                _scenarioText.text = "굉음을 내며 백화점이 무너진다. 살 수 있을까.";
+                //GameManager.GM.UpdateMonologue("굉음을 내며 백화점이 무너진다. 살 수 있을까.");
                 StartCoroutine(Waitfor3Seconds());
                 //sound
                 GameManager.GM.SetEndEventTrigger();
-                _scenarioWindow.SetActive(true);
             }
         }
     }
 
-    public void OffScenarioWindow()
-    {
-        _scenarioWindow.SetActive(false);
-    }
     IEnumerator Waitfor3Seconds()
     {
         yield return new WaitForSeconds(3.0f);

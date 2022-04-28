@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Objects")]
     [SerializeField] GameObject _gameStartUI;
+    [SerializeField] GameObject _monologuePanel;
+    [SerializeField] TextMeshProUGUI _monologueText;
     private bool _overCapacity;
     private int _debuffSpeed;
 
@@ -135,6 +137,21 @@ public class UIManager : MonoBehaviour
             }
             else    _characterStatusUI.SetBag(_dataManager.GetItemImage(id), _dataManager.GetItemName(id), item);
         }       
-        
+    }
+
+    public void SetMonologuePanel(string msg)
+    {
+        _monologuePanel.SetActive(true);
+        _monologueText.text = msg;
+        if(_optionSettingUI.GetInventoryWindow().activeSelf)
+        {
+            _optionSettingUI.GetInventoryWindow().SetActive(false);
+            _inventoryUI.ChangeScrollView(0);
+        }    
+    }
+
+    public void OffMonologuePanel()
+    {
+        _monologuePanel.SetActive(false);
     }
 }

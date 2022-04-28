@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 8169175139230478894}
   - component: {fileID: 8169175139230478893}
   - component: {fileID: 8169175139230478892}
-  - component: {fileID: 8169175139230478895}
   - component: {fileID: 8169175139230478888}
   - component: {fileID: 8169175139230478890}
   - component: {fileID: 5055600442017899220}
   - component: {fileID: 5817683556075731162}
   - component: {fileID: 841314713193063357}
   - component: {fileID: 5455499034684786645}
+  - component: {fileID: 674135981}
   m_Layer: 0
   m_Name: SM_Prop_Bed_Hospital_01
   m_TagString: Untagged
@@ -32,13 +32,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8169175139230479315}
-  m_LocalRotation: {x: -0, y: 0.000000014901161, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 153.756, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8169175139230478893
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -88,22 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8169175139230478895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8169175139230479315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc250340397bc4f4488e3996d0ff3842, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
-  sleepUIButton: {fileID: 0}
-  closeUIButton: {fileID: 0}
-  playerStatus: {fileID: 0}
 --- !u!114 &8169175139230478888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,3 +210,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 4}
   m_Center: {x: -0.0000012218952, y: 0.7207038, z: 0}
+--- !u!114 &674135981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169175139230479315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c709322d849c55d4f957772ad633088b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  sleepUIButton: {fileID: 0}
+  closeUIButton: {fileID: 0}
+  playerStatus: {fileID: 0}

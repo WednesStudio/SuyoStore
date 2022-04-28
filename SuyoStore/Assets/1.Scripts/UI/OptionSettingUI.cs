@@ -146,17 +146,6 @@ public class OptionSettingUI : MonoBehaviour
 
     // }
 
-    // public void MouseSetting(float val)
-    // {
-    //     // Vector2 sensitivity = new Vector2(0.5f, 0.5f);
-    //     // Vector2 mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X") * sensitivity.x,
-    //     //                                     Input.GetAxisRaw("Mouse Y") * sensitivity.y);
-    //     // print(mouseMovement);
-    //     if(!_mouseInitialized) return;
-    //     if(!Application.isPlaying) return;
-    //     PlayerPrefs.SetFloat("Sensitivity", val);
-    //     Debug.Log(val);
-    // }
 
     //Sound Panel
     public void OnSoundPanel()
@@ -180,6 +169,11 @@ public class OptionSettingUI : MonoBehaviour
     public void OffCredit()
     {
         _creditPanel.SetActive(false);
+    }
+
+    public GameObject GetInventoryWindow()
+    {
+        return _statusInventoryWindow;
     }
 
     #endregion

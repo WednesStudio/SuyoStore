@@ -96,6 +96,11 @@ public class PlayerController : MonoBehaviour
             Move();
         }
 
+        if(_scenarioEvent.isShelterClear && gameObject.GetComponent<Transform>().position.y > -13 && gameObject.GetComponent<Transform>().position.y < 20)
+        {
+            GameManager.GM.SetEndEventTrigger();
+        }
+
         //if (Physics.Raycast(this.transform.position, this.transform.forward, out rayhit, 10f))
         //{
         //    rayhit.transform;
