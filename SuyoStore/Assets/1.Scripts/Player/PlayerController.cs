@@ -304,6 +304,16 @@ public class PlayerController : MonoBehaviour
         {
             nearItem = null;
         }
+
+        if (other.tag == "ScenarioAsset")
+        {
+            nearScenarioItem = other.gameObject;
+            if(Input.GetMouseButtonUp(0))
+            {
+                _scenarioEvent.GetClickItemName(nearScenarioItem.name);
+            }
+            nearScenarioItem = null;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
