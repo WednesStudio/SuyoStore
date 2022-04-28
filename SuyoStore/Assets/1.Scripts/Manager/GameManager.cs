@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private int _currentSceneNum;
     [NonSerialized]
     public GameState state;
+    public bool isSceneLoadDone = false;
     private string _sceneName;
     public static event Action<GameState> OnGameStateChanged;
     private bool EndEventTrigger = false;

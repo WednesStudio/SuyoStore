@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Objects")]
     [SerializeField] GameObject _gameStartUI;
+    [SerializeField] GameObject _beforeStartPanel;
     private bool _overCapacity;
     private int _debuffSpeed;
 
@@ -45,9 +46,14 @@ public class UIManager : MonoBehaviour
     }
     public void GameStartUI()
     {
+        GameManager.GM.ChangeToOtherScene(-1);
         GameManager.GM.GameStart();
-        _gameStartUI.SetActive(false);
+        while(GameManager.GM.isSceneLoadDone)
+        {
+            _gameStartUI.SetActive(false);
+        }  
         SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
+        _beforeStartPanel.SetActive(false);
     }
 
     public void ExitGameUI()
