@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4614666615390996}
   - component: {fileID: 33523687395327294}
   - component: {fileID: 23441252488014436}
-  - component: {fileID: 64644453381469372}
   - component: {fileID: -7354632694381417991}
+  - component: {fileID: 5968630317009279186}
   m_Layer: 0
   m_Name: SM_Prop_Sport_Tennis_Racket_01
   m_TagString: Item
@@ -84,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64644453381469372
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1446314617240712}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43175643890959150, guid: 6e0a8150348b96f46b09b3936bf518be, type: 2}
 --- !u!114 &-7354632694381417991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +97,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &5968630317009279186
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446314617240712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.35361385, y: 0.9661273, z: 0.04445614}
+  m_Center: {x: -0.000000022351742, y: 0.3263768, z: 0}
