@@ -23,6 +23,7 @@ public class PlayerStatus : Status
         walkSpeed = 3.0f;
         runAddSpeed = 3.0f;
         sitSpeed = 2.0f;
+        curSpeed = WalkSpeed;
 
         // Status
         maxHp = 100;
@@ -221,20 +222,35 @@ public class PlayerStatus : Status
     /// <summary> Speed Status </summary>
     public void SpeedModifier()
     {
-        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% over weight
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // max의 10% 값
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
+
+        /*
+         (40 - 30) / 3 = 3
+        30 = 3
+        33 = 1
+        36
+         */
+
         if (curCarryingBag >= maxCarryingBag)
         {
             uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, true);
-            CurSpeed = walkSpeed - 2 * count;
+            CurSpeed = walkSpeed - (0.5f) * count;
         }
         else
         {
             uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, false);
         }
-        if (CurSpeed <= 0)
+
+        if(CurSpeed <= 1 && CurSpeed > 0)
         {
-            CurSpeed = 1;
+            Debug.Log("가방이 너무 무겁다. 더 무거워진다면 위험할 것 같다.");
+        }
+        else if (CurSpeed <= 0)
+        {
+            Debug.Log("[Game Over] 무겁다. 척추가 끊어졌다. 눈앞이 캄캄하다. - 페이드아웃");
+            CurSpeed = 0;
+            Die();
         }
     }
 

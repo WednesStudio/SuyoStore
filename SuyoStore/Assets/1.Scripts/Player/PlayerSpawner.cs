@@ -5,102 +5,103 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    Scene scene;
-    int changeSceneNum; 
-    public int playerIntoGateNum;
-    float gateTimer = 2.0f; 
-    float timer = 0.0f;
+    GameObject player;
+    Transform arriveTransform;
+    enum eDirection { UP, DOWN };
+    [SerializeField] eDirection dirType;
+    enum eTargetFloor { B2, B1, F1, F2, F3, Looftop };
+    [SerializeField] eTargetFloor targetFloor;
 
-    public enum GateType { GoUp, GoDown, NotUseUp, NotUseDown };
-    public GateType gateType;
+    public GameObject ArrivePoint;
+
+    float timer;
+    float stayEscalatorTime;
 
     private void Start()
     {
-        scene = SceneManager.GetActiveScene();
+        player = GameObject.FindGameObjectWithTag("Player");
+        timer = 0.0f;
+        stayEscalatorTime = 1.0f;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if(other.tag == "Player")
         {
-            if (gateType == GateType.GoUp || gateType == GateType.GoDown)
+            Debug.Log("Gate On");
+            GameManager.GM.ChangeToOtherScene(-1);
+            if (this.dirType == eDirection.UP || this.dirType == eDirection.DOWN)
             {
-                timer += Time.deltaTime;
-
-                if (timer >= gateTimer)
-                {
-                    timer = 0.0f;
-                    Debug.Log("before : " + scene.name);
-
-                    if (gateType == GateType.GoUp)
-                    {
-                        UpstairsByGate(playerIntoGateNum);
-                    }
-                    else if (gateType == GateType.GoDown)
-                    {
-                        DownstairsByGate(playerIntoGateNum);
-                    }
-
-                    scene = SceneManager.GetActiveScene();
-                    Debug.Log("after : " + scene.name);
-                    GameManager.GM.SetCurrentScene(scene.name);
-                    SceneController.instance.player.GetComponent<PlayerController>().isChangeScene = true;
-                    timer = 0.0f;
-                }
+                player.transform.position = ArrivePoint.transform.position;
             }
-            else
-            {
-                // When gateType == notUse Up or Down
-                timer = 0.0f;
-            }
+            //if (this.dirType == eDirection.UP)
+            //{
+            //    Debug.Log("Up");
+            //    GoUp();
+            //}
+            //else if (this.dirType == eDirection.DOWN)
+            //{
+            //    Debug.Log("Down");
+            //    GoDown();
+            //}
+            //else { }
+            //timer += Time.deltaTime;
+            //if(timer >= stayEscalatorTime)
+            //{
+
+            //GameManager.gm. ==true position ¹Ù²Ù±â
+            //timer = 0.0f;
+            //}
         }
     }
 
-    public void DownstairsByGate(int passedGateNum)
+    void GoUp()
     {
-        switch (scene.name)
+        switch (targetFloor)
         {
-            case "04.F3":
-                changeSceneNum = 3;
+            case eTargetFloor.B1:
+                ArrivePoint = GameObject.Find("Up-arrive B1");
                 break;
-            case "03.F2":
-                changeSceneNum = 2;
+            case eTargetFloor.F1:
+                ArrivePoint = GameObject.Find("Up-arrive F1");
                 break;
-            case "02.F1":
-                changeSceneNum = 1;
+            case eTargetFloor.F2:
+                ArrivePoint = GameObject.Find("Up-arrive F2");
                 break;
-            case "01.B1":
-                changeSceneNum = 0;
+            case eTargetFloor.F3:
+                ArrivePoint = GameObject.Find("Up-arrive F3");
+                break;
+            case eTargetFloor.Looftop:
+                Debug.Log("This floor need MUST ITEM.");
                 break;
             default:
+                Debug.Log("This floor is last. Can't go Up.");
                 break;
         }
-        SceneController.instance.currentGateNum = passedGateNum;
-
-        GameManager.GM.ChangeToOtherScene(changeSceneNum);
+        player.transform.position = ArrivePoint.transform.position;
     }
 
-    public void UpstairsByGate(int passedGateNum)
+    void GoDown()
     {
-        switch (scene.name)
+        switch (targetFloor)
         {
-            case "00.B2":
-                changeSceneNum = 1;
+            case eTargetFloor.B2:
+                ArrivePoint = GameObject.Find("Down-arrive B2");
                 break;
-            case "01.B1":
-                changeSceneNum = 2;
+            case eTargetFloor.B1:
+                ArrivePoint = GameObject.Find("Down-arrive B1");
                 break;
-            case "02.F1":
-                changeSceneNum = 3;
+            case eTargetFloor.F1:
+                ArrivePoint = GameObject.Find("Down-arrive F1");
                 break;
-            case "03.F2":
-                changeSceneNum = 4;
+            case eTargetFloor.F2:
+                ArrivePoint = GameObject.Find("Down-arrive F2");
                 break;
             default:
+                Debug.Log("This floor is last. Can't go Down.");
                 break;
         }
-        SceneController.instance.currentGateNum = passedGateNum;
-
-        GameManager.GM.ChangeToOtherScene(changeSceneNum);
+        player.transform.position = ArrivePoint.transform.position;
     }
+
 }
