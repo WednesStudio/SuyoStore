@@ -61,6 +61,7 @@ public class ItemUse : MonoBehaviour
                 UseFood(item.GetSATIETY());
                 break;
             case weapon:
+                //무기 사용
                 WeaponSetting(itemID);
                 break;
             case pill:
@@ -155,17 +156,17 @@ public class ItemUse : MonoBehaviour
     {
         //currentItemID가 기존 아이템 , newItemID가 새로운 아이템
         //currentItemID 가 -1일 경우 : 기존 아이템 없음, 새로운 아이템 장착만.
-        //newItemID가 -1일 경우 : 기존 아이템 해제, 새로 장착할 아이템은 없음.
+        //newItemID가 -1일 경우 : 기존 아이템 유무와 상관없이 새로 장착할 아이템 없음.
 
-        //새로 교체할 아이템은 없지만 현재 장착된 아이템 해제할 경우 현재거 삭제만
-
-        //현재거를 삭제(기존 아이템이 있어서 교체를 해야 할 경우 & 새 아이템 없이 기존 장착 아이템 해제만 하는 경우)
+        //현재거를 삭제(기존 아이템이 있어서 교체를 해야 할 경우. 새로 교체할 아이템은 없지만 현재 장착된 아이템 해제할 경우, 현재거 삭제만)
         if (currentItemID != -1)
         {
+            //UI 초기화
             int[] arr = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             Item temp = new Item(MyUsedItem[currentItemID].GetItemName(), arr);     //빈 아이템 넣어줌으로써 UI Status초기화
             _uiManager.SetCurrentItemStatus(-1, temp);  //Player Status UI에 연결, 초기화
 
+            //인벤토리 관리
             if (MyUsedItem[currentItemID].GetDURABILITY() > 0)  //아직 내구도가 0이상으로 사용할 수 있을 경우 다시 인벤토리에 넣어줌
             {
                 _dataManager.AddItem(currentItemID, 1);
@@ -177,14 +178,14 @@ public class ItemUse : MonoBehaviour
                 //DestroyObject(0, currentItemID);    
             }
 
-            //기존 장착된 아이템 찾아서 삭제
-            if (_dataManager.GetItemSubCategory(currentItemID) == "무기")
+            //기존 장착된 아이템 찾아서 삭제 - Player 쪽 아이템 아이템 해제
+            if (_dataManager.GetItemSubCategory(currentItemID) == "무기")   //해제해야 할 게 무기라면
             {
-                GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.RemoveEquipWeapon(currentItemID);
-                weapon.SetActive(false);
+                GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));   //player에 붙어있는 무기 배열 속 아이템 받아옴
+                playerStatus.RemoveEquipWeapon(currentItemID);    //player status의 equipList 업데이트
+                weapon.SetActive(false);    //받아온 무기 아이템 안 보이게
             }
-            else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")
+            else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")    //무기와 동일한 방식으로 작동
             {
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipFlashlight(currentItemID);
@@ -199,7 +200,31 @@ public class ItemUse : MonoBehaviour
         }
 
         //새로운 거 장착
-        if (newItemID != -1) _uiManager.SetCurrentItemStatus(newItemID, MyUsedItem[newItemID]);
+        if (newItemID != -1)
+        {
+            //UI 설정
+            _uiManager.SetCurrentItemStatus(newItemID, MyUsedItem[newItemID]);
+
+            //새로 장착할 아이템 찾아서 setActive true
+            if (_dataManager.GetItemSubCategory(currentItemID) == "무기")   //장착해야 할 게 무기라면
+            {
+                GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));   //무기 배열 속 아이템 받아옴
+                playerStatus.AddEquipWeapon(currentItemID);    //player status의 equipList 업데이트
+                weapon.SetActive(true);    //받아온 무기 아이템이 보이도록
+            }
+            else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")    //무기와 동일한 방식으로 작동
+            {
+                GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
+                playerStatus.AddEquipFlashlight(currentItemID);
+                light.SetActive(true);
+            }
+            else // 가방
+            {
+                GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
+                playerStatus.AddEquipBag(currentItemID);
+                bag.SetActive(true);
+            }
+        } 
     }
 
     private void UseBag(int itemID)
@@ -219,12 +244,6 @@ public class ItemUse : MonoBehaviour
         else
         {
             ChangeItem(-1, itemID);
-            //location, rotation -> 플레이어 쪽으로 수정 필요
-            // GameObject newBag = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            // newBag.tag = "UsedItem";
-            GameObject bag = FindExactBag(_dataManager.GetItemFileName(itemID));
-            bag.SetActive(true);
-            playerStatus.AddEquipBag(itemID);
         }
     }
     IEnumerator WaitToDisappear()
@@ -279,15 +298,16 @@ public class ItemUse : MonoBehaviour
     }
     private void WeaponSetting(int itemID)
     {
-        //만약 플레이어에게 이미 장착되어 있는 무기가 있다면
+        //만약 플레이어에게 이미 장착되어 있는 아이템이 있다면 (무기, 라이트 둘 다 하나라도 있으면 1 초과)
         if (playerStatus.EquipWeaponList.Count > 0)
         {
             foreach (int id in playerStatus.EquipWeaponList)
             {
+                //장착되어 있는 아이템 중 무기가 있다면
                 if (_dataManager.GetItemSubCategory(id) == "무기")
                 {
-                    ChangeItem(id, itemID);
-                    UseWeapon(item.GetATTACK(), itemID);
+                    ChangeItem(id, itemID);     //기존 아이템 해제(SetActive false), 새로운 아이템 장착
+                    UseWeapon(item.GetATTACK(), itemID);    //플레이어 공격력 올려줌
                     return;
                 }
             }
@@ -297,19 +317,11 @@ public class ItemUse : MonoBehaviour
         {
             UseWeapon(item.GetATTACK(), itemID);
             ChangeItem(-1, itemID);
-            //location, rotation -> 플레이어 쪽으로 수정 필요
-            //GameObject newWeapon = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(itemID));
-            weapon.SetActive(true);
-            playerStatus.AddEquipWeapon(itemID);
-            //newWeapon.tag = "UsedItem";
         }
     }
     public void UseWeapon(int attack, int itemID)
     {
         playerStatus.CurAttack = 10 + attack;
-        // 휘두를 때마다 내구도 마이나스
-        //item.SetDURABILITY(-1);
     }
     public void UseHeal(int heal)
     {
@@ -338,12 +350,6 @@ public class ItemUse : MonoBehaviour
         {
             ChangeItem(-1, itemID);
             UseLight(item, itemID);
-            //location, rotation -> 플레이어 쪽으로 수정 필요
-            // GameObject newLight = Instantiate(_dataManager.GetItemModel(itemID), Vector3.zero, Quaternion.identity);
-            // newLight.tag = "UsedItem";
-            GameObject light = FindExactLight(_dataManager.GetItemFileName(itemID));
-            light.SetActive(true);
-            playerStatus.AddEquipFlashlight(itemID);
         }
 
     }
