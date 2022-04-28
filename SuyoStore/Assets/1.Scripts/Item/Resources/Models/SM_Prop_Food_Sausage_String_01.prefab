@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7594430742416497257}
   - component: {fileID: -6533737219393972291}
   - component: {fileID: -2988952349774756094}
+  - component: {fileID: -5451485595618492124}
   m_Layer: 0
   m_Name: SM_Prop_Food_Sausage_String_01
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1570347279704908}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &-5451485595618492124
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570347279704908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.10021362, y: 0.083265625, z: 0.8968195}
+  m_Center: {x: -0.00000060908496, y: 0, z: 0.0024392754}

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6162776973091801459}
   - component: {fileID: 186224365387137735}
   - component: {fileID: 223325699564635263}
+  - component: {fileID: 5145561649397541177}
   m_Layer: 0
   m_Name: SM_Prop_Music_Electric_Guitar_01
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1973175269348534}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &5145561649397541177
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973175269348534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5385226, y: 0.0976488, z: 1.6782259}
+  m_Center: {x: 0.000000014901161, y: 0.0488244, z: 0.41973394}

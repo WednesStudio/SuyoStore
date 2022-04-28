@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3859311129652149064}
   - component: {fileID: 3230399100598253232}
   - component: {fileID: -7628062787214450418}
+  - component: {fileID: -7872039188671315432}
   m_Layer: 0
   m_Name: SM_Prop_Food_Apple_01
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1005277357169550}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &-7872039188671315432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005277357169550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14895271, y: 0.16681406, z: 0.14895278}
+  m_Center: {x: 0, y: 0.0824779, z: 0}

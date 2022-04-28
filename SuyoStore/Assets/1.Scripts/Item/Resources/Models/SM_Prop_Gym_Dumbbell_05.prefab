@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4200499419685502739}
   - component: {fileID: 4085167525755315898}
   - component: {fileID: -1844839376997978489}
+  - component: {fileID: 659501744739188295}
   m_Layer: 0
   m_Name: SM_Prop_Gym_Dumbbell_05
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1452059561765510}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &659501744739188295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452059561765510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.10839294, y: 0.093871094, z: 0.3313434}
+  m_Center: {x: 0, y: 0, z: 0}

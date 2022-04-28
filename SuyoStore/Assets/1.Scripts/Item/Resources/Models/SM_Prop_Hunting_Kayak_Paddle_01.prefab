@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 985556268546535994}
   - component: {fileID: -3485316844439181833}
   - component: {fileID: 2661906182981623571}
+  - component: {fileID: 4323147692299576814}
   m_Layer: 0
   m_Name: SM_Prop_Hunting_Kayak_Paddle_01
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1137171577756772}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &4323147692299576814
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137171577756772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33076537, y: 0.33076543, z: 3.4765997}
+  m_Center: {x: 0, y: -0.009929702, z: 0}

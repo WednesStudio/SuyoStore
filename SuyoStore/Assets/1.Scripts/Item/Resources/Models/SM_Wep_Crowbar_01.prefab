@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4723866550651933901}
   - component: {fileID: -8455599827844679604}
   - component: {fileID: 4898776498388572720}
+  - component: {fileID: -1782063577937803376}
   m_Layer: 0
   m_Name: SM_Wep_Crowbar_01
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1750927141268108}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &-1782063577937803376
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750927141268108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.061308287, y: 0.27842307, z: 1.0782051}
+  m_Center: {x: 0.0000012200326, y: -0.060408667, z: 0.055394664}

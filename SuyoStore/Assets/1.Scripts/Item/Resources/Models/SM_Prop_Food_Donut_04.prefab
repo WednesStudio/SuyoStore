@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8673272283230339499}
   - component: {fileID: -2254257383978455946}
   - component: {fileID: -6428914246409194434}
+  - component: {fileID: 2770004809388830451}
   m_Layer: 0
   m_Name: SM_Prop_Food_Donut_04
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1429539437250574}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &2770004809388830451
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429539437250574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21999998, y: 0.071491376, z: 0.22099118}
+  m_Center: {x: -0.000000007450581, y: 0.035745688, z: 0.00007311255}

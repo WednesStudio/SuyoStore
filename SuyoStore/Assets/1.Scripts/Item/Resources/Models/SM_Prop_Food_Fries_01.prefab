@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3570484041526429058}
   - component: {fileID: 4296742901931924668}
   - component: {fileID: -7149342451405326294}
+  - component: {fileID: -2321896094766108253}
   m_Layer: 0
   m_Name: SM_Prop_Food_Fries_01
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1465817476167670}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &-2321896094766108253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465817476167670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16277859, y: 0.22430985, z: 0.12703781}
+  m_Center: {x: -0.0020691864, y: 0.11215492, z: 0.0007605776}

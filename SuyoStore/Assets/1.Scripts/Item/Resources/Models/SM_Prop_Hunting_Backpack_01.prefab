@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3685018781730102350}
   - component: {fileID: 966199955513257293}
   - component: {fileID: 3450328296424474052}
+  - component: {fileID: 820083022112936476}
   m_Layer: 0
   m_Name: SM_Prop_Hunting_Backpack_01
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1092060676733230}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &820083022112936476
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092060676733230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45178923, y: 0.54541427, z: 0.24728863}
+  m_Center: {x: 0, y: 0, z: 0}

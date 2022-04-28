@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4465237039332650915}
   - component: {fileID: -9190963920014991159}
   - component: {fileID: -8366620294708757002}
+  - component: {fileID: 1786216842384307161}
   m_Layer: 0
   m_Name: SM_Item_Pills_01
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1337799580505134}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &1786216842384307161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337799580505134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14737853, y: 0.2366404, z: 0.14737853}
+  m_Center: {x: 0.000000011175871, y: 0.1183202, z: 0.00000016018748}

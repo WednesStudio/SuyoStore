@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2468933620773354340}
   - component: {fileID: -8141940746839272459}
   - component: {fileID: -675422205787160531}
+  - component: {fileID: -6991067087106396719}
   m_Layer: 0
   m_Name: SM_Prop_Food_Chicken_Breast_Cooked_02
   m_TagString: Item
@@ -95,7 +96,7 @@ MeshCollider:
   m_GameObject: {fileID: 1796542459555194}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataManager: {fileID: 0}
+--- !u!65 &-6991067087106396719
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796542459555194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.333617, y: 0.06631701, z: 0.20111144}
+  m_Center: {x: 0.04820667, y: 0.033158503, z: 0.00564168}
