@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
         _inventoryUI.OnCheckItemUseWindow(name);
     }
 
-    public void ChangeWeaponState(GameObject obj)
+    public void ChangeItemState(GameObject obj)
     {
         GameObject parent = obj.transform.parent.gameObject;
         string name = parent.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text;
