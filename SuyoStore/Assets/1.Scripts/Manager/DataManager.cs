@@ -179,6 +179,7 @@ public class DataManager : MonoBehaviour
                 }
                 if (category != bag) _inventoryUI.SetTotalBagContents();
                 _inventoryUI.SetBagCapacity(capacity, maxCapacity);
+                pStatus.CurCarryingBag += capacity;
             }
             else
             {
@@ -221,6 +222,7 @@ public class DataManager : MonoBehaviour
                 }
                 if (category != bag) _inventoryUI.SetTotalBagContents();
                 _inventoryUI.SetBagCapacity(capacity, maxCapacity);
+                pStatus.CurCarryingBag += capacity;
             }
         }
         else
@@ -271,8 +273,8 @@ public class DataManager : MonoBehaviour
             }
             _inventoryUI.SetTotalBagContents();
             _inventoryUI.SetBagCapacity(-capacity, maxCapacity);
+            pStatus.CurCarryingBag -= capacity;
         }
-        pStatus.CurCarryingBag += capacity;
         _uiManager.SetPlayerSpeed(_inventoryUI.GetCurrentCapacity(), maxCapacity);
     }
 

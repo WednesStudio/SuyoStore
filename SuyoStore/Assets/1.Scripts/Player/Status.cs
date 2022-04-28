@@ -32,13 +32,15 @@ public class Status : MonoBehaviour
     protected int curFatigue; // 현재 피로도
 
     // Ability
-    protected int maxCarryingBag; // 기본 적재량
+    protected int carryingBag; // 기본 적재량
     protected int attack; // 기본 공격력
     protected int stamina; // 기본 지구력
 
     // Current Ability
     [SerializeField]
-    protected int curCarryingBag; // 기본 적재량
+    protected int maxCarryingBag; // 최대 적재량
+    [SerializeField]
+    protected int curCarryingBag; // 현재 적재량
     [SerializeField]
     protected int curAttack; // 현재 공격력
     [SerializeField]
@@ -81,6 +83,7 @@ public class Status : MonoBehaviour
 
     /// [Property] Ability
     public int MaxCarryingBag { get { return maxCarryingBag; } set { maxCarryingBag = value; } }
+    public int CarryingBag { get { return carryingBag; } set { carryingBag = value; } }
     public int Attack { get { return attack; } set { attack = value; } }
     public int Stamina { get { return stamina; } set { stamina = value; } }
 
