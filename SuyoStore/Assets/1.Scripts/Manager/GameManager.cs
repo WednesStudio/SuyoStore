@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
     {
         //Initial Game Setting
         //UI Scene에서 생성된 오브젝트들(UI, Player, Managers)을 갖고 첫 스폰 씬에 생성
-        ChangeToOtherScene(1);  //빌드 번호가 1인 씬으로 이동
         UpdateGameState(GameState.GameStart);
         isGameStart = true;
         if(!SoundManager.SM.isPlayingBGMSound()) SoundManager.SM.PlayBGMSound(BGMSoundName.MainMusic);
