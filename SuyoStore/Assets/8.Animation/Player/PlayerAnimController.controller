@@ -181,7 +181,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HeavyWeaponSwing
-  m_Speed: 5
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -9073866517380423713}
@@ -194,7 +194,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 61285a22ff712a243af84560ffda9e5a, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 8a197033fd7f2b14087f3df24c61d608, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -503,7 +503,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Punch
-  m_Speed: 5
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4541917580641480729}
@@ -516,7 +516,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: e2382b4b9d9fec94781a159072a2a79c, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: a549d9aa8ffc4394b95018cbe0c9f503, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -629,7 +629,7 @@ AnimatorStateMachine:
     m_Position: {x: 150, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1768349668058332517}
-    m_Position: {x: 180, y: 550, z: 0}
+    m_Position: {x: 170, y: 550, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1941130618553436364}
     m_Position: {x: -70, y: 940, z: 0}
