@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1786216842384307161}
   - component: {fileID: 6445607699331537007}
   - component: {fileID: 6305519172006689337}
+  - component: {fileID: -1489616506348605170}
   m_Layer: 0
   m_Name: SM_Item_Pills_01
   m_TagString: Item
@@ -159,7 +160,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -212,3 +213,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &-1489616506348605170
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337799580505134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.3, z: 1}
+  m_Center: {x: 0.000000011175871, y: 0.1183202, z: 0.00000016018748}

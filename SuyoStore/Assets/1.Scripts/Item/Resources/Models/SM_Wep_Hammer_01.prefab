@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7659947970214943381}
   - component: {fileID: 5515298352390606062}
   - component: {fileID: -4657900444518545873}
+  - component: {fileID: 5573563975844199111}
   m_Layer: 0
   m_Name: SM_Wep_Hammer_01
   m_TagString: Item
@@ -159,7 +160,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -212,3 +213,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5573563975844199111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238499803652380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.4, z: 1}
+  m_Center: {x: 0.0000010458753, y: 0.010448188, z: 0.070501514}
