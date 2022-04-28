@@ -34,9 +34,10 @@ public class PlayerStatus : Status
         curFatigue = 100;
 
         // Ability
-        maxCarryingBag = 30;
         attack = 10;
         stamina = 100;
+        carryingBag = 30;
+        maxCarryingBag = carryingBag;
 
         curCarryingBag = 0;
         curAttack = 10;
@@ -278,19 +279,21 @@ public class PlayerStatus : Status
 
     //    }
     //}
-    public void AddEquipItem(int _itemID)
-    {
-        EquipWeaponList.Add(_itemID);
-        if (GameManager.GM.GetItemSubCategory(_itemID) == "무기") playerController.hasWeapon = true;
-    }
-    public void RemoveEquipItem(int _itemID)
-    {
-        EquipWeaponList.Remove(_itemID);
-        if (GameManager.GM.GetItemSubCategory(_itemID) == "무기") playerController.hasWeapon = false;
-        //공격력 원래대로
-        curAttack = 10;
-        //시야 감소
-    }
+
+    // EuipItemList
+    //public void AddEquipItem(int _itemID)
+    //{
+    //    EquipWeaponList.Add(_itemID);
+    //    if (GameManager.GM.GetItemSubCategory(_itemID) == "무기") playerController.hasWeapon = true;
+    //}
+    //public void RemoveEquipItem(int _itemID)
+    //{
+    //    EquipWeaponList.Remove(_itemID);
+    //    if (GameManager.GM.GetItemSubCategory(_itemID) == "무기") playerController.hasWeapon = false;
+    //    //공격력 원래대로
+    //    curAttack = 10;
+    //    //시야 감소
+    //}
 
     // 장비
     public List<int> EquipWeaponList = new List<int>();
