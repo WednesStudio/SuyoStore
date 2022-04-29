@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // Related Zombie
     public bool isSafe = false;
     public GameObject nearSenarioItem;
-    public bool isChangeScene = false;
+    public bool isChangeFloor = false;
 
     // Move
     private float rotationSpeed = 1000f; // 회전(방향전환) 속도
@@ -46,11 +46,11 @@ public class PlayerController : MonoBehaviour
 
     //weapon
     public GameObject[] Weapons;
-
+    public GameObject EquipWeapon;
+    Weapon equipWeapon;
     //light
     public GameObject[] Lights;
     bool islightOn = false;
-
     //bag
     public GameObject[] Bags;
 
@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
     public bool hasWeapon;
     public bool hasFlashlight;
     public bool hasBag;
-    //Weapon equipWeapon; // 무기별 공격범위나 속도.. 였는데 안씀
     public GameObject nearScenarioItem;
     public GameObject nearTutorialItem;
     
@@ -78,8 +77,22 @@ public class PlayerController : MonoBehaviour
         _tutorial = _uiManager.GetComponent<Tutorial>();
     }
 
+    void FreezeRoation()
+    {
+        //characterController.velocity = Vector3.zero;
+    }
+    private void FixedUpdate()
+    {
+        
+    }
+
     private void Update()
     {
+        // 장착한 무기에 대한 정보
+        if (EquipWeapon != null)
+        {
+            equipWeapon = EquipWeapon.GetComponent<Weapon>();
+        }
         //if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
         //{
         //    SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.WalkSound);
@@ -89,7 +102,7 @@ public class PlayerController : MonoBehaviour
         //    SoundManager.SM.StopEnvironmentalSound();
         //}
         // When change scene, player don't be attacked by zombie
-        if (isChangeScene)
+        if (isChangeFloor)
         {
             SafeTime();
         }
@@ -167,7 +180,10 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0)) {
-            Attack();
+            if (state == PlayerState.Idle || state == PlayerState.Sit)
+            {
+                Attack();
+            }
         }
     }
 
@@ -422,50 +438,44 @@ public class PlayerController : MonoBehaviour
         //weapons[weaponindex].SetActive(true);
     }
 
-    IEnumerator WaitAttackTime(float time)
-    {
-        yield return new WaitForSeconds(time);
-        nearZombie.GetComponent<ZombieAI>().Hit();
-    }
-
     void Attack()
     {
         if(nearZombie != null)
         {
-            if (state == PlayerState.Idle || state == PlayerState.Sit)
+            if (nearZombie.tag == "Zombie")
             {
-                if (nearZombie.tag == "Zombie")
+                isSit = false;
+                pStatus.CurFatigue -= 2;
+                
+                if (!hasWeapon)
                 {
-                    isSit = false;
-                    pStatus.CurFatigue -= 2;
+                    // 무기 미착용 상태
+                    animator.SetTrigger("PunchNearZombie");
+                    //pStatus.EquipItemsList
+                    //SoundManager.SM.sour
+                    nearZombie.GetComponent<ZombieAI>().Hit();
+                }
+                else
+                {
+                    // 무기 착용 상태
+                    animator.SetTrigger("SwingNearZombie");
+                    ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
 
-                    //if(equipWeapon == null)
-                    if (!hasWeapon)
-                    {
-                        // 무기 미착용 상태
-                        animator.SetTrigger("PunchNearZombie");
-                        //pStatus.EquipItemsList
-                        //SoundManager.SM.sour
-                    }
-                    else
-                    {
-                        // 무기 착용 상태
-                        animator.SetTrigger("SwingNearZombie");
-                        ItemUse itemUse = _dataManager.GetComponent<ItemUse>();
+                    // 무기로 공격
+                    equipWeapon.Use();
+                    nearZombie.GetComponent<ZombieAI>().Hit();
 
-                        //공격할 때마다 장착한 무기 내구도 줄어들음
-                        foreach (int i in pStatus.EquipWeaponList)
+                    //공격할 때마다 장착한 무기 내구도 줄어들음
+                    foreach (int i in pStatus.EquipWeaponList)
+                    {
+                        if (_dataManager.GetItemSubCategory(i) == "무기")
                         {
-                            if (_dataManager.GetItemSubCategory(i) == "무기")
-                            {
-                                itemUse.SetItemDURABILITY(i);
-                            }
+                            itemUse.SetItemDURABILITY(i);
                         }
                     }
-                    StartCoroutine(WaitAttackTime(1.0f));
-
-                    state = PlayerState.Idle;
+                        
                 }
+                state = PlayerState.Idle;
             }
         }
     }
@@ -494,15 +504,15 @@ public class PlayerController : MonoBehaviour
 
     void SafeTime()
     {
-        StopCoroutine(WaitSafeTime(4.0f));
+        StopCoroutine(WaitSafeTime());
         isSafe = true;
-        StartCoroutine(WaitSafeTime(4.0f));
+        StartCoroutine(WaitSafeTime());
     }
 
-    IEnumerator WaitSafeTime(float time)
+    IEnumerator WaitSafeTime()
     {
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(4.0f);
         isSafe = false;
-        isChangeScene = false;
+        isChangeFloor = false;
     }
 }

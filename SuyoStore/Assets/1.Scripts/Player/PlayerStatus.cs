@@ -23,14 +23,15 @@ public class PlayerStatus : Status
         walkSpeed = 3.0f;
         runAddSpeed = 3.0f;
         sitSpeed = 2.0f;
+        curSpeed = WalkSpeed;
 
         // Status
         maxHp = 100;
         maxSatiety = 100;
         maxFatigue = 100;
 
-        curHp = 100;
-        curSatiety = 100;
+        curHp = 70;
+        curSatiety = 80;
         curFatigue = 100;
 
         // Ability
@@ -45,11 +46,11 @@ public class PlayerStatus : Status
 
         // Time related status
         time = 100;
-        hungerTime = 60;
+        hungerTime = 10;
         hungerDieTime = 120;
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
-        staminaTime = 1;
+        staminaTime = 2;
         useStaminaTime = staminaTime;
         recoveryStaminaTime = 1;
         useRecoveryStaminaTime = recoveryStaminaTime;
@@ -60,6 +61,7 @@ public class PlayerStatus : Status
 
     private void Update()
     {
+        //if(GameManager.GM.isGameStart)
         if (curHp <= 0)
         {
             Die();
@@ -221,26 +223,43 @@ public class PlayerStatus : Status
     /// <summary> Speed Status </summary>
     public void SpeedModifier()
     {
-        int excessBag = (int)(maxCarryingBag * 10 / 100); // 10% over weight
+        int excessBag = (int)(maxCarryingBag * 10 / 100); // max의 10% 값
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
+
+        /*
+         (40 - 30) / 3 = 3
+        30 = 3
+        33 = 1
+        36
+         */
+
         if (curCarryingBag >= maxCarryingBag)
         {
             uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, true);
-            CurSpeed = walkSpeed - 2 * count;
+            CurSpeed = walkSpeed - (0.5f) * count;
         }
         else
         {
             uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.SpeedLow, false);
         }
-        if (CurSpeed <= 0)
+
+        if(CurSpeed <= 1 && CurSpeed > 0)
         {
-            CurSpeed = 1;
+            Debug.Log("가방이 너무 무겁다. 더 무거워진다면 위험할 것 같다.");
+        }
+        else if (CurSpeed <= 0)
+        {
+            Debug.Log("[Game Over] 무겁다. 척추가 끊어졌다. 눈앞이 캄캄하다. - 페이드아웃");
+            CurSpeed = 0;
+            Die();
         }
     }
 
     /// <summary> Stamina Status </summary>
     public void UseStamina(int _value)
     {
+        // stamina타이머(UseStaminaTime)가 0이 될 때마다 스테미나가 1씩 감소
+        // 감소 후 타이머가 원상 복귀 후 다시 타이머 카운트
         UseStaminaTime -= Time.deltaTime;
         if (UseStaminaTime <= 0)
         {
@@ -249,6 +268,7 @@ public class PlayerStatus : Status
         }
         if(CurStamina <= 0)
         {
+            // 스태미나가 0 밑으로 가려하면 0으로 계속 고정
             CurStamina = RemainStatusValue(curStamina, Stamina);
         }
     }
@@ -263,6 +283,7 @@ public class PlayerStatus : Status
                 CurStamina += _value;
                 UseRecoveryStaminaTime = GetBackTime(UseRecoveryStaminaTime, RecoveryStaminaTime);
             }
+            // 스태미나가 최대값보다 커지려고 하면 최대값으로 계속 고정
             CurStamina = RemainStatusValue(curStamina, Stamina);
         }
     }
@@ -323,8 +344,6 @@ public class PlayerStatus : Status
     {
         EquipFlashlighList.Remove(_itemID);
         if (GameManager.GM.GetItemSubCategory(_itemID) == "라이트") playerController.hasWeapon = false;
-        //공격력 원래대로
-        curAttack = 10;
     }
 
 
@@ -339,7 +358,7 @@ public class PlayerStatus : Status
     {
         EquipBagList.Remove(_itemID);
         if (GameManager.GM.GetItemSubCategory(_itemID) == "가방") playerController.hasWeapon = false;
-        //공격력 원래대로
-        curAttack = 10;
+        // 가방 무게 원래대로
+        MaxCarryingBag = CarryingBag;
     }
 }

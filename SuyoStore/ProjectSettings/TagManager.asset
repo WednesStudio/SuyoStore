@@ -11,7 +11,9 @@ TagManager:
   - PlayerAndCam
   - ScenarioAsset
   - GlobalVolume
+  - Melee
   - TutorialSpot
+
   layers:
   - Default
   - TransparentFX
@@ -19,9 +21,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Zombie
+  - Floor
   - 
   - 
   - 
