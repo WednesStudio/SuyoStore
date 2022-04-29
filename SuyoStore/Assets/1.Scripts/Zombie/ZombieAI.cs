@@ -1,91 +1,146 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
+    GameObject zombie;
+    // Player object & script related Player
     private GameObject target;
     private PlayerStatus targetStatus;
     private PlayerController targetController;
-    public Image healthbar;
+
     private float timer;
-    public int hp; //체력
-    private int curHp; //현재 체력
+
+    public int hp;
+    private int curHp;
     public int detection; //감지 범위
-    public int curSpeed;
-    public int speed; //속도
-    public int power; //공격력
-    public int coolTime; //쿨타임
-    public int infection = 5; //감염률
-    public Vector3 spawn; //스폰 위치
+    Vector3 moveVec;
+    public float curSpeed;
+    public float speed;
+    public int power;
+    public int coolTime;
+    public int infection = 5; // 감염률
+    public Vector3 spawn; // 스폰 위치
     public bool isDetect;
+    //public bool isChase; // 플레이어 추격 여부
     public bool isRandom;
     public float range;
-    //bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
     public Animator zombieAnim;
     public GameObject child;
     ZombieSpawner zombieSp;
+    Rigidbody zomRigid;
 
-    void Start()
+    bool isBorder;
+
+    //Animation Controller Transition
+    bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
+    bool isWalk = true;
+
+    NavMeshAgent nav;
+
+    private void Awake()
     {
+        //mat = GetComponent<MeshRenderer>().material;
+        nav = GetComponent<NavMeshAgent>();
+
+        zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
+        zombie = gameObject;
+        zomRigid = GetComponent<Rigidbody>();
+        zombieAnim = GetComponent<Animator>();
+
         target = GameObject.FindGameObjectWithTag("Player");
         targetStatus = target.GetComponent<PlayerStatus>();
         targetController = target.GetComponent<PlayerController>();
-
-        hp = 50;
+    }
+    void Start()
+    {
+        hp = 100;
         detection = 6;
-        speed = 2;
+        speed = 3.5f;
 
-        timer = 0;
+        timer = 1;
         isDetect = false;
         isRandom = false;
-        spawn = transform.position;
         curHp = hp;
         curSpeed = speed;
-        zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
-        range = zombieSp.range;
+        spawn = transform.position;
+        range = zombieSp.spawnRange;
+    }
+
+    void StopToWall()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+        isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
+    }
+    void FreezeRotation()
+    {
+        zomRigid.angularVelocity = Vector3.zero;
+    }
+    private void FixedUpdate()
+    {
+        FreezeRotation();
     }
 
     // Update is called once per frame
     void Update()
     {
+        nav.SetDestination(target.transform.position);
+        zombieAnim.SetBool("isWalk", curSpeed > 0);
+
         timer -= Time.deltaTime;
         Move();
-        Debug.Log(child.name);
     }
 
-
-    //Player Tag를 가진 객체에 닿았을 떄
+    //Player Tag를 가진 객체에 닿았을 때 공격
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && !targetController.isSafe)
+        if (other.tag == "Player")
         {
-            zombieAnim.SetBool("isAttack", true);
             curSpeed = 0;
             if (timer <= 0)
             {
                 Attack();
+                isAttacking =  true;
+            }
+            else
+            {
+                isAttacking = false;
             }
             timer = coolTime;
         }
     }
-
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
             curSpeed = speed;
-            zombieAnim.SetBool("isAttack", false);
+            isAttacking = false;
+            zombieAnim.SetBool("isAttack", isAttacking);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // 무기 공격 범위에 닿으면 좀비 체력 감소
+        if (other.tag == "Melee")
+        {
+            Hit();
         }
     }
 
     void Move()
     {
-        // 애니메이션 작동
-        //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 공격 당해서 hp가 깍였을 때 추격
+        //moveVec = new Vector3(
+        if (!isBorder)
+        {
+            //transform.position += curSpeed * Time.deltaTime;
+        }
+
+        //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 플레이어를 공격 중일 때 추격
         if ((!target.GetComponent<PlayerController>().isSafe)
             && ((Vector3.Distance(target.transform.position, transform.position) < detection)
-            || (curHp < hp)))
+            || isAttacking))
         {
             isDetect = true;
             transform.LookAt(target.gameObject.transform);
@@ -123,34 +178,33 @@ public class ZombieAI : MonoBehaviour
 
     void Attack()
     {
-        //Player를 공격
-        targetStatus.ReduceHp(power);
-
-        if (!targetStatus.isInfect)
+        if (!targetController.isSafe)
         {
-            if (Random.Range(1, 101) <= infection)
+            zombieAnim.SetBool("isAttack", isAttacking); // animtion
+            targetStatus.ReduceHp(power);
+
+            if (!targetStatus.isInfect)
             {
-                targetStatus.isInfect = true;
-                Debug.Log("감염되었습니다");
+                if (Random.Range(1, 101) <= infection)
+                {
+                    targetStatus.isInfect = true;
+                    zombieAnim.SetTrigger("doInfect");
+                    Debug.Log("감염되었습니다");
+                }
             }
         }
-
-        /*
-        // 원래 코드
-        target.GetComponent<PlayerController>().pStatus.CurHp -= power;
-        Debug.Log(target.GetComponent<PlayerController>().pStatus.CurHp);
-        */
     }
 
     public void Die()
     {
-        child.SetActive(false);
-        GetComponent<ParticleSystem>().Play();
+        zombieAnim.SetTrigger("doDie");
         StartCoroutine("DieEffect");
     }
 
     IEnumerator DieEffect()
     {
+        yield return new WaitForSeconds(1f);
+        GetComponent<ParticleSystem>().Play();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
@@ -158,26 +212,12 @@ public class ZombieAI : MonoBehaviour
     //피격
     public void Hit()
     {
-        Debug.Log("[Zombie System] Hit");
-
-        //지금은 3데미지를 받지만 나중에 무기 공격력 가져오기
-        curHp -= 3;
-        healthbar.fillAmount = (float)curHp / (float)hp;
+        curHp -= targetStatus.CurAttack;
+        Debug.Log("[Zombie System] Hit : " + curHp);
         if (curHp <= 0)
         {
             Die();
+            Debug.Log("[Zombie System] Die");
         }
-    }
-
-    //테스트용
-    void OnMouseDown()
-    {
-        curHp -= 3;
-        Debug.Log(curHp);
-        Debug.Log(hp);
-        healthbar.fillAmount = (float)curHp / (float)hp;
-        Debug.Log("좀비 체력: " + curHp);
-        if (curHp <= 0)
-            Die();
     }
 }

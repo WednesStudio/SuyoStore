@@ -3972,6 +3972,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1693188977817816, guid: 3c4f8473b55484d279b4c18e6db096e7, type: 3}
+      propertyPath: m_TagString
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 4341404724981040, guid: 3c4f8473b55484d279b4c18e6db096e7, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -4028,6 +4032,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 688629517642410097, guid: 3c4f8473b55484d279b4c18e6db096e7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4f8473b55484d279b4c18e6db096e7, type: 3}
 --- !u!1 &1577343320064742285 stripped
@@ -4047,6 +4055,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8727978090822334800}
     m_Modifications:
+    - target: {fileID: -7354632694381417991, guid: 40d3ee233da534ecea144ce8523c9ebd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1446314617240712, guid: 40d3ee233da534ecea144ce8523c9ebd, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Sport_Tennis_Racket_01
@@ -4054,6 +4066,10 @@ PrefabInstance:
     - target: {fileID: 1446314617240712, guid: 40d3ee233da534ecea144ce8523c9ebd, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446314617240712, guid: 40d3ee233da534ecea144ce8523c9ebd, type: 3}
+      propertyPath: m_TagString
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 4614666615390996, guid: 40d3ee233da534ecea144ce8523c9ebd, type: 3}
       propertyPath: m_RootOrder
@@ -4162,6 +4178,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1424832807081228, guid: f18ae6a6406fe4509af35ec8477dcded, type: 3}
+      propertyPath: m_TagString
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 4266322029732482, guid: f18ae6a6406fe4509af35ec8477dcded, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4218,6 +4238,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 494782153629591337, guid: f18ae6a6406fe4509af35ec8477dcded, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7904633041451704085, guid: f18ae6a6406fe4509af35ec8477dcded, type: 3}
       propertyPath: m_Size.x
       value: 0.37894455
@@ -4261,6 +4285,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8727978090822334800}
     m_Modifications:
+    - target: {fileID: -3097301516228767142, guid: 7daae357a07e7469cb7171cf5209c891, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1238499803652380, guid: 7daae357a07e7469cb7171cf5209c891, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Hammer_01
@@ -4268,6 +4296,10 @@ PrefabInstance:
     - target: {fileID: 1238499803652380, guid: 7daae357a07e7469cb7171cf5209c891, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238499803652380, guid: 7daae357a07e7469cb7171cf5209c891, type: 3}
+      propertyPath: m_TagString
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 4560509306627632, guid: 7daae357a07e7469cb7171cf5209c891, type: 3}
       propertyPath: m_RootOrder
@@ -4400,6 +4432,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1690120943321838, guid: 123fa45c883a447aca544e54f9b93af3, type: 3}
+      propertyPath: m_TagString
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 4434225907382062, guid: 123fa45c883a447aca544e54f9b93af3, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4456,6 +4492,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4823149344673935190, guid: 123fa45c883a447aca544e54f9b93af3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 123fa45c883a447aca544e54f9b93af3, type: 3}
 --- !u!4 &2524926789991988904 stripped
@@ -4475,6 +4515,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8727978090822334800}
     m_Modifications:
+    - target: {fileID: -3731320425432373253, guid: b4d57c4cd62414cd4a6402720f6c66fb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1054167787498168, guid: b4d57c4cd62414cd4a6402720f6c66fb, type: 3}
       propertyPath: m_Name
       value: SM_Item_Frypan_01
@@ -4482,6 +4526,10 @@ PrefabInstance:
     - target: {fileID: 1054167787498168, guid: b4d57c4cd62414cd4a6402720f6c66fb, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054167787498168, guid: b4d57c4cd62414cd4a6402720f6c66fb, type: 3}
+      propertyPath: m_TagString
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 4536402927294124, guid: b4d57c4cd62414cd4a6402720f6c66fb, type: 3}
       propertyPath: m_RootOrder
@@ -4602,6 +4650,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1137171577756772, guid: acc2498259adf43d19c6f17c8adca653, type: 3}
+      propertyPath: m_TagString
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 4406905088400494, guid: acc2498259adf43d19c6f17c8adca653, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4656,6 +4708,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4406905088400494, guid: acc2498259adf43d19c6f17c8adca653, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073186782313015399, guid: acc2498259adf43d19c6f17c8adca653, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4796,6 +4852,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1031860391748574, guid: cbc21db0f711447eabd1519522e8f546, type: 3}
+      propertyPath: m_TagString
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 4682687518758854, guid: cbc21db0f711447eabd1519522e8f546, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4852,6 +4912,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3540887989528618070, guid: cbc21db0f711447eabd1519522e8f546, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbc21db0f711447eabd1519522e8f546, type: 3}
 --- !u!4 &3859305408783677366 stripped
@@ -4871,6 +4935,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8727978090822334800}
     m_Modifications:
+    - target: {fileID: -14708617245901947, guid: ed0191a9609694d02bfd9f7a612ed466, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1804539500564780, guid: ed0191a9609694d02bfd9f7a612ed466, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Sport_Bat_02
@@ -4878,6 +4946,10 @@ PrefabInstance:
     - target: {fileID: 1804539500564780, guid: ed0191a9609694d02bfd9f7a612ed466, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804539500564780, guid: ed0191a9609694d02bfd9f7a612ed466, type: 3}
+      propertyPath: m_TagString
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 4646396864434858, guid: ed0191a9609694d02bfd9f7a612ed466, type: 3}
       propertyPath: m_RootOrder
@@ -4978,6 +5050,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8727978090822334800}
     m_Modifications:
+    - target: {fileID: -2852946726816623644, guid: 3a85b1c69e76244d99cde447ac764962, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1973175269348534, guid: 3a85b1c69e76244d99cde447ac764962, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Music_Electric_Guitar_01
@@ -4985,6 +5061,10 @@ PrefabInstance:
     - target: {fileID: 1973175269348534, guid: 3a85b1c69e76244d99cde447ac764962, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973175269348534, guid: 3a85b1c69e76244d99cde447ac764962, type: 3}
+      propertyPath: m_TagString
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 4799682844176226, guid: 3a85b1c69e76244d99cde447ac764962, type: 3}
       propertyPath: m_RootOrder
@@ -5204,6 +5284,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1692453123131592, guid: a3fb9ff0ba3dc40c4b0f52a9dee1f957, type: 3}
+      propertyPath: m_TagString
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 4867957498255394, guid: a3fb9ff0ba3dc40c4b0f52a9dee1f957, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -5260,6 +5344,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8557827853707127924, guid: a3fb9ff0ba3dc40c4b0f52a9dee1f957, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3fb9ff0ba3dc40c4b0f52a9dee1f957, type: 3}
 --- !u!4 &4544797046249690528 stripped
@@ -5303,6 +5391,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.288511
       objectReference: {fileID: 0}
+    - target: {fileID: -145931071652903171, guid: e5fb134de33dc487ea88bfbbbdbac361, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1312856516239564, guid: e5fb134de33dc487ea88bfbbbdbac361, type: 3}
       propertyPath: m_Name
       value: SM_Item_Craft_Knife_01
@@ -5310,6 +5402,10 @@ PrefabInstance:
     - target: {fileID: 1312856516239564, guid: e5fb134de33dc487ea88bfbbbdbac361, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312856516239564, guid: e5fb134de33dc487ea88bfbbbdbac361, type: 3}
+      propertyPath: m_TagString
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 4795537432680194, guid: e5fb134de33dc487ea88bfbbbdbac361, type: 3}
       propertyPath: m_RootOrder
@@ -5465,6 +5561,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1458518773578602, guid: f141c0f1f2bcf4b359438e837c0c7c29, type: 3}
+      propertyPath: m_TagString
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: f141c0f1f2bcf4b359438e837c0c7c29, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -5519,6 +5619,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4066131270179648, guid: f141c0f1f2bcf4b359438e837c0c7c29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162013830772561571, guid: f141c0f1f2bcf4b359438e837c0c7c29, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5971658966919126189, guid: f141c0f1f2bcf4b359438e837c0c7c29, type: 3}
@@ -5730,6 +5834,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1452059561765510, guid: 92f9e4cd44efc4f06bb3c8c7439a2905, type: 3}
+      propertyPath: m_TagString
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 4553473065278920, guid: 92f9e4cd44efc4f06bb3c8c7439a2905, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5810,6 +5918,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.21737973
       objectReference: {fileID: 0}
+    - target: {fileID: 6267929778483204347, guid: 92f9e4cd44efc4f06bb3c8c7439a2905, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92f9e4cd44efc4f06bb3c8c7439a2905, type: 3}
 --- !u!1 &7811749991404670824 stripped
@@ -5829,6 +5941,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8727978090822334800}
     m_Modifications:
+    - target: {fileID: -6700594421230087556, guid: ca010519e3c0f4117864d7326ab401c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -3410459109123274163, guid: ca010519e3c0f4117864d7326ab401c7, type: 3}
       propertyPath: m_Size.x
       value: 0.2
@@ -5860,6 +5976,10 @@ PrefabInstance:
     - target: {fileID: 1750927141268108, guid: ca010519e3c0f4117864d7326ab401c7, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750927141268108, guid: ca010519e3c0f4117864d7326ab401c7, type: 3}
+      propertyPath: m_TagString
+      value: Melee
       objectReference: {fileID: 0}
     - target: {fileID: 4784256032301396, guid: ca010519e3c0f4117864d7326ab401c7, type: 3}
       propertyPath: m_RootOrder
