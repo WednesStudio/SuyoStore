@@ -42,6 +42,7 @@ public class OptionSettingUI : MonoBehaviour
     
     public void OnStatusAndInventoryWindow()
     {
+        if(!gameObject.GetComponent<Tutorial>().is8done)    gameObject.GetComponent<Tutorial>().GetExactTutorial();
         SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         _statusInventoryWindow.SetActive(true);
     }
@@ -59,7 +60,6 @@ public class OptionSettingUI : MonoBehaviour
     //Off window
     public void OffStatusAndInventoryWindow()
     {
-        if(!gameObject.GetComponent<Tutorial>().is8done)    gameObject.GetComponent<Tutorial>().GetExactTutorial();
         SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
         gameObject.GetComponent<InventoryUI>().ChangeScrollView(0);
         _statusInventoryWindow.SetActive(false);

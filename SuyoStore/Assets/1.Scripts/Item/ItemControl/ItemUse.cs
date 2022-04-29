@@ -263,11 +263,6 @@ public class ItemUse : MonoBehaviour
         //가방 최대량 달라지기
         playerStatus.MaxCarryingBag = capacity;
     }
-    IEnumerator WaitToDisappear()
-    {
-        yield return new WaitForSeconds(4);
-        GameManager.GM.mustItemCanvas.SetActive(false);
-    }
     private bool CheckMustItemDays(string _msg, bool check = false)
     {
         if (_dataManager.dateControl.GetDays() < 7 || check)
