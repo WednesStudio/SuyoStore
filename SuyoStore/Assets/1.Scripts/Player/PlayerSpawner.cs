@@ -6,107 +6,70 @@ using UnityEngine.SceneManagement;
 public class PlayerSpawner : MonoBehaviour
 {
     GameObject player;
-    Transform arriveTransform;
-    enum eDirection { UP, DOWN };
-    [SerializeField] eDirection dirType;
-    enum eTargetFloor { B2, B1, F1, F2, F3, Looftop };
-    [SerializeField] eTargetFloor targetFloor;
+    public GameObject[] UpArriveGatesArray;
+    public GameObject[] DownArriveGatesArray; 
+    
+    public int arriveGateNum;
+    public enum GateType { GoUp, GoDown, ArriveUp, ArriveDown };
+    [SerializeField] GateType gateType;
+    enum TargetFloor { B2, B1, F1, F2, F3, Looftop };
+    [SerializeField] TargetFloor targetFloor;
 
-    public GameObject ArrivePoint;
-    private int floorNum = 3;
-
-    float timer;
-    float stayEscalatorTime;
+    //public GameObject ArrivePoint;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        timer = 0.0f;
-        stayEscalatorTime = 1.0f;
+        UpArriveGatesArray = GameObject.FindGameObjectsWithTag("UpGate");
+        DownArriveGatesArray = GameObject.FindGameObjectsWithTag("DownGate"); 
+        GateNumSetting();
+    }
+    void GateNumSetting()
+    {
+        switch (targetFloor)
+        {
+            case TargetFloor.F2:
+                arriveGateNum = 3;
+                break;
+            case TargetFloor.F1:
+                arriveGateNum = 2;
+                break;
+            case TargetFloor.B1:
+                arriveGateNum = 1;
+                break;
+            case TargetFloor.B2:
+                arriveGateNum = 0;
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
-            Debug.Log("Gate On");
-            GameManager.GM.ChangeToOtherScene(-1);
-            if (this.dirType == eDirection.UP || this.dirType == eDirection.DOWN)
+            if (gateType == GateType.GoUp)
             {
-                if(this.dirType == eDirection.UP)   floorNum += 1;
-                else if(this.dirType == eDirection.DOWN) floorNum -= 1;
-                GameManager.GM.SetCurrentScene(floorNum);
-                player.GetComponent<PlayerController>().isChangeFloor = true;
-                player.transform.position = ArrivePoint.transform.position;
+                for (int i = 0; i < UpArriveGatesArray.Length; i++)
+                {
+                    if (UpArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
+                    {
+                        player.transform.position = UpArriveGatesArray[i].transform.position;
+                    }
+                }
             }
-            //if (this.dirType == eDirection.UP)
-            //{
-            //    Debug.Log("Up");
-            //    GoUp();
-            //}
-            //else if (this.dirType == eDirection.DOWN)
-            //{
-            //    Debug.Log("Down");
-            //    GoDown();
-            //}
-            //else { }
-            //timer += Time.deltaTime;
-            //if(timer >= stayEscalatorTime)
-            //{
-
-            //GameManager.gm. ==true position �ٲٱ�
-            //timer = 0.0f;
-            //}
+            else if (gateType == GateType.GoDown)
+            {
+                for (int i = 0; i < DownArriveGatesArray.Length; i++)
+                {
+                    if (DownArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
+                    {
+                        player.transform.position = DownArriveGatesArray[i].transform.position;
+                    }
+                }
+            }
+            else { }
         }
     }
-
-    void GoUp()
-    {
-        switch (targetFloor)
-        {
-            case eTargetFloor.B1:
-                ArrivePoint = GameObject.Find("Up-arrive B1");
-                break;
-            case eTargetFloor.F1:
-                ArrivePoint = GameObject.Find("Up-arrive F1");
-                break;
-            case eTargetFloor.F2:
-                ArrivePoint = GameObject.Find("Up-arrive F2");
-                break;
-            case eTargetFloor.F3:
-                ArrivePoint = GameObject.Find("Up-arrive F3");
-                break;
-            case eTargetFloor.Looftop:
-                Debug.Log("This floor need MUST ITEM.");
-                break;
-            default:
-                Debug.Log("This floor is last. Can't go Up.");
-                break;
-        }
-        player.transform.position = ArrivePoint.transform.position;
-    }
-
-    void GoDown()
-    {
-        switch (targetFloor)
-        {
-            case eTargetFloor.B2:
-                ArrivePoint = GameObject.Find("Down-arrive B2");
-                break;
-            case eTargetFloor.B1:
-                ArrivePoint = GameObject.Find("Down-arrive B1");
-                break;
-            case eTargetFloor.F1:
-                ArrivePoint = GameObject.Find("Down-arrive F1");
-                break;
-            case eTargetFloor.F2:
-                ArrivePoint = GameObject.Find("Down-arrive F2");
-                break;
-            default:
-                Debug.Log("This floor is last. Can't go Down.");
-                break;
-        }
-        player.transform.position = ArrivePoint.transform.position;
-    }
-
 }

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnGameStateChanged;
     private bool EndEventTrigger = false;
     private bool coroutineSwitch = true;
-    private bool isGameStart = false;
+    public bool isGameStart = false;
     private int _tutorialItemCount = 0;
     public bool IsTutorialItemDone = false;
 
