@@ -9,9 +9,9 @@ public class Counter
     private bool printSwitch = true;
     private bool timeSwitch = true;
     private float timeValue = -1;
-    public Counter(int time)
+    public Counter(float time)
     {
-        SetTimeValue((float)(time * 60));
+        SetTimeValue(time * 60);
     }
     public int Update()
     {
