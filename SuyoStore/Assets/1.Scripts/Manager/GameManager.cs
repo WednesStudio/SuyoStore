@@ -255,7 +255,7 @@ public class GameManager : MonoBehaviour
     {
         _sceneName = num.ToString();
         _dataManager.SetCurrentInfo("", _sceneName);
-        if(_sceneName == "-1")
+        if(_sceneName == "1")
         {
             if(_scenarioEvent.isShelterClear) SetEndEventTrigger();
         }
