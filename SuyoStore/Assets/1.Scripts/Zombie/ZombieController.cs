@@ -1,4 +1,4 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,16 +15,16 @@ public class ZombieController : MonoBehaviour
 
     public int hp;
     private int curHp;
-    public int detection; //ê°ì§€ ë²”ìœ„
+    public int detection; //°¨Áö ¹üÀ§
     Vector3 moveVec;
     public float curSpeed;
     public float speed;
     public int power;
     public int coolTime;
-    public int infection = 5; // ê°ì—¼ë¥ 
-    public Vector3 spawn; // ìŠ¤í° ìœ„ì¹˜
+    public int infection = 5; // °¨¿°·ü
+    public Vector3 spawn; // ½ºÆù À§Ä¡
     public bool isDetect;
-    //public bool isChase; // í”Œë ˆì´ì–´ ì¶”ê²© ì—¬ë¶€
+    //public bool isChase; // ÇÃ·¹ÀÌ¾î Ãß°İ ¿©ºÎ
     public bool isRandom;
     public float range;
     public Animator zombieAnim;
@@ -35,7 +35,7 @@ public class ZombieController : MonoBehaviour
     bool isBorder;
 
     //Animation Controller Transition
-    bool isAttacking = false; // í”Œë ˆì´ì–´ì™€ ë‹¿ì•„ì„œ í”Œë ˆì´ì–´ë¥¼ ê³µê²© ì¤‘ì¸ì§€
+    bool isAttacking = false; // ÇÃ·¹ÀÌ¾î¿Í ´ê¾Æ¼­ ÇÃ·¹ÀÌ¾î¸¦ °ø°İ ÁßÀÎÁö
     bool isWalk = true;
 
     NavMeshAgent nav;
@@ -93,7 +93,7 @@ public class ZombieController : MonoBehaviour
         Move();
     }
 
-    //Player Tagë¥¼ ê°€ì§„ ê°ì²´ì— ë‹¿ì•˜ì„ ë•Œ ê³µê²©
+    //Player Tag¸¦ °¡Áø °´Ã¼¿¡ ´ê¾ÒÀ» ¶§ °ø°İ
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
@@ -123,7 +123,7 @@ public class ZombieController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // ë¬´ê¸° ê³µê²© ë²”ìœ„ì— ë‹¿ìœ¼ë©´ ì¢€ë¹„ ì²´ë ¥ ê°ì†Œ
+        // ¹«±â °ø°İ ¹üÀ§¿¡ ´êÀ¸¸é Á»ºñ Ã¼·Â °¨¼Ò
         if (other.tag == "Melee")
         {
             Hit();
@@ -138,7 +138,7 @@ public class ZombieController : MonoBehaviour
             //transform.position += curSpeed * Time.deltaTime;
         }
 
-        //targetì˜ ìœ„ì¹˜ì™€ zombieì˜ ê°ì²´ ê±°ë¦¬ê°€ detectionë³´ë‹¤ ì‘ê±°ë‚˜, í”Œë ˆì´ì–´ë¥¼ ê³µê²© ì¤‘ì¼ ë•Œ ì¶”ê²©
+        //targetÀÇ À§Ä¡¿Í zombieÀÇ °´Ã¼ °Å¸®°¡ detectionº¸´Ù ÀÛ°Å³ª, ÇÃ·¹ÀÌ¾î¸¦ °ø°İ ÁßÀÏ ¶§ Ãß°İ
         if ((!target.GetComponent<PlayerController>().isSafe)
             && ((Vector3.Distance(target.transform.position, transform.position) < detection)
             || isAttacking))
@@ -146,18 +146,18 @@ public class ZombieController : MonoBehaviour
             isDetect = true;
             transform.LookAt(target.gameObject.transform);
         }
-        //ìŠ¤í° ëœ ì§€ì—­ê³¼ ê°€ê¹Œì›Œì§€ë©´ íƒìƒ‰ì„ ê³„ì†í• ì§€ íŒë‹¨
+        //½ºÆù µÈ Áö¿ª°ú °¡±î¿öÁö¸é Å½»öÀ» °è¼ÓÇÒÁö ÆÇ´Ü
         else if (Vector3.Distance(spawn, transform.position) < 0.3)
         {
             isDetect = false;
         }
-        //ëœë¤ ì´ë™
+        //·£´ı ÀÌµ¿
         else if (!isDetect)
         {
             if (!isRandom)
                 StartCoroutine("RandomMove");
         }
-        //ìŠ¤í° ëœ ì§€ì—­ìœ¼ë¡œ ì´ë™
+        //½ºÆù µÈ Áö¿ªÀ¸·Î ÀÌµ¿
         else
         {
             transform.LookAt(spawn);
@@ -167,7 +167,7 @@ public class ZombieController : MonoBehaviour
 
     IEnumerator RandomMove()
     {
-        //range ë²”ìœ„ ì•ˆì—ì„œ ì›€ì§ì„
+        //range ¹üÀ§ ¾È¿¡¼­ ¿òÁ÷ÀÓ
         float randomX = Random.Range(zombieSp.spX, zombieSp.spX + 2 * range) - range;
         float randomY = Random.Range(zombieSp.spZ, zombieSp.spZ + 2 * range) - range;
         Vector3 randomPos = new Vector3(randomX, zombieSp.spY, randomY);
@@ -190,7 +190,7 @@ public class ZombieController : MonoBehaviour
                 {
                     targetStatus.isInfect = true;
                     zombieAnim.SetTrigger("doInfect");
-                    Debug.Log("ê°ì—¼ë˜ì—ˆìŠµë‹ˆë‹¤");
+                    Debug.Log("°¨¿°µÇ¾ú½À´Ï´Ù");
                 }
             }
         }
@@ -209,7 +209,7 @@ public class ZombieController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //í”¼ê²©
+    //ÇÇ°İ
     public void Hit()
     {
         curHp -= targetStatus.CurAttack;
