@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
@@ -37,13 +36,8 @@ public class ZombieAI : MonoBehaviour
     bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
     bool isWalk = true;
 
-    NavMeshAgent nav;
-
     private void Awake()
     {
-        //mat = GetComponent<MeshRenderer>().material;
-        nav = GetComponent<NavMeshAgent>();
-
         zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
         zombie = gameObject;
         zomRigid = GetComponent<Rigidbody>();
@@ -68,24 +62,9 @@ public class ZombieAI : MonoBehaviour
         range = zombieSp.spawnRange;
     }
 
-    void StopToWall()
-    {
-        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
-        isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
-    }
-    void FreezeRotation()
-    {
-        zomRigid.angularVelocity = Vector3.zero;
-    }
-    private void FixedUpdate()
-    {
-        FreezeRotation();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        nav.SetDestination(target.transform.position);
         zombieAnim.SetBool("isWalk", curSpeed > 0);
 
         timer -= Time.deltaTime;
@@ -120,23 +99,8 @@ public class ZombieAI : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        // 무기 공격 범위에 닿으면 좀비 체력 감소
-        if (other.tag == "Melee")
-        {
-            Hit();
-        }
-    }
-
     void Move()
     {
-        //moveVec = new Vector3(
-        if (!isBorder)
-        {
-            //transform.position += curSpeed * Time.deltaTime;
-        }
-
         //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 플레이어를 공격 중일 때 추격
         if ((!target.GetComponent<PlayerController>().isSafe)
             && ((Vector3.Distance(target.transform.position, transform.position) < detection)
@@ -198,13 +162,12 @@ public class ZombieAI : MonoBehaviour
     public void Die()
     {
         zombieAnim.SetTrigger("doDie");
+        GetComponent<ParticleSystem>().Play();
         StartCoroutine("DieEffect");
     }
 
     IEnumerator DieEffect()
     {
-        yield return new WaitForSeconds(1f);
-        GetComponent<ParticleSystem>().Play();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }

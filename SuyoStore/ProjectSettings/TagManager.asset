@@ -6,12 +6,15 @@ TagManager:
   tags:
   - Item
   - Zombie
-  - SceneGate
   - PlayerSpawn
   - PlayerAndCam
   - ScenarioAsset
   - GlobalVolume
   - TutorialSpot
+  - Melee
+  - UpGate
+  - DownGate
+  - SceneGate
   layers:
   - Default
   - TransparentFX

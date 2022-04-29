@@ -575,20 +575,20 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Punch
-  m_Speed: 3
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4541917580641480729}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
+  m_IKOnFeet: 1
   m_WriteDefaultValues: 1
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: a549d9aa8ffc4394b95018cbe0c9f503, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: e2382b4b9d9fec94781a159072a2a79c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -679,7 +679,7 @@ AnimatorStateMachine:
     m_Position: {x: -70, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1768349668058332517}
-    m_Position: {x: 170, y: 550, z: 0}
+    m_Position: {x: 160, y: 550, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1941130618553436364}
     m_Position: {x: -70, y: 940, z: 0}

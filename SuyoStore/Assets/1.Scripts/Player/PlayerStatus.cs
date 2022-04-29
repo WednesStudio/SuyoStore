@@ -61,30 +61,33 @@ public class PlayerStatus : Status
 
     private void Update()
     {
-        //if(GameManager.GM.isGameStart)
-        if (curHp <= 0)
+        if (GameManager.GM.isGameStart)
         {
-            Die();
-            Debug.Log("[GAME OVER] HP is ZERO");
-        }
-        SatietyModifier();
-        SpeedModifier();
-
-        if (isInfect)
-        {
-            // setActive debuff UI
-            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, true);
-            //10초마다 hp -1
-            timer += Time.deltaTime;
-            if(timer >= dotInfectTimer)
+            if (curHp <= 0)
             {
-                ReduceHp(1);
-                timer = 0.0f;
+                Die();
+                Debug.Log("[GAME OVER] HP is ZERO");
             }
-        }
-        else
-        {
-            uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, false);
+            SatietyModifier();
+            SpeedModifier();
+
+            if (isInfect)
+            {
+                // setActive debuff UI
+                uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, true);
+                //10초마다 hp -1
+                timer += Time.deltaTime;
+                if (timer >= dotInfectTimer)
+                {
+                    ReduceHp(1);
+                    timer = 0.0f;
+                }
+            }
+            else
+            {
+                uiManager.GetComponent<CharacterStatusUI>().SetDebuff(DebuffType.ZombieAttack, false);
+            }
+
         }
     }
 

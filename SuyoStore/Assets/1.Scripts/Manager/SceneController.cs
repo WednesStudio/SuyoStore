@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject[] GatesArray;
+    public GameObject[] UpArriveGatesArray;
+    public GameObject[] DownArriveGatesArray;
     public static SceneController instance = null;
-    public int currentGateNum;
+    public int GateNum;
+    public int GateTypeN;
 
     private void Awake()
     {
@@ -22,9 +24,13 @@ public class SceneController : MonoBehaviour
         }
 
         if (player == null) player = GameObject.FindGameObjectWithTag("Player");
-        if(GatesArray.Length == 0)
+        if(UpArriveGatesArray.Length == 0)
         {
-            GatesArray = GameObject.FindGameObjectsWithTag("SceneGate");
+            UpArriveGatesArray = GameObject.FindGameObjectsWithTag("UpGate");
+        }
+        if (DownArriveGatesArray.Length == 0)
+        {
+            DownArriveGatesArray = GameObject.FindGameObjectsWithTag("DownGate");
         }
     }
 
@@ -33,17 +39,47 @@ public class SceneController : MonoBehaviour
     //    player.transform.position = GatesArray[0].transform.position;
     //}
 
-    private void OnLevelWasLoaded()
+    private void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        GatesArray = GameObject.FindGameObjectsWithTag("SceneGate");
+        ChangeFloor();
+    }
 
-        for (int i = 0; i < GatesArray.Length; i++)
+    private void ChangeFloor()
+    {
+        Debug.Log("이거 자동은 하나");
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        UpArriveGatesArray = GameObject.FindGameObjectsWithTag("UpGate");
+        DownArriveGatesArray = GameObject.FindGameObjectsWithTag("DownGate");
+
+        if (GateTypeN == 0)
         {
-            if (GatesArray[i].GetComponent<PlayerSpawn>().playerIntoGateNum == currentGateNum)
+            for (int i = 0; i < UpArriveGatesArray.Length; i++)
             {
-                player.transform.position = GatesArray[i].transform.position;
+                if (UpArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == GateNum)
+                {
+                    player.transform.position = UpArriveGatesArray[i].transform.position;
+                }
+
             }
+        }
+        else if (GateTypeN == 1)
+        {
+            for (int i = 0; i < DownArriveGatesArray.Length; i++)
+            {
+                if (DownArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == GateNum)
+                {
+                    Debug.Log("Go Down!");
+                    player.transform.position = DownArriveGatesArray[i].transform.position;
+                }
+                else
+                {
+                    Debug.Log("not same!");
+                }
+            }
+        }
+        else {
+            Debug.Log("왜안돼!");
         }
     }
 
