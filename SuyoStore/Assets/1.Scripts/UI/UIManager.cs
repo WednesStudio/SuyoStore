@@ -107,7 +107,7 @@ public class UIManager : MonoBehaviour
     public void ChangeItemState(GameObject obj)
     {
         GameObject parent = obj.transform.parent.gameObject;
-        string name = parent.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text;
+        string name = parent.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text;
         _itemUse.ChangeItem(_dataManager.GetItemID(name), -1);
     }
 
@@ -141,7 +141,7 @@ public class UIManager : MonoBehaviour
 
     public void SetMonologuePanel(string msg)
     {
-        if(GameManager.GM.IsTutorialItemDone)
+        if(!GameManager.GM.IsTutorialItemDone)
         {
             _monologuePanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(true);
         }

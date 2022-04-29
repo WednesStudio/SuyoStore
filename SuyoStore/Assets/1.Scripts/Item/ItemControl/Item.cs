@@ -57,7 +57,7 @@ public class Item
     }
     public void SetDURABILITY(int amount)
     {
-        attributes[(int)Attributes.DURABILITY] += amount;
+        attributes[(int)Attributes.DURABILITY] = amount;
     }
     public void SetWEIGHT(int amount)
     {

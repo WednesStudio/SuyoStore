@@ -37,7 +37,10 @@ public class ItemUse : MonoBehaviour
         if (isLightOn)
         {
             if (lightControl.LightDurability())
-                DestroyObject(0, lightControl.GetID());
+            {
+                MyUsedItem[lightControl.GetID()].SetDURABILITY(0);
+                ChangeItem(lightControl.GetID(), -1);
+            }
         }
     }
     public void UseItem(int itemID)
@@ -107,7 +110,6 @@ public class ItemUse : MonoBehaviour
     {
         MyUsedItem[itemID].SetDURABILITY(-1);
         _uiManager.SetCurrentItemStatus(itemID, MyUsedItem[itemID]);
-        print("Durability : " + MyUsedItem[itemID].GetDURABILITY());
     }
 
     private GameObject FindExactWeapon(string itemName)
@@ -170,6 +172,13 @@ public class ItemUse : MonoBehaviour
             if (MyUsedItem[currentItemID].GetDURABILITY() > 0)  //아직 내구도가 0이상으로 사용할 수 있을 경우 다시 인벤토리에 넣어줌
             {
                 _dataManager.AddItem(currentItemID, 1);
+
+                if(_dataManager.GetItemSubCategory(currentItemID) == "라이트")
+                {
+                    MyUsedItem[currentItemID].SetDURABILITY(lightControl.StopCounter());
+                    print("MyUsedItem[id].SetDURABILITY : " + MyUsedItem[currentItemID].GetDURABILITY());
+                }
+                
                 //DestroyObject(1, currentItemID);    //기존 장착된 아이템 있을 경우 찾아서 프리팹 Destroy, 인자의 1은 아직 쓸 수 있을 때 MyUsedItem 에서 삭제 방지 
             }
             else    //내구도 0 이하라 더 이상 쓸 수 없을 경우 버림
@@ -190,6 +199,7 @@ public class ItemUse : MonoBehaviour
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipFlashlight(currentItemID);
                 light.SetActive(false);
+                globalVolume.weight = 0.8f;
             }
             else if (_dataManager.GetItemSubCategory(currentItemID) == "가방")// 가방
             {
@@ -339,11 +349,11 @@ public class ItemUse : MonoBehaviour
         if (playerStatus.EquipFlashlighList.Count > 0)
         {
             foreach (int id in playerStatus.EquipFlashlighList)
-
             {
                 if (_dataManager.GetItemSubCategory(id) == "라이트")
                 {
-                    item.SetDURABILITY(lightControl.StopCounter());
+                    MyUsedItem[id].SetDURABILITY(lightControl.StopCounter());
+                    print("MyUsedItem[id].SetDURABILITY : " + MyUsedItem[id].GetDURABILITY());
                     isLightOn = false;
                     ChangeItem(id, itemID);
                     UseLight(item, itemID);
