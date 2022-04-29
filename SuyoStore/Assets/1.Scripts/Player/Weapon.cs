@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,11 +43,11 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Swing()
     {
-        // °ø°İÇÒ µ¿¾È Äİ¶óÀÌ´õ È°¼ºÈ­
+        // ê³µê²©í•  ë™ì•ˆ ì½œë¼ì´ë” í™œì„±í™”
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = true;
 
-        // °ø°İ ÈÄ Äİ¶óÀÌ´õ ºñÈ°¼ºÈ­
+        // ê³µê²© í›„ ì½œë¼ì´ë” ë¹„í™œì„±í™”
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = false;
     }

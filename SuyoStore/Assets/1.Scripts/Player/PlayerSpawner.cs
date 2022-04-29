@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,7 +59,7 @@ public class PlayerSpawner : MonoBehaviour
                 {
                     if (UpArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
-                        Debug.Log("µµ¬¯: " + UpArriveGatesArray[i].name);
+                        Debug.Log("ÎèÑÏ∞©: " + UpArriveGatesArray[i].name);
                         player.transform.position = UpArriveGatesArray[i].transform.position;
                         player.GetComponent<PlayerController>().FloorNum = arriveGateNum;
                         //floorNumber += 1;
@@ -73,7 +73,7 @@ public class PlayerSpawner : MonoBehaviour
                 {
                     if (DownArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
-                        Debug.Log("µµ¬¯: " + UpArriveGatesArray[i].name);
+                        Debug.Log("ÎèÑÏ∞©: " + UpArriveGatesArray[i].name);
                         player.transform.position = DownArriveGatesArray[i].transform.position;
                         player.GetComponent<PlayerController>().FloorNum = arriveGateNum;
                         //floorNumber -= 1;
