@@ -186,7 +186,7 @@ public class ItemUse : MonoBehaviour
             else if (_dataManager.GetItemSubCategory(currentItemID) == "가방")// 가방
             {
                 GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.AddEquipBag(currentItemID);
+                playerStatus.RemoveEquipBag(currentItemID);
                 bag.SetActive(false);
             }
             else
