@@ -117,6 +117,7 @@ public class ItemUse : MonoBehaviour
         {
             if (w.name == itemName)
             {
+                playerController.EquipWeapon = w;
                 return w;
             }
         }
@@ -190,11 +191,12 @@ public class ItemUse : MonoBehaviour
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipFlashlight(currentItemID);
                 light.SetActive(false);
+                globalVolume.weight = 0.8f; // 10
             }
             else if (_dataManager.GetItemSubCategory(currentItemID) == "가방")// 가방
             {
                 GameObject bag = FindExactBag(_dataManager.GetItemFileName(currentItemID));
-                playerStatus.AddEquipBag(currentItemID);
+                playerStatus.RemoveEquipBag(currentItemID);
                 bag.SetActive(false);
             }
             else
@@ -379,13 +381,13 @@ public class ItemUse : MonoBehaviour
         {
             // 밝기 세기 : 13 < 14 < 15
             case 13:
-                globalVolume.weight = 0.8f; // 10
+                globalVolume.weight = 0.6f; // 10
                 break;
             case 14:
-                globalVolume.weight = 0.6f; // 20
+                globalVolume.weight = 0.4f; // 20
                 break;
             case 15:
-                globalVolume.weight = 0.4f; // 40
+                globalVolume.weight = 0.2f; // 40
                 break;
             default:
                 break;
