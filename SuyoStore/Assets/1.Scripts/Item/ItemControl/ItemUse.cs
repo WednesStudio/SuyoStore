@@ -86,24 +86,6 @@ public class ItemUse : MonoBehaviour
                 Debug.Log("Cannot Use Item");
                 break;
         }
-        // if (item.GetDURABILITY() > 0) item.SetDURABILITY(-1);
-        // if (item.GetDURABILITY() == 0)
-        //     DestroyObject(0, itemID);
-    }
-    private void DestroyObject(int use, int itemID)
-    {
-        GameObject[] myItems = GameObject.FindGameObjectsWithTag("UsedItem");
-        foreach (GameObject i in myItems)
-        {
-            if (i.name == _dataManager.GetItemFileName(itemID) + "(Clone)")
-            {
-                Destroy(i);
-                if (use == 0)
-                {
-                    MyUsedItem.Remove(itemID);
-                }
-            }
-        }
     }
 
     public void SetItemDURABILITY(int itemID)
@@ -176,8 +158,6 @@ public class ItemUse : MonoBehaviour
                 if(_dataManager.GetItemSubCategory(currentItemID) == "라이트")
                 {
                     MyUsedItem[currentItemID].SetDURABILITY(lightControl.StopCounter());
-                    print("unable light" + item.GetDURABILITY());
-                    print("MyUsedItem[id].SetDURABILITY : " + MyUsedItem[currentItemID].GetDURABILITY()/60 + " " + MyUsedItem[currentItemID].GetDURABILITY()%60);
                 }
                 
                 //DestroyObject(1, currentItemID);    //기존 장착된 아이템 있을 경우 찾아서 프리팹 Destroy, 인자의 1은 아직 쓸 수 있을 때 MyUsedItem 에서 삭제 방지 
@@ -286,20 +266,11 @@ public class ItemUse : MonoBehaviour
     }
     private void UseBattery(int itemID)
     {
-        // Dictionary<int, int> myItems = _dataManager.GetMyItems();
-        // // 배터리 모으는 루트가 아니어도 10개 안 모았다고 말해주는지?
-        // if (myItems[itemID] < 10)
-        // {
-        //     string message = "배터리의 양이 부족한 것 같다. (" + myItems[itemID] + "/10)";
-        //     CheckMustItemDays(message, true);
-        // }
-        // else
-        //     CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.");
+        
     }
     private void UseCardKey(Item item)
     {
-        // if (CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다."))
-        //     GameManager.GM.CheckCondition();
+        
     }
     private void UseSleepingBag(Item item, int itemID)
     {
@@ -355,7 +326,6 @@ public class ItemUse : MonoBehaviour
                 if (_dataManager.GetItemSubCategory(id) == "라이트")
                 {
                     MyUsedItem[id].SetDURABILITY(lightControl.StopCounter());
-                    print("MyUsedItem[id].SetDURABILITY : " + MyUsedItem[id].GetDURABILITY());
                     isLightOn = false;
                     ChangeItem(id, itemID);
                     UseLight(item, itemID);
@@ -386,7 +356,6 @@ public class ItemUse : MonoBehaviour
             lightControl = new LightControl(dur, itemID);
         }
         
-        print("use light" + item.GetDURABILITY());
         volumeObj = GameObject.FindGameObjectWithTag("GlobalVolume");
         globalVolume = volumeObj.GetComponent<Volume>();
         switch (itemID)
@@ -404,7 +373,6 @@ public class ItemUse : MonoBehaviour
             default:
                 break;
         }
-        
     }
     private void UseSmartphone()
     {
