@@ -110,6 +110,7 @@ public class Tutorial : MonoBehaviour
 
             case 8 :
                 is8done = true;
+                _tutorialWindow.SetActive(true);
                 _tutorialText.SetActive(true);
                 _manipulateTexts[2].SetActive(false);
                 _uiManager.SetMonologuePanel("약을 사용하면 체력을 회복할 수 있을 것 같다.");
@@ -160,7 +161,8 @@ public class Tutorial : MonoBehaviour
                 break;
 
             case 17 :
-            _manipulateTexts[3].SetActive(false);
+                _manipulateTexts[3].SetActive(false);
+                _tutorialText.SetActive(true);
                 _uiManager.SetMonologuePanel("다른 소리는 들리지 않는다. 이곳은 안전한 것 같다.");
                 isClear[num] = true;
                 break;
