@@ -8,20 +8,24 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField] UIManager _uiManager;
     [SerializeField] GameObject _tutorialWindow;
+    [SerializeField] GameObject _tutorialTextPanel;
     [SerializeField] GameObject _tutorialText;
     [SerializeField] GameObject _nextButton;
+    [SerializeField] GameObject _originButton;
     [SerializeField] GameObject[] _manipulateTexts;
     [SerializeField] GameObject _deadLight;
     [SerializeField] GameObject[] _interactItems;
+    [SerializeField] GameObject[] _interactSpots;
+    
     private GameObject player;
     private GameObject playerParent;
+    private bool isTutorialDone = false;
     public bool is8done = false; 
-    private bool[] isClear = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
+    private bool[] isClear = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
 
     private void Start() 
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerParent = player.transform.parent.gameObject;
         //2초 뒤에..
         StartCoroutine(Wait3Seconds());
         _nextButton.SetActive(true);
@@ -36,22 +40,20 @@ public class Tutorial : MonoBehaviour
 
     public void GetExactTutorial()
     {
-        int i = 0;
-        foreach(bool b in isClear)
+        if(!isTutorialDone)
         {
-            if(b == false)
+            int i = 0;
+            foreach(bool b in isClear)
             {
-                print(i);
-                OpenPage(i);
-                if(i == isClear.Length)
+                if(b == false)
                 {
-                    GameManager.GM.IsTutorialItemDone = true;
-                    _nextButton.SetActive(false);
+                    OpenPage(i);
+                    return;
                 }
-                return;
+                i ++;
             }
-            i ++;
         }
+        
     }
 
     private void OpenPage(int num)
@@ -71,6 +73,7 @@ public class Tutorial : MonoBehaviour
                 break;
 
             case 2 : 
+                _interactSpots[0].SetActive(true);
                 _tutorialWindow.SetActive(false);
                 if(_deadLight != null)  _deadLight.SetActive(true);
                 isClear[num] = true;
@@ -81,6 +84,7 @@ public class Tutorial : MonoBehaviour
                 {
                     g.SetActive(true);
                 }
+                _interactSpots[1].SetActive(true);
                 isClear[num] = true;
                 break;
 
@@ -162,9 +166,36 @@ public class Tutorial : MonoBehaviour
 
             case 17 :
                 _manipulateTexts[3].SetActive(false);
-                _tutorialText.SetActive(true);
-                _uiManager.SetMonologuePanel("다른 소리는 들리지 않는다. 이곳은 안전한 것 같다.");
+                _manipulateTexts[4].SetActive(true);
+                _tutorialTextPanel.SetActive(false);
                 isClear[num] = true;
+                break;
+
+            case 18 :
+                _manipulateTexts[4].SetActive(false);
+                _manipulateTexts[5].SetActive(true);
+                isClear[num] = true;
+                break;
+
+            case 19 :
+                _manipulateTexts[5].SetActive(false);
+                _tutorialTextPanel.SetActive(true);
+                _tutorialWindow.SetActive(true);
+                _tutorialText.SetActive(true);
+                _uiManager.SetMonologuePanel("구조대가 올 때까지 살아남아야 한다. 다른 층으로 가서 물자를 모아보자.");
+                isClear[num] = true;
+                break;
+
+            case 20 :
+                GameManager.GM.IsTutorialItemDone = true;
+                isTutorialDone = true;
+                _nextButton.SetActive(false);
+                _originButton.SetActive(true);
+                _tutorialWindow.SetActive(false);
+                foreach(GameObject g in _manipulateTexts)
+                {
+                    Destroy(g);
+                }
                 break;
 
         }
