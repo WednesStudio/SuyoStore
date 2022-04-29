@@ -32,6 +32,7 @@ public class PlayerSpawner : MonoBehaviour
             GameManager.GM.ChangeToOtherScene(-1);
             if (this.dirType == eDirection.UP || this.dirType == eDirection.DOWN)
             {
+                player.GetComponent<PlayerController>().isChangeFloor = true;
                 player.transform.position = ArrivePoint.transform.position;
             }
             //if (this.dirType == eDirection.UP)
