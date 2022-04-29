@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
     private void SetWholeUI()
     {
         _uiManager.SetTopBarUI(10f, 50f, 50f, 10, 10);
-        _uiManager.SetCurrentStateUI("2022/04/06", "3층 : 휴게 공간");
+        _uiManager.SetCurrentStateUI("2022/04/06", "F3 휴게공간");
         _uiManager.SetInitialInventory();
     }
 
@@ -251,11 +251,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetCurrentScene(int num)
+    public void SetCurrentScene(string sceneName)
     {
-        _sceneName = num.ToString();
+        _sceneName = sceneName;
         _dataManager.SetCurrentInfo("", _sceneName);
-        if(_sceneName == "-1")
+        if(_sceneName == "02.F1")
         {
             if(_scenarioEvent.isShelterClear) SetEndEventTrigger();
         }

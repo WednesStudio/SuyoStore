@@ -10,7 +10,7 @@ public class LightControl
     private int itemID;
     private Counter counter;
     private int current = -1;
-    public LightControl(float light, int _itemID)
+    public LightControl(int light, int _itemID)
     {
         itemID = _itemID;
         if (light > 0)
