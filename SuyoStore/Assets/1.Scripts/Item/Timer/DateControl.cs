@@ -20,8 +20,8 @@ public class DateControl : MonoBehaviour
     }
     public void SetDate(string newDate)
     {
-        text.text = newDate;
         ++days;
+        text.text = newDate;
     }
     public string GetDate() => text.text;
     public int GetDays() => days;

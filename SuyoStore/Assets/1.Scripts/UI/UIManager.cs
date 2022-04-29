@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Objects")]
     [SerializeField] GameObject _gameStartUI;
+    [SerializeField] GameObject _monologuePanel;
+    [SerializeField] TextMeshProUGUI _monologueText;
     private bool _overCapacity;
     private int _debuffSpeed;
 
@@ -42,11 +44,12 @@ public class UIManager : MonoBehaviour
           _characterStatusUI.SetSpeed(_characterInfo.WalkSpeed, _characterInfo.CurSpeed);
           _characterStatusUI.SetAttackPower(_characterInfo.CurAttack);
         }
+        if(GameManager.GM.isSceneLoadDone)  _gameStartUI.SetActive(false);
     }
     public void GameStartUI()
     {
+        GameManager.GM.ChangeToOtherScene(-1);
         GameManager.GM.GameStart();
-        _gameStartUI.SetActive(false);
         SoundManager.SM.PlaySfxSound(SfxSoundName.ButtonClick);
     }
 
@@ -134,6 +137,25 @@ public class UIManager : MonoBehaviour
             }
             else    _characterStatusUI.SetBag(_dataManager.GetItemImage(id), _dataManager.GetItemName(id), item);
         }       
-        
+    }
+
+    public void SetMonologuePanel(string msg)
+    {
+        if(GameManager.GM.IsTutorialItemDone)
+        {
+            _monologuePanel.transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(true);
+        }
+        _monologuePanel.SetActive(true);
+        _monologueText.text = msg;
+        if(_optionSettingUI.GetInventoryWindow().activeSelf)
+        {
+            _optionSettingUI.GetInventoryWindow().SetActive(false);
+            _inventoryUI.ChangeScrollView(0);
+        }    
+    }
+
+    public void OffMonologuePanel()
+    {
+        _monologuePanel.SetActive(false);
     }
 }

@@ -12,6 +12,8 @@ TagManager:
   - ScenarioAsset
   - GlobalVolume
   - Melee
+  - TutorialSpot
+
   layers:
   - Default
   - TransparentFX

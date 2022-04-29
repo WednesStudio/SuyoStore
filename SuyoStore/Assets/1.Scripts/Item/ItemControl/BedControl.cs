@@ -33,11 +33,15 @@ public class BedControl : MonoBehaviour
         closeUIButton.onClick.RemoveAllListeners();
         sleepUIButton.onClick.AddListener(() =>
         {
-
             if (_dataManager.dateControl.GetDays() < 7)
+            {
                 UseBed(item);
+            }
             else
+            {
                 GameManager.GM.SetEndEventTrigger();
+            }
+                
             canvas.SetActive(false);
         });
         closeUIButton.onClick.AddListener(() => canvas.SetActive(false));
