@@ -60,7 +60,9 @@ public class PlayerController : MonoBehaviour
     public bool hasBag;
     public GameObject nearScenarioItem;
     public GameObject nearTutorialItem;
-    
+
+    // Spawn Floor
+    public int FloorNum;
 
     private void Start()
     {
@@ -102,10 +104,7 @@ public class PlayerController : MonoBehaviour
         //    SoundManager.SM.StopEnvironmentalSound();
         //}
         // When change scene, player don't be attacked by zombie
-        if (isChangeFloor)
-        {
-            SafeTime();
-        }
+
         Anim();
         GetInput();
         if(state != PlayerState.Dead)
@@ -502,6 +501,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ChangeFloor()
+    {
+        switch (FloorNum)
+        {
+            case 3:
+                break;
+            case 2:
+                break;
+            case 1:
+                break;
+            case -1:
+                break;
+            case -2:
+                break;
+            default:
+                Debug.Log("That floor doesn't exist");
+                break;
+        }
+        GameManager.GM.SetCurrentScene(FloorNum);
+        //SafeTime();
+    }
+    
     void SafeTime()
     {
         StopCoroutine(WaitSafeTime());

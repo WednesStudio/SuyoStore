@@ -14,7 +14,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] GateType gateType;
     enum TargetFloor { B2, B1, F1, F2, F3, Looftop };
     [SerializeField] TargetFloor targetFloor;
-    private int floorNumber = 3;
+    //private int floorNumber = 3;
 
     //public GameObject ArrivePoint;
 
@@ -29,17 +29,20 @@ public class PlayerSpawner : MonoBehaviour
     {
         switch (targetFloor)
         {
-            case TargetFloor.F2:
+            case TargetFloor.F3:
                 arriveGateNum = 3;
                 break;
-            case TargetFloor.F1:
+            case TargetFloor.F2:
                 arriveGateNum = 2;
                 break;
-            case TargetFloor.B1:
+            case TargetFloor.F1:
                 arriveGateNum = 1;
                 break;
+            case TargetFloor.B1:
+                arriveGateNum = -1;
+                break;
             case TargetFloor.B2:
-                arriveGateNum = 0;
+                arriveGateNum = -2;
                 break;
             default:
                 break;
@@ -56,9 +59,11 @@ public class PlayerSpawner : MonoBehaviour
                 {
                     if (UpArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
+                        Debug.Log("µµÂø: " + UpArriveGatesArray[i].name);
                         player.transform.position = UpArriveGatesArray[i].transform.position;
-                        floorNumber += 1;
-                        GameManager.GM.SetCurrentScene(floorNumber);
+                        player.GetComponent<PlayerController>().FloorNum = arriveGateNum;
+                        //floorNumber += 1;
+                        //GameManager.GM.SetCurrentScene(floorNumber);
                     }
                 }
             }
@@ -68,9 +73,11 @@ public class PlayerSpawner : MonoBehaviour
                 {
                     if (DownArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
+                        Debug.Log("µµÂø: " + UpArriveGatesArray[i].name);
                         player.transform.position = DownArriveGatesArray[i].transform.position;
-                        floorNumber -= 1;
-                        GameManager.GM.SetCurrentScene(floorNumber);
+                        player.GetComponent<PlayerController>().FloorNum = arriveGateNum;
+                        //floorNumber -= 1;
+                        //GameManager.GM.SetCurrentScene(floorNumber);
                     }
                 }
             }
