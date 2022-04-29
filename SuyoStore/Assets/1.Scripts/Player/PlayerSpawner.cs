@@ -14,6 +14,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] GateType gateType;
     enum TargetFloor { B2, B1, F1, F2, F3, Looftop };
     [SerializeField] TargetFloor targetFloor;
+    private int floorNumber = 3;
 
     //public GameObject ArrivePoint;
 
@@ -56,6 +57,8 @@ public class PlayerSpawner : MonoBehaviour
                     if (UpArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
                         player.transform.position = UpArriveGatesArray[i].transform.position;
+                        floorNumber += 1;
+                        GameManager.GM.SetCurrentScene(floorNumber);
                     }
                 }
             }
@@ -66,6 +69,8 @@ public class PlayerSpawner : MonoBehaviour
                     if (DownArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
                         player.transform.position = DownArriveGatesArray[i].transform.position;
+                        floorNumber -= 1;
+                        GameManager.GM.SetCurrentScene(floorNumber);
                     }
                 }
             }
