@@ -37,10 +37,7 @@ public class ItemUse : MonoBehaviour
         if (isLightOn)
         {
             if (lightControl.LightDurability())
-            {
-                MyUsedItem[lightControl.GetID()].SetDURABILITY(0);
-                ChangeItem(lightControl.GetID(), -1);
-            }
+                DestroyObject(0, lightControl.GetID());
         }
     }
     public void UseItem(int itemID)
@@ -86,12 +83,31 @@ public class ItemUse : MonoBehaviour
                 Debug.Log("Cannot Use Item");
                 break;
         }
+        // if (item.GetDURABILITY() > 0) item.SetDURABILITY(-1);
+        // if (item.GetDURABILITY() == 0)
+        //     DestroyObject(0, itemID);
+    }
+    private void DestroyObject(int use, int itemID)
+    {
+        GameObject[] myItems = GameObject.FindGameObjectsWithTag("UsedItem");
+        foreach (GameObject i in myItems)
+        {
+            if (i.name == _dataManager.GetItemFileName(itemID) + "(Clone)")
+            {
+                Destroy(i);
+                if (use == 0)
+                {
+                    MyUsedItem.Remove(itemID);
+                }
+            }
+        }
     }
 
     public void SetItemDURABILITY(int itemID)
     {
         MyUsedItem[itemID].SetDURABILITY(-1);
         _uiManager.SetCurrentItemStatus(itemID, MyUsedItem[itemID]);
+        print("Durability : " + MyUsedItem[itemID].GetDURABILITY());
     }
 
     private GameObject FindExactWeapon(string itemName)
@@ -154,12 +170,6 @@ public class ItemUse : MonoBehaviour
             if (MyUsedItem[currentItemID].GetDURABILITY() > 0)  //아직 내구도가 0이상으로 사용할 수 있을 경우 다시 인벤토리에 넣어줌
             {
                 _dataManager.AddItem(currentItemID, 1);
-
-                if(_dataManager.GetItemSubCategory(currentItemID) == "라이트")
-                {
-                    MyUsedItem[currentItemID].SetDURABILITY(lightControl.StopCounter());
-                }
-                
                 //DestroyObject(1, currentItemID);    //기존 장착된 아이템 있을 경우 찾아서 프리팹 Destroy, 인자의 1은 아직 쓸 수 있을 때 MyUsedItem 에서 삭제 방지 
             }
             else    //내구도 0 이하라 더 이상 쓸 수 없을 경우 버림
@@ -180,8 +190,6 @@ public class ItemUse : MonoBehaviour
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipFlashlight(currentItemID);
                 light.SetActive(false);
-                isLightOn = false;
-                globalVolume.weight = 0.8f;
             }
             else if (_dataManager.GetItemSubCategory(currentItemID) == "가방")// 가방
             {
@@ -266,11 +274,20 @@ public class ItemUse : MonoBehaviour
     }
     private void UseBattery(int itemID)
     {
-        
+        // Dictionary<int, int> myItems = _dataManager.GetMyItems();
+        // // 배터리 모으는 루트가 아니어도 10개 안 모았다고 말해주는지?
+        // if (myItems[itemID] < 10)
+        // {
+        //     string message = "배터리의 양이 부족한 것 같다. (" + myItems[itemID] + "/10)";
+        //     CheckMustItemDays(message, true);
+        // }
+        // else
+        //     CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다.");
     }
     private void UseCardKey(Item item)
     {
-        
+        // if (CheckMustItemDays("아직은 구조대가 도착하지 않아 지금은 위험할 것 같다."))
+        //     GameManager.GM.CheckCondition();
     }
     private void UseSleepingBag(Item item, int itemID)
     {
@@ -322,14 +339,14 @@ public class ItemUse : MonoBehaviour
         if (playerStatus.EquipFlashlighList.Count > 0)
         {
             foreach (int id in playerStatus.EquipFlashlighList)
+
             {
                 if (_dataManager.GetItemSubCategory(id) == "라이트")
                 {
-                    MyUsedItem[id].SetDURABILITY(lightControl.StopCounter());
+                    item.SetDURABILITY(lightControl.StopCounter());
                     isLightOn = false;
                     ChangeItem(id, itemID);
                     UseLight(item, itemID);
-                    break;
                 }
             }
         }
@@ -343,19 +360,7 @@ public class ItemUse : MonoBehaviour
     private void UseLight(Item item, int itemID)
     {
         isLightOn = true;
-        if(item.GetDURABILITY() == 30 || item.GetDURABILITY() == 40)
-        {
-            lightControl = new LightControl(item.GetDURABILITY(), itemID);
-        }
-        else
-        {
-            float min = item.GetDURABILITY() / 60;
-            float sec = item.GetDURABILITY() % 60;
-
-            float dur = min + (sec / 100);
-            lightControl = new LightControl(dur, itemID);
-        }
-        
+        lightControl = new LightControl(item.GetDURABILITY(), itemID);
         volumeObj = GameObject.FindGameObjectWithTag("GlobalVolume");
         globalVolume = volumeObj.GetComponent<Volume>();
         switch (itemID)
@@ -373,6 +378,7 @@ public class ItemUse : MonoBehaviour
             default:
                 break;
         }
+        
     }
     private void UseSmartphone()
     {

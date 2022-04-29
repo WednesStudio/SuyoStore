@@ -46,7 +46,7 @@ public class PlayerSpawn : MonoBehaviour
                     
                     scene = SceneManager.GetActiveScene();
                     Debug.Log("after : " + scene.name);
-                    //GameManager.GM.SetCurrentScene(scene.name);
+                    GameManager.GM.SetCurrentScene(scene.name);
                     SceneController.instance.player.GetComponent<PlayerController>().isChangeFloor = true;
                     timer = 0.0f;
                 }

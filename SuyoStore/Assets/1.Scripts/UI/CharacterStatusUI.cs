@@ -118,13 +118,7 @@ public class CharacterStatusUI : MonoBehaviour
         if(item.GetSIGHTRANGE() != 0)    _lightSightText.text = "라이트 시야 : " + item.GetSIGHTRANGE().ToString();
         else _lightSightText.text = "";
 
-        if(item.GetDURABILITY() != 0)
-        {
-            if(item.GetDURABILITY() == 30 || item.GetDURABILITY() == 40)
-                _lightDurabilityText.text = "라이트 내구도 : " + item.GetDURABILITY().ToString();
-            else _lightDurabilityText.text = "라이트 내구도 : " + (item.GetDURABILITY() / 60).ToString() + "." +(item.GetDURABILITY() % 60).ToString();
-
-        }  
+        if(item.GetDURABILITY() != 0)   _lightDurabilityText.text = "라이트 내구도 : " + item.GetDURABILITY().ToString();
         else _lightDurabilityText.text = "";
     }
 

@@ -13,7 +13,6 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] eTargetFloor targetFloor;
 
     public GameObject ArrivePoint;
-    private int floorNum = 3;
 
     float timer;
     float stayEscalatorTime;
@@ -33,9 +32,6 @@ public class PlayerSpawner : MonoBehaviour
             GameManager.GM.ChangeToOtherScene(-1);
             if (this.dirType == eDirection.UP || this.dirType == eDirection.DOWN)
             {
-                if(this.dirType == eDirection.UP)   floorNum += 1;
-                else if(this.dirType == eDirection.DOWN) floorNum -= 1;
-                GameManager.GM.SetCurrentScene(floorNum);
                 player.GetComponent<PlayerController>().isChangeFloor = true;
                 player.transform.position = ArrivePoint.transform.position;
             }
@@ -54,7 +50,7 @@ public class PlayerSpawner : MonoBehaviour
             //if(timer >= stayEscalatorTime)
             //{
 
-            //GameManager.gm. ==true position �ٲٱ�
+            //GameManager.gm. ==true position �ٲٱ�
             //timer = 0.0f;
             //}
         }

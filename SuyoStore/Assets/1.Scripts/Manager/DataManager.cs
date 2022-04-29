@@ -56,7 +56,7 @@ public class DataManager : MonoBehaviour
     public int GetSelectedRoute() => selectedRoute;
     public DateControl dateControl;
 
-    private string[] locationName = {"지하 2층 : 주차장", "지하 1층 : 식품관", "1층 : 행사 및 카페테리아", "2층 : 엔터테인먼트", "3층 : 휴게 공간"};
+    private string[] locationName = {"B2 : 주차장", "B1 : 식품관", "F1 : 행사 및 카페테리아", "F2 : 엔터테인먼트", "F3 : 휴게 공간"};
     public void Awake()
     {
         dateControl = FindObjectOfType<DateControl>();
@@ -86,27 +86,27 @@ public class DataManager : MonoBehaviour
         int num;
         switch(location)
         {
-            case "3":
+            case "04.F3":
                 num = 4;
                 this._location = locationName[num];
                 _currentStateUI.SetCurrentState(_date, _location);
                 break;
-            case "2":
+            case "03.F2":
                 num = 3;
                 this._location = locationName[num];
                 _currentStateUI.SetCurrentState(_date, _location);
                 break;
-            case "1":
+            case "02.F1":
                 num = 2;
                 this._location = locationName[num];
                 _currentStateUI.SetCurrentState(_date, _location);
                 break;
-            case "0":
+            case "01.B1":
                 num = 1;
                 this._location = locationName[num];
                 _currentStateUI.SetCurrentState(_date, _location);
                 break;
-            case "-1":
+            case "00.B2":
                 num = 0;
                 this._location = locationName[num];
                 _currentStateUI.SetCurrentState(_date, _location);
