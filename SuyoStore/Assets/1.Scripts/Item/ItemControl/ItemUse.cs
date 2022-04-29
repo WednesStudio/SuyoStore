@@ -176,7 +176,8 @@ public class ItemUse : MonoBehaviour
                 if(_dataManager.GetItemSubCategory(currentItemID) == "라이트")
                 {
                     MyUsedItem[currentItemID].SetDURABILITY(lightControl.StopCounter());
-                    print("MyUsedItem[id].SetDURABILITY : " + MyUsedItem[currentItemID].GetDURABILITY());
+                    print("unable light" + item.GetDURABILITY());
+                    print("MyUsedItem[id].SetDURABILITY : " + MyUsedItem[currentItemID].GetDURABILITY()/60 + " " + MyUsedItem[currentItemID].GetDURABILITY()%60);
                 }
                 
                 //DestroyObject(1, currentItemID);    //기존 장착된 아이템 있을 경우 찾아서 프리팹 Destroy, 인자의 1은 아직 쓸 수 있을 때 MyUsedItem 에서 삭제 방지 
@@ -199,6 +200,7 @@ public class ItemUse : MonoBehaviour
                 GameObject light = FindExactLight(_dataManager.GetItemFileName(currentItemID));
                 playerStatus.RemoveEquipFlashlight(currentItemID);
                 light.SetActive(false);
+                isLightOn = false;
                 globalVolume.weight = 0.8f;
             }
             else if (_dataManager.GetItemSubCategory(currentItemID) == "가방")// 가방
@@ -357,6 +359,7 @@ public class ItemUse : MonoBehaviour
                     isLightOn = false;
                     ChangeItem(id, itemID);
                     UseLight(item, itemID);
+                    break;
                 }
             }
         }
@@ -370,7 +373,20 @@ public class ItemUse : MonoBehaviour
     private void UseLight(Item item, int itemID)
     {
         isLightOn = true;
-        lightControl = new LightControl(item.GetDURABILITY(), itemID);
+        if(item.GetDURABILITY() == 30 || item.GetDURABILITY() == 40)
+        {
+            lightControl = new LightControl(item.GetDURABILITY(), itemID);
+        }
+        else
+        {
+            float min = item.GetDURABILITY() / 60;
+            float sec = item.GetDURABILITY() % 60;
+
+            float dur = min + (sec / 100);
+            lightControl = new LightControl(dur, itemID);
+        }
+        
+        print("use light" + item.GetDURABILITY());
         volumeObj = GameObject.FindGameObjectWithTag("GlobalVolume");
         globalVolume = volumeObj.GetComponent<Volume>();
         switch (itemID)
