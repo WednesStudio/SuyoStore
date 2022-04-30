@@ -100,7 +100,6 @@ public class ScenarioEvent : MonoBehaviour
                 //7일차
                 else
                 {
-                    //GameManager.GM.UpdateMonologue("밖에 헬기소리가 백화점 안까지 울린다.");
                     GameManager.GM.SetEndEventTrigger();
                 }
             }

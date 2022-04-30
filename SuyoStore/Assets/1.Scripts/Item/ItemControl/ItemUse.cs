@@ -275,7 +275,7 @@ public class ItemUse : MonoBehaviour
     private void UseSleepingBag(Item item, int itemID)
     {
         //조건 확인해서 사용(마지막 날, 특정 위치에서)
-        if (GameManager.GM.GetSceneName() == "-1")
+        if (GameManager.GM.GetSceneName() == "-2")
         {
             _scenarioEvent.GetScenarioItemName("Sleeping Bag");
         }        
