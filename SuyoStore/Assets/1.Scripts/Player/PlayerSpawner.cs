@@ -7,16 +7,14 @@ public class PlayerSpawner : MonoBehaviour
 {
     GameObject player;
     public GameObject[] UpArriveGatesArray;
-    public GameObject[] DownArriveGatesArray; 
-    
+    public GameObject[] DownArriveGatesArray;
+    Vector3 moveFloorV;
     public int arriveGateNum;
     public enum GateType { GoUp, GoDown, ArriveUp, ArriveDown };
     [SerializeField] GateType gateType;
     enum TargetFloor { B2, B1, F1, F2, F3, Looftop };
     [SerializeField] TargetFloor targetFloor;
-    //private int floorNumber = 3;
-
-    //public GameObject ArrivePoint;
+    bool isChange = false;
 
     private void Start()
     {
@@ -49,9 +47,9 @@ public class PlayerSpawner : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void ChangeFloor()
     {
-        if (other.tag == "Player")
+        if (isChange)
         {
             if (gateType == GateType.GoUp)
             {
@@ -60,10 +58,8 @@ public class PlayerSpawner : MonoBehaviour
                     if (UpArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
                         Debug.Log("도착: " + UpArriveGatesArray[i].name);
-                        player.transform.position = UpArriveGatesArray[i].transform.position;
-                        player.GetComponent<PlayerController>().FloorNum = arriveGateNum;
-                        //floorNumber += 1;
-                        //GameManager.GM.SetCurrentScene(floorNumber);
+                        player.transform.position = UpArriveGatesArray[i].transform.position; // 이동할 좌표
+                        GameManager.GM.SetCurrentScene(arriveGateNum); // UI 층 변환
                     }
                 }
             }
@@ -74,14 +70,24 @@ public class PlayerSpawner : MonoBehaviour
                     if (DownArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
                         Debug.Log("도착: " + UpArriveGatesArray[i].name);
-                        player.transform.position = DownArriveGatesArray[i].transform.position;
-                        player.GetComponent<PlayerController>().FloorNum = arriveGateNum;
-                        //floorNumber -= 1;
-                        //GameManager.GM.SetCurrentScene(floorNumber);
+                        player.transform.position = DownArriveGatesArray[i].transform.position; // 이동할 좌표
+                        GameManager.GM.SetCurrentScene(arriveGateNum);// UI 층 변환
                     }
                 }
             }
             else { }
+
+            isChange = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            isChange = true;
+            GameManager.GM.ChangeToOtherScene(-1);
+            Invoke("ChangeFloor", 1f);
         }
     }
 }
