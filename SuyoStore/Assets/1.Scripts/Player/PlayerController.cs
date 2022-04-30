@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
     public GameObject nearTutorialItem;
 
     // Spawn Floor
-    public int FloorNum;
+    public int FloorNum = 3;
+    private int PastFloorNum = 3;
 
     private void Start()
     {
@@ -90,6 +91,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Physics.SyncTransforms();
+        // if(FloorNum != PastFloorNum)
+        // {
+        //     ChangeFloor();
+        //     PastFloorNum = FloorNum;
+        // }
         // 장착한 무기에 대한 정보
         if (EquipWeapon != null)
         {
@@ -501,7 +508,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ChangeFloor()
+    public void ChangeFloor()
     {
         switch (FloorNum)
         {
@@ -519,6 +526,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("That floor doesn't exist");
                 break;
         }
+        GameManager.GM.ChangeToOtherScene(-1);
         GameManager.GM.SetCurrentScene(FloorNum);
         //SafeTime();
     }

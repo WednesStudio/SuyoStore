@@ -237,24 +237,13 @@ public class GameManager : MonoBehaviour
     {
         //Keep data
         gameObject.GetComponent<SceneEffect>().SceneChange(sceneNum);
-        GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach (GameObject c in cameras)
-        {
-            if (!c.activeSelf) Destroy(c);
-        }
-
-        foreach (GameObject p in players)
-        {
-            if (!p.activeSelf) Destroy(p);
-        }
     }
 
     public void SetCurrentScene(int num)
     {
         _sceneName = num.ToString();
         _dataManager.SetCurrentInfo("", _sceneName);
+
         if(_sceneName == "1")
         {
             if(_scenarioEvent.isShelterClear) SetEndEventTrigger();

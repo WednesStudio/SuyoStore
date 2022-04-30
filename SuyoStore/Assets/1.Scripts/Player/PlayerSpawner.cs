@@ -60,8 +60,11 @@ public class PlayerSpawner : MonoBehaviour
                     if (UpArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
                         Debug.Log("도착: " + UpArriveGatesArray[i].name);
+                        
                         GameManager.GM.ChangeToOtherScene(-1);
-                        player.transform.position = UpArriveGatesArray[i].transform.position;
+                        
+                        if(GameManager.GM.isSceneLoadDone)  player.transform.position = UpArriveGatesArray[i].transform.position;
+
                         GameManager.GM.SetCurrentScene(arriveGateNum);
                     }
                 }
@@ -72,9 +75,11 @@ public class PlayerSpawner : MonoBehaviour
                 {
                     if (DownArriveGatesArray[i].GetComponent<PlayerSpawner>().arriveGateNum == arriveGateNum)
                     {
-                        Debug.Log("도착: " + UpArriveGatesArray[i].name);
+                        Debug.Log("도착: " + DownArriveGatesArray[i].name);
+
                         GameManager.GM.ChangeToOtherScene(-1);
-                        player.transform.position = DownArriveGatesArray[i].transform.position;
+                        if(GameManager.GM.isSceneLoadDone)  player.transform.position = DownArriveGatesArray[i].transform.position;
+
                         GameManager.GM.SetCurrentScene(arriveGateNum);
                     }
                 }
