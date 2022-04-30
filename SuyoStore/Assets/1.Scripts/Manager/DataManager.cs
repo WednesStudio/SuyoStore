@@ -101,12 +101,12 @@ public class DataManager : MonoBehaviour
                 this._location = locationName[num];
                 _currentStateUI.SetCurrentState(_date, _location);
                 break;
-            case "0":
+            case "-1":
                 num = 1;
                 this._location = locationName[num];
                 _currentStateUI.SetCurrentState(_date, _location);
                 break;
-            case "-1":
+            case "-2":
                 num = 0;
                 this._location = locationName[num];
                 _currentStateUI.SetCurrentState(_date, _location);

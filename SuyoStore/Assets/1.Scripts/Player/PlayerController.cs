@@ -48,13 +48,16 @@ public class PlayerController : MonoBehaviour
     public GameObject[] Weapons;
     public GameObject EquipWeapon;
     Weapon equipWeapon;
+    float attackCoolTime;
+    bool isAttackReady;
+
     //light
     public GameObject[] Lights;
     bool islightOn = false;
     //bag
     public GameObject[] Bags;
 
-    // Attack
+    // Item
     public bool hasWeapon;
     public bool hasFlashlight;
     public bool hasBag;
@@ -62,7 +65,6 @@ public class PlayerController : MonoBehaviour
     public GameObject nearTutorialItem;
 
     // Spawn Floor
-    public int FloorNum;
 
     private void Start()
     {
@@ -85,11 +87,12 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
     }
 
     private void Update()
     {
+        Physics.SyncTransforms();
+
         // 장착한 무기에 대한 정보
         if (EquipWeapon != null)
         {
@@ -429,7 +432,12 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
         //Destroy(hit.gameObject);
     }
-
+    // For 물리력이 NavAgent 이동을 방해하지 않게
+    //void StopToWall()
+    //{
+    //    Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+    //    isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
+    //}
     void SwitchWeapon()
     {
         //int weaponindex = itemID;
@@ -445,14 +453,13 @@ public class PlayerController : MonoBehaviour
             {
                 isSit = false;
                 pStatus.CurFatigue -= 2;
-                
+
                 if (!hasWeapon)
                 {
                     // 무기 미착용 상태
                     animator.SetTrigger("PunchNearZombie");
                     //pStatus.EquipItemsList
                     //SoundManager.SM.sour
-                    nearZombie.GetComponent<ZombieAI>().Hit();
                 }
                 else
                 {
@@ -462,8 +469,6 @@ public class PlayerController : MonoBehaviour
 
                     // 무기로 공격
                     equipWeapon.Use();
-                    nearZombie.GetComponent<ZombieAI>().Hit();
-
                     //공격할 때마다 장착한 무기 내구도 줄어들음
                     foreach (int i in pStatus.EquipWeaponList)
                     {
@@ -472,10 +477,25 @@ public class PlayerController : MonoBehaviour
                             itemUse.SetItemDURABILITY(i);
                         }
                     }
-                        
                 }
-                state = PlayerState.Idle;
+                StartCoroutine(AttackCoolTime());
+            
+            
+            state = PlayerState.Idle;
             }
+        }
+    }
+    IEnumerator AttackCoolTime()
+    {
+        if (hasWeapon)
+        {
+            yield return new WaitForSeconds(0.75f); Debug.Log("atk2");
+            nearZombie.GetComponent<ZombieController>().Hit();
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f); Debug.Log("atk");
+            nearZombie.GetComponent<ZombieController>().Hit();
         }
     }
 
@@ -501,39 +521,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ChangeFloor()
-    {
-        switch (FloorNum)
-        {
-            case 3:
-                break;
-            case 2:
-                break;
-            case 1:
-                break;
-            case -1:
-                break;
-            case -2:
-                break;
-            default:
-                Debug.Log("That floor doesn't exist");
-                break;
-        }
-        GameManager.GM.SetCurrentScene(FloorNum);
-        //SafeTime();
-    }
-    
-    void SafeTime()
-    {
-        StopCoroutine(WaitSafeTime());
-        isSafe = true;
-        StartCoroutine(WaitSafeTime());
-    }
+    //void SafeTime()
+    //{
+    //    StopCoroutine(WaitSafeTime());
+    //    isSafe = true;
+    //    StartCoroutine(WaitSafeTime());
+    //}
 
-    IEnumerator WaitSafeTime()
-    {
-        yield return new WaitForSeconds(4.0f);
-        isSafe = false;
-        isChangeFloor = false;
-    }
+    //IEnumerator WaitSafeTime()
+    //{
+    //    yield return new WaitForSeconds(4.0f);
+    //    isSafe = false;
+    //    isChangeFloor = false;
+    //}
 }
