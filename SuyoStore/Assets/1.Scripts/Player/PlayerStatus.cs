@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStatus : Status
 {
+    GameObject player;
     PlayerController playerController;
     UIManager uiManager;
     public bool isEquipWeapon = false;
@@ -66,7 +67,6 @@ public class PlayerStatus : Status
             if (curHp <= 0)
             {
                 Die();
-                Debug.Log("[GAME OVER] HP is ZERO");
             }
             SatietyModifier();
             SpeedModifier();
@@ -98,9 +98,9 @@ public class PlayerStatus : Status
     }
 
     /// <summary> Hp Status </summary>
-    public void ReduceHp(int zomPower)
+    public void ReduceHp(int hitValue)
     {
-        CurHp -= zomPower;  //CurHp = ReduceStatus(eCurStatusType.cHp, zomPower);
+        CurHp -= hitValue;
         CurHp = RemainStatusValue(CurHp, MaxHp);
     }
 
@@ -341,12 +341,10 @@ public class PlayerStatus : Status
     public void AddEquipFlashlight(int _itemID)
     {
         EquipFlashlighList.Add(_itemID);
-        if (GameManager.GM.GetItemSubCategory(_itemID) == "라이트") playerController.hasWeapon = true;
     }
     public void RemoveEquipFlashlight(int _itemID)
     {
         EquipFlashlighList.Remove(_itemID);
-        if (GameManager.GM.GetItemSubCategory(_itemID) == "라이트") playerController.hasWeapon = false;
     }
 
 
@@ -355,12 +353,10 @@ public class PlayerStatus : Status
     public void AddEquipBag(int _itemID)
     {
         EquipBagList.Add(_itemID);
-        if (GameManager.GM.GetItemSubCategory(_itemID) == "가방") playerController.hasWeapon = true;
     }
     public void RemoveEquipBag(int _itemID)
     {
         EquipBagList.Remove(_itemID);
-        if (GameManager.GM.GetItemSubCategory(_itemID) == "가방") playerController.hasWeapon = false;
         // 가방 무게 원래대로
         MaxCarryingBag = CarryingBag;
     }

@@ -174,6 +174,7 @@ public class ItemUse : MonoBehaviour
                 GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(currentItemID));   //player에 붙어있는 무기 배열 속 아이템 받아옴
                 playerStatus.RemoveEquipWeapon(currentItemID);    //player status의 equipList 업데이트
                 weapon.SetActive(false);    //받아온 무기 아이템 안 보이게
+                playerController.EquipWeapon = null;
             }
             else if (_dataManager.GetItemSubCategory(currentItemID) == "라이트")    //무기와 동일한 방식으로 작동
             {
@@ -207,6 +208,7 @@ public class ItemUse : MonoBehaviour
                 GameObject weapon = FindExactWeapon(_dataManager.GetItemFileName(newItemID));   //무기 배열 속 아이템 받아옴
                 playerStatus.AddEquipWeapon(newItemID);    //player status의 equipList 업데이트
                 weapon.SetActive(true);    //받아온 무기 아이템이 보이도록
+                playerController.EquipWeapon = weapon;
             }
             else if (_dataManager.GetItemSubCategory(newItemID) == "라이트")    //무기와 동일한 방식으로 작동
             {

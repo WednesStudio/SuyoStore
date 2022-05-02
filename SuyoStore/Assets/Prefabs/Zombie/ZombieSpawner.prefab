@@ -44,13 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombiePrefabs:
-  - {fileID: 8544533148528868898, guid: 57325d310448c654e932a33e78ae3a23, type: 3}
-  - {fileID: 8761443252217974152, guid: 7c175947a7f81734c937160fce2f0520, type: 3}
-  - {fileID: 1604910686951681447, guid: 4b86c334aab4dee419c2a07aa43032ea, type: 3}
-  - {fileID: 2421147024055749157, guid: 05896ecc90f331745aa28b704b7c4b52, type: 3}
+  - {fileID: 7393054829000274424, guid: 7c175947a7f81734c937160fce2f0520, type: 3}
+  - {fileID: 269893149993729677, guid: 4b86c334aab4dee419c2a07aa43032ea, type: 3}
+  - {fileID: 3066115282638551067, guid: 05896ecc90f331745aa28b704b7c4b52, type: 3}
   spawnRange: 0
   spX: 0
   spY: 0
   spZ: 0
-  zombieKinds: 0
   zombieNum: 0

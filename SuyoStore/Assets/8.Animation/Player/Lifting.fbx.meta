@@ -42,7 +42,7 @@ ModelImporter:
       name: Lifting
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 20
       lastFrame: 216
       wrapMode: 0
       orientationOffsetY: 0

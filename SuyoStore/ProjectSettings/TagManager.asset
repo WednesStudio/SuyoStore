@@ -12,6 +12,11 @@ TagManager:
   - ScenarioAsset
   - GlobalVolume
   - TutorialSpot
+  - Melee
+  - DownGate
+  - UpGate
+  - ZombieMelee
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -19,12 +24,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Zombie
+  - Floor
+  - Wall
+  - ZombieMelee
+  - CharacterCollisionBlocker
   - 
   - 
   - 

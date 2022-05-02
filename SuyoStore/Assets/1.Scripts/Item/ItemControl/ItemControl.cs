@@ -6,6 +6,7 @@ using Types;
 
 public class ItemControl : MonoBehaviour
 {
+    Rigidbody itemRigid;
     [SerializeField] DataManager _dataManager;
     private LoadExcel _database;
     [System.NonSerialized]
@@ -16,6 +17,7 @@ public class ItemControl : MonoBehaviour
     private char[] separatorChar = { '(', ' ' };
     private void Start()
     {
+        //itemRigid = GetComponent<Rigidbody>();
         _dataManager = FindObjectOfType<DataManager>();
         _database = _dataManager.GetComponent<LoadExcel>();
         string name = this.name.Split(separatorChar)[0];
