@@ -21,7 +21,7 @@ public class ZombieAI : MonoBehaviour
     public Vector3 spawn; //스폰 위치
     public bool isDetect;// 플레이어 추격 여부
     public bool isRandom;
-    public float range;
+    float range;
     bool isAttacking = false; // 플레이어와 닿아서 플레이어를 공격 중인지
     public Animator zombieAnim;
     public GameObject child;
@@ -46,7 +46,7 @@ public class ZombieAI : MonoBehaviour
         curHp = hp;
         curSpeed = speed;
         zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
-        //range = zombieSp.range;
+        range = zombieSp.spawnRange;
     }
 
     // Update is called once per frame
@@ -114,8 +114,8 @@ public class ZombieAI : MonoBehaviour
     {
         //range 범위 안에서 움직임
         float randomX = Random.Range(zombieSp.spX, zombieSp.spX + 2 * range) - range;
-        float randomY = Random.Range(zombieSp.spZ, zombieSp.spZ + 2 * range) - range;
-        Vector3 randomPos = new Vector3(randomX, zombieSp.spY, randomY);
+        float randomZ = Random.Range(zombieSp.spZ, zombieSp.spZ + 2 * range) - range;
+        Vector3 randomPos = new Vector3(randomX, zombieSp.spY, randomZ);
         transform.LookAt(randomPos);
         isRandom = true;
         yield return new WaitForSeconds(Random.Range(0.5f, 3f));
