@@ -60,16 +60,16 @@ public class ZombieAI : MonoBehaviour
     //Player Tag를 가진 객체에 닿았을 떄
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && !targetController.isSafe)
-        {
-            zombieAnim.SetBool("isAttack", true);
-            curSpeed = 0;
-            if (timer <= 0)
-            {
-                Attack();
-            }
-            timer = coolTime;
-        }
+        //if (other.tag == "Player" && !targetController.isSafe)
+        //{
+        //    zombieAnim.SetBool("isAttack", true);
+        //    curSpeed = 0;
+        //    if (timer <= 0)
+        //    {
+        //        Attack();
+        //    }
+        //    timer = coolTime;
+        //}
     }
     void OnTriggerExit(Collider other)
     {
@@ -122,58 +122,58 @@ public class ZombieAI : MonoBehaviour
         isRandom = false;
     }
 
-    void Attack()
-    {
-        //Player를 공격
-        targetStatus.ReduceHp(power);
+    //void Attack()
+    //{
+    //    //Player를 공격
+    //    targetStatus.ReduceHp(power);
 
-        if (!targetStatus.isInfect)
-        {
-            if (Random.Range(1, 101) <= infection)
-            {
-                targetStatus.isInfect = true;
-                Debug.Log("감염되었습니다");
-                if (Random.Range(1, 101) <= infection)
-                {
-                    targetStatus.isInfect = true;
-                    zombieAnim.SetTrigger("doInfect");
-                    Debug.Log("감염되었습니다");
-                }
-            }
-        }
-        /*
-        // 원래 코드
-        target.GetComponent<PlayerController>().pStatus.CurHp -= power;
-        Debug.Log(target.GetComponent<PlayerController>().pStatus.CurHp);
-        */
-    }
+    //    if (!targetStatus.isInfect)
+    //    {
+    //        if (Random.Range(1, 101) <= infection)
+    //        {
+    //            targetStatus.isInfect = true;
+    //            Debug.Log("감염되었습니다");
+    //            if (Random.Range(1, 101) <= infection)
+    //            {
+    //                targetStatus.isInfect = true;
+    //                zombieAnim.SetTrigger("doInfect");
+    //                Debug.Log("감염되었습니다");
+    //            }
+    //        }
+    //    }
+    //    /*
+    //    // 원래 코드
+    //    target.GetComponent<PlayerController>().pStatus.CurHp -= power;
+    //    Debug.Log(target.GetComponent<PlayerController>().pStatus.CurHp);
+    //    */
+    //}
 
-    public void Die()
-    {
-        child.SetActive(false);
-        GetComponent<ParticleSystem>().Play();
-        StartCoroutine("DieEffect");
-    }
+    //public void Die()
+    //{
+    //    child.SetActive(false);
+    //    GetComponent<ParticleSystem>().Play();
+    //    StartCoroutine("DieEffect");
+    //}
 
-    IEnumerator DieEffect()
-    {
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
-    }
+    //IEnumerator DieEffect()
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    Destroy(gameObject);
+    //}
 
-    //피격
-    public void Hit()
-    {
-        Debug.Log("[Zombie System] Hit");
+    ////피격
+    //public void Hit()
+    //{
+    //    Debug.Log("[Zombie System] Hit");
 
-        //지금은 3데미지를 받지만 나중에 무기 공격력 가져오기
-        curHp -= 3;
-        healthbar.fillAmount = (float)curHp / (float)hp;
-        if (curHp <= 0)
-        {
-            Die();
-        }
-    }
+    //    //지금은 3데미지를 받지만 나중에 무기 공격력 가져오기
+    //    curHp -= 3;
+    //    healthbar.fillAmount = (float)curHp / (float)hp;
+    //    if (curHp <= 0)
+    //    {
+    //        Die();
+    //    }
+    //}
 
     ////테스트용
     //void OnMouseDown()

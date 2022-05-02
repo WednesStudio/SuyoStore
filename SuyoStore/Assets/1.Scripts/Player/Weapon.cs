@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public enum Type { LightSwing, HeavySwing, KnifeSwing, None };
-    public Type type;
-    public int damage;
+    //public enum WeaponKind { LightSwing, HeavySwing, KnifeSwing, None };
+    //public WeaponKind wKind;
     public float rate;
     public BoxCollider meleeArea;
-    public bool isAttackRange = false;
+    //public bool isAttackRange = false;
     //public TrailRenderer trailEffect;
 
     private void Start()
     {
-        meleeArea = GetComponentInChildren<BoxCollider>();
+        meleeArea = GetComponent<BoxCollider>();
+        rate = 1f;
         //switch (type)
         //{
         //    case Type.LightSwing:
@@ -35,20 +35,22 @@ public class Weapon : MonoBehaviour
         //}
     }
 
+
+
+
     public void Use()
     {
-        StopCoroutine("Swing");
-        StartCoroutine("Swing");
+        StartCoroutine(Swing());
     }
 
     IEnumerator Swing()
     {
-        // 공격할 동안 콜라이더 활성화
-        yield return new WaitForSeconds(0.1f);
+        // anim 타이밍에 맞춰 콜라이더 활성화
         meleeArea.enabled = true;
-
-        // 공격 후 콜라이더 비활성화
         yield return new WaitForSeconds(0.1f);
+
         meleeArea.enabled = false;
+        // 공격 후 콜라이더 비활성화
+        yield return new WaitForSeconds(0.6f);
     }
 }

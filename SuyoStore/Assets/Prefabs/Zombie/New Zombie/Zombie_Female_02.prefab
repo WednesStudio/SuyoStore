@@ -40,7 +40,7 @@ BoxCollider:
   m_GameObject: {fileID: 6820466435915893041}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -3072,6 +3072,7 @@ GameObject:
   - component: {fileID: 4289818671516780411}
   - component: {fileID: 7313387358233189622}
   - component: {fileID: 4848464097571400889}
+  - component: {fileID: 2339159357105083171}
   m_Layer: 7
   m_Name: Zombie_Female_02
   m_TagString: Zombie
@@ -8017,7 +8018,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92071918431ce30488ac0fe4c414d8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawn: {x: 0, y: 0, z: 0}
+  isDetect: 0
+  isRandom: 0
   target: {fileID: 0}
+  detection: 0
   hp: 0
   curHp: 0
   curSpeed: 0
@@ -8025,6 +8030,21 @@ MonoBehaviour:
   power: 0
   CoolTime: 0
   infection: 5
+  isZomAttack: 0
+--- !u!136 &2339159357105083171
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393054829000274424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7393066151321049092
 GameObject:
   m_ObjectHideFlags: 0
@@ -9497,7 +9517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7393584690974595568}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7391299146724110982}

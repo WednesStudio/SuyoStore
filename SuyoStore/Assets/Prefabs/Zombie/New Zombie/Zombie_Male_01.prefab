@@ -4280,6 +4280,7 @@ GameObject:
   - component: {fileID: 3831222669808817077}
   - component: {fileID: 7524018468486128173}
   - component: {fileID: 8259392523824264880}
+  - component: {fileID: 7418463320272181236}
   m_Layer: 7
   m_Name: Zombie_Male_01
   m_TagString: Zombie
@@ -4378,7 +4379,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -9224,7 +9225,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92071918431ce30488ac0fe4c414d8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawn: {x: 0, y: 0, z: 0}
+  isDetect: 0
+  isRandom: 0
   target: {fileID: 0}
+  detection: 0
   hp: 0
   curHp: 0
   curSpeed: 0
@@ -9233,6 +9238,20 @@ MonoBehaviour:
   CoolTime: 0
   infection: 5
   isZomAttack: 0
+--- !u!136 &7418463320272181236
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269893149993729677}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &269923036537653187
 GameObject:
   m_ObjectHideFlags: 0
@@ -10711,7 +10730,7 @@ BoxCollider:
   m_GameObject: {fileID: 7661202853201119932}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
