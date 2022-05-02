@@ -1,223 +1,124 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class ZombieController : MonoBehaviour
 {
-    GameObject zombie;
-    // Player object & script related Player
-    private GameObject target;
-    private PlayerStatus targetStatus;
-    private PlayerController targetController;
-
-    private float timer;
+    AIController zomAI;
+    NavMeshAgent navMA;
 
     public int hp;
-    private int curHp;
-    public int detection; //ê°ì§€ ë²”ìœ„
-    Vector3 moveVec;
+    public int curHp;
     public float curSpeed;
     public float speed;
     public int power;
-    public int coolTime;
-    public int infection = 5; // ê°ì—¼ë¥ 
-    public Vector3 spawn; // ìŠ¤í° ìœ„ì¹˜
-    public bool isDetect;
-    //public bool isChase; // í”Œë ˆì´ì–´ ì¶”ê²© ì—¬ë¶€
-    public bool isRandom;
-    public float range;
-    public Animator zombieAnim;
-    public GameObject child;
-    ZombieSpawner zombieSp;
+    public float CoolTime;
+    public int infection = 5; // °¨¿°·ü
+
+    // Related on Target(= Player)
+    [SerializeField] GameObject target;
+    PlayerStatus targetStatus;
+    PlayerController targetController;
+
+    // Relaated on Zombie
     Rigidbody zomRigid;
-
-    bool isBorder;
-
-    //Animation Controller Transition
-    bool isAttacking = false; // í”Œë ˆì´ì–´ì™€ ë‹¿ì•„ì„œ í”Œë ˆì´ì–´ë¥¼ ê³µê²© ì¤‘ì¸ì§€
-    bool isWalk = true;
-
-    NavMeshAgent nav;
+    BoxCollider attackArea;
+    Animator zombieAnim;
+    bool isAttack = false; // ÇÃ·¹ÀÌ¾î¿Í ´ê¾Æ¼­ ÇÃ·¹ÀÌ¾î¸¦ °ø°İ ÁßÀÎÁö
 
     private void Awake()
     {
-        //mat = GetComponent<MeshRenderer>().material;
-        nav = GetComponent<NavMeshAgent>();
-
-        zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
-        zombie = gameObject;
-        zomRigid = GetComponent<Rigidbody>();
-        zombieAnim = GetComponent<Animator>();
-
         target = GameObject.FindGameObjectWithTag("Player");
         targetStatus = target.GetComponent<PlayerStatus>();
         targetController = target.GetComponent<PlayerController>();
+
+        //zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
+        navMA = GetComponent<NavMeshAgent>();
+        zomAI = GetComponent<AIController>();
+        zomRigid = GetComponent<Rigidbody>();
+        attackArea = GetComponentInChildren<BoxCollider>();
+        zombieAnim = GetComponent<Animator>();
     }
     void Start()
     {
         hp = 100;
-        detection = 6;
-        speed = 3.5f;
-
-        timer = 1;
-        isDetect = false;
-        isRandom = false;
+        speed = 4.0f;
+        power = 3;
+        CoolTime = 1.0f;
         curHp = hp;
         curSpeed = speed;
-        spawn = transform.position;
-        range = zombieSp.spawnRange;
-    }
-
-    void StopToWall()
-    {
-        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
-        isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
-    }
-    void FreezeRotation()
-    {
-        zomRigid.angularVelocity = Vector3.zero;
+        attackArea.enabled = false;
     }
     private void FixedUpdate()
     {
-        FreezeRotation();
+        zomRigid.velocity = Vector3.zero;
+        zomRigid.angularVelocity = Vector3.zero;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        nav.SetDestination(target.transform.position);
-        zombieAnim.SetBool("isWalk", curSpeed > 0);
-
-        timer -= Time.deltaTime;
-        Move();
-    }
-
-    //Player Tagë¥¼ ê°€ì§„ ê°ì²´ì— ë‹¿ì•˜ì„ ë•Œ ê³µê²©
-    void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player")
+        if(navMA.speed > 0)
         {
-            curSpeed = 0;
-            if (timer <= 0)
-            {
-                Attack();
-                isAttacking = true;
-            }
-            else
-            {
-                isAttacking = false;
-            }
-            timer = coolTime;
+            zombieAnim.SetBool("isWalk", true);
+        }
+        else
+        {
+            zombieAnim.SetBool("isWalk", false);
+        }
+        if (zomAI.m_CaughtPlayer)
+        {
+            StartCoroutine(Attack());
         }
     }
-    void OnTriggerExit(Collider other)
+    IEnumerator Attack()
     {
-        if (other.tag == "Player")
+        isAttack = true;
+        if (!targetStatus.isInfect)
         {
-            curSpeed = speed;
-            isAttacking = false;
-            zombieAnim.SetBool("isAttack", isAttacking);
+            if (Random.Range(1, 101) <= infection)
+            {
+                targetStatus.isInfect = true;
+                zombieAnim.SetTrigger("doInfect");
+                Debug.Log("°¨¿°µÇ¾ú½À´Ï´Ù");
+            }
         }
+        yield return new WaitForSeconds(0.2f);
+        zombieAnim.SetBool("isAttack", isAttack);
+        Debug.Log("°ø°İ Áß");
+        attackArea.enabled = true;
+        targetController.isDamage = true;
+
+        yield return new WaitForSeconds(CoolTime);
+        attackArea.enabled = false;
+        isAttack = false;
+        zombieAnim.SetBool("isAttack", isAttack);
+
+        yield return new WaitForSeconds(CoolTime);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // ë¬´ê¸° ê³µê²© ë²”ìœ„ì— ë‹¿ìœ¼ë©´ ì¢€ë¹„ ì²´ë ¥ ê°ì†Œ
+        // ¹«±â °ø°İ ¹üÀ§¿¡ ´êÀ¸¸é Á»ºñ Ã¼·Â °¨¼Ò
         if (other.tag == "Melee")
         {
-            Hit();
-        }
-    }
-
-    void Move()
-    {
-        //moveVec = new Vector3(
-        if (!isBorder)
-        {
-            //transform.position += curSpeed * Time.deltaTime;
-        }
-
-        //targetì˜ ìœ„ì¹˜ì™€ zombieì˜ ê°ì²´ ê±°ë¦¬ê°€ detectionë³´ë‹¤ ì‘ê±°ë‚˜, í”Œë ˆì´ì–´ë¥¼ ê³µê²© ì¤‘ì¼ ë•Œ ì¶”ê²©
-        if ((!target.GetComponent<PlayerController>().isSafe)
-            && ((Vector3.Distance(target.transform.position, transform.position) < detection)
-            || isAttacking))
-        {
-            isDetect = true;
-            transform.LookAt(target.gameObject.transform);
-        }
-        //ìŠ¤í° ëœ ì§€ì—­ê³¼ ê°€ê¹Œì›Œì§€ë©´ íƒìƒ‰ì„ ê³„ì†í• ì§€ íŒë‹¨
-        else if (Vector3.Distance(spawn, transform.position) < 0.3)
-        {
-            isDetect = false;
-        }
-        //ëœë¤ ì´ë™
-        else if (!isDetect)
-        {
-            if (!isRandom)
-                StartCoroutine("RandomMove");
-        }
-        //ìŠ¤í° ëœ ì§€ì—­ìœ¼ë¡œ ì´ë™
-        else
-        {
-            transform.LookAt(spawn);
-        }
-        transform.Translate(Vector3.forward * Time.deltaTime * curSpeed);
-    }
-
-    IEnumerator RandomMove()
-    {
-        //range ë²”ìœ„ ì•ˆì—ì„œ ì›€ì§ì„
-        float randomX = Random.Range(zombieSp.spX, zombieSp.spX + 2 * range) - range;
-        float randomY = Random.Range(zombieSp.spZ, zombieSp.spZ + 2 * range) - range;
-        Vector3 randomPos = new Vector3(randomX, zombieSp.spY, randomY);
-        transform.LookAt(randomPos);
-        isRandom = true;
-        yield return new WaitForSeconds(Random.Range(0.5f, 3f));
-        isRandom = false;
-    }
-
-    void Attack()
-    {
-        if (!targetController.isSafe)
-        {
-            zombieAnim.SetBool("isAttack", isAttacking); // animtion
-            targetStatus.ReduceHp(power);
-
-            if (!targetStatus.isInfect)
-            {
-                if (Random.Range(1, 101) <= infection)
-                {
-                    targetStatus.isInfect = true;
-                    zombieAnim.SetTrigger("doInfect");
-                    Debug.Log("ê°ì—¼ë˜ì—ˆìŠµë‹ˆë‹¤");
-                }
-            }
+            curHp -= targetStatus.CurAttack;
+            Debug.Log("[Zombie System] weapon Hit : " + curHp);
         }
     }
 
     public void Die()
     {
+        Debug.Log("[Zombie System] Die");
+        attackArea.enabled = false; // ÇÃ·¹ÀÌ¾î°¡ ÀÌ¹Ì Á×Àº Á»ºñ¸¦ ´õ °ø°İÇÏÁö ¾Êµµ·Ï Äİ¶óÀÌ´õ ²ô±â
+        isAttack = false;
         zombieAnim.SetTrigger("doDie");
         GetComponent<ParticleSystem>().Play();
-        StartCoroutine("DieEffect");
+        StartCoroutine(DieEffect());
     }
 
     IEnumerator DieEffect()
     {
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
-    }
-
-    //í”¼ê²©
-    public void Hit()
-    {
-        curHp -= targetStatus.CurAttack;
-        Debug.Log("[Zombie System] Hit : " + curHp);
-        if (curHp <= 0)
-        {
-            Die();
-            Debug.Log("[Zombie System] Die");
-        }
     }
 }
