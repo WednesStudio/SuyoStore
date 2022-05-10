@@ -23,7 +23,7 @@ public class ZombieSpawner : MonoBehaviour
     float yDiffer = 6.5f;
 
     [SerializeField] int zombieNum;
-    int floors = 5; // 건물 총 층수
+    int floors = 4; // 건물 총 층수
     int[] zCount = new int[3];
 
     void Start()
@@ -68,17 +68,17 @@ public class ZombieSpawner : MonoBehaviour
                     y = -1.1f;
                     break;
                 case 1:
-                    y = 5.5f;
+                    y = 5f;
                     break;
                 case 2:
-                    y = 11.5f;
+                    y = 11f;
                     break;
                 case 3:
-                    y = 17.5f;
+                    y = 17f;
                     break;
-                case 4:
-                    y = 23.5f;
-                    break;
+                //case 4:
+                //    y = 23.5f;
+                //    break;
                 default:
                     y = 0f;
                     break;

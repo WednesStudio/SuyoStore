@@ -2,6 +2,7 @@
 using System.Collections;
 public class PlayerController : MonoBehaviour
 {
+    OptionSettingUI _optionSettingUI;
     DataManager _dataManager;
     UIManager _uiManager;
     ScenarioEvent _scenarioEvent;
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
         _dataManager = FindObjectOfType<DataManager>();
         _uiManager = FindObjectOfType<UIManager>();
         _scenarioEvent = _uiManager.GetComponent<ScenarioEvent>();
+        _optionSettingUI = _uiManager.GetComponent<OptionSettingUI>();
         _tutorial = _uiManager.GetComponent<Tutorial>();
     }
 
@@ -191,7 +193,10 @@ public class PlayerController : MonoBehaviour
         // Move Input
         hAxis = Input.GetAxisRaw("Horizontal"); // 방향키 좌우
         vAxis = Input.GetAxisRaw("Vertical"); // 방향키 위아래
-
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            _optionSettingUI.OnStatusAndInventoryWindow();
+        }
         if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
         {
             SitInput();

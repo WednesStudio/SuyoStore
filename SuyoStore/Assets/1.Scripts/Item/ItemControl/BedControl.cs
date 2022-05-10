@@ -61,7 +61,7 @@ public class BedControl : MonoBehaviour
             SetItem();
         else
         {
-            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.G) && isNearPlayer)
+            if (_dataManager.dateControl.GetDays() < 8 && Input.GetKeyUp(KeyCode.F) && isNearPlayer)
             {
                 // _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
                 // if (Physics.Raycast(_ray, out _hit, 1000f))
@@ -87,8 +87,8 @@ public class BedControl : MonoBehaviour
     }
     private void UseBed(Item item)
     {
-        playerStatus.RecoverStatus(Status.eCurStatusType.cHp, item.GetHEAL());
-        playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, item.GetSATIETY());
+        playerStatus.RecoverStatus(Status.eCurStatusType.cHp, 30);
+        playerStatus.RecoverStatus(Status.eCurStatusType.cSatiety, -10);
         GameManager.GM.DateSetting();
     }
 }

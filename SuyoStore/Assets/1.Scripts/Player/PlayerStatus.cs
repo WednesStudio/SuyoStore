@@ -47,7 +47,7 @@ public class PlayerStatus : Status
 
         // Time related status
         time = 100;
-        hungerTime = 10;
+        hungerTime = 20;
         hungerDieTime = 120;
         useHungerTime = hungerTime;
         useHungerDieTime = hungerDieTime;
@@ -188,7 +188,7 @@ public class PlayerStatus : Status
             CurSatiety -= 2;
             Debug.Log("[Status System] Satiety : " + curSatiety);
 
-            UseHungerTime = GetBackTime(UseHungerTime, hungerDieTime);
+            UseHungerTime = GetBackTime(UseHungerTime, hungerTime);
         }
     }
 

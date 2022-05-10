@@ -108,7 +108,7 @@ public class Zombie : MonoBehaviour
         //range 범위 안에서 움직임
         float randomX = Random.Range(zombieSp.spX, zombieSp.spX + 2 * range) - range;
         float randomZ = Random.Range(zombieSp.spZ, zombieSp.spZ + 2 * range) - range;
-        Vector3 randomPos = new Vector3(randomX, zombieSp.spY, randomZ);
+        Vector3 randomPos = new Vector3(randomX, transform.position.y, randomZ);
         transform.LookAt(randomPos);
         isRandom = true;
         yield return new WaitForSeconds(Random.Range(0.5f, 3f));
