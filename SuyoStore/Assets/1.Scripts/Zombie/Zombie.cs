@@ -47,7 +47,7 @@ public class Zombie : MonoBehaviour
     }
     void Start()
     {
-        detection = 6;
+        detection = 3;
         isDetect = false;
         isRandom = false;
         spawn = transform.position;
