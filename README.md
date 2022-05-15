@@ -8,4 +8,4 @@
 - **작업 기간**  |  2022.02.23 – 2021.04.01 (약 2개월)
 
 **시연 영상**  
-<iframe width="640" height="360" src="https://www.youtube.com/watch?v=jyFTkEXTauY" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+![image](https://user-images.githubusercontent.com/66158433/168473954-bcca963f-a7ad-4c5f-a47d-0e493db6c423.png)(https://www.youtube.com/watch?v=jyFTkEXTauY)
