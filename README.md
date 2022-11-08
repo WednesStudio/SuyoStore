@@ -9,36 +9,30 @@
 
 ###  팀 : 웬즈Studio (6인)
 
-- **황예은 - 클라이언트 프로그래머**
+### Programmer (4인)
+- **황예은 - (main) 플레이어 시스템**
 [@ise-yen](https://github.com/ise-yen)
-  - 플레이어 시스템
   - 전투 시스템
   - 카메라 시스템
   - 좀비 시스템 보조
 
-
-- **이수연 - 클라이언트 프로그래머**
+- **이수연 - (main) UI, 인벤토리 시스템**
 [@suyaneeko](https://github.com/suyaneeko)
-  - UI 시스템
-  - 인벤토리 시스템
   - 시나리오 시스템, 튜토리얼 시스템
-  - 사운드 매니저
-  - 게임 매니저
-  - 씬 매니저
+  - 게임, 사운드, 씬 매니저
   - 아이템 시스템 보조
 
-- **김지혜 - 클라이언트 프로그래머**
+- **김지혜 - (main) 아이템 시스템**
 [@deftones88](https://github.com/deftones88)
-  - 아이템 시스템
   - 시나리오 시스템
   - 데이터 매니저
   - 일정 관리
   
-- **문지현 - 클라이언트 프로그래머**
+- **문지현 - (main) 좀비 시스템**
 [@6108](https://github.com/6108)
-  - 좀비 시스템
   - 사운드 리소스 수집
 
+### Designer (2인)
 - **한욱 - [메인 디자이너](https://docs.google.com/document/d/1-_kvZj1Ez5WzZ8CLhVG3Fj3g6KVcAhZd/edit?usp=sharing&ouid=109628991358854797821&rtpof=true&sd=true)**
 [@Erenwein](https://github.com/Erenwein)
   - 시나리오 디자인
