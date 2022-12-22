@@ -5,7 +5,7 @@
 스마일게이트 챌린지 3기에서 제작한 게임으로, 네이버 웹툰 '위아더좀비'를 모티브로 기획.
 
 - 작업 기간 : 2022.02.23 – 2022.05.01 (약 2개월)
-- 개발 환경 : `Unity3d` `C#` `Github` [Notion](https://noisy-accordion-367.notion.site/PM-ad7f014134a34030a3727526149fced4) `Google Drive`
+- 개발 환경 : `Unity3d(2020.3.30f1)` `C#` `Github` [Notion](https://noisy-accordion-367.notion.site/PM-ad7f014134a34030a3727526149fced4) `Google Drive` `Discord`
 
 ###  팀 : 웬즈Studio (6인)
 
