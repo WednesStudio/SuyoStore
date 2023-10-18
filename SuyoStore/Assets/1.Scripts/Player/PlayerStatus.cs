@@ -55,8 +55,6 @@ public class PlayerStatus : Status
         useStaminaTime = staminaTime;
         recoveryStaminaTime = 1;
         useRecoveryStaminaTime = recoveryStaminaTime;
-        //sturnStaminaTime = 5;
-        //useSturnStaminaTime = sturnStaminaTime;
 
     }
 
@@ -120,18 +118,6 @@ public class PlayerStatus : Status
                 CurFatigue += _value;
                 CurFatigue = RemainStatusValue(CurFatigue, MaxFatigue);
                 break;
-            //case eCurStatusType.cCarryingBag:
-            //    CurCarryingBag += _value;
-            //    CurCarryingBag = RemainStatusValue(CurCarryingBag, MaxCarryingBag);
-            //    break;
-            //case eCurStatusType.cAttack:
-            //    CurAttack += _value;
-            //    CurAttack = RemainStatusValue(CurAttack, Attack);
-            //    break;
-            //case eCurStatusType.cStamina:
-            //    CurStamina += _value;
-            //    CurStamina = RemainStatusValue(CurStamina, Stamina);
-            //    break;
             default:
                 break;
         }
