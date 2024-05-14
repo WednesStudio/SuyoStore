@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33348361418056750}
   - component: {fileID: 23433687522962408}
   - component: {fileID: 64225495070086856}
-  - component: {fileID: 7989832234158563564}
   m_Layer: 0
   m_Name: SM_Prop_BurnPile_01
   m_TagString: Untagged
@@ -92,21 +91,8 @@ MeshCollider:
   m_GameObject: {fileID: 1250369813790830}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43996438632774010, guid: 4dcbdff9b8317424fa10d815f3a4f435, type: 2}
---- !u!65 &7989832234158563564
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250369813790830}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.5192084, y: 1.152388, z: 5.28084}
-  m_Center: {x: 0, y: 0.3976326, z: -0.0000009536743}
