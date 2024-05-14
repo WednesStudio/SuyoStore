@@ -683,7 +683,7 @@ MonoBehaviour:
   isEquipWeapon: 0
   isInfect: 0
   EquipWeaponList: 
-  EquipFlashlighList: 
+  EquipFlashlightList: 
   EquipBagList: 
 --- !u!136 &3715115369025097967
 CapsuleCollider:
@@ -5091,7 +5091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8253077237230785420, guid: 5acbcff8018feb14ca5dab6a029ad629, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6999989
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 8253077237230785420, guid: 5acbcff8018feb14ca5dab6a029ad629, type: 3}
       propertyPath: m_LocalRotation.w
