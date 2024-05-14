@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 33584025623262510}
   - component: {fileID: 23892528481876430}
   - component: {fileID: 64855977585885786}
-  - component: {fileID: 8277748932825291410}
+  - component: {fileID: 1232975764}
   m_Layer: 0
   m_Name: SM_DeadBody_Female_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4729496807286772
 Transform:
@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989875529202396}
-  m_LocalRotation: {x: 0.03968573, y: -0.018359184, z: 0.05148551, w: 0.997716}
+  m_LocalRotation: {x: 0.039688684, y: -0.018356204, z: 0.051484816, w: 0.997716}
   m_LocalPosition: {x: -0.014056664, y: 0.09475004, z: 0.02280014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 4.651, y: -1.871, z: 5.832}
 --- !u!33 &33584025623262510
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92,21 +92,24 @@ MeshCollider:
   m_GameObject: {fileID: 1989875529202396}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43331746035758794, guid: 78500fda3631b9e419f2d2bb2a4aae6e, type: 2}
---- !u!65 &8277748932825291410
-BoxCollider:
+--- !u!54 &1232975764
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989875529202396}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.133537, y: 0.5461036, z: 1.4606055}
-  m_Center: {x: 0.012155951, y: 0.118990086, z: -0.009730192}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33481673807826926}
   - component: {fileID: 23504191358617658}
   - component: {fileID: 64123033296315438}
-  - component: {fileID: 6619703839793396341}
   m_Layer: 0
   m_Name: SM_DeadBody_Male_18
   m_TagString: Untagged
@@ -92,21 +91,8 @@ MeshCollider:
   m_GameObject: {fileID: 1045536701366092}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43309267333550622, guid: 7b9a90569bef24e49938d69c770ceb7f, type: 2}
---- !u!65 &6619703839793396341
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045536701366092}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2200031, y: 0.38465908, z: 1.5467764}
-  m_Center: {x: 0.00000047683716, y: 0.12000622, z: 0.0000019073486}

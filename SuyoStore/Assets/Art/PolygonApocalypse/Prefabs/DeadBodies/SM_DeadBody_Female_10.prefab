@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 33269616070287500}
   - component: {fileID: 23042240619034714}
   - component: {fileID: 64876368818692154}
-  - component: {fileID: 4006290694438754286}
+  - component: {fileID: 1752943687}
   m_Layer: 0
   m_Name: SM_DeadBody_Female_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4948302783206880
 Transform:
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428497776306458}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.030174864, y: 0.021827132, z: -0.0057318113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -92,21 +92,24 @@ MeshCollider:
   m_GameObject: {fileID: 1428497776306458}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43702839741440856, guid: 3ab1102b7935f9c44b220fca34cca285, type: 2}
---- !u!65 &4006290694438754286
-BoxCollider:
+--- !u!54 &1752943687
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428497776306458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7093453, y: 0.3259278, z: 2.1053061}
-  m_Center: {x: 0.0000038146973, y: 0.12000623, z: 0}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
