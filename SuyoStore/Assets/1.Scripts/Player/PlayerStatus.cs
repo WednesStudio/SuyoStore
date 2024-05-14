@@ -215,12 +215,6 @@ public class PlayerStatus : Status
         int excessBag = (int)(maxCarryingBag * 10 / 100); // max의 10% 값
         int count = (curCarryingBag - maxCarryingBag) / excessBag;
 
-        /*
-         (40 - 30) / 3 = 3
-        30 = 3
-        33 = 1
-        36
-         */
 
         if (curCarryingBag >= maxCarryingBag)
         {
@@ -277,34 +271,6 @@ public class PlayerStatus : Status
         }
     }
 
-    //void OnEquipmentChange(Item newItem, Item oldItem)
-    //{
-    //    if(newItem != null)
-    //    {
-
-    //    }
-
-    //    if(oldItem != null)
-    //    {
-
-    //    }
-    //}
-
-    // EuipItemList
-    //public void AddEquipItem(int _itemID)
-    //{
-    //    EquipWeaponList.Add(_itemID);
-    //    if (GameManager.GM.GetItemSubCategory(_itemID) == "무기") playerController.hasWeapon = true;
-    //}
-    //public void RemoveEquipItem(int _itemID)
-    //{
-    //    EquipWeaponList.Remove(_itemID);
-    //    if (GameManager.GM.GetItemSubCategory(_itemID) == "무기") playerController.hasWeapon = false;
-    //    //공격력 원래대로
-    //    curAttack = 10;
-    //    //시야 감소
-    //}
-
     // 장비
     public List<int> EquipWeaponList = new List<int>();
 
@@ -323,14 +289,14 @@ public class PlayerStatus : Status
     }
 
     // 라이트
-    public List<int> EquipFlashlighList = new List<int>();
+    public List<int> EquipFlashlightList = new List<int>();
     public void AddEquipFlashlight(int _itemID)
     {
-        EquipFlashlighList.Add(_itemID);
+		EquipFlashlightList.Add(_itemID);
     }
     public void RemoveEquipFlashlight(int _itemID)
     {
-        EquipFlashlighList.Remove(_itemID);
+		EquipFlashlightList.Remove(_itemID);
     }
 
 

@@ -321,9 +321,9 @@ public class ItemUse : MonoBehaviour
     private void LightSetting(int itemID)
     {
         //만약 플레이어에게 이미 장착되어 있는 라이트가 있다면
-        if (playerStatus.EquipFlashlighList.Count > 0)
+        if (playerStatus.EquipFlashlightList.Count > 0)
         {
-            foreach (int id in playerStatus.EquipFlashlighList)
+            foreach (int id in playerStatus.EquipFlashlightList)
             {
                 if (_dataManager.GetItemSubCategory(id) == "라이트")
                 {

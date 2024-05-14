@@ -116,7 +116,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         FreezeRoation();
-        //RayObject();
     }
 
     private void Update()
@@ -133,15 +132,6 @@ public class PlayerController : MonoBehaviour
         {
             PunchMeleeArea.enabled = true;
         }
-        //if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
-        //{
-        //    SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.WalkSound);
-        //}
-        //else
-        //{
-        //    SoundManager.SM.StopEnvironmentalSound();
-        //}
-        // When change scene, player don't be attacked by zombie
 
         GetInput();
         if(state != PlayerState.Dead)
@@ -150,7 +140,9 @@ public class PlayerController : MonoBehaviour
         }
         Anim();
 
-        if(_scenarioEvent.isShelterClear && gameObject.GetComponent<Transform>().position.y > -13 && gameObject.GetComponent<Transform>().position.y < 20)
+        if(_scenarioEvent.isShelterClear &&
+            gameObject.GetComponent<Transform>().position.y > -13 &&
+            gameObject.GetComponent<Transform>().position.y < 20)
         {
             GameManager.GM.SetEndEventTrigger();
         }
@@ -204,14 +196,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F))
         {
             GetItem();
-            //if (isMove && (!SoundManager.SM.isPlayingEnvironmentalSound()))
-            //{
-            //    SoundManager.SM.PlayEnvironmentalSound(EnvironmentalSoundName.GetItemSoound);
-            //}
-            //else
-            //{
-            //    SoundManager.SM.StopEnvironmentalSound();
-            //}
         }
 
         if (Input.GetMouseButtonUp(0)) {
@@ -485,8 +469,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        //zombieController.curHp -= pStatus.CurAttack;
-        //Debug.Log("[Zombie System] Hit : " + zombieController.curHp);
         state = PlayerState.Idle;
     }
 
@@ -520,19 +502,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //void SafeTime()
-    //{
-    //    StopCoroutine(WaitSafeTime());
-    //    isSafe = true;
-    //    StartCoroutine(WaitSafeTime());
-    //}
-
-    //IEnumerator WaitSafeTime()
-    //{
-    //    yield return new WaitForSeconds(4.0f);
-    //    isSafe = false;
-    //    isChangeFloor = false;
-    //}
 
     private void OnCollisionEnter(Collision collision)
     {
