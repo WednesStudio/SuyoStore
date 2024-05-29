@@ -7,15 +7,6 @@ public class ZombieSpawner : MonoBehaviour
     ZombieController zomController;
     public GameObject[] zombiePrefabs; //좀비 프래팹
     public float spawnRange; //소환 할 범위
-    //int n1; //노말 좀비 1 개수
-    //int n2; //노말 좀비 2 개수
-    //int n3; //노말 좀비 3 개수
-    //int n4; //노말 좀비 4 개수
-    //int g; //그린 좀비 개수
-    //int y; //옐로 좀비 개수
-    //int r; //레드 좀비 개수
-    //int allCount;
-    //bool allDestroy; 
     GameObject[] zombies; //소환 된 모든 좀비를 담음
     public float spX; //맵 중앙 X좌표
     public float spY; //맵 중앙 Y좌표
