@@ -45,6 +45,7 @@ public class Zombie : MonoBehaviour
         zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
 
     }
+    
     void Start()
     {
         detection = 3;
