@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour
 {
@@ -8,15 +9,15 @@ public class Zombie : MonoBehaviour
     public bool isDetect;// 플레이어 추격 여부
     public bool isRandom;
     float range;
-    ZombieSpawner zombieSp;
+    //ZombieSpawner zombieSp;
 
     // Related on Target(= Player)
     [SerializeField] GameObject target;
-    PlayerStatus targetStatus;
-    PlayerController targetController;
+    //PlayerStatus targetStatus;
+    //PlayerController targetController;
 
     // Relaated on Zombie
-    Rigidbody zomRigid;
+    //Rigidbody zomRigid;
     BoxCollider zomMeleeArea;
     Animator zombieAnim;
     public int detection; //감지 범위
@@ -29,6 +30,8 @@ public class Zombie : MonoBehaviour
     public int infection = 5; // 감염률
     public bool isZomAttack; // 좀비가 플레이어를 공격 중인지
     
+NavMeshAgent navMesh;
+
     bool isground;
     float disToGround = 1f;
     bool isFindPlayer;
@@ -36,13 +39,15 @@ public class Zombie : MonoBehaviour
     private void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player");
-        targetStatus = target.GetComponent<PlayerStatus>();
-        targetController = target.GetComponent<PlayerController>();
+        // targetStatus = target.GetComponent<PlayerStatus>();
+        // targetController = target.GetComponent<PlayerController>();
 
-        zomRigid = GetComponent<Rigidbody>();
+        //zomRigid = GetComponent<Rigidbody>();
         zomMeleeArea = GetComponentInChildren<BoxCollider>();
         zombieAnim = GetComponent<Animator>();
-        zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
+        navMesh = GetComponent<NavMeshAgent>();  
+
+        //zombieSp = GameObject.Find("ZombieSpawner").GetComponent<ZombieSpawner>();
 
     }
     
@@ -52,7 +57,7 @@ public class Zombie : MonoBehaviour
         isDetect = false;
         isRandom = false;
         spawn = transform.position;
-        range = zombieSp.spawnRange;
+        //range = zombieSp.spawnRange;
 
         hp = 100;
         speed = 1.0f;
@@ -61,11 +66,12 @@ public class Zombie : MonoBehaviour
         curHp = hp;
         curSpeed = speed;
         zomMeleeArea.enabled = false;
+        
     }
     private void FixedUpdate()
     {
-        zomRigid.velocity = Vector3.zero;
-        zomRigid.angularVelocity = Vector3.zero;
+        //zomRigid.velocity = Vector3.zero;
+        //zomRigid.angularVelocity = Vector3.zero;
     }
     private void Update()
     {
@@ -75,40 +81,49 @@ public class Zombie : MonoBehaviour
 
     void Move()
     {
+        navMesh.SetDestination(target.transform.position);
+        if (Vector3.Distance(transform.position, target.transform.position) < 1f)
+        {
+            // 목표 지점에 도착했을 때의 행동을 여기에 작성합니다.
+            Debug.Log("프ㄹ레이어와 가까움");
+        }
+        else {
+            Debug.Log("이동중");
+        }
         zombieAnim.SetBool("isWalk", true);
         // 애니메이션 작동
         //target의 위치와 zombie의 객체 거리가 detection보다 작거나, 플레이어를 공격 중일 때 추격
-        if ((!target.GetComponent<PlayerController>().isSafe)
-            && ((Vector3.Distance(target.transform.position, transform.position) < detection)
-            || (curHp < hp)))
-        {
-            isDetect = true;
-            transform.LookAt(target.gameObject.transform);
-        }
+        // if ((!target.GetComponent<PlayerController>().isSafe)
+        //     && ((Vector3.Distance(target.transform.position, transform.position) < detection)
+        //     || (curHp < hp)))
+        // {
+        //     isDetect = true;
+        //     transform.LookAt(target.gameObject.transform);
+        // }
         //스폰 된 지역과 가까워지면 탐색을 계속할지 판단
-        else if (Vector3.Distance(spawn, transform.position) < 0.3)
-        {
-            isDetect = false;
-        }
-        //랜덤 이동
-        else if (!isDetect)
-        {
-            if (!isRandom)
-                StartCoroutine("RandomMove");
-        }
-        //스폰 된 지역으로 이동
-        else
-        {
-            transform.LookAt(spawn);
-        }
-        transform.Translate(Vector3.forward * Time.deltaTime * curSpeed);
+        // else if (Vector3.Distance(spawn, transform.position) < 0.3)
+        // {
+        //     isDetect = false;
+        // }
+        // //랜덤 이동
+        // else if (!isDetect)
+        // {
+        //     // if (!isRandom)
+        //     //     StartCoroutine("RandomMove");
+        // }
+        // //스폰 된 지역으로 이동
+        // else
+        // {
+        //     transform.LookAt(spawn);
+        // }
+        //transform.Translate(Vector3.forward * Time.deltaTime * curSpeed);
     }
 
     IEnumerator RandomMove()
     {
         //range 범위 안에서 움직임
-        float randomX = Random.Range(zombieSp.spX, zombieSp.spX + 2 * range) - range;
-        float randomZ = Random.Range(zombieSp.spZ, zombieSp.spZ + 2 * range) - range;
+        float randomX = 10;//Random.Range(zombieSp.spX, zombieSp.spX + 2 * range) - range;
+        float randomZ = 10;//Random.Range(zombieSp.spZ, zombieSp.spZ + 2 * range) - range;
         Vector3 randomPos = new Vector3(randomX, transform.position.y, randomZ);
         transform.LookAt(randomPos);
         isRandom = true;
@@ -126,14 +141,14 @@ public class Zombie : MonoBehaviour
         return isground;
     }
 
-    private void Respawn()
-    {
-        int spawnRange = 40;
-        float randomX = Random.Range(0, 0 + spawnRange) - spawnRange / 2;
-        float randomZ = Random.Range(0, 0 + spawnRange) - spawnRange / 2;
-        Vector3 respawnPos = new Vector3(randomX, gameObject.transform.position.y, randomZ);
-        gameObject.transform.position = respawnPos;
-    }
+    // private void Respawn()
+    // {
+    //     int spawnRange = 40;
+    //     float randomX = 10;//Random.Range(0, 0 + spawnRange) - spawnRange / 2;
+    //     float randomZ = 10;//Random.Range(0, 0 + spawnRange) - spawnRange / 2;
+    //     Vector3 respawnPos = new Vector3(randomX, gameObject.transform.position.y, randomZ);
+    //     gameObject.transform.position = respawnPos;
+    // }
 
     bool RayObejct()
     {
@@ -168,15 +183,15 @@ public class Zombie : MonoBehaviour
     {
         transform.LookAt(target.transform.position);
         isZomAttack = true;
-        if (!targetStatus.isInfect)
-        {
-            if (Random.Range(1, 101) <= infection)
-            {
-                targetStatus.isInfect = true;
-                zombieAnim.SetTrigger("doInfect");
-                Debug.Log("감염되었습니다");
-            }
-        }
+        // if (!targetStatus.isInfect)
+        // {
+        //     if (Random.Range(1, 101) <= infection)
+        //     {
+        //         targetStatus.isInfect = true;
+        //         zombieAnim.SetTrigger("doInfect");
+        //         Debug.Log("감염되었습니다");
+        //     }
+        // }
         zombieAnim.SetBool("isAttack", isZomAttack);
 
         // anim 타이밍에 맞춰서 zomMelee 활성화
@@ -192,18 +207,18 @@ public class Zombie : MonoBehaviour
         zombieAnim.SetBool("isAttack", isZomAttack);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        // 무기 공격 범위에 닿으면 좀비 체력 감소
-        if (other.tag == "Melee")
-        {
-            if (targetController.isAttack)
-            {
-                curHp -= targetStatus.CurAttack;
-                Debug.Log("[Zombie System] Hit : " + curHp);
-            }
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     // 무기 공격 범위에 닿으면 좀비 체력 감소
+    //     if (other.tag == "Melee")
+    //     {
+    //         if (targetController.isAttack)
+    //         {
+    //             curHp -= targetStatus.CurAttack;
+    //             Debug.Log("[Zombie System] Hit : " + curHp);
+    //         }
+    //     }
+    // }
 
     private void OnTriggerStay(Collider other)
     {
