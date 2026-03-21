@@ -16,8 +16,8 @@
   - 카메라 시스템
   - 좀비 시스템 보조
 
-- **이수연 - (main) UI, 인벤토리 시스템**
-[@suyaneeko](https://github.com/suyaneeko)
+- **임수연 - (main) UI, 인벤토리 시스템**
+[@suyan2k5](https://github.com/suyaneeko)
   - 시나리오 시스템, 튜토리얼 시스템
   - 게임, 사운드, 씬 매니저
   - 아이템 시스템 보조
